@@ -52,7 +52,7 @@ Left Menu */
 }
 #topLogo {
 	background-color: rgb(33, 37, 43);
-	background-image: url(:/images/images/images/PyDracula.png);
+	background-image: url(:/images/images/images/ball_logo.png);
 	background-position: centered;
 	background-repeat: no-repeat;
 }
