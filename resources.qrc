@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="images">
-        <file>images/images/ball_logo.png.png</file>
+        <file>images/images/ball_logo.png</file>
         <file>images/images/PyDracula_vertical.png</file>
         <file>images/images/cloud.png</file>
         <file>images/images/camera.png</file>
