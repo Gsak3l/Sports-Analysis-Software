@@ -2,6 +2,8 @@ import sys
 import os
 import platform
 
+import button_actions
+
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from modules import *
@@ -52,11 +54,11 @@ class MainWindow(QMainWindow):
         # BUTTONS CLICK
         # ////////////////////////////////////////////////////////
         local_video_page.btn_local_footage.clicked.connect(self.buttonClick)
+        local_video_page.video_file_button.clicked.connect(self.buttonClick)
 
         # LEFT MENUS
         local_video_page.btn_home.clicked.connect(self.buttonClick)
         local_video_page.btn_import_video.clicked.connect(self.buttonClick)
-
 
         # SHOW APP
         # ///////////////////////////////////////////////////////////////
@@ -77,8 +79,8 @@ class MainWindow(QMainWindow):
 
         # SET HOME PAGE AND SELECT MENU
         # ///////////////////////////////////////////////////////////////
-        local_video_page.stackedWidget.setCurrentWidget(local_video_page.home)
         local_video_page.btn_home.setStyleSheet(UIFunctions.selectMenu(local_video_page.btn_home.styleSheet()))
+        local_video_page.stackedWidget.setCurrentWidget(local_video_page.home)
 
     # BUTTONS CLICK
     # Post here your functions for clicked buttons
@@ -96,15 +98,18 @@ class MainWindow(QMainWindow):
 
         # SHOW NEW PAGE
         if btnName == "btn_import_video":
-            local_video_page.stackedWidget.setCurrentWidget(local_video_page.new_page)  # SET PAGE
+            local_video_page.stackedWidget.setCurrentWidget(local_video_page.video_option_menu)  # SET PAGE
             UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
 
         # SHOW VIDEO FROM HARD-DRIVE PAGE
         if btnName == "btn_local_footage":
             local_video_page.stackedWidget.setCurrentWidget(local_video_page.local_video_page)
-            UIFunctions.resetStyle(self, btnName)
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
+        # OPEN FILE EXPLORER ON WHEN CLICKING THE LOCAL VIDEO IMPORT
+        if btnName == "video_file_button":
+            fname = QFileDialog.getOpenFileName(self, 'Open File', 'D:/', 'MP4 Files (*mp4)')
+            local_video_page.video_file_name.setText(fname[0])
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')

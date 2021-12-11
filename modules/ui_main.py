@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_main2.ui'
+## Form generated from reading UI file 'ui_main.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.2.2
 ##
@@ -1022,24 +1022,24 @@ class Ui_MainWindow(object):
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(-1, -1, -1, 0)
-        self.lineEdit = QLineEdit(self.frame_content_wid_1)
-        self.lineEdit.setObjectName(u"lineEdit")
-        self.lineEdit.setMinimumSize(QSize(0, 30))
-        self.lineEdit.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.video_file_name = QLineEdit(self.frame_content_wid_1)
+        self.video_file_name.setObjectName(u"video_file_name")
+        self.video_file_name.setMinimumSize(QSize(0, 30))
+        self.video_file_name.setStyleSheet(u"background-color: rgb(33, 37, 43);")
 
-        self.gridLayout.addWidget(self.lineEdit, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.video_file_name, 0, 0, 1, 1)
 
-        self.pushButton = QPushButton(self.frame_content_wid_1)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(150, 30))
-        self.pushButton.setFont(font)
-        self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        self.video_file_button = QPushButton(self.frame_content_wid_1)
+        self.video_file_button.setObjectName(u"video_file_button")
+        self.video_file_button.setMinimumSize(QSize(150, 30))
+        self.video_file_button.setFont(font)
+        self.video_file_button.setCursor(QCursor(Qt.PointingHandCursor))
+        self.video_file_button.setStyleSheet(u"background-color: rgb(52, 59, 72);")
         icon3 = QIcon()
         icon3.addFile(u":/icons/images/icons/cil-folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton.setIcon(icon3)
+        self.video_file_button.setIcon(icon3)
 
-        self.gridLayout.addWidget(self.pushButton, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.video_file_button, 0, 1, 1, 1)
 
         self.labelVersion_3 = QLabel(self.frame_content_wid_1)
         self.labelVersion_3.setObjectName(u"labelVersion_3")
@@ -1305,24 +1305,28 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.row_3)
 
         self.stackedWidget.addWidget(self.local_video_page)
-        self.new_page = QWidget()
-        self.new_page.setObjectName(u"new_page")
-        self.verticalLayout_20 = QVBoxLayout(self.new_page)
+        self.video_option_menu = QWidget()
+        self.video_option_menu.setObjectName(u"video_option_menu")
+        self.verticalLayout_20 = QVBoxLayout(self.video_option_menu)
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.btn_local_footage = QPushButton(self.new_page)
+        self.btn_local_footage = QPushButton(self.video_option_menu)
         self.btn_local_footage.setObjectName(u"btn_local_footage")
         self.btn_local_footage.setMaximumSize(QSize(80, 80))
         self.btn_local_footage.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_local_footage.setStyleSheet(u"pressed {\n"
+                                             "background-color: rgb(189, 147, 249);\n"
+                                             "}")
         icon5 = QIcon()
         icon5.addFile(u":/images/images/images/folder.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_local_footage.setIcon(icon5)
         self.btn_local_footage.setIconSize(QSize(64, 64))
+        self.btn_local_footage.setAutoDefault(False)
 
         self.horizontalLayout_6.addWidget(self.btn_local_footage)
 
-        self.btn_cloud_footage = QPushButton(self.new_page)
+        self.btn_cloud_footage = QPushButton(self.video_option_menu)
         self.btn_cloud_footage.setObjectName(u"btn_cloud_footage")
         self.btn_cloud_footage.setMaximumSize(QSize(80, 80))
         self.btn_cloud_footage.setCursor(QCursor(Qt.PointingHandCursor))
@@ -1333,7 +1337,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.btn_cloud_footage)
 
-        self.btn_camera_footage = QPushButton(self.new_page)
+        self.btn_camera_footage = QPushButton(self.video_option_menu)
         self.btn_camera_footage.setObjectName(u"btn_camera_footage")
         self.btn_camera_footage.setMaximumSize(QSize(80, 80))
         self.btn_camera_footage.setCursor(QCursor(Qt.PointingHandCursor))
@@ -1346,7 +1350,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_20.addLayout(self.horizontalLayout_6)
 
-        self.stackedWidget.addWidget(self.new_page)
+        self.stackedWidget.addWidget(self.video_option_menu)
 
         self.verticalLayout_15.addWidget(self.stackedWidget)
 
@@ -1486,8 +1490,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.titleLeftApp.setText(QCoreApplication.translate("MainWindow", u"PyDracula", None))
-        self.titleLeftDescription.setText(QCoreApplication.translate("MainWindow", u"Modern GUI / Flat Style", None))
+        self.titleLeftApp.setText(QCoreApplication.translate("MainWindow", u"Advanced Software", None))
+        self.titleLeftDescription.setText(QCoreApplication.translate("MainWindow", u"for Coaches and Players", None))
         self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"Hide", None))
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"Home", None))
         self.btn_import_video.setText(QCoreApplication.translate("MainWindow", u"Import Video", None))
@@ -1529,10 +1533,10 @@ class Ui_MainWindow(object):
         # endif // QT_CONFIG(tooltip)
         self.closeAppBtn.setText("")
         self.labelBoxBlenderInstalation.setText(QCoreApplication.translate("MainWindow", u"FILE BOX", None))
-        self.lineEdit.setText("")
-        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Open", None))
-        self.labelVersion_3.setText(QCoreApplication.translate("MainWindow", u"Label description", None))
+        self.video_file_name.setText("")
+        self.video_file_name.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here", None))
+        self.video_file_button.setText(QCoreApplication.translate("MainWindow", u"Open", None))
+        self.labelVersion_3.setText("")
         self.checkBox.setText(QCoreApplication.translate("MainWindow", u"CheckBox", None))
         self.radioButton.setText(QCoreApplication.translate("MainWindow", u"RadioButton", None))
         self.comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Test 1", None))
@@ -1601,5 +1605,5 @@ class Ui_MainWindow(object):
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
         self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: Sakellariou G.", None))
-        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.05", None))
+        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.08", None))
     # retranslateUi
