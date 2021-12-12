@@ -15,13 +15,12 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
                            QFont, QFontDatabase, QGradient, QIcon,
                            QImage, QKeySequence, QLinearGradient, QPainter,
                            QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplication, QCheckBox,
+from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplication, QCalendarWidget,
                                QComboBox, QCommandLinkButton, QFrame, QGridLayout,
                                QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-                               QMainWindow, QPlainTextEdit, QPushButton, QRadioButton,
-                               QScrollArea, QScrollBar, QSizePolicy, QSlider,
-                               QStackedWidget, QTableWidget, QTableWidgetItem, QTextEdit,
-                               QVBoxLayout, QWidget)
+                               QMainWindow, QPlainTextEdit, QPushButton, QScrollArea,
+                               QSizePolicy, QStackedWidget, QTableWidget, QTableWidgetItem,
+                               QTextEdit, QTimeEdit, QVBoxLayout, QWidget)
 from .resources_rc import *
 
 
@@ -1066,33 +1065,20 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
         self.gridLayout_2 = QGridLayout()
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.checkBox = QCheckBox(self.row_2)
-        self.checkBox.setObjectName(u"checkBox")
-        self.checkBox.setAutoFillBackground(False)
-        self.checkBox.setStyleSheet(u"")
+        self.plainTextEdit = QPlainTextEdit(self.row_2)
+        self.plainTextEdit.setObjectName(u"plainTextEdit")
 
-        self.gridLayout_2.addWidget(self.checkBox, 0, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.plainTextEdit, 4, 0, 1, 1)
 
-        self.radioButton = QRadioButton(self.row_2)
-        self.radioButton.setObjectName(u"radioButton")
-        self.radioButton.setStyleSheet(u"")
+        self.competition_input = QLineEdit(self.row_2)
+        self.competition_input.setObjectName(u"competition_input")
 
-        self.gridLayout_2.addWidget(self.radioButton, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.competition_input, 1, 1, 1, 1)
 
-        self.verticalSlider = QSlider(self.row_2)
-        self.verticalSlider.setObjectName(u"verticalSlider")
-        self.verticalSlider.setStyleSheet(u"")
-        self.verticalSlider.setOrientation(Qt.Vertical)
+        self.timeEdit = QTimeEdit(self.row_2)
+        self.timeEdit.setObjectName(u"timeEdit")
 
-        self.gridLayout_2.addWidget(self.verticalSlider, 0, 2, 3, 1)
-
-        self.verticalScrollBar = QScrollBar(self.row_2)
-        self.verticalScrollBar.setObjectName(u"verticalScrollBar")
-        self.verticalScrollBar.setStyleSheet(u" QScrollBar:vertical { background: rgb(52, 59, 72); }\n"
-                                             " QScrollBar:horizontal { background: rgb(52, 59, 72); }")
-        self.verticalScrollBar.setOrientation(Qt.Vertical)
-
-        self.gridLayout_2.addWidget(self.verticalScrollBar, 0, 4, 3, 1)
+        self.gridLayout_2.addWidget(self.timeEdit, 0, 2, 1, 2)
 
         self.scrollArea = QScrollArea(self.row_2)
         self.scrollArea.setObjectName(u"scrollArea")
@@ -1108,7 +1094,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 355, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 314, 239))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
                                                     "	border: none;\n"
                                                     "    background: rgb(52, 59, 72);\n"
@@ -1118,16 +1104,14 @@ class Ui_MainWindow(object):
                                                     " }")
         self.horizontalLayout_11 = QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.plainTextEdit = QPlainTextEdit(self.scrollAreaWidgetContents)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
-        self.plainTextEdit.setMinimumSize(QSize(200, 200))
-        self.plainTextEdit.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.calendarWidget = QCalendarWidget(self.scrollAreaWidgetContents)
+        self.calendarWidget.setObjectName(u"calendarWidget")
 
-        self.horizontalLayout_11.addWidget(self.plainTextEdit)
+        self.horizontalLayout_11.addWidget(self.calendarWidget)
 
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
-        self.gridLayout_2.addWidget(self.scrollArea, 0, 5, 3, 1)
+        self.gridLayout_2.addWidget(self.scrollArea, 1, 2, 5, 2)
 
         self.comboBox = QComboBox(self.row_2)
         self.comboBox.addItem("")
@@ -1140,34 +1124,22 @@ class Ui_MainWindow(object):
         self.comboBox.setIconSize(QSize(16, 16))
         self.comboBox.setFrame(True)
 
-        self.gridLayout_2.addWidget(self.comboBox, 1, 0, 1, 2)
+        self.gridLayout_2.addWidget(self.comboBox, 0, 0, 1, 2)
 
-        self.horizontalScrollBar = QScrollBar(self.row_2)
-        self.horizontalScrollBar.setObjectName(u"horizontalScrollBar")
-        sizePolicy.setHeightForWidth(self.horizontalScrollBar.sizePolicy().hasHeightForWidth())
-        self.horizontalScrollBar.setSizePolicy(sizePolicy)
-        self.horizontalScrollBar.setStyleSheet(u" QScrollBar:vertical { background: rgb(52, 59, 72); }\n"
-                                               " QScrollBar:horizontal { background: rgb(52, 59, 72); }")
-        self.horizontalScrollBar.setOrientation(Qt.Horizontal)
+        self.season_input = QLineEdit(self.row_2)
+        self.season_input.setObjectName(u"season_input")
 
-        self.gridLayout_2.addWidget(self.horizontalScrollBar, 1, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.season_input, 1, 0, 1, 1)
 
-        self.commandLinkButton = QCommandLinkButton(self.row_2)
-        self.commandLinkButton.setObjectName(u"commandLinkButton")
-        self.commandLinkButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.commandLinkButton.setStyleSheet(u"")
+        self.embed_document_button = QCommandLinkButton(self.row_2)
+        self.embed_document_button.setObjectName(u"embed_document_button")
+        self.embed_document_button.setCursor(QCursor(Qt.PointingHandCursor))
+        self.embed_document_button.setStyleSheet(u"")
         icon4 = QIcon()
         icon4.addFile(u":/icons/images/icons/cil-link.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.commandLinkButton.setIcon(icon4)
+        self.embed_document_button.setIcon(icon4)
 
-        self.gridLayout_2.addWidget(self.commandLinkButton, 1, 6, 1, 1)
-
-        self.horizontalSlider = QSlider(self.row_2)
-        self.horizontalSlider.setObjectName(u"horizontalSlider")
-        self.horizontalSlider.setStyleSheet(u"")
-        self.horizontalSlider.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_2.addWidget(self.horizontalSlider, 2, 0, 1, 2)
+        self.gridLayout_2.addWidget(self.embed_document_button, 3, 0, 1, 1)
 
         self.verticalLayout_19.addLayout(self.gridLayout_2)
 
@@ -1534,17 +1506,23 @@ class Ui_MainWindow(object):
         self.closeAppBtn.setText("")
         self.labelBoxBlenderInstalation.setText(QCoreApplication.translate("MainWindow", u"FILE BOX", None))
         self.video_file_name.setText("")
-        self.video_file_name.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here", None))
+        self.video_file_name.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here...", None))
         self.video_file_button.setText(QCoreApplication.translate("MainWindow", u"Open", None))
         self.labelVersion_3.setText("")
-        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"CheckBox", None))
-        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"RadioButton", None))
-        self.comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Test 1", None))
-        self.comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"Test 2", None))
-        self.comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"Test 3", None))
+        self.plainTextEdit.setPlaceholderText(
+            QCoreApplication.translate("MainWindow", u"Details/Description of the game", None))
+        self.competition_input.setText("")
+        self.competition_input.setPlaceholderText(
+            QCoreApplication.translate("MainWindow", u"Type of Competition", None))
+        self.comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Football", None))
+        self.comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"Basketball", None))
+        self.comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"Volleyball", None))
 
-        self.commandLinkButton.setText(QCoreApplication.translate("MainWindow", u"Link Button", None))
-        self.commandLinkButton.setDescription(QCoreApplication.translate("MainWindow", u"Link description", None))
+        self.season_input.setText("")
+        self.season_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Season Input", None))
+        self.embed_document_button.setText(QCoreApplication.translate("MainWindow", u"Embed Additional Files", None))
+        self.embed_document_button.setDescription(
+            QCoreApplication.translate("MainWindow", u"(.pdf, .docx, etc.)", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"0", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)

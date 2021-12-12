@@ -1825,7 +1825,7 @@ background-repeat: no-repeat;</string>
                                      <string/>
                                     </property>
                                     <property name="placeholderText">
-                                     <string>Type here</string>
+                                     <string>Type here...</string>
                                     </property>
                                    </widget>
                                   </item>
@@ -1903,51 +1903,27 @@ background-repeat: no-repeat;</string>
                          <layout class="QVBoxLayout" name="verticalLayout_19">
                           <item>
                            <layout class="QGridLayout" name="gridLayout_2">
-                            <item row="0" column="0">
-                             <widget class="QCheckBox" name="checkBox">
-                              <property name="autoFillBackground">
-                               <bool>false</bool>
+                            <item row="4" column="0">
+                             <widget class="QPlainTextEdit" name="plainTextEdit">
+                              <property name="placeholderText">
+                               <string>Details/Description of the game</string>
                               </property>
-                              <property name="styleSheet">
-                               <string notr="true"/>
-                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="1">
+                             <widget class="QLineEdit" name="competition_input">
                               <property name="text">
-                               <string>CheckBox</string>
+                               <string/>
+                              </property>
+                              <property name="placeholderText">
+                               <string>Type of Competition</string>
                               </property>
                              </widget>
                             </item>
-                            <item row="0" column="1">
-                             <widget class="QRadioButton" name="radioButton">
-                              <property name="styleSheet">
-                               <string notr="true"/>
-                              </property>
-                              <property name="text">
-                               <string>RadioButton</string>
-                              </property>
-                             </widget>
+                            <item row="0" column="2" colspan="2">
+                             <widget class="QTimeEdit" name="timeEdit"/>
                             </item>
-                            <item row="0" column="2" rowspan="3">
-                             <widget class="QSlider" name="verticalSlider">
-                              <property name="styleSheet">
-                               <string notr="true"/>
-                              </property>
-                              <property name="orientation">
-                               <enum>Qt::Vertical</enum>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="0" column="4" rowspan="3">
-                             <widget class="QScrollBar" name="verticalScrollBar">
-                              <property name="styleSheet">
-                               <string notr="true"> QScrollBar:vertical { background: rgb(52, 59, 72); }
- QScrollBar:horizontal { background: rgb(52, 59, 72); }</string>
-                              </property>
-                              <property name="orientation">
-                               <enum>Qt::Vertical</enum>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="0" column="5" rowspan="3">
+                            <item row="1" column="2" rowspan="5" colspan="2">
                              <widget class="QScrollArea" name="scrollArea">
                               <property name="styleSheet">
                                <string notr="true"> QScrollBar:vertical {
@@ -1974,8 +1950,8 @@ background-repeat: no-repeat;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>355</width>
-                                 <height>218</height>
+                                 <width>314</width>
+                                 <height>239</height>
                                 </rect>
                                </property>
                                <property name="styleSheet">
@@ -1989,23 +1965,13 @@ background-repeat: no-repeat;</string>
                                </property>
                                <layout class="QHBoxLayout" name="horizontalLayout_11">
                                 <item>
-                                 <widget class="QPlainTextEdit" name="plainTextEdit">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>200</width>
-                                    <height>200</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                  </property>
-                                 </widget>
+                                 <widget class="QCalendarWidget" name="calendarWidget"/>
                                 </item>
                                </layout>
                               </widget>
                              </widget>
                             </item>
-                            <item row="1" column="0" colspan="2">
+                            <item row="0" column="0" colspan="2">
                              <widget class="QComboBox" name="comboBox">
                               <property name="font">
                                <font>
@@ -2031,40 +1997,33 @@ background-repeat: no-repeat;</string>
                               </property>
                               <item>
                                <property name="text">
-                                <string>Test 1</string>
+                                <string>Football</string>
                                </property>
                               </item>
                               <item>
                                <property name="text">
-                                <string>Test 2</string>
+                                <string>Basketball</string>
                                </property>
                               </item>
                               <item>
                                <property name="text">
-                                <string>Test 3</string>
+                                <string>Volleyball</string>
                                </property>
                               </item>
                              </widget>
                             </item>
-                            <item row="1" column="3">
-                             <widget class="QScrollBar" name="horizontalScrollBar">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
+                            <item row="1" column="0">
+                             <widget class="QLineEdit" name="season_input">
+                              <property name="text">
+                               <string/>
                               </property>
-                              <property name="styleSheet">
-                               <string notr="true"> QScrollBar:vertical { background: rgb(52, 59, 72); }
- QScrollBar:horizontal { background: rgb(52, 59, 72); }</string>
-                              </property>
-                              <property name="orientation">
-                               <enum>Qt::Horizontal</enum>
+                              <property name="placeholderText">
+                               <string>Season Input</string>
                               </property>
                              </widget>
                             </item>
-                            <item row="1" column="6">
-                             <widget class="QCommandLinkButton" name="commandLinkButton">
+                            <item row="3" column="0">
+                             <widget class="QCommandLinkButton" name="embed_document_button">
                               <property name="cursor">
                                <cursorShape>PointingHandCursor</cursorShape>
                               </property>
@@ -2072,24 +2031,14 @@ background-repeat: no-repeat;</string>
                                <string notr="true"/>
                               </property>
                               <property name="text">
-                               <string>Link Button</string>
+                               <string>Embed Additional Files</string>
                               </property>
                               <property name="icon">
                                <iconset resource="../resources.qrc">
                                 <normaloff>:/icons/images/icons/cil-link.png</normaloff>:/icons/images/icons/cil-link.png</iconset>
                               </property>
                               <property name="description">
-                               <string>Link description</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="2" column="0" colspan="2">
-                             <widget class="QSlider" name="horizontalSlider">
-                              <property name="styleSheet">
-                               <string notr="true"/>
-                              </property>
-                              <property name="orientation">
-                               <enum>Qt::Horizontal</enum>
+                               <string>(.pdf, .docx, etc.)</string>
                               </property>
                              </widget>
                             </item>
