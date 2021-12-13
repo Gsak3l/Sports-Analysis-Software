@@ -6,7 +6,7 @@
         <file>images/images/camera.png</file>
         <file>images/images/folder.png</file>
         <file>images/images/nextarrow.png</file>
-        <file>images/images/previousarrow.png</file>
+        <file>images/images/previousbutton.png</file>
     </qresource>
     <qresource prefix="icons">
         <file>images/icons/cil-3d.png</file>

@@ -49,14 +49,18 @@ class MainWindow(QMainWindow):
 
         # QTableWidget PARAMETERS
         # ///////////////////////////////////////////////////////////////
-        local_video_page.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        # local_video_page.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         # BUTTONS CLICK
         # ////////////////////////////////////////////////////////
         local_video_page.btn_local_footage.clicked.connect(self.buttonClick)
         local_video_page.video_file_button.clicked.connect(self.buttonClick)
 
-        # LEFT MENUS
+        # LOCAL VIDEO EMBED BUTTONS PAGE
+        local_video_page.previous_page_button_1.clicked.connect(self.buttonClick)
+        local_video_page.next_page_button_1.clicked.connect(self.buttonClick)
+
+        # LEFT MENU BUTTONS
         local_video_page.btn_home.clicked.connect(self.buttonClick)
         local_video_page.btn_import_video.clicked.connect(self.buttonClick)
 
@@ -67,7 +71,7 @@ class MainWindow(QMainWindow):
         # SET CUSTOM THEME
         # ///////////////////////////////////////////////////////////////
         useCustomTheme = False
-        themeFile = "themes/py_dracula_dark.qss.qss"
+        themeFile = "themes/py_dracula_dark.qss"
 
         # SET THEME AND HACKS
         if useCustomTheme:
@@ -108,8 +112,15 @@ class MainWindow(QMainWindow):
 
         # OPEN FILE EXPLORER ON WHEN CLICKING THE LOCAL VIDEO IMPORT
         if btnName == "video_file_button":
-            fname = QFileDialog.getOpenFileName(self, 'Open File', 'D:/', 'MP4 Files (*mp4)')
+            fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:/Users/gsak3/Documents/Projects/v5/',
+                                                'MP4 Files (*mp4)')
             local_video_page.video_file_name.setText(fname[0])
+
+        if btnName == "next_page_button_1":
+            print(local_video_page.spots_type_combobox.currentText())
+            print(local_video_page.season_input.text())
+            print(local_video_page.competition_input.text())
+            print(local_video_page.details_input.toPlainText())
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
