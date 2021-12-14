@@ -1121,6 +1121,112 @@ class Ui_MainWindow(object):
         self.verticalLayout.addLayout(self.horizontalLayout_7)
 
         self.stackedWidget.addWidget(self.local_video_page)
+        self.cloud_video_page = QWidget()
+        self.cloud_video_page.setObjectName(u"cloud_video_page")
+        self.row_2 = QFrame(self.cloud_video_page)
+        self.row_2.setObjectName(u"row_2")
+        self.row_2.setGeometry(QRect(0, 0, 1158, 184))
+        self.row_2.setFrameShape(QFrame.StyledPanel)
+        self.row_2.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_23 = QVBoxLayout(self.row_2)
+        self.verticalLayout_23.setSpacing(0)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.verticalLayout_23.setContentsMargins(0, 0, 0, 0)
+        self.frame_div_content_3 = QFrame(self.row_2)
+        self.frame_div_content_3.setObjectName(u"frame_div_content_3")
+        self.frame_div_content_3.setMinimumSize(QSize(0, 110))
+        self.frame_div_content_3.setMaximumSize(QSize(16777215, 110))
+        self.frame_div_content_3.setFrameShape(QFrame.NoFrame)
+        self.frame_div_content_3.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_24 = QVBoxLayout(self.frame_div_content_3)
+        self.verticalLayout_24.setSpacing(0)
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.verticalLayout_24.setContentsMargins(0, 0, 0, 0)
+        self.frame_title_wid_3 = QFrame(self.frame_div_content_3)
+        self.frame_title_wid_3.setObjectName(u"frame_title_wid_3")
+        self.frame_title_wid_3.setMaximumSize(QSize(16777215, 35))
+        self.frame_title_wid_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_title_wid_3.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_25 = QVBoxLayout(self.frame_title_wid_3)
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.labelBoxBlenderInstalation_3 = QLabel(self.frame_title_wid_3)
+        self.labelBoxBlenderInstalation_3.setObjectName(u"labelBoxBlenderInstalation_3")
+        self.labelBoxBlenderInstalation_3.setFont(font)
+        self.labelBoxBlenderInstalation_3.setStyleSheet(u"")
+
+        self.verticalLayout_25.addWidget(self.labelBoxBlenderInstalation_3)
+
+        self.verticalLayout_24.addWidget(self.frame_title_wid_3)
+
+        self.frame_content_wid_3 = QFrame(self.frame_div_content_3)
+        self.frame_content_wid_3.setObjectName(u"frame_content_wid_3")
+        self.frame_content_wid_3.setFrameShape(QFrame.NoFrame)
+        self.frame_content_wid_3.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.frame_content_wid_3)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.gridLayout_7 = QGridLayout()
+        self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.gridLayout_7.setContentsMargins(-1, -1, -1, 0)
+        self.video_file_button_3 = QPushButton(self.frame_content_wid_3)
+        self.video_file_button_3.setObjectName(u"video_file_button_3")
+        self.video_file_button_3.setMinimumSize(QSize(150, 30))
+        self.video_file_button_3.setFont(font)
+        self.video_file_button_3.setCursor(QCursor(Qt.PointingHandCursor))
+        self.video_file_button_3.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        self.video_file_button_3.setIcon(icon3)
+
+        self.gridLayout_7.addWidget(self.video_file_button_3, 0, 2, 1, 1)
+
+        self.video_file_url = QLineEdit(self.frame_content_wid_3)
+        self.video_file_url.setObjectName(u"video_file_url")
+        self.video_file_url.setMinimumSize(QSize(0, 30))
+        self.video_file_url.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+
+        self.gridLayout_7.addWidget(self.video_file_url, 0, 0, 1, 1)
+
+        self.labelVersion_5 = QLabel(self.frame_content_wid_3)
+        self.labelVersion_5.setObjectName(u"labelVersion_5")
+        self.labelVersion_5.setStyleSheet(u"color: rgb(113, 126, 149);")
+        self.labelVersion_5.setLineWidth(1)
+        self.labelVersion_5.setAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
+
+        self.gridLayout_7.addWidget(self.labelVersion_5, 1, 0, 1, 3)
+
+        self.horizontalLayout_11.addLayout(self.gridLayout_7)
+
+        self.verticalLayout_24.addWidget(self.frame_content_wid_3)
+
+        self.verticalLayout_23.addWidget(self.frame_div_content_3)
+
+        self.gridLayout_8 = QGridLayout()
+        self.gridLayout_8.setSpacing(6)
+        self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.competition_input_3 = QLineEdit(self.row_2)
+        self.competition_input_3.setObjectName(u"competition_input_3")
+        self.competition_input_3.setMinimumSize(QSize(0, 30))
+
+        self.gridLayout_8.addWidget(self.competition_input_3, 1, 1, 1, 1)
+
+        self.season_input_3 = QLineEdit(self.row_2)
+        self.season_input_3.setObjectName(u"season_input_3")
+        self.season_input_3.setMinimumSize(QSize(0, 30))
+
+        self.gridLayout_8.addWidget(self.season_input_3, 1, 0, 1, 1)
+
+        self.spots_type_combobox_3 = QComboBox(self.row_2)
+        self.spots_type_combobox_3.addItem("")
+        self.spots_type_combobox_3.addItem("")
+        self.spots_type_combobox_3.addItem("")
+        self.spots_type_combobox_3.addItem("")
+        self.spots_type_combobox_3.setObjectName(u"spots_type_combobox_3")
+        self.spots_type_combobox_3.setMinimumSize(QSize(0, 25))
+        self.spots_type_combobox_3.setEditable(False)
+
+        self.gridLayout_8.addWidget(self.spots_type_combobox_3, 0, 0, 1, 2)
+
+        self.verticalLayout_23.addLayout(self.gridLayout_8)
+
+        self.stackedWidget.addWidget(self.cloud_video_page)
         self.video_option_menu = QWidget()
         self.video_option_menu.setObjectName(u"video_option_menu")
         self.verticalLayout_20 = QVBoxLayout(self.video_option_menu)
@@ -1298,7 +1404,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(3)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1360,12 +1466,27 @@ class Ui_MainWindow(object):
         self.spots_type_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Cricket", None))
         self.spots_type_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"Other", None))
 
-        self.spots_type_combobox.setCurrentText(QCoreApplication.translate("MainWindow", u"Baskeball", None))
+        self.spots_type_combobox.setCurrentText("")
         self.spots_type_combobox.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Select a Sport", None))
         self.details_input.setPlaceholderText(
             QCoreApplication.translate("MainWindow", u"More details about the game", None))
         self.previous_page_button_1.setText("")
         self.next_page_button_1.setText("")
+        self.labelBoxBlenderInstalation_3.setText(QCoreApplication.translate("MainWindow", u"VIDEO URL", None))
+        self.video_file_button_3.setText(QCoreApplication.translate("MainWindow", u"Open", None))
+        self.video_file_url.setText("")
+        self.video_file_url.setPlaceholderText(
+            QCoreApplication.translate("MainWindow", u"https://www.youtube.com/watch?v=ckpdtQPiTLI", None))
+        self.labelVersion_5.setText("")
+        self.competition_input_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Competition", None))
+        self.season_input_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Season", None))
+        self.spots_type_combobox_3.setItemText(0, QCoreApplication.translate("MainWindow", u"Baskeball", None))
+        self.spots_type_combobox_3.setItemText(1, QCoreApplication.translate("MainWindow", u"Volleyball", None))
+        self.spots_type_combobox_3.setItemText(2, QCoreApplication.translate("MainWindow", u"Cricket", None))
+        self.spots_type_combobox_3.setItemText(3, QCoreApplication.translate("MainWindow", u"Other", None))
+
+        self.spots_type_combobox_3.setCurrentText("")
+        self.spots_type_combobox_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Select a Sport", None))
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")
