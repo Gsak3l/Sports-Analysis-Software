@@ -126,6 +126,9 @@ class MainWindow(QMainWindow):
                                                 local_video_page.details_input.toPlainText(),
                                                 local_video_page.video_file_name.text())
 
+        if btnName == "previous_page_button_1":
+            local_video_page.stackedWidget.setCurrentWidget(local_video_page.video_option_menu)
+
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
 
