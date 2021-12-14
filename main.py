@@ -58,13 +58,13 @@ class MainWindow(QMainWindow):
         # LOCAL VIDEO PAGE
         widgets.btn_local_footage.clicked.connect(self.buttonClick)
         widgets.local_video_file_button.clicked.connect(self.buttonClick)
-        widgets.local_previous_button.clicked.connect(self.buttonClick)
+        widgets.local_previous_page_button.clicked.connect(self.buttonClick)
         widgets.local_next_page_button.clicked.connect(self.buttonClick)
 
         # -------------------------------------------------------------------------------------------------------------
 
         widgets.btn_cloud_footage.clicked.connect(self.buttonClick)
-        widgets.video_url_button.clicked.connect(self.buttonClick)
+        # widgets.video_url_button.clicked.connect(self.buttonClick)
 
         # LEFT MENU BUTTONS
         widgets.btn_home.clicked.connect(self.buttonClick)
@@ -115,21 +115,22 @@ class MainWindow(QMainWindow):
         elif btnName == "btn_local_footage":  # SHOW THE AVAILABLE OPTIONS FOR
             widgets.stackedWidget.setCurrentWidget(widgets.local_video_page)
 
-        elif btnName == "video_file_button":  # OPEN FILE EXPLORER ON WHEN CLICKING THE LOCAL VIDEO IMPORT
+        elif btnName == "local_video_file_button":  # OPEN FILE EXPLORER ON WHEN CLICKING THE LOCAL VIDEO IMPORT
             fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:/Users/gsak3/Documents/Projects/v5/',
                                                 'MP4 Files (*mp4)')
             widgets.local_video_file_name.setText(fname[0])
 
         elif btnName == "local_next_page_button":  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
             save_data.save_pre_local_video_data(widgets.local_calendar.selectedDate(),
-                                                widgets.local_spots_type_combobox.currentText(),
+                                                widgets.local_sports_type_combobox.currentText(),
                                                 widgets.local_season_input.text(),
                                                 widgets.local_competition_input.text(),
                                                 widgets.local_details_input.toPlainText(),
                                                 widgets.local_video_file_name.text())
 
-        elif btnName == "local_previous_button":  # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
+        elif btnName == "local_previous_page_button":  # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
+
         # -------------------------------------------------------------------------------------------------------------
 
         # EMBED VIDEO FROM A CLOUD LINK

@@ -1672,7 +1672,7 @@ p, li { white-space: pre-wrap; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>3</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -1726,7 +1726,7 @@ background-repeat: no-repeat;</string>
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QFrame" name="frame_div_content_1">
+                           <widget class="QFrame" name="frame_div_content_11">
                             <property name="minimumSize">
                              <size>
                               <width>0</width>
@@ -1762,7 +1762,7 @@ background-repeat: no-repeat;</string>
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QFrame" name="frame_title_wid_1">
+                              <widget class="QFrame" name="frame_title_wid_11">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -1775,7 +1775,7 @@ background-repeat: no-repeat;</string>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
                                </property>
-                               <layout class="QVBoxLayout" name="verticalLayout_18">
+                               <layout class="QVBoxLayout" name="verticalLayout_181">
                                 <item>
                                  <widget class="QLabel" name="labelBoxBlenderInstalation">
                                   <property name="font">
@@ -1806,12 +1806,12 @@ background-repeat: no-repeat;</string>
                                </property>
                                <layout class="QHBoxLayout" name="horizontalLayout_9">
                                 <item>
-                                 <layout class="QGridLayout" name="gridLayout">
+                                 <layout class="QGridLayout" name="gridLayout1">
                                   <property name="bottomMargin">
                                    <number>0</number>
                                   </property>
                                   <item row="0" column="2">
-                                   <widget class="QPushButton" name="video_file_button">
+                                   <widget class="QPushButton" name="local_video_file_button">
                                     <property name="minimumSize">
                                      <size>
                                       <width>150</width>
@@ -1841,7 +1841,7 @@ background-repeat: no-repeat;</string>
                                    </widget>
                                   </item>
                                   <item row="0" column="0">
-                                   <widget class="QLineEdit" name="video_file_name">
+                                   <widget class="QLineEdit" name="local_video_file_name">
                                     <property name="minimumSize">
                                      <size>
                                       <width>0</width>
@@ -1889,7 +1889,7 @@ background-repeat: no-repeat;</string>
                              <number>6</number>
                             </property>
                             <item row="1" column="1">
-                             <widget class="QLineEdit" name="competition_input">
+                             <widget class="QLineEdit" name="local_competition_input">
                               <property name="minimumSize">
                                <size>
                                 <width>0</width>
@@ -1902,7 +1902,7 @@ background-repeat: no-repeat;</string>
                              </widget>
                             </item>
                             <item row="1" column="0">
-                             <widget class="QLineEdit" name="season_input">
+                             <widget class="QLineEdit" name="local_season_input">
                               <property name="minimumSize">
                                <size>
                                 <width>0</width>
@@ -1915,7 +1915,7 @@ background-repeat: no-repeat;</string>
                              </widget>
                             </item>
                             <item row="0" column="0" colspan="2">
-                             <widget class="QComboBox" name="spots_type_combobox">
+                             <widget class="QComboBox" name="local_sports_type_combobox">
                               <property name="minimumSize">
                                <size>
                                 <width>0</width>
@@ -1961,21 +1961,21 @@ background-repeat: no-repeat;</string>
                        <item>
                         <layout class="QGridLayout" name="gridLayout_3">
                          <item row="0" column="0">
-                          <widget class="QPlainTextEdit" name="details_input">
+                          <widget class="QPlainTextEdit" name="local_details_input">
                            <property name="placeholderText">
                             <string>More details about the game</string>
                            </property>
                           </widget>
                          </item>
                          <item row="0" column="1">
-                          <widget class="QCalendarWidget" name="calendarWidget"/>
+                          <widget class="QCalendarWidget" name="local_calendar"/>
                          </item>
                         </layout>
                        </item>
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_7">
                          <item alignment="Qt::AlignLeft">
-                          <widget class="QPushButton" name="previous_page_button_1">
+                          <widget class="QPushButton" name="local_previous_page_button">
                            <property name="maximumSize">
                             <size>
                              <width>80</width>
@@ -1998,7 +1998,7 @@ background-repeat: no-repeat;</string>
                           </widget>
                          </item>
                          <item alignment="Qt::AlignRight">
-                          <widget class="QPushButton" name="next_page_button_1">
+                          <widget class="QPushButton" name="local_next_page_button">
                            <property name="maximumSize">
                             <size>
                              <width>80</width>
@@ -2025,130 +2025,102 @@ background-repeat: no-repeat;</string>
                       </layout>
                      </widget>
                      <widget class="QWidget" name="cloud_video_page">
-                      <widget class="QFrame" name="row_2">
-                       <property name="geometry">
-                        <rect>
-                         <x>0</x>
-                         <y>0</y>
-                         <width>1158</width>
-                         <height>184</height>
-                        </rect>
+                      <property name="styleSheet">
+                       <string notr="true">b</string>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout1">
+                       <property name="spacing">
+                        <number>10</number>
                        </property>
-                       <property name="frameShape">
-                        <enum>QFrame::StyledPanel</enum>
+                       <property name="leftMargin">
+                        <number>10</number>
                        </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Raised</enum>
+                       <property name="topMargin">
+                        <number>10</number>
                        </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_23">
-                        <property name="spacing">
-                         <number>0</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>0</number>
-                        </property>
-                        <item>
-                         <widget class="QFrame" name="frame_div_content_3">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>110</height>
-                           </size>
+                       <property name="rightMargin">
+                        <number>10</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>10</number>
+                       </property>
+                       <item>
+                        <widget class="QFrame" name="row_11">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_161">
+                          <property name="spacing">
+                           <number>0</number>
                           </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>110</height>
-                           </size>
+                          <property name="leftMargin">
+                           <number>0</number>
                           </property>
-                          <property name="frameShape">
-                           <enum>QFrame::NoFrame</enum>
+                          <property name="topMargin">
+                           <number>0</number>
                           </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
+                          <property name="rightMargin">
+                           <number>0</number>
                           </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_24">
-                           <property name="spacing">
-                            <number>0</number>
-                           </property>
-                           <property name="leftMargin">
-                            <number>0</number>
-                           </property>
-                           <property name="topMargin">
-                            <number>0</number>
-                           </property>
-                           <property name="rightMargin">
-                            <number>0</number>
-                           </property>
-                           <property name="bottomMargin">
-                            <number>0</number>
-                           </property>
-                           <item>
-                            <widget class="QFrame" name="frame_title_wid_3">
-                             <property name="maximumSize">
-                              <size>
-                               <width>16777215</width>
-                               <height>35</height>
-                              </size>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QFrame" name="frame_div_content_1">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>110</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>110</height>
+                             </size>
+                            </property>
+                            <property name="frameShape">
+                             <enum>QFrame::NoFrame</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_171">
+                             <property name="spacing">
+                              <number>0</number>
                              </property>
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
+                             <property name="leftMargin">
+                              <number>0</number>
                              </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
+                             <property name="topMargin">
+                              <number>0</number>
                              </property>
-                             <layout class="QVBoxLayout" name="verticalLayout_25">
-                              <item>
-                               <widget class="QLabel" name="labelBoxBlenderInstalation_3">
-                                <property name="font">
-                                 <font>
-                                  <pointsize>10</pointsize>
-                                  <italic>false</italic>
-                                  <bold>false</bold>
-                                 </font>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true"/>
-                                </property>
-                                <property name="text">
-                                 <string>VIDEO URL</string>
-                                </property>
-                               </widget>
-                              </item>
-                             </layout>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QFrame" name="frame_content_wid_3">
-                             <property name="frameShape">
-                              <enum>QFrame::NoFrame</enum>
+                             <property name="rightMargin">
+                              <number>0</number>
                              </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
+                             <property name="bottomMargin">
+                              <number>0</number>
                              </property>
-                             <layout class="QHBoxLayout" name="horizontalLayout_11">
-                              <item>
-                               <layout class="QGridLayout" name="gridLayout_7">
-                                <property name="bottomMargin">
-                                 <number>0</number>
-                                </property>
-                                <item row="0" column="2">
-                                 <widget class="QPushButton" name="video_file_button_3">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>150</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
+                             <item>
+                              <widget class="QFrame" name="frame_title_wid_1">
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>35</height>
+                                </size>
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QVBoxLayout" name="verticalLayout_18">
+                                <item>
+                                 <widget class="QLabel" name="labelBoxBlenderInstalation1">
                                   <property name="font">
                                    <font>
                                     <pointsize>10</pointsize>
@@ -2156,138 +2128,244 @@ background-repeat: no-repeat;</string>
                                     <bold>false</bold>
                                    </font>
                                   </property>
-                                  <property name="cursor">
-                                   <cursorShape>PointingHandCursor</cursorShape>
-                                  </property>
                                   <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72);</string>
+                                   <string notr="true"/>
                                   </property>
                                   <property name="text">
-                                   <string>Open</string>
-                                  </property>
-                                  <property name="icon">
-                                   <iconset resource="../resources.qrc">
-                                    <normaloff>:/icons/images/icons/cil-folder-open.png</normaloff>:/icons/images/icons/cil-folder-open.png</iconset>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item row="0" column="0">
-                                 <widget class="QLineEdit" name="video_file_url">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                  </property>
-                                  <property name="text">
-                                   <string/>
-                                  </property>
-                                  <property name="placeholderText">
-                                   <string>https://www.youtube.com/watch?v=ckpdtQPiTLI</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item row="1" column="0" colspan="3">
-                                 <widget class="QLabel" name="labelVersion_5">
-                                  <property name="styleSheet">
-                                   <string notr="true">color: rgb(113, 126, 149);</string>
-                                  </property>
-                                  <property name="lineWidth">
-                                   <number>1</number>
-                                  </property>
-                                  <property name="text">
-                                   <string/>
-                                  </property>
-                                  <property name="alignment">
-                                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                                   <string>VIDEO BOX</string>
                                   </property>
                                  </widget>
                                 </item>
                                </layout>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QFrame" name="frame_content_wid_11">
+                               <property name="frameShape">
+                                <enum>QFrame::NoFrame</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_91">
+                                <item>
+                                 <layout class="QGridLayout" name="gridLayout">
+                                  <property name="bottomMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <item row="0" column="2">
+                                   <widget class="QPushButton" name="cloud_video_file_button">
+                                    <property name="minimumSize">
+                                     <size>
+                                      <width>150</width>
+                                      <height>30</height>
+                                     </size>
+                                    </property>
+                                    <property name="font">
+                                     <font>
+                                      <pointsize>10</pointsize>
+                                      <italic>false</italic>
+                                      <bold>false</bold>
+                                     </font>
+                                    </property>
+                                    <property name="cursor">
+                                     <cursorShape>PointingHandCursor</cursorShape>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">background-color: rgb(52, 59, 72);</string>
+                                    </property>
+                                    <property name="text">
+                                     <string>Download</string>
+                                    </property>
+                                    <property name="icon">
+                                     <iconset resource="../resources.qrc">
+                                      <normaloff>:/icons/images/icons/cil-cloud-download.png</normaloff>:/icons/images/icons/cil-cloud-download.png</iconset>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item row="0" column="0">
+                                   <widget class="QLineEdit" name="cloud_video_file_name">
+                                    <property name="minimumSize">
+                                     <size>
+                                      <width>0</width>
+                                      <height>30</height>
+                                     </size>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
+                                    </property>
+                                    <property name="text">
+                                     <string/>
+                                    </property>
+                                    <property name="placeholderText">
+                                     <string>Paste URL here</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item row="1" column="0" colspan="3">
+                                   <widget class="QLabel" name="labelVersion_31">
+                                    <property name="styleSheet">
+                                     <string notr="true">color: rgb(113, 126, 149);</string>
+                                    </property>
+                                    <property name="lineWidth">
+                                     <number>1</number>
+                                    </property>
+                                    <property name="text">
+                                     <string/>
+                                    </property>
+                                    <property name="alignment">
+                                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <layout class="QGridLayout" name="gridLayout_21">
+                            <property name="spacing">
+                             <number>6</number>
+                            </property>
+                            <item row="1" column="1">
+                             <widget class="QLineEdit" name="cloud_competition_input">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>30</height>
+                               </size>
+                              </property>
+                              <property name="placeholderText">
+                               <string>Competition</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="0">
+                             <widget class="QLineEdit" name="cloud_season_input">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>30</height>
+                               </size>
+                              </property>
+                              <property name="placeholderText">
+                               <string>Season</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="0" column="0" colspan="2">
+                             <widget class="QComboBox" name="cloud_sports_type_combobox">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>25</height>
+                               </size>
+                              </property>
+                              <property name="editable">
+                               <bool>false</bool>
+                              </property>
+                              <property name="currentText">
+                               <string/>
+                              </property>
+                              <property name="placeholderText">
+                               <string>Select a Sport</string>
+                              </property>
+                              <item>
+                               <property name="text">
+                                <string>Baskeball</string>
+                               </property>
                               </item>
-                             </layout>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                        <item>
-                         <layout class="QGridLayout" name="gridLayout_8">
-                          <property name="spacing">
-                           <number>6</number>
-                          </property>
-                          <item row="1" column="1">
-                           <widget class="QLineEdit" name="competition_input_3">
-                            <property name="minimumSize">
-                             <size>
-                              <width>0</width>
-                              <height>30</height>
-                             </size>
-                            </property>
-                            <property name="placeholderText">
-                             <string>Competition</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="1" column="0">
-                           <widget class="QLineEdit" name="season_input_3">
-                            <property name="minimumSize">
-                             <size>
-                              <width>0</width>
-                              <height>30</height>
-                             </size>
-                            </property>
-                            <property name="placeholderText">
-                             <string>Season</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="0" column="0" colspan="2">
-                           <widget class="QComboBox" name="spots_type_combobox_3">
-                            <property name="minimumSize">
-                             <size>
-                              <width>0</width>
-                              <height>25</height>
-                             </size>
-                            </property>
-                            <property name="editable">
-                             <bool>false</bool>
-                            </property>
-                            <property name="currentText">
-                             <string/>
-                            </property>
-                            <property name="placeholderText">
-                             <string>Select a Sport</string>
-                            </property>
-                            <item>
-                             <property name="text">
-                              <string>Baskeball</string>
-                             </property>
+                              <item>
+                               <property name="text">
+                                <string>Volleyball</string>
+                               </property>
+                              </item>
+                              <item>
+                               <property name="text">
+                                <string>Cricket</string>
+                               </property>
+                              </item>
+                              <item>
+                               <property name="text">
+                                <string>Other</string>
+                               </property>
+                              </item>
+                             </widget>
                             </item>
-                            <item>
-                             <property name="text">
-                              <string>Volleyball</string>
-                             </property>
-                            </item>
-                            <item>
-                             <property name="text">
-                              <string>Cricket</string>
-                             </property>
-                            </item>
-                            <item>
-                             <property name="text">
-                              <string>Other</string>
-                             </property>
-                            </item>
-                           </widget>
+                           </layout>
                           </item>
                          </layout>
-                        </item>
-                       </layout>
-                      </widget>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QGridLayout" name="gridLayout_31">
+                         <item row="0" column="0">
+                          <widget class="QPlainTextEdit" name="cloud_details_input">
+                           <property name="placeholderText">
+                            <string>More details about the game</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QCalendarWidget" name="cloud_calendar"/>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_71">
+                         <item alignment="Qt::AlignLeft">
+                          <widget class="QPushButton" name="cloud_previous_page_button_2">
+                           <property name="maximumSize">
+                            <size>
+                             <width>80</width>
+                             <height>80</height>
+                            </size>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../resources.qrc">
+                             <normaloff>:/images/images/images/previousarrow.png</normaloff>:/images/images/images/previousarrow.png</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>64</width>
+                             <height>64</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item alignment="Qt::AlignRight">
+                          <widget class="QPushButton" name="cloud_next_page_button_2">
+                           <property name="maximumSize">
+                            <size>
+                             <width>80</width>
+                             <height>80</height>
+                            </size>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../resources.qrc">
+                             <normaloff>:/images/images/images/nextarrow.png</normaloff>:/images/images/images/nextarrow.png</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>64</width>
+                             <height>64</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
                      </widget>
                      <widget class="QWidget" name="video_option_menu">
                       <layout class="QVBoxLayout" name="verticalLayout_20">
