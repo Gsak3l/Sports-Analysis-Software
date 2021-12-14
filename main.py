@@ -1,8 +1,10 @@
+# IMPORT LIBRARIES
 import sys
 import os
 import platform
 
-import button_actions
+# IMPORT PYTHON CLASSES
+import save_data
 
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -117,10 +119,12 @@ class MainWindow(QMainWindow):
             local_video_page.video_file_name.setText(fname[0])
 
         if btnName == "next_page_button_1":
-            print(local_video_page.spots_type_combobox.currentText())
-            print(local_video_page.season_input.text())
-            print(local_video_page.competition_input.text())
-            print(local_video_page.details_input.toPlainText())
+            save_data.save_pre_local_video_data(local_video_page.calendarWidget.selectedDate(),
+                                                local_video_page.spots_type_combobox.currentText(),
+                                                local_video_page.season_input.text(),
+                                                local_video_page.competition_input.text(),
+                                                local_video_page.details_input.toPlainText(),
+                                                local_video_page.video_file_name.text())
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
