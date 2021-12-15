@@ -4,8 +4,10 @@ import os
 import platform
 
 # IMPORT PYTHON CLASSES
-import save_data
+import time
 
+import save_data
+import youtube_downloader
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from modules import *
@@ -64,6 +66,7 @@ class MainWindow(QMainWindow):
         # -------------------------------------------------------------------------------------------------------------
 
         widgets.btn_cloud_footage.clicked.connect(self.buttonClick)
+        widgets.cloud_video_file_button.clicked.connect(self.buttonClick)
         # widgets.video_url_button.clicked.connect(self.buttonClick)
 
         # LEFT MENU BUTTONS
@@ -136,6 +139,25 @@ class MainWindow(QMainWindow):
         # EMBED VIDEO FROM A CLOUD LINK
         elif btnName == "btn_cloud_footage":
             widgets.stackedWidget.setCurrentWidget(widgets.cloud_video_page)
+            widgets.progressBar.setValue(0)
+
+        # DOWNLOAD VIDEO BUTTON
+        elif btnName == "cloud_video_file_button":
+            # FAKE PROGRESS BAR
+            try:
+                for i in range(0, 100):
+                    if i == 14:
+                        url = youtube_downloader.save_video_to_downloads(widgets.cloud_video_file_name.text())
+                    else:
+                        time.sleep(0.1)
+                        widgets.progressBar.setValue(i)
+                widgets.progressBar.setValue(100)
+                widgets.cloud_video_file_name.setText(url)
+            except Exception as e:
+                widgets.progressBar.setValue(0)
+                widgets.cloud_video_file_name.setText('')
+                widgets.cloud_video_file_name.setPlaceholderText('Please enter a valid URL...')
+                print(e.__cause__)
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')

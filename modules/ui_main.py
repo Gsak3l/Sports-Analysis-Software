@@ -17,8 +17,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
                            QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCalendarWidget, QComboBox, QFrame,
                                QGridLayout, QHBoxLayout, QLabel, QLineEdit,
-                               QMainWindow, QPlainTextEdit, QPushButton, QSizePolicy,
-                               QStackedWidget, QTextEdit, QVBoxLayout, QWidget)
+                               QMainWindow, QPlainTextEdit, QProgressBar, QPushButton,
+                               QSizePolicy, QStackedWidget, QTextEdit, QVBoxLayout,
+                               QWidget)
 from .resources_rc import *
 
 
@@ -1029,7 +1030,7 @@ class Ui_MainWindow(object):
         icon3.addFile(u":/icons/images/icons/cil-folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
         self.local_video_file_button.setIcon(icon3)
 
-        self.gridLayout1.addWidget(self.local_video_file_button, 0, 2, 1, 1)
+        self.gridLayout1.addWidget(self.local_video_file_button, 0, 1, 1, 1)
 
         self.local_video_file_name = QLineEdit(self.frame_content_wid_1)
         self.local_video_file_name.setObjectName(u"local_video_file_name")
@@ -1037,14 +1038,6 @@ class Ui_MainWindow(object):
         self.local_video_file_name.setStyleSheet(u"background-color: rgb(33, 37, 43);")
 
         self.gridLayout1.addWidget(self.local_video_file_name, 0, 0, 1, 1)
-
-        self.labelVersion_3 = QLabel(self.frame_content_wid_1)
-        self.labelVersion_3.setObjectName(u"labelVersion_3")
-        self.labelVersion_3.setStyleSheet(u"color: rgb(113, 126, 149);")
-        self.labelVersion_3.setLineWidth(1)
-        self.labelVersion_3.setAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
-
-        self.gridLayout1.addWidget(self.labelVersion_3, 1, 0, 1, 3)
 
         self.horizontalLayout_9.addLayout(self.gridLayout1)
 
@@ -1171,6 +1164,13 @@ class Ui_MainWindow(object):
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(-1, -1, -1, 0)
+        self.cloud_video_file_name = QLineEdit(self.frame_content_wid_11)
+        self.cloud_video_file_name.setObjectName(u"cloud_video_file_name")
+        self.cloud_video_file_name.setMinimumSize(QSize(0, 30))
+        self.cloud_video_file_name.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+
+        self.gridLayout.addWidget(self.cloud_video_file_name, 0, 0, 1, 1)
+
         self.cloud_video_file_button = QPushButton(self.frame_content_wid_11)
         self.cloud_video_file_button.setObjectName(u"cloud_video_file_button")
         self.cloud_video_file_button.setMinimumSize(QSize(150, 30))
@@ -1181,22 +1181,25 @@ class Ui_MainWindow(object):
         icon6.addFile(u":/icons/images/icons/cil-cloud-download.png", QSize(), QIcon.Normal, QIcon.Off)
         self.cloud_video_file_button.setIcon(icon6)
 
-        self.gridLayout.addWidget(self.cloud_video_file_button, 0, 2, 1, 1)
+        self.gridLayout.addWidget(self.cloud_video_file_button, 0, 1, 1, 1)
 
-        self.cloud_video_file_name = QLineEdit(self.frame_content_wid_11)
-        self.cloud_video_file_name.setObjectName(u"cloud_video_file_name")
-        self.cloud_video_file_name.setMinimumSize(QSize(0, 30))
-        self.cloud_video_file_name.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.progressBar = QProgressBar(self.frame_content_wid_11)
+        self.progressBar.setObjectName(u"progressBar")
+        self.progressBar.setStyleSheet(u"QProgressBar {\n"
+                                       "     border: 2px solid #BD93F9;\n"
+                                       "     border-radius: 5px;\n"
+                                       "     background-color: #21252b;\n"
+                                       " }\n"
+                                       "\n"
+                                       " QProgressBar::chunk {\n"
+                                       "     background-color: #BD93F9;\n"
+                                       " }")
+        self.progressBar.setValue(10)
+        self.progressBar.setTextVisible(False)
+        self.progressBar.setInvertedAppearance(False)
+        self.progressBar.setTextDirection(QProgressBar.BottomToTop)
 
-        self.gridLayout.addWidget(self.cloud_video_file_name, 0, 0, 1, 1)
-
-        self.labelVersion_31 = QLabel(self.frame_content_wid_11)
-        self.labelVersion_31.setObjectName(u"labelVersion_31")
-        self.labelVersion_31.setStyleSheet(u"color: rgb(113, 126, 149);")
-        self.labelVersion_31.setLineWidth(1)
-        self.labelVersion_31.setAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.labelVersion_31, 1, 0, 1, 3)
+        self.gridLayout.addWidget(self.progressBar, 1, 0, 1, 2)
 
         self.horizontalLayout_91.addLayout(self.gridLayout)
 
@@ -1446,7 +1449,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1500,7 +1503,6 @@ class Ui_MainWindow(object):
         self.local_video_file_button.setText(QCoreApplication.translate("MainWindow", u"Open", None))
         self.local_video_file_name.setText("")
         self.local_video_file_name.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here...", None))
-        self.labelVersion_3.setText("")
         self.local_competition_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Competition", None))
         self.local_season_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Season", None))
         self.local_sports_type_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Baskeball", None))
@@ -1516,10 +1518,9 @@ class Ui_MainWindow(object):
         self.local_previous_page_button.setText("")
         self.local_next_page_button.setText("")
         self.labelBoxBlenderInstalation1.setText(QCoreApplication.translate("MainWindow", u"VIDEO BOX", None))
-        self.cloud_video_file_button.setText(QCoreApplication.translate("MainWindow", u"Download", None))
         self.cloud_video_file_name.setText("")
         self.cloud_video_file_name.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Paste URL here", None))
-        self.labelVersion_31.setText("")
+        self.cloud_video_file_button.setText(QCoreApplication.translate("MainWindow", u"Download", None))
         self.cloud_competition_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Competition", None))
         self.cloud_season_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Season", None))
         self.cloud_sports_type_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Baskeball", None))

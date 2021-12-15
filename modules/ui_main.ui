@@ -1672,7 +1672,7 @@ p, li { white-space: pre-wrap; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>2</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -1810,7 +1810,7 @@ background-repeat: no-repeat;</string>
                                   <property name="bottomMargin">
                                    <number>0</number>
                                   </property>
-                                  <item row="0" column="2">
+                                  <item row="0" column="1">
                                    <widget class="QPushButton" name="local_video_file_button">
                                     <property name="minimumSize">
                                      <size>
@@ -1856,22 +1856,6 @@ background-repeat: no-repeat;</string>
                                     </property>
                                     <property name="placeholderText">
                                      <string>Type here...</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item row="1" column="0" colspan="3">
-                                   <widget class="QLabel" name="labelVersion_3">
-                                    <property name="styleSheet">
-                                     <string notr="true">color: rgb(113, 126, 149);</string>
-                                    </property>
-                                    <property name="lineWidth">
-                                     <number>1</number>
-                                    </property>
-                                    <property name="text">
-                                     <string/>
-                                    </property>
-                                    <property name="alignment">
-                                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                                     </property>
                                    </widget>
                                   </item>
@@ -2153,7 +2137,26 @@ background-repeat: no-repeat;</string>
                                   <property name="bottomMargin">
                                    <number>0</number>
                                   </property>
-                                  <item row="0" column="2">
+                                  <item row="0" column="0">
+                                   <widget class="QLineEdit" name="cloud_video_file_name">
+                                    <property name="minimumSize">
+                                     <size>
+                                      <width>0</width>
+                                      <height>30</height>
+                                     </size>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
+                                    </property>
+                                    <property name="text">
+                                     <string/>
+                                    </property>
+                                    <property name="placeholderText">
+                                     <string>Paste URL here</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item row="0" column="1">
                                    <widget class="QPushButton" name="cloud_video_file_button">
                                     <property name="minimumSize">
                                      <size>
@@ -2183,38 +2186,30 @@ background-repeat: no-repeat;</string>
                                     </property>
                                    </widget>
                                   </item>
-                                  <item row="0" column="0">
-                                   <widget class="QLineEdit" name="cloud_video_file_name">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
+                                  <item row="1" column="0" colspan="2">
+                                   <widget class="QProgressBar" name="progressBar">
                                     <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
+                                     <string notr="true">QProgressBar {
+     border: 2px solid #BD93F9;
+     border-radius: 5px;
+     background-color: #21252b;
+ }
+
+ QProgressBar::chunk {
+     background-color: #BD93F9;
+ }</string>
                                     </property>
-                                    <property name="text">
-                                     <string/>
+                                    <property name="value">
+                                     <number>10</number>
                                     </property>
-                                    <property name="placeholderText">
-                                     <string>Paste URL here</string>
+                                    <property name="textVisible">
+                                     <bool>false</bool>
                                     </property>
-                                   </widget>
-                                  </item>
-                                  <item row="1" column="0" colspan="3">
-                                   <widget class="QLabel" name="labelVersion_31">
-                                    <property name="styleSheet">
-                                     <string notr="true">color: rgb(113, 126, 149);</string>
+                                    <property name="invertedAppearance">
+                                     <bool>false</bool>
                                     </property>
-                                    <property name="lineWidth">
-                                     <number>1</number>
-                                    </property>
-                                    <property name="text">
-                                     <string/>
-                                    </property>
-                                    <property name="alignment">
-                                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                                    <property name="textDirection">
+                                     <enum>QProgressBar::BottomToTop</enum>
                                     </property>
                                    </widget>
                                   </item>
