@@ -1183,23 +1183,26 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.cloud_video_file_button, 0, 1, 1, 1)
 
-        self.progressBar = QProgressBar(self.frame_content_wid_11)
-        self.progressBar.setObjectName(u"progressBar")
-        self.progressBar.setStyleSheet(u"QProgressBar {\n"
-                                       "     border: 2px solid #BD93F9;\n"
-                                       "     border-radius: 5px;\n"
-                                       "     background-color: #21252b;\n"
-                                       " }\n"
-                                       "\n"
-                                       " QProgressBar::chunk {\n"
-                                       "     background-color: #BD93F9;\n"
-                                       " }")
-        self.progressBar.setValue(10)
-        self.progressBar.setTextVisible(False)
-        self.progressBar.setInvertedAppearance(False)
-        self.progressBar.setTextDirection(QProgressBar.BottomToTop)
+        self.cloud_progress_bar = QProgressBar(self.frame_content_wid_11)
+        self.cloud_progress_bar.setObjectName(u"cloud_progress_bar")
+        self.cloud_progress_bar.setStyleSheet(u"QProgressBar {\n"
+                                              "     border: 2px solid #BD93F9;\n"
+                                              "     border-radius: 5px;\n"
+                                              "     background-color: #21252b;\n"
+                                              "	 text-align: center;\n"
+                                              "	 font-weight: bold;\n"
+                                              " }\n"
+                                              "\n"
+                                              " QProgressBar::chunk {\n"
+                                              "     background-color: #BD93F9;\n"
+                                              " }")
+        self.cloud_progress_bar.setValue(0)
+        self.cloud_progress_bar.setTextVisible(True)
+        self.cloud_progress_bar.setOrientation(Qt.Horizontal)
+        self.cloud_progress_bar.setInvertedAppearance(False)
+        self.cloud_progress_bar.setTextDirection(QProgressBar.BottomToTop)
 
-        self.gridLayout.addWidget(self.progressBar, 1, 0, 1, 2)
+        self.gridLayout.addWidget(self.cloud_progress_bar, 1, 0, 1, 2)
 
         self.horizontalLayout_91.addLayout(self.gridLayout)
 

@@ -139,22 +139,21 @@ class MainWindow(QMainWindow):
         # EMBED VIDEO FROM A CLOUD LINK
         elif btnName == "btn_cloud_footage":
             widgets.stackedWidget.setCurrentWidget(widgets.cloud_video_page)
-            widgets.progressBar.setValue(0)
 
         # DOWNLOAD VIDEO BUTTON
         elif btnName == "cloud_video_file_button":
-            # FAKE PROGRESS BAR
+            # fake progress bar
             try:
                 for i in range(0, 100):
                     if i == 14:
                         url = youtube_downloader.save_video_to_downloads(widgets.cloud_video_file_name.text())
                     else:
                         time.sleep(0.1)
-                        widgets.progressBar.setValue(i)
-                widgets.progressBar.setValue(100)
+                        widgets.cloud_progress_bar.setValue(i)
+                widgets.cloud_progress_bar.setValue(100)
                 widgets.cloud_video_file_name.setText(url)
-            except Exception as e:
-                widgets.progressBar.setValue(0)
+            except Exception as e:  # just in case the url is not valid
+                widgets.cloud_progress_bar.setValue(0)
                 widgets.cloud_video_file_name.setText('')
                 widgets.cloud_video_file_name.setPlaceholderText('Please enter a valid URL...')
                 print(e.__cause__)

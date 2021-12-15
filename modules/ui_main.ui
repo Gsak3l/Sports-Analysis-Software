@@ -2187,12 +2187,14 @@ background-repeat: no-repeat;</string>
                                    </widget>
                                   </item>
                                   <item row="1" column="0" colspan="2">
-                                   <widget class="QProgressBar" name="progressBar">
+                                   <widget class="QProgressBar" name="cloud_progress_bar">
                                     <property name="styleSheet">
                                      <string notr="true">QProgressBar {
      border: 2px solid #BD93F9;
      border-radius: 5px;
      background-color: #21252b;
+	 text-align: center;
+	 font-weight: bold;
  }
 
  QProgressBar::chunk {
@@ -2200,10 +2202,13 @@ background-repeat: no-repeat;</string>
  }</string>
                                     </property>
                                     <property name="value">
-                                     <number>10</number>
+                                     <number>0</number>
                                     </property>
                                     <property name="textVisible">
-                                     <bool>false</bool>
+                                     <bool>true</bool>
+                                    </property>
+                                    <property name="orientation">
+                                     <enum>Qt::Horizontal</enum>
                                     </property>
                                     <property name="invertedAppearance">
                                      <bool>false</bool>
