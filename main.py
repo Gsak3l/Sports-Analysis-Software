@@ -134,6 +134,8 @@ class MainWindow(QMainWindow):
                                                     widgets.local_competition_input.text(),
                                                     widgets.local_details_input.toPlainText(),
                                                     widgets.local_video_file_name.text())
+                # NEXT PAGE BUTTON
+                widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
             else:
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')
@@ -167,13 +169,16 @@ class MainWindow(QMainWindow):
                 print(e.__cause__)
 
         elif btnName == "cloud_next_page_button":  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
-            if save_data.check_if_file_exists(widgets.cloud_video_file_name.placeholderText()):  # FILE VALIDATION FOR THE PATH
+            # FILE VALIDATION FOR THE PATH
+            if save_data.check_if_file_exists(widgets.cloud_video_file_name.placeholderText()):
                 save_data.save_pre_local_video_data(widgets.cloud_calendar.selectedDate(),
                                                     widgets.cloud_sports_type_combobox.currentText(),
                                                     widgets.cloud_season_input.text(),
                                                     widgets.cloud_competition_input.text(),
                                                     widgets.cloud_details_input.toPlainText(),
                                                     widgets.cloud_video_file_name.placeholderText())
+                # NEXT PAGE BUTTON
+                widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
             else:
                 widgets.cloud_video_file_name.setText('Error while validating the existance of the video, please'
                                                       'try to downloaded again...')

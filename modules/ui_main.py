@@ -1277,6 +1277,61 @@ class Ui_MainWindow(object):
         self.verticalLayout1.addLayout(self.horizontalLayout_71)
 
         self.stackedWidget.addWidget(self.cloud_video_page)
+        self.tactics_page = QWidget()
+        self.tactics_page.setObjectName(u"tactics_page")
+        self.tactics_page.setStyleSheet(u"b")
+        self.verticalLayout2 = QVBoxLayout(self.tactics_page)
+        self.verticalLayout2.setSpacing(10)
+        self.verticalLayout2.setObjectName(u"verticalLayout2")
+        self.verticalLayout2.setContentsMargins(10, 10, 10, 10)
+        self.verticalLayout_19 = QVBoxLayout()
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.verticalLayout_21 = QVBoxLayout()
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.gridLayout_4 = QGridLayout()
+        self.gridLayout_4.setSpacing(0)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.tactics_2 = QLineEdit(self.tactics_page)
+        self.tactics_2.setObjectName(u"tactics_2")
+        self.tactics_2.setMaximumSize(QSize(160, 16777215))
+
+        self.gridLayout_4.addWidget(self.tactics_2, 2, 1, 1, 1)
+
+        self.home_away_button_2 = QPushButton(self.tactics_page)
+        self.home_away_button_2.setObjectName(u"home_away_button_2")
+        self.home_away_button_2.setMaximumSize(QSize(160, 80))
+
+        self.gridLayout_4.addWidget(self.home_away_button_2, 0, 1, 1, 1)
+
+        self.home_away_button_1 = QPushButton(self.tactics_page)
+        self.home_away_button_1.setObjectName(u"home_away_button_1")
+        self.home_away_button_1.setMaximumSize(QSize(160, 80))
+
+        self.gridLayout_4.addWidget(self.home_away_button_1, 0, 0, 1, 1)
+
+        self.tactics_1 = QLineEdit(self.tactics_page)
+        self.tactics_1.setObjectName(u"tactics_1")
+        self.tactics_1.setMaximumSize(QSize(160, 16777215))
+
+        self.gridLayout_4.addWidget(self.tactics_1, 2, 0, 1, 1)
+
+        self.verticalLayout_21.addLayout(self.gridLayout_4)
+
+        self.verticalLayout_19.addLayout(self.verticalLayout_21)
+
+        self.verticalLayout2.addLayout(self.verticalLayout_19)
+
+        self.frame = QFrame(self.tactics_page)
+        self.frame.setObjectName(u"frame")
+        self.frame.setStyleSheet(u"background: url(:/images/images/images/football_field.jpg);\n"
+                                 "background-repeat: no-repeat;\n"
+                                 "background-size: auto;")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout2.addWidget(self.frame)
+
+        self.stackedWidget.addWidget(self.tactics_page)
         self.video_option_menu = QWidget()
         self.video_option_menu.setObjectName(u"video_option_menu")
         self.verticalLayout_20 = QVBoxLayout(self.video_option_menu)
@@ -1354,51 +1409,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setSpacing(0)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
-        self.topMenus = QFrame(self.contentSettings)
-        self.topMenus.setObjectName(u"topMenus")
-        self.topMenus.setFrameShape(QFrame.NoFrame)
-        self.topMenus.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_14 = QVBoxLayout(self.topMenus)
-        self.verticalLayout_14.setSpacing(0)
-        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
-        self.btn_message = QPushButton(self.topMenus)
-        self.btn_message.setObjectName(u"btn_message")
-        sizePolicy.setHeightForWidth(self.btn_message.sizePolicy().hasHeightForWidth())
-        self.btn_message.setSizePolicy(sizePolicy)
-        self.btn_message.setMinimumSize(QSize(0, 45))
-        self.btn_message.setFont(font)
-        self.btn_message.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_message.setLayoutDirection(Qt.LeftToRight)
-        self.btn_message.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-envelope-open.png);")
-
-        self.verticalLayout_14.addWidget(self.btn_message)
-
-        self.btn_print = QPushButton(self.topMenus)
-        self.btn_print.setObjectName(u"btn_print")
-        sizePolicy.setHeightForWidth(self.btn_print.sizePolicy().hasHeightForWidth())
-        self.btn_print.setSizePolicy(sizePolicy)
-        self.btn_print.setMinimumSize(QSize(0, 45))
-        self.btn_print.setFont(font)
-        self.btn_print.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_print.setLayoutDirection(Qt.LeftToRight)
-        self.btn_print.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-print.png);")
-
-        self.verticalLayout_14.addWidget(self.btn_print)
-
-        self.btn_logout = QPushButton(self.topMenus)
-        self.btn_logout.setObjectName(u"btn_logout")
-        sizePolicy.setHeightForWidth(self.btn_logout.sizePolicy().hasHeightForWidth())
-        self.btn_logout.setSizePolicy(sizePolicy)
-        self.btn_logout.setMinimumSize(QSize(0, 45))
-        self.btn_logout.setFont(font)
-        self.btn_logout.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_logout.setLayoutDirection(Qt.LeftToRight)
-        self.btn_logout.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-account-logout.png);")
-
-        self.verticalLayout_14.addWidget(self.btn_logout)
-
-        self.verticalLayout_13.addWidget(self.topMenus, 0, Qt.AlignTop)
 
         self.verticalLayout_7.addWidget(self.contentSettings)
 
@@ -1454,7 +1464,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(3)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1542,12 +1552,11 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", u"More details about the game", None))
         self.cloud_previous_page_button.setText("")
         self.cloud_next_page_button.setText("")
+        self.home_away_button_2.setText(QCoreApplication.translate("MainWindow", u"Guest Team", None))
+        self.home_away_button_1.setText(QCoreApplication.translate("MainWindow", u"Home Team ", None))
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")
-        self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
-        self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
-        self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
         self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: Sakellariou G.", None))
         self.version.setText(QCoreApplication.translate("MainWindow", u"v1.1.0", None))
     # retranslateUi

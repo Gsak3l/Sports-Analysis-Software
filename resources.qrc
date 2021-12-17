@@ -7,6 +7,9 @@
         <file>images/images/folder.png</file>
         <file>images/images/nextarrow.png</file>
         <file>images/images/previousarrow.png</file>
+        <file>images/images/football_field.jpg</file>
+        <file>images/images/basketball_field.jpg</file>
+        <file>images/images/volleyball_field.jpg</file>
     </qresource>
     <qresource prefix="icons">
         <file>images/icons/cil-3d.png</file>
