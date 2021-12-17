@@ -6,7 +6,9 @@ import platform
 # IMPORT PYTHON CLASSES
 import time
 
+import convert_text
 import save_data
+import convert_text as ct
 import youtube_downloader
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -145,7 +147,6 @@ class MainWindow(QMainWindow):
 
         elif btnName == "btn_cloud_footage":  # SHOW THE AVAILABLE OPTIONS FOR CLOUD VIDEO
             widgets.stackedWidget.setCurrentWidget(widgets.cloud_video_page)
-
         elif btnName == "cloud_video_file_button":  # DOWNLOAD VIDEO BUTTON
             # FAKE PROGRESS BAR
             try:
@@ -154,10 +155,10 @@ class MainWindow(QMainWindow):
                     if i == 14:
                         url = youtube_downloader.save_video_to_downloads(widgets.cloud_video_file_name.text())
                     else:
-                        time.sleep(0.1)
+                        time.sleep(0.05)
                         widgets.cloud_progress_bar.setValue(i)
                 widgets.cloud_progress_bar.setValue(100)
-                widgets.cloud_video_file_name.setPlaceholderText(url)
+                widgets.cloud_video_file_name.setPlaceholderText(convert_text.double_backslash_to_slash(url))
                 widgets.cloud_video_file_name.setText('COMPLETED')
             except Exception as e:  # just in case the url is not valid
                 widgets.cloud_progress_bar.setValue(0)
@@ -166,16 +167,18 @@ class MainWindow(QMainWindow):
                 print(e.__cause__)
 
         elif btnName == "cloud_next_page_button":  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
-            if save_data.check_if_file_exists(widgets.cloud_video_file_name.text()):  # FILE VALIDATION FOR THE PATH
+            if save_data.check_if_file_exists(widgets.cloud_video_file_name.placeholderText()):  # FILE VALIDATION FOR THE PATH
                 save_data.save_pre_local_video_data(widgets.cloud_calendar.selectedDate(),
                                                     widgets.cloud_sports_type_combobox.currentText(),
                                                     widgets.cloud_season_input.text(),
                                                     widgets.cloud_competition_input.text(),
                                                     widgets.cloud_details_input.toPlainText(),
-                                                    widgets.cloud_video_file_name.text())
+                                                    widgets.cloud_video_file_name.placeholderText())
             else:
                 widgets.cloud_video_file_name.setText('Error while validating the existance of the video, please'
                                                       'try to downloaded again...')
+        elif btnName == "cloud_previous_page_button":
+            widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')

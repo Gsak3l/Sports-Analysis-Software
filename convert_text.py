@@ -24,3 +24,9 @@ def path_to_video_name(video_file):
 # REFORMATTING THE CALENDAR DATE, TO AN EASY TO READ DATE
 def qdate_to_date(calendar_date):
     return calendar_date[calendar_date.find('(') + 1:calendar_date.find(')')]
+
+
+def double_backslash_to_slash(text):
+    text = text.replace('\\\\', '/')
+    text = text.replace('\\', '/')
+    return text

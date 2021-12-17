@@ -1,5 +1,4 @@
-import time
-
+from pathlib import Path
 import pytube
 import os
 
@@ -13,7 +12,7 @@ def save_video_to_downloads(url):
     video = youtube.streams.get_highest_resolution()
     video.download(file_path())
 
-    return file_path() + '\\' + youtube_video_title + '.mp4'
+    return file_path() + '/' + youtube_video_title + '.mp4'
 
 
 # # On complete seems to work just fine

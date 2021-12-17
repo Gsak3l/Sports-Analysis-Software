@@ -1065,6 +1065,7 @@ class Ui_MainWindow(object):
         self.local_sports_type_combobox.addItem("")
         self.local_sports_type_combobox.addItem("")
         self.local_sports_type_combobox.addItem("")
+        self.local_sports_type_combobox.addItem("")
         self.local_sports_type_combobox.setObjectName(u"local_sports_type_combobox")
         self.local_sports_type_combobox.setMinimumSize(QSize(0, 25))
         self.local_sports_type_combobox.setEditable(False)
@@ -1226,6 +1227,7 @@ class Ui_MainWindow(object):
         self.gridLayout_21.addWidget(self.cloud_season_input, 1, 0, 1, 1)
 
         self.cloud_sports_type_combobox = QComboBox(self.row_11)
+        self.cloud_sports_type_combobox.addItem("")
         self.cloud_sports_type_combobox.addItem("")
         self.cloud_sports_type_combobox.addItem("")
         self.cloud_sports_type_combobox.addItem("")
@@ -1452,7 +1454,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(1)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1508,10 +1510,11 @@ class Ui_MainWindow(object):
         self.local_video_file_name.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here...", None))
         self.local_competition_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Competition", None))
         self.local_season_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Season", None))
-        self.local_sports_type_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Baskeball", None))
-        self.local_sports_type_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Volleyball", None))
-        self.local_sports_type_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Cricket", None))
-        self.local_sports_type_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"Other", None))
+        self.local_sports_type_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Football", None))
+        self.local_sports_type_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Baskeball", None))
+        self.local_sports_type_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Volleyball", None))
+        self.local_sports_type_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"Cricket", None))
+        self.local_sports_type_combobox.setItemText(4, QCoreApplication.translate("MainWindow", u"Other", None))
 
         self.local_sports_type_combobox.setCurrentText("")
         self.local_sports_type_combobox.setPlaceholderText(
@@ -1526,10 +1529,11 @@ class Ui_MainWindow(object):
         self.cloud_video_file_button.setText(QCoreApplication.translate("MainWindow", u"Download", None))
         self.cloud_competition_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Competition", None))
         self.cloud_season_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Season", None))
-        self.cloud_sports_type_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Baskeball", None))
-        self.cloud_sports_type_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Volleyball", None))
-        self.cloud_sports_type_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Cricket", None))
-        self.cloud_sports_type_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"Other", None))
+        self.cloud_sports_type_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Football", None))
+        self.cloud_sports_type_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Baskeball", None))
+        self.cloud_sports_type_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Volleyball", None))
+        self.cloud_sports_type_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"Cricket", None))
+        self.cloud_sports_type_combobox.setItemText(4, QCoreApplication.translate("MainWindow", u"Other", None))
 
         self.cloud_sports_type_combobox.setCurrentText("")
         self.cloud_sports_type_combobox.setPlaceholderText(
