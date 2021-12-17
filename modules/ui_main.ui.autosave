@@ -2146,7 +2146,8 @@ background-repeat: no-repeat;</string>
                                      </size>
                                     </property>
                                     <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
+                                     <string notr="true">background-color: rgb(33, 37, 43);
+text-align:center</string>
                                     </property>
                                     <property name="text">
                                      <string/>

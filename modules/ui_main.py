@@ -1197,7 +1197,7 @@ class Ui_MainWindow(object):
                                               "     background-color: #BD93F9;\n"
                                               " }")
         self.cloud_progress_bar.setValue(0)
-        self.cloud_progress_bar.setTextVisible(True)
+        self.cloud_progress_bar.setTextVisible(False)
         self.cloud_progress_bar.setOrientation(Qt.Horizontal)
         self.cloud_progress_bar.setInvertedAppearance(False)
         self.cloud_progress_bar.setTextDirection(QProgressBar.BottomToTop)
@@ -1256,21 +1256,21 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_71 = QHBoxLayout()
         self.horizontalLayout_71.setObjectName(u"horizontalLayout_71")
-        self.cloud_previous_page_button_2 = QPushButton(self.cloud_video_page)
-        self.cloud_previous_page_button_2.setObjectName(u"cloud_previous_page_button_2")
-        self.cloud_previous_page_button_2.setMaximumSize(QSize(80, 80))
-        self.cloud_previous_page_button_2.setIcon(icon4)
-        self.cloud_previous_page_button_2.setIconSize(QSize(64, 64))
+        self.cloud_previous_page_button = QPushButton(self.cloud_video_page)
+        self.cloud_previous_page_button.setObjectName(u"cloud_previous_page_button")
+        self.cloud_previous_page_button.setMaximumSize(QSize(80, 80))
+        self.cloud_previous_page_button.setIcon(icon4)
+        self.cloud_previous_page_button.setIconSize(QSize(64, 64))
 
-        self.horizontalLayout_71.addWidget(self.cloud_previous_page_button_2, 0, Qt.AlignLeft)
+        self.horizontalLayout_71.addWidget(self.cloud_previous_page_button, 0, Qt.AlignLeft)
 
-        self.cloud_next_page_button_2 = QPushButton(self.cloud_video_page)
-        self.cloud_next_page_button_2.setObjectName(u"cloud_next_page_button_2")
-        self.cloud_next_page_button_2.setMaximumSize(QSize(80, 80))
-        self.cloud_next_page_button_2.setIcon(icon5)
-        self.cloud_next_page_button_2.setIconSize(QSize(64, 64))
+        self.cloud_next_page_button = QPushButton(self.cloud_video_page)
+        self.cloud_next_page_button.setObjectName(u"cloud_next_page_button")
+        self.cloud_next_page_button.setMaximumSize(QSize(80, 80))
+        self.cloud_next_page_button.setIcon(icon5)
+        self.cloud_next_page_button.setIconSize(QSize(64, 64))
 
-        self.horizontalLayout_71.addWidget(self.cloud_next_page_button_2, 0, Qt.AlignRight)
+        self.horizontalLayout_71.addWidget(self.cloud_next_page_button, 0, Qt.AlignRight)
 
         self.verticalLayout1.addLayout(self.horizontalLayout_71)
 
@@ -1536,8 +1536,8 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", u"Select a Sport", None))
         self.cloud_details_input.setPlaceholderText(
             QCoreApplication.translate("MainWindow", u"More details about the game", None))
-        self.cloud_previous_page_button_2.setText("")
-        self.cloud_next_page_button_2.setText("")
+        self.cloud_previous_page_button.setText("")
+        self.cloud_next_page_button.setText("")
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")

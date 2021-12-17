@@ -55,9 +55,7 @@ class MainWindow(QMainWindow):
         # ///////////////////////////////////////////////////////////////
         # local_video_page.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
-        # CONNECTING BUTTONS
-
-        # LOCAL VIDEO PAGE
+        # LOCAL VIDEO PAGE BUTTON CONNECTION
         widgets.btn_local_footage.clicked.connect(self.buttonClick)
         widgets.local_video_file_button.clicked.connect(self.buttonClick)
         widgets.local_previous_page_button.clicked.connect(self.buttonClick)
@@ -65,9 +63,11 @@ class MainWindow(QMainWindow):
 
         # -------------------------------------------------------------------------------------------------------------
 
+        # CLOUD VIDEO PAGE BUTTON CONNECTION
         widgets.btn_cloud_footage.clicked.connect(self.buttonClick)
         widgets.cloud_video_file_button.clicked.connect(self.buttonClick)
-        # widgets.video_url_button.clicked.connect(self.buttonClick)
+        widgets.cloud_next_page_button.clicked.connect(self.buttonClick)
+        widgets.cloud_previous_page_button.clicked.connect(self.buttonClick)
 
         # LEFT MENU BUTTONS
         widgets.btn_home.clicked.connect(self.buttonClick)
@@ -114,22 +114,27 @@ class MainWindow(QMainWindow):
 
         # -------------------------------------------------------------------------------------------------------------
 
-        # LOCALLY EMBED VIDEO BUTTONS
-        elif btnName == "btn_local_footage":  # SHOW THE AVAILABLE OPTIONS FOR
+        # LOCALLY EMBED VIDEOS
+
+        elif btnName == "btn_local_footage":  # SHOW THE AVAILABLE OPTIONS FOR LOCAL VIDEO
             widgets.stackedWidget.setCurrentWidget(widgets.local_video_page)
 
         elif btnName == "local_video_file_button":  # OPEN FILE EXPLORER ON WHEN CLICKING THE LOCAL VIDEO IMPORT
-            fname = QFileDialog.getOpenFileName(self, 'Open File', 'C:/Users/gsak3/Documents/Projects/v5/',
+            fname = QFileDialog.getOpenFileName(self, 'Open Video', 'C:/Users/gsak3/Downloads',
                                                 'MP4 Files (*mp4)')
             widgets.local_video_file_name.setText(fname[0])
 
         elif btnName == "local_next_page_button":  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
-            save_data.save_pre_local_video_data(widgets.local_calendar.selectedDate(),
-                                                widgets.local_sports_type_combobox.currentText(),
-                                                widgets.local_season_input.text(),
-                                                widgets.local_competition_input.text(),
-                                                widgets.local_details_input.toPlainText(),
-                                                widgets.local_video_file_name.text())
+            if save_data.check_if_file_exists(widgets.local_video_file_name.text()):  # FILE VALIDATION FOR THE PATH
+                save_data.save_pre_local_video_data(widgets.local_calendar.selectedDate(),
+                                                    widgets.local_sports_type_combobox.currentText(),
+                                                    widgets.local_season_input.text(),
+                                                    widgets.local_competition_input.text(),
+                                                    widgets.local_details_input.toPlainText(),
+                                                    widgets.local_video_file_name.text())
+            else:
+                widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
+                                                      'and navigating to a .mp4 file')
 
         elif btnName == "local_previous_page_button":  # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
@@ -137,13 +142,14 @@ class MainWindow(QMainWindow):
         # -------------------------------------------------------------------------------------------------------------
 
         # EMBED VIDEO FROM A CLOUD LINK
-        elif btnName == "btn_cloud_footage":
+
+        elif btnName == "btn_cloud_footage":  # SHOW THE AVAILABLE OPTIONS FOR CLOUD VIDEO
             widgets.stackedWidget.setCurrentWidget(widgets.cloud_video_page)
 
-        # DOWNLOAD VIDEO BUTTON
-        elif btnName == "cloud_video_file_button":
-            # fake progress bar
+        elif btnName == "cloud_video_file_button":  # DOWNLOAD VIDEO BUTTON
+            # FAKE PROGRESS BAR
             try:
+                widgets.cloud_progress_bar.setTextVisible(True)  # VISIBLE %
                 for i in range(0, 100):
                     if i == 14:
                         url = youtube_downloader.save_video_to_downloads(widgets.cloud_video_file_name.text())
@@ -151,12 +157,25 @@ class MainWindow(QMainWindow):
                         time.sleep(0.1)
                         widgets.cloud_progress_bar.setValue(i)
                 widgets.cloud_progress_bar.setValue(100)
-                widgets.cloud_video_file_name.setText(url)
+                widgets.cloud_video_file_name.setPlaceholderText(url)
+                widgets.cloud_video_file_name.setText('COMPLETED')
             except Exception as e:  # just in case the url is not valid
                 widgets.cloud_progress_bar.setValue(0)
                 widgets.cloud_video_file_name.setText('')
                 widgets.cloud_video_file_name.setPlaceholderText('Please enter a valid URL...')
                 print(e.__cause__)
+
+        elif btnName == "cloud_next_page_button":  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
+            if save_data.check_if_file_exists(widgets.cloud_video_file_name.text()):  # FILE VALIDATION FOR THE PATH
+                save_data.save_pre_local_video_data(widgets.cloud_calendar.selectedDate(),
+                                                    widgets.cloud_sports_type_combobox.currentText(),
+                                                    widgets.cloud_season_input.text(),
+                                                    widgets.cloud_competition_input.text(),
+                                                    widgets.cloud_details_input.toPlainText(),
+                                                    widgets.cloud_video_file_name.text())
+            else:
+                widgets.cloud_video_file_name.setText('Error while validating the existance of the video, please'
+                                                      'try to downloaded again...')
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
