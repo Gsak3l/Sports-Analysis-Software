@@ -2475,21 +2475,12 @@ background-repeat: no-repeat;</string>
                             <x>-1</x>
                             <y>-1</y>
                             <width>1161</width>
-                            <height>702</height>
+                            <height>291</height>
                            </rect>
                           </property>
                           <layout class="QHBoxLayout" name="horizontalLayout_8">
                            <item>
                             <widget class="QFrame" name="home_away_frame_1">
-                             <property name="maximumSize">
-                              <size>
-                               <width>160</width>
-                               <height>16777215</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color:#fff</string>
-                             </property>
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
                              </property>
@@ -2497,56 +2488,7 @@ background-repeat: no-repeat;</string>
                               <enum>QFrame::Raised</enum>
                              </property>
                             </widget>
-                           </item>
-                           <item>
-                            <widget class="QFrame" name="home_away_field">
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>700</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color:red</string>
-                             </property>
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
-                             </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
-                             </property>
-                             <widget class="QLabel" name="label">
-                              <property name="geometry">
-                               <rect>
-                                <x>0</x>
-                                <y>0</y>
-                                <width>831</width>
-                                <height>371</height>
-                               </rect>
-                              </property>
-                              <property name="text">
-                               <string/>
-                              </property>
-                              <property name="pixmap">
-                               <pixmap resource="../resources.qrc">:/images/images/images/football_field.jpg</pixmap>
-                              </property>
-                              <property name="scaledContents">
-                               <bool>true</bool>
-                              </property>
-                             </widget>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QFrame" name="home_away_frame_2">
-                             <property name="maximumSize">
-                              <size>
-                               <width>160</width>
-                               <height>16777215</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color:yellow</string>
-                             </property>
+							<widget class="QFrame" name="sport_field">
                              <property name="frameShape">
                               <enum>QFrame::StyledPanel</enum>
                              </property>
@@ -2554,6 +2496,15 @@ background-repeat: no-repeat;</string>
                               <enum>QFrame::Raised</enum>
                              </property>
                             </widget>
+							<widget class="QFrame" name="home_away_frame_2">
+                             <property name="frameShape">
+                              <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                            </widget>
+							
                            </item>
                           </layout>
                          </widget>
@@ -2807,7 +2758,7 @@ background-color: rgb(189, 147, 249);
                 <item>
                  <widget class="QLabel" name="version">
                   <property name="text">
-                   <string>v1.1.4</string>
+                   <string>v1.1.0</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
