@@ -2414,18 +2414,8 @@ background-repeat: no-repeat;</string>
                                  <height>16777215</height>
                                 </size>
                                </property>
-                              </widget>
-                             </item>
-                             <item row="0" column="1">
-                              <widget class="QPushButton" name="home_away_button_2">
-                               <property name="maximumSize">
-                                <size>
-                                 <width>160</width>
-                                 <height>80</height>
-                                </size>
-                               </property>
-                               <property name="text">
-                                <string>Guest Team</string>
+                               <property name="placeholderText">
+                                <string>     Tactic 1-4-3-3</string>
                                </property>
                               </widget>
                              </item>
@@ -2437,8 +2427,31 @@ background-repeat: no-repeat;</string>
                                  <height>80</height>
                                 </size>
                                </property>
+                               <property name="styleSheet">
+                                <string notr="true">background-color:#0096FF;
+color:#21252b;
+font-weight:bold;</string>
+                               </property>
                                <property name="text">
                                 <string>Home Team </string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="0" column="1">
+                              <widget class="QPushButton" name="home_away_button_2">
+                               <property name="maximumSize">
+                                <size>
+                                 <width>160</width>
+                                 <height>80</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">background-color:#cb4335;
+color:#21252b;
+font-weight:bold;</string>
+                               </property>
+                               <property name="text">
+                                <string>Guest Team</string>
                                </property>
                               </widget>
                              </item>
@@ -2450,6 +2463,12 @@ background-repeat: no-repeat;</string>
                                  <height>16777215</height>
                                 </size>
                                </property>
+                               <property name="styleSheet">
+                                <string notr="true">text-align:center;</string>
+                               </property>
+                               <property name="placeholderText">
+                                <string>     Tactic 1-4-3-3</string>
+                               </property>
                               </widget>
                              </item>
                             </layout>
@@ -2459,56 +2478,352 @@ background-repeat: no-repeat;</string>
                         </layout>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame">
-                         <property name="styleSheet">
-                          <string notr="true"/>
-                         </property>
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <widget class="QWidget" name="horizontalLayoutWidget">
-                          <property name="geometry">
-                           <rect>
-                            <x>-1</x>
-                            <y>-1</y>
-                            <width>1161</width>
-                            <height>291</height>
-                           </rect>
-                          </property>
-                          <layout class="QHBoxLayout" name="horizontalLayout_8">
-                           <item>
-                            <widget class="QFrame" name="home_away_frame_1">
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
+                        <layout class="QGridLayout" name="gridLayout_5">
+                         <item row="2" column="1">
+                          <widget class="QLabel" name="label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="pixmap">
+                            <pixmap resource="../resources.qrc">:/images/images/images/football_field.jpg</pixmap>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="2">
+                          <layout class="QFormLayout" name="formLayout_3">
+                           <item row="0" column="0">
+                            <widget class="QLabel" name="label_5">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
                              </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
                              </property>
-                            </widget>
-							<widget class="QFrame" name="sport_field">
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
-                             </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
+                             <property name="text">
+                              <string>Player 1</string>
                              </property>
                             </widget>
-							<widget class="QFrame" name="home_away_frame_2">
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
+                           </item>
+                           <item row="0" column="1">
+                            <widget class="QLabel" name="label_7">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
                              </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 2</string>
                              </property>
                             </widget>
-							
+                           </item>
+                           <item row="2" column="0">
+                            <widget class="QLabel" name="label_6">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 3</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="1">
+                            <widget class="QLabel" name="label_3">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 4</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="3" column="0">
+                            <widget class="QLabel" name="label_10">
+                             <property name="text">
+                              <string/>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="4" column="0">
+                            <widget class="QLabel" name="label_2">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 5</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="4" column="1">
+                            <widget class="QLabel" name="label_8">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 6</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="6" column="0">
+                            <widget class="QLabel" name="label_11">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 7</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="6" column="1">
+                            <widget class="QLabel" name="label_9">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 8</string>
+                             </property>
+                            </widget>
                            </item>
                           </layout>
-                         </widget>
-                        </widget>
+                         </item>
+                         <item row="2" column="0">
+						 
+						 
+						 
+						 
+                          <layout class="QFormLayout" name="formLayout_4">
+                           <item row="0" column="0">
+                            <widget class="QLabel" name="label_5">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 1</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="0" column="1">
+                            <widget class="QLabel" name="label_7">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 2</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="0">
+                            <widget class="QLabel" name="label_6">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 3</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="1">
+                            <widget class="QLabel" name="label_3">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 4</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="3" column="0">
+                            <widget class="QLabel" name="label_10">
+                             <property name="text">
+                              <string/>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="4" column="0">
+                            <widget class="QLabel" name="label_2">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 5</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="4" column="1">
+                            <widget class="QLabel" name="label_8">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 6</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="6" column="0">
+                            <widget class="QLabel" name="label_11">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 7</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="6" column="1">
+                            <widget class="QLabel" name="label_9">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:1px solid #0096FF;
+background-color: #0096FF;
+color: #21252b;
+font-weight:bold;</string>
+                             </property>
+                             <property name="text">
+                              <string>Player 8</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+						  
+						  
+						  
+						  
+                         </item>
+                        </layout>
                        </item>
                       </layout>
                      </widget>
@@ -2758,7 +3073,7 @@ background-color: rgb(189, 147, 249);
                 <item>
                  <widget class="QLabel" name="version">
                   <property name="text">
-                   <string>v1.1.0</string>
+                   <string>v1.1.4</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
