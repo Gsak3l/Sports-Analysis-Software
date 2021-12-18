@@ -1297,17 +1297,17 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.tactics_2, 2, 1, 1, 1)
 
-        self.home_away_button_2 = QPushButton(self.tactics_page)
-        self.home_away_button_2.setObjectName(u"home_away_button_2")
-        self.home_away_button_2.setMaximumSize(QSize(160, 80))
-
-        self.gridLayout_4.addWidget(self.home_away_button_2, 0, 1, 1, 1)
-
         self.home_away_button_1 = QPushButton(self.tactics_page)
         self.home_away_button_1.setObjectName(u"home_away_button_1")
         self.home_away_button_1.setMaximumSize(QSize(160, 80))
 
         self.gridLayout_4.addWidget(self.home_away_button_1, 0, 0, 1, 1)
+
+        self.home_away_button_2 = QPushButton(self.tactics_page)
+        self.home_away_button_2.setObjectName(u"home_away_button_2")
+        self.home_away_button_2.setMaximumSize(QSize(160, 80))
+
+        self.gridLayout_4.addWidget(self.home_away_button_2, 0, 1, 1, 1)
 
         self.tactics_1 = QLineEdit(self.tactics_page)
         self.tactics_1.setObjectName(u"tactics_1")
@@ -1321,50 +1321,26 @@ class Ui_MainWindow(object):
 
         self.verticalLayout2.addLayout(self.verticalLayout_19)
 
-        self.frame = QFrame(self.tactics_page)
-        self.frame.setObjectName(u"frame")
-        self.frame.setStyleSheet(u"")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayoutWidget = QWidget(self.frame)
-        self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(-1, -1, 1161, 702))
-        self.horizontalLayout_8 = QHBoxLayout(self.horizontalLayoutWidget)
-        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.home_away_frame_1 = QFrame(self.horizontalLayoutWidget)
-        self.home_away_frame_1.setObjectName(u"home_away_frame_1")
-        self.home_away_frame_1.setMaximumSize(QSize(160, 16777215))
-        self.home_away_frame_1.setStyleSheet(u"background-color:#fff")
-        self.home_away_frame_1.setFrameShape(QFrame.StyledPanel)
-        self.home_away_frame_1.setFrameShadow(QFrame.Raised)
-
-        self.horizontalLayout_8.addWidget(self.home_away_frame_1)
-
-        self.home_away_field = QFrame(self.horizontalLayoutWidget)
-        self.home_away_field.setObjectName(u"home_away_field")
-        self.home_away_field.setMinimumSize(QSize(0, 700))
-        self.home_away_field.setStyleSheet(u"background-color:red")
-        self.home_away_field.setFrameShape(QFrame.StyledPanel)
-        self.home_away_field.setFrameShadow(QFrame.Raised)
-        self.label = QLabel(self.home_away_field)
+        self.gridLayout_5 = QGridLayout()
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.label = QLabel(self.tactics_page)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(0, 0, 831, 371))
         self.label.setPixmap(QPixmap(u":/images/images/images/football_field.jpg"))
         self.label.setScaledContents(True)
 
-        self.horizontalLayout_8.addWidget(self.home_away_field)
+        self.gridLayout_5.addWidget(self.label, 2, 1, 1, 1)
 
-        self.home_away_frame_2 = QFrame(self.horizontalLayoutWidget)
-        self.home_away_frame_2.setObjectName(u"home_away_frame_2")
-        self.home_away_frame_2.setMaximumSize(QSize(160, 16777215))
-        self.home_away_frame_2.setStyleSheet(u"background-color:yellow")
-        self.home_away_frame_2.setFrameShape(QFrame.StyledPanel)
-        self.home_away_frame_2.setFrameShadow(QFrame.Raised)
+        self.label_3 = QLabel(self.tactics_page)
+        self.label_3.setObjectName(u"label_3")
 
-        self.horizontalLayout_8.addWidget(self.home_away_frame_2)
+        self.gridLayout_5.addWidget(self.label_3, 2, 2, 1, 1)
 
-        self.verticalLayout2.addWidget(self.frame)
+        self.label_2 = QLabel(self.tactics_page)
+        self.label_2.setObjectName(u"label_2")
+
+        self.gridLayout_5.addWidget(self.label_2, 2, 0, 1, 1)
+
+        self.verticalLayout2.addLayout(self.gridLayout_5)
 
         self.stackedWidget.addWidget(self.tactics_page)
         self.video_option_menu = QWidget()
@@ -1587,9 +1563,11 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", u"More details about the game", None))
         self.cloud_previous_page_button.setText("")
         self.cloud_next_page_button.setText("")
-        self.home_away_button_2.setText(QCoreApplication.translate("MainWindow", u"Guest Team", None))
         self.home_away_button_1.setText(QCoreApplication.translate("MainWindow", u"Home Team ", None))
+        self.home_away_button_2.setText(QCoreApplication.translate("MainWindow", u"Guest Team", None))
         self.label.setText("")
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")

@@ -2416,19 +2416,6 @@ background-repeat: no-repeat;</string>
                                </property>
                               </widget>
                              </item>
-                             <item row="0" column="1">
-                              <widget class="QPushButton" name="home_away_button_2">
-                               <property name="maximumSize">
-                                <size>
-                                 <width>160</width>
-                                 <height>80</height>
-                                </size>
-                               </property>
-                               <property name="text">
-                                <string>Guest Team</string>
-                               </property>
-                              </widget>
-                             </item>
                              <item row="0" column="0">
                               <widget class="QPushButton" name="home_away_button_1">
                                <property name="maximumSize">
@@ -2439,6 +2426,19 @@ background-repeat: no-repeat;</string>
                                </property>
                                <property name="text">
                                 <string>Home Team </string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="0" column="1">
+                              <widget class="QPushButton" name="home_away_button_2">
+                               <property name="maximumSize">
+                                <size>
+                                 <width>160</width>
+                                 <height>80</height>
+                                </size>
+                               </property>
+                               <property name="text">
+                                <string>Guest Team</string>
                                </property>
                               </widget>
                              </item>
@@ -2459,105 +2459,35 @@ background-repeat: no-repeat;</string>
                         </layout>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame">
-                         <property name="styleSheet">
-                          <string notr="true"/>
-                         </property>
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <widget class="QWidget" name="horizontalLayoutWidget">
-                          <property name="geometry">
-                           <rect>
-                            <x>-1</x>
-                            <y>-1</y>
-                            <width>1161</width>
-                            <height>702</height>
-                           </rect>
-                          </property>
-                          <layout class="QHBoxLayout" name="horizontalLayout_8">
-                           <item>
-                            <widget class="QFrame" name="home_away_frame_1">
-                             <property name="maximumSize">
-                              <size>
-                               <width>160</width>
-                               <height>16777215</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color:#fff</string>
-                             </property>
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
-                             </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QFrame" name="home_away_field">
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>700</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color:red</string>
-                             </property>
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
-                             </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
-                             </property>
-                             <widget class="QLabel" name="label">
-                              <property name="geometry">
-                               <rect>
-                                <x>0</x>
-                                <y>0</y>
-                                <width>831</width>
-                                <height>371</height>
-                               </rect>
-                              </property>
-                              <property name="text">
-                               <string/>
-                              </property>
-                              <property name="pixmap">
-                               <pixmap resource="../resources.qrc">:/images/images/images/football_field.jpg</pixmap>
-                              </property>
-                              <property name="scaledContents">
-                               <bool>true</bool>
-                              </property>
-                             </widget>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QFrame" name="home_away_frame_2">
-                             <property name="maximumSize">
-                              <size>
-                               <width>160</width>
-                               <height>16777215</height>
-                              </size>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color:yellow</string>
-                             </property>
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
-                             </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </widget>
+                        <layout class="QGridLayout" name="gridLayout_5">
+                         <item row="2" column="1">
+                          <widget class="QLabel" name="label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="pixmap">
+                            <pixmap resource="../resources.qrc">:/images/images/images/football_field.jpg</pixmap>
+                           </property>
+                           <property name="scaledContents">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="2">
+                          <widget class="QLabel" name="label_3">
+                           <property name="text">
+                            <string>TextLabel</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="0">
+                          <widget class="QLabel" name="label_2">
+                           <property name="text">
+                            <string>TextLabel</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
                        </item>
                       </layout>
                      </widget>
