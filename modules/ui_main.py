@@ -1294,6 +1294,7 @@ class Ui_MainWindow(object):
         self.tactics_2 = QLineEdit(self.tactics_page)
         self.tactics_2.setObjectName(u"tactics_2")
         self.tactics_2.setMaximumSize(QSize(160, 16777215))
+        self.tactics_2.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_4.addWidget(self.tactics_2, 2, 1, 1, 1)
 
@@ -1329,7 +1330,9 @@ class Ui_MainWindow(object):
         self.tactics_1 = QLineEdit(self.tactics_page)
         self.tactics_1.setObjectName(u"tactics_1")
         self.tactics_1.setMaximumSize(QSize(160, 16777215))
-        self.tactics_1.setStyleSheet(u"text-align:center;")
+        self.tactics_1.setLayoutDirection(Qt.LeftToRight)
+        self.tactics_1.setStyleSheet(u"")
+        self.tactics_1.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_4.addWidget(self.tactics_1, 2, 0, 1, 1)
 
@@ -1776,7 +1779,7 @@ class Ui_MainWindow(object):
         self.tactics_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"     Tactic 1-4-3-3", None))
         self.home_away_button_1.setText(QCoreApplication.translate("MainWindow", u"Home Team ", None))
         self.home_away_button_2.setText(QCoreApplication.translate("MainWindow", u"Guest Team", None))
-        self.tactics_1.setPlaceholderText(QCoreApplication.translate("MainWindow", u"     Tactic 1-4-3-3", None))
+        self.tactics_1.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Tactic 1-4-3-3", None))
         self.label.setText("")
         self.backup_player_right_2.setText(QCoreApplication.translate("MainWindow", u"53", None))
         self.backup_player_right_1.setText(QCoreApplication.translate("MainWindow", u"8", None))

@@ -2414,6 +2414,9 @@ background-repeat: no-repeat;</string>
                                  <height>16777215</height>
                                 </size>
                                </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
                                <property name="placeholderText">
                                 <string>     Tactic 1-4-3-3</string>
                                </property>
@@ -2488,11 +2491,17 @@ font-weight:bold;</string>
                                  <height>16777215</height>
                                 </size>
                                </property>
+                               <property name="layoutDirection">
+                                <enum>Qt::LeftToRight</enum>
+                               </property>
                                <property name="styleSheet">
-                                <string notr="true">text-align:center;</string>
+                                <string notr="true"/>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
                                </property>
                                <property name="placeholderText">
-                                <string>     Tactic 1-4-3-3</string>
+                                <string>Tactic 1-4-3-3</string>
                                </property>
                               </widget>
                              </item>

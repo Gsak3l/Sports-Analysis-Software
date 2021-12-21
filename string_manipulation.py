@@ -26,12 +26,33 @@ def qdate_to_date(calendar_date):
     return calendar_date[calendar_date.find('(') + 1:calendar_date.find(')')]
 
 
+# from \\ and \\ to /
 def double_backslash_to_slash(text):
     text = text.replace('\\\\', '/')
     text = text.replace('\\', '/')
     return text
 
 
+# check if there are any letters from a to z in a string
 def contains_letters(text):
     if re.search('[a-zA-Z]', text):
         return True
+
+
+# count how many numbers exist on a given string
+def count_numbers_in_string(text):
+    numbers = sum(character.isdigit() for character in text)
+    # letters = sum(character.isalpha() for character in text)
+    # spaces = sum(character.isspace() for character in text)
+    return numbers
+
+
+# count the sum of the numbers on a given string
+def sum_digits_string(text):
+    sum_digit = 0
+    for x in text:
+        if x.isdigit() == True:
+            z = int(x)
+            sum_digit = sum_digit + z
+
+    return sum_digit
