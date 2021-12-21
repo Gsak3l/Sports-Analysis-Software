@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (QApplication, QCalendarWidget, QComboBox, QFormLa
                                QFrame, QGridLayout, QHBoxLayout, QLabel,
                                QLineEdit, QMainWindow, QPlainTextEdit, QProgressBar,
                                QPushButton, QSizePolicy, QStackedWidget, QTextEdit,
-                               QVBoxLayout, QWidget)
+                               QToolButton, QVBoxLayout, QWidget)
 from .resources_rc import *
 
 
@@ -1300,18 +1300,29 @@ class Ui_MainWindow(object):
         self.home_away_button_1 = QPushButton(self.tactics_page)
         self.home_away_button_1.setObjectName(u"home_away_button_1")
         self.home_away_button_1.setMaximumSize(QSize(160, 80))
-        self.home_away_button_1.setStyleSheet(u"background-color:#0096FF;\n"
-                                              "color:#21252b;\n"
+        self.home_away_button_1.setStyleSheet(u"border:1px solid #0096FF;\n"
+                                              "background-color: #0096FF;\n"
+                                              "color: #21252b;\n"
                                               "font-weight:bold;")
+        icon7 = QIcon()
+        icon7.addFile(u":/images/images/images/team1.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.home_away_button_1.setIcon(icon7)
+        self.home_away_button_1.setIconSize(QSize(48, 48))
+        self.home_away_button_1.setFlat(False)
 
         self.gridLayout_4.addWidget(self.home_away_button_1, 0, 0, 1, 1)
 
         self.home_away_button_2 = QPushButton(self.tactics_page)
         self.home_away_button_2.setObjectName(u"home_away_button_2")
         self.home_away_button_2.setMaximumSize(QSize(160, 80))
-        self.home_away_button_2.setStyleSheet(u"background-color:#cb4335;\n"
-                                              "color:#21252b;\n"
+        self.home_away_button_2.setStyleSheet(u"border:1px solid #CB4335;\n"
+                                              "background-color: #CB4335;\n"
+                                              "color: #21252B;\n"
                                               "font-weight:bold;")
+        icon8 = QIcon()
+        icon8.addFile(u":/images/images/images/team2.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.home_away_button_2.setIcon(icon8)
+        self.home_away_button_2.setIconSize(QSize(48, 48))
 
         self.gridLayout_4.addWidget(self.home_away_button_2, 0, 1, 1, 1)
 
@@ -1333,184 +1344,207 @@ class Ui_MainWindow(object):
         self.label = QLabel(self.tactics_page)
         self.label.setObjectName(u"label")
         self.label.setPixmap(QPixmap(u":/images/images/images/football_field.jpg"))
+        self.label.setScaledContents(True)
 
         self.gridLayout_5.addWidget(self.label, 2, 1, 1, 1)
 
         self.formLayout_4 = QFormLayout()
         self.formLayout_4.setObjectName(u"formLayout_4")
-        self.label_16 = QLabel(self.tactics_page)
-        self.label_16.setObjectName(u"label_16")
-        self.label_16.setMinimumSize(QSize(0, 40))
-        self.label_16.setStyleSheet(u"border:1px solid #cb4335;\n"
-                                    "background-color: #cb4335;\n"
-                                    "color: #21252b;\n"
-                                    "font-weight:bold;")
+        self.toolButton_9 = QToolButton(self.tactics_page)
+        self.toolButton_9.setObjectName(u"toolButton_9")
+        self.toolButton_9.setStyleSheet(u"border:1px solid #CB4335;\n"
+                                        "background-color: #CB4335;\n"
+                                        "color: #21252B;\n"
+                                        "font-weight:bold;")
+        self.toolButton_9.setIcon(icon8)
+        self.toolButton_9.setIconSize(QSize(48, 36))
+        self.toolButton_9.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_4.setWidget(0, QFormLayout.LabelRole, self.label_16)
+        self.formLayout_4.setWidget(0, QFormLayout.FieldRole, self.toolButton_9)
 
-        self.label_18 = QLabel(self.tactics_page)
-        self.label_18.setObjectName(u"label_18")
-        self.label_18.setMinimumSize(QSize(0, 40))
-        self.label_18.setStyleSheet(u"border:1px solid #cb4335;\n"
-                                    "background-color: #cb4335;\n"
-                                    "color: #21252b;\n"
-                                    "font-weight:bold;")
+        self.toolButton_10 = QToolButton(self.tactics_page)
+        self.toolButton_10.setObjectName(u"toolButton_10")
+        self.toolButton_10.setStyleSheet(u"border:1px solid #CB4335;\n"
+                                         "background-color: #CB4335;\n"
+                                         "color: #21252B;\n"
+                                         "font-weight:bold;")
+        self.toolButton_10.setIcon(icon8)
+        self.toolButton_10.setIconSize(QSize(48, 36))
+        self.toolButton_10.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_4.setWidget(0, QFormLayout.FieldRole, self.label_18)
+        self.formLayout_4.setWidget(0, QFormLayout.LabelRole, self.toolButton_10)
 
-        self.label_17 = QLabel(self.tactics_page)
-        self.label_17.setObjectName(u"label_17")
-        self.label_17.setMinimumSize(QSize(0, 40))
-        self.label_17.setStyleSheet(u"border:1px solid #cb4335;\n"
-                                    "background-color: #cb4335;\n"
-                                    "color: #21252b;\n"
-                                    "font-weight:bold;")
+        self.toolButton_11 = QToolButton(self.tactics_page)
+        self.toolButton_11.setObjectName(u"toolButton_11")
+        self.toolButton_11.setStyleSheet(u"border:1px solid #CB4335;\n"
+                                         "background-color: #CB4335;\n"
+                                         "color: #21252B;\n"
+                                         "font-weight:bold;")
+        self.toolButton_11.setIcon(icon8)
+        self.toolButton_11.setIconSize(QSize(48, 36))
+        self.toolButton_11.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_4.setWidget(2, QFormLayout.LabelRole, self.label_17)
+        self.formLayout_4.setWidget(1, QFormLayout.LabelRole, self.toolButton_11)
 
-        self.label_15 = QLabel(self.tactics_page)
-        self.label_15.setObjectName(u"label_15")
-        self.label_15.setMinimumSize(QSize(0, 40))
-        self.label_15.setStyleSheet(u"border:1px solid #cb4335;\n"
-                                    "background-color: #cb4335;\n"
-                                    "color: #21252b;\n"
-                                    "font-weight:bold;")
+        self.toolButton_12 = QToolButton(self.tactics_page)
+        self.toolButton_12.setObjectName(u"toolButton_12")
+        self.toolButton_12.setStyleSheet(u"border:1px solid #CB4335;\n"
+                                         "background-color: #CB4335;\n"
+                                         "color: #21252B;\n"
+                                         "font-weight:bold;")
+        self.toolButton_12.setIcon(icon8)
+        self.toolButton_12.setIconSize(QSize(48, 36))
+        self.toolButton_12.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_4.setWidget(2, QFormLayout.FieldRole, self.label_15)
+        self.formLayout_4.setWidget(1, QFormLayout.FieldRole, self.toolButton_12)
 
-        self.label_12 = QLabel(self.tactics_page)
-        self.label_12.setObjectName(u"label_12")
+        self.toolButton_13 = QToolButton(self.tactics_page)
+        self.toolButton_13.setObjectName(u"toolButton_13")
+        self.toolButton_13.setStyleSheet(u"border:1px solid #CB4335;\n"
+                                         "background-color: #CB4335;\n"
+                                         "color: #21252B;\n"
+                                         "font-weight:bold;")
+        self.toolButton_13.setIcon(icon8)
+        self.toolButton_13.setIconSize(QSize(48, 36))
+        self.toolButton_13.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_4.setWidget(3, QFormLayout.LabelRole, self.label_12)
+        self.formLayout_4.setWidget(2, QFormLayout.LabelRole, self.toolButton_13)
 
-        self.label_14 = QLabel(self.tactics_page)
-        self.label_14.setObjectName(u"label_14")
-        self.label_14.setMinimumSize(QSize(0, 40))
-        self.label_14.setStyleSheet(u"border:1px solid #cb4335;\n"
-                                    "background-color: #cb4335;\n"
-                                    "color: #21252b;\n"
-                                    "font-weight:bold;")
+        self.toolButton_14 = QToolButton(self.tactics_page)
+        self.toolButton_14.setObjectName(u"toolButton_14")
+        self.toolButton_14.setStyleSheet(u"border:1px solid #CB4335;\n"
+                                         "background-color: #CB4335;\n"
+                                         "color: #21252B;\n"
+                                         "font-weight:bold;")
+        self.toolButton_14.setIcon(icon8)
+        self.toolButton_14.setIconSize(QSize(48, 36))
+        self.toolButton_14.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_4.setWidget(4, QFormLayout.LabelRole, self.label_14)
+        self.formLayout_4.setWidget(2, QFormLayout.FieldRole, self.toolButton_14)
 
-        self.label_19 = QLabel(self.tactics_page)
-        self.label_19.setObjectName(u"label_19")
-        self.label_19.setMinimumSize(QSize(0, 40))
-        self.label_19.setStyleSheet(u"border:1px solid #cb4335;\n"
-                                    "background-color: #cb4335;\n"
-                                    "color: #21252b;\n"
-                                    "font-weight:bold;")
+        self.toolButton_15 = QToolButton(self.tactics_page)
+        self.toolButton_15.setObjectName(u"toolButton_15")
+        self.toolButton_15.setStyleSheet(u"border:1px solid #CB4335;\n"
+                                         "background-color: #CB4335;\n"
+                                         "color: #21252B;\n"
+                                         "font-weight:bold;")
+        self.toolButton_15.setIcon(icon8)
+        self.toolButton_15.setIconSize(QSize(48, 36))
+        self.toolButton_15.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_4.setWidget(4, QFormLayout.FieldRole, self.label_19)
+        self.formLayout_4.setWidget(3, QFormLayout.LabelRole, self.toolButton_15)
 
-        self.label_13 = QLabel(self.tactics_page)
-        self.label_13.setObjectName(u"label_13")
-        self.label_13.setMinimumSize(QSize(0, 40))
-        self.label_13.setStyleSheet(u"border:1px solid #cb4335;\n"
-                                    "background-color: #cb4335;\n"
-                                    "color: #21252b;\n"
-                                    "font-weight:bold;")
+        self.toolButton_16 = QToolButton(self.tactics_page)
+        self.toolButton_16.setObjectName(u"toolButton_16")
+        self.toolButton_16.setStyleSheet(u"border:1px solid #CB4335;\n"
+                                         "background-color: #CB4335;\n"
+                                         "color: #21252B;\n"
+                                         "font-weight:bold;")
+        self.toolButton_16.setIcon(icon8)
+        self.toolButton_16.setIconSize(QSize(48, 36))
+        self.toolButton_16.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_4.setWidget(6, QFormLayout.LabelRole, self.label_13)
-
-        self.label_20 = QLabel(self.tactics_page)
-        self.label_20.setObjectName(u"label_20")
-        self.label_20.setMinimumSize(QSize(0, 40))
-        self.label_20.setStyleSheet(u"border:1px solid #cb4335;\n"
-                                    "background-color: #cb4335;\n"
-                                    "color: #21252b;\n"
-                                    "font-weight:bold;")
-
-        self.formLayout_4.setWidget(6, QFormLayout.FieldRole, self.label_20)
+        self.formLayout_4.setWidget(3, QFormLayout.FieldRole, self.toolButton_16)
 
         self.gridLayout_5.addLayout(self.formLayout_4, 2, 2, 1, 1)
 
         self.formLayout_3 = QFormLayout()
         self.formLayout_3.setObjectName(u"formLayout_3")
-        self.label_5 = QLabel(self.tactics_page)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setMinimumSize(QSize(0, 40))
-        self.label_5.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                   "background-color: #0096FF;\n"
-                                   "color: #21252b;\n"
-                                   "font-weight:bold;")
+        self.toolButton = QToolButton(self.tactics_page)
+        self.toolButton.setObjectName(u"toolButton")
+        self.toolButton.setStyleSheet(u"border:1px solid #0096FF;\n"
+                                      "background-color: #0096FF;\n"
+                                      "color: #21252b;\n"
+                                      "font-weight:bold;")
+        self.toolButton.setIcon(icon7)
+        self.toolButton.setIconSize(QSize(48, 36))
+        self.toolButton.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_3.setWidget(0, QFormLayout.LabelRole, self.label_5)
+        self.formLayout_3.setWidget(2, QFormLayout.FieldRole, self.toolButton)
 
-        self.label_7 = QLabel(self.tactics_page)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setMinimumSize(QSize(0, 40))
-        self.label_7.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                   "background-color: #0096FF;\n"
-                                   "color: #21252b;\n"
-                                   "font-weight:bold;")
+        self.toolButton_2 = QToolButton(self.tactics_page)
+        self.toolButton_2.setObjectName(u"toolButton_2")
+        self.toolButton_2.setStyleSheet(u"border:1px solid #0096FF;\n"
+                                        "background-color: #0096FF;\n"
+                                        "color: #21252b;\n"
+                                        "font-weight:bold;")
+        self.toolButton_2.setIcon(icon7)
+        self.toolButton_2.setIconSize(QSize(48, 36))
+        self.toolButton_2.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.label_7)
+        self.formLayout_3.setWidget(3, QFormLayout.FieldRole, self.toolButton_2)
 
-        self.label_6 = QLabel(self.tactics_page)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setMinimumSize(QSize(0, 40))
-        self.label_6.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                   "background-color: #0096FF;\n"
-                                   "color: #21252b;\n"
-                                   "font-weight:bold;")
+        self.toolButton_3 = QToolButton(self.tactics_page)
+        self.toolButton_3.setObjectName(u"toolButton_3")
+        self.toolButton_3.setStyleSheet(u"border:1px solid #0096FF;\n"
+                                        "background-color: #0096FF;\n"
+                                        "color: #21252b;\n"
+                                        "font-weight:bold;")
+        self.toolButton_3.setIcon(icon7)
+        self.toolButton_3.setIconSize(QSize(48, 36))
+        self.toolButton_3.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_3.setWidget(2, QFormLayout.LabelRole, self.label_6)
+        self.formLayout_3.setWidget(1, QFormLayout.FieldRole, self.toolButton_3)
 
-        self.label_3 = QLabel(self.tactics_page)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setMinimumSize(QSize(0, 40))
-        self.label_3.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                   "background-color: #0096FF;\n"
-                                   "color: #21252b;\n"
-                                   "font-weight:bold;")
+        self.toolButton_4 = QToolButton(self.tactics_page)
+        self.toolButton_4.setObjectName(u"toolButton_4")
+        self.toolButton_4.setStyleSheet(u"border:1px solid #0096FF;\n"
+                                        "background-color: #0096FF;\n"
+                                        "color: #21252b;\n"
+                                        "font-weight:bold;")
+        self.toolButton_4.setIcon(icon7)
+        self.toolButton_4.setIconSize(QSize(48, 36))
+        self.toolButton_4.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_3.setWidget(2, QFormLayout.FieldRole, self.label_3)
+        self.formLayout_3.setWidget(2, QFormLayout.LabelRole, self.toolButton_4)
 
-        self.label_10 = QLabel(self.tactics_page)
-        self.label_10.setObjectName(u"label_10")
+        self.toolButton_5 = QToolButton(self.tactics_page)
+        self.toolButton_5.setObjectName(u"toolButton_5")
+        self.toolButton_5.setStyleSheet(u"border:1px solid #0096FF;\n"
+                                        "background-color: #0096FF;\n"
+                                        "color: #21252b;\n"
+                                        "font-weight:bold;")
+        self.toolButton_5.setIcon(icon7)
+        self.toolButton_5.setIconSize(QSize(48, 36))
+        self.toolButton_5.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_3.setWidget(3, QFormLayout.LabelRole, self.label_10)
+        self.formLayout_3.setWidget(1, QFormLayout.LabelRole, self.toolButton_5)
 
-        self.label_2 = QLabel(self.tactics_page)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setMinimumSize(QSize(0, 40))
-        self.label_2.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                   "background-color: #0096FF;\n"
-                                   "color: #21252b;\n"
-                                   "font-weight:bold;")
+        self.toolButton_6 = QToolButton(self.tactics_page)
+        self.toolButton_6.setObjectName(u"toolButton_6")
+        self.toolButton_6.setStyleSheet(u"border:1px solid #0096FF;\n"
+                                        "background-color: #0096FF;\n"
+                                        "color: #21252b;\n"
+                                        "font-weight:bold;")
+        self.toolButton_6.setIcon(icon7)
+        self.toolButton_6.setIconSize(QSize(48, 36))
+        self.toolButton_6.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_3.setWidget(4, QFormLayout.LabelRole, self.label_2)
+        self.formLayout_3.setWidget(3, QFormLayout.LabelRole, self.toolButton_6)
 
-        self.label_8 = QLabel(self.tactics_page)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setMinimumSize(QSize(0, 40))
-        self.label_8.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                   "background-color: #0096FF;\n"
-                                   "color: #21252b;\n"
-                                   "font-weight:bold;")
+        self.toolButton_7 = QToolButton(self.tactics_page)
+        self.toolButton_7.setObjectName(u"toolButton_7")
+        self.toolButton_7.setStyleSheet(u"border:1px solid #0096FF;\n"
+                                        "background-color: #0096FF;\n"
+                                        "color: #21252b;\n"
+                                        "font-weight:bold;")
+        self.toolButton_7.setIcon(icon7)
+        self.toolButton_7.setIconSize(QSize(48, 36))
+        self.toolButton_7.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_3.setWidget(4, QFormLayout.FieldRole, self.label_8)
+        self.formLayout_3.setWidget(0, QFormLayout.LabelRole, self.toolButton_7)
 
-        self.label_11 = QLabel(self.tactics_page)
-        self.label_11.setObjectName(u"label_11")
-        self.label_11.setMinimumSize(QSize(0, 40))
-        self.label_11.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                    "background-color: #0096FF;\n"
-                                    "color: #21252b;\n"
-                                    "font-weight:bold;")
+        self.toolButton_8 = QToolButton(self.tactics_page)
+        self.toolButton_8.setObjectName(u"toolButton_8")
+        self.toolButton_8.setStyleSheet(u"border:1px solid #0096FF;\n"
+                                        "background-color: #0096FF;\n"
+                                        "color: #21252b;\n"
+                                        "font-weight:bold;")
+        self.toolButton_8.setIcon(icon7)
+        self.toolButton_8.setIconSize(QSize(48, 36))
+        self.toolButton_8.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        self.formLayout_3.setWidget(6, QFormLayout.LabelRole, self.label_11)
-
-        self.label_9 = QLabel(self.tactics_page)
-        self.label_9.setObjectName(u"label_9")
-        self.label_9.setMinimumSize(QSize(0, 40))
-        self.label_9.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                   "background-color: #0096FF;\n"
-                                   "color: #21252b;\n"
-                                   "font-weight:bold;")
-
-        self.formLayout_3.setWidget(6, QFormLayout.FieldRole, self.label_9)
+        self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.toolButton_8)
 
         self.gridLayout_5.addLayout(self.formLayout_3, 2, 0, 1, 1)
 
@@ -1530,9 +1564,9 @@ class Ui_MainWindow(object):
         self.btn_local_footage.setStyleSheet(u"pressed {\n"
                                              "background-color: rgb(189, 147, 249);\n"
                                              "}")
-        icon7 = QIcon()
-        icon7.addFile(u":/images/images/images/folder.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_local_footage.setIcon(icon7)
+        icon9 = QIcon()
+        icon9.addFile(u":/images/images/images/folder.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_local_footage.setIcon(icon9)
         self.btn_local_footage.setIconSize(QSize(64, 64))
         self.btn_local_footage.setAutoDefault(False)
 
@@ -1542,9 +1576,9 @@ class Ui_MainWindow(object):
         self.btn_cloud_footage.setObjectName(u"btn_cloud_footage")
         self.btn_cloud_footage.setMaximumSize(QSize(80, 80))
         self.btn_cloud_footage.setCursor(QCursor(Qt.PointingHandCursor))
-        icon8 = QIcon()
-        icon8.addFile(u":/images/images/images/cloud.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_cloud_footage.setIcon(icon8)
+        icon10 = QIcon()
+        icon10.addFile(u":/images/images/images/cloud.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_cloud_footage.setIcon(icon10)
         self.btn_cloud_footage.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.btn_cloud_footage)
@@ -1553,9 +1587,9 @@ class Ui_MainWindow(object):
         self.btn_camera_footage.setObjectName(u"btn_camera_footage")
         self.btn_camera_footage.setMaximumSize(QSize(80, 80))
         self.btn_camera_footage.setCursor(QCursor(Qt.PointingHandCursor))
-        icon9 = QIcon()
-        icon9.addFile(u":/images/images/images/camera.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_camera_footage.setIcon(icon9)
+        icon11 = QIcon()
+        icon11.addFile(u":/images/images/images/camera.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_camera_footage.setIcon(icon11)
         self.btn_camera_footage.setIconSize(QSize(64, 64))
 
         self.horizontalLayout_6.addWidget(self.btn_camera_footage)
@@ -1742,24 +1776,22 @@ class Ui_MainWindow(object):
         self.home_away_button_2.setText(QCoreApplication.translate("MainWindow", u"Guest Team", None))
         self.tactics_1.setPlaceholderText(QCoreApplication.translate("MainWindow", u"     Tactic 1-4-3-3", None))
         self.label.setText("")
-        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Player 1", None))
-        self.label_18.setText(QCoreApplication.translate("MainWindow", u"Player 2", None))
-        self.label_17.setText(QCoreApplication.translate("MainWindow", u"Player 3", None))
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Player 4", None))
-        self.label_12.setText("")
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Player 5", None))
-        self.label_19.setText(QCoreApplication.translate("MainWindow", u"Player 6", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Player 7", None))
-        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Player 8", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Player 1", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Player 2", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Player 3", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Player 4", None))
-        self.label_10.setText("")
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Player 5", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Player 6", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Player 7", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Player 8", None))
+        self.toolButton_9.setText(QCoreApplication.translate("MainWindow", u"53", None))
+        self.toolButton_10.setText(QCoreApplication.translate("MainWindow", u"8", None))
+        self.toolButton_11.setText(QCoreApplication.translate("MainWindow", u"11", None))
+        self.toolButton_12.setText(QCoreApplication.translate("MainWindow", u"72", None))
+        self.toolButton_13.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.toolButton_14.setText(QCoreApplication.translate("MainWindow", u"44", None))
+        self.toolButton_15.setText(QCoreApplication.translate("MainWindow", u"93", None))
+        self.toolButton_16.setText(QCoreApplication.translate("MainWindow", u"12", None))
+        self.toolButton.setText(QCoreApplication.translate("MainWindow", u"01", None))
+        self.toolButton_2.setText(QCoreApplication.translate("MainWindow", u"7", None))
+        self.toolButton_3.setText(QCoreApplication.translate("MainWindow", u"42", None))
+        self.toolButton_4.setText(QCoreApplication.translate("MainWindow", u"59", None))
+        self.toolButton_5.setText(QCoreApplication.translate("MainWindow", u"11", None))
+        self.toolButton_6.setText(QCoreApplication.translate("MainWindow", u"34", None))
+        self.toolButton_7.setText(QCoreApplication.translate("MainWindow", u"99", None))
+        self.toolButton_8.setText(QCoreApplication.translate("MainWindow", u"05", None))
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")
