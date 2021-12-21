@@ -114,13 +114,14 @@ class MainWindow(QMainWindow):
             # in the first case user types a letter, in the second types random numbers
             # in football you cannot have more than 4 positions, so the input should only be something like 1-4-3-3 etc.
             if inpName == 'tactics_1':
-                if (string_manipulation.contains_letters(widgets.tactics_1.text()) or
+                if (not string_manipulation.allow_dash_number(widgets.tactics_1.text()) or
                         (int(string_manipulation.count_numbers_in_string(widgets.tactics_1.text())) >= 4 and
                          int(string_manipulation.sum_digits_string(widgets.tactics_1.text()) != 11))):
                     widgets.tactics_1.setText('')
-
+            # in the first case user types a letter, in the second types random numbers
+            # in football you cannot have more than 4 positions, so the input should only be something like 1-4-3-3 etc.
             elif inpName == 'tactics_2':
-                if (string_manipulation.contains_letters(widgets.tactics_2.text()) or
+                if (not string_manipulation.allow_dash_number(widgets.tactics_2.text()) or
                         (int(string_manipulation.count_numbers_in_string(widgets.tactics_2.text())) >= 4 and
                          int(string_manipulation.sum_digits_string(widgets.tactics_2.text()) != 11))):
                     widgets.tactics_2.setText('')

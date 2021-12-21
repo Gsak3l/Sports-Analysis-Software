@@ -56,3 +56,15 @@ def sum_digits_string(text):
             sum_digit = sum_digit + z
 
     return sum_digit
+
+
+# from 5 to 5-
+def dash_after_number(text):
+    text += '-'
+    return text
+
+
+# returns true if the given text has only numbers and dashes
+def allow_dash_number(text):
+    if re.match('^[0-9-]*$', text):
+        return True
