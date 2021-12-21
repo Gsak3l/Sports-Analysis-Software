@@ -6,9 +6,9 @@ import platform
 # IMPORT PYTHON CLASSES
 import time
 
-import convert_text
+import string_manipulation
 import save_data
-import convert_text as ct
+import string_manipulation
 import youtube_downloader
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -20,6 +20,9 @@ os.environ["QT_FONT_DPI"] = "96"  # FIX Problem for High DPI and Scale above 100
 # SET AS GLOBAL WIDGETS
 # ///////////////////////////////////////////////////////////////
 widgets = None
+
+tactics_counter_1 = 0
+tactics_counter_2 = 1
 
 
 class MainWindow(QMainWindow):
@@ -63,6 +66,10 @@ class MainWindow(QMainWindow):
         widgets.local_previous_page_button.clicked.connect(self.buttonClick)
         widgets.local_next_page_button.clicked.connect(self.buttonClick)
 
+        # TACTICS PAGE
+        widgets.tactics_1.textChanged.connect(self.textChanged)
+        widgets.tactics_2.textChanged.connect(self.textChanged)
+
         # -------------------------------------------------------------------------------------------------------------
 
         # CLOUD VIDEO PAGE BUTTON CONNECTION
@@ -96,6 +103,19 @@ class MainWindow(QMainWindow):
         # ///////////////////////////////////////////////////////////////
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
         widgets.stackedWidget.setCurrentWidget(widgets.home)
+
+    # TEXT CHANGED
+    def textChanged(self):
+        inp = self.sender()
+        inpName = inp.objectName()
+
+        if inpName == 'tactics_1':
+            if string_manipulation.contains_letters(widgets.tactics_1.text()):
+                widgets.tactics_1.setText('')
+
+        if inpName == 'tactics_2':
+            if string_manipulation.contains_letters(widgets.tactics_2.text()):
+                widgets.tactics_2.setText('')
 
     # BUTTONS CLICK
     def buttonClick(self):
@@ -160,7 +180,7 @@ class MainWindow(QMainWindow):
                         time.sleep(0.05)
                         widgets.cloud_progress_bar.setValue(i)
                 widgets.cloud_progress_bar.setValue(100)
-                widgets.cloud_video_file_name.setPlaceholderText(convert_text.double_backslash_to_slash(url))
+                widgets.cloud_video_file_name.setPlaceholderText(string_manipulation.double_backslash_to_slash(url))
                 widgets.cloud_video_file_name.setText('COMPLETED')
             except Exception as e:  # just in case the url is not valid
                 widgets.cloud_progress_bar.setValue(0)

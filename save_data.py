@@ -1,6 +1,6 @@
 import os.path
 import json
-import convert_text as ct
+import string_manipulation as ct
 
 
 # checking if the given path is a valid path

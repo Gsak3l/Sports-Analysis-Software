@@ -2519,8 +2519,14 @@ font-weight:bold;</string>
                          </item>
                          <item row="2" column="2">
                           <layout class="QFormLayout" name="formLayout_4">
+                           <property name="labelAlignment">
+                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                           </property>
+                           <property name="formAlignment">
+                            <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+                           </property>
                            <item row="0" column="1">
-                            <widget class="QToolButton" name="toolButton_9">
+                            <widget class="QToolButton" name="backup_player_right_2">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #CB4335;
 background-color: #CB4335;
@@ -2546,7 +2552,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="0" column="0">
-                            <widget class="QToolButton" name="toolButton_10">
+                            <widget class="QToolButton" name="backup_player_right_1">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #CB4335;
 background-color: #CB4335;
@@ -2572,7 +2578,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="1" column="0">
-                            <widget class="QToolButton" name="toolButton_11">
+                            <widget class="QToolButton" name="backup_player_right_3">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #CB4335;
 background-color: #CB4335;
@@ -2598,7 +2604,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="1" column="1">
-                            <widget class="QToolButton" name="toolButton_12">
+                            <widget class="QToolButton" name="backup_player_right_4">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #CB4335;
 background-color: #CB4335;
@@ -2624,7 +2630,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="2" column="0">
-                            <widget class="QToolButton" name="toolButton_13">
+                            <widget class="QToolButton" name="backup_player_right_5">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #CB4335;
 background-color: #CB4335;
@@ -2650,7 +2656,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="2" column="1">
-                            <widget class="QToolButton" name="toolButton_14">
+                            <widget class="QToolButton" name="backup_player_right_6">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #CB4335;
 background-color: #CB4335;
@@ -2676,7 +2682,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="3" column="0">
-                            <widget class="QToolButton" name="toolButton_15">
+                            <widget class="QToolButton" name="backup_player_right_7">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #CB4335;
 background-color: #CB4335;
@@ -2702,7 +2708,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="3" column="1">
-                            <widget class="QToolButton" name="toolButton_16">
+                            <widget class="QToolButton" name="backup_player_right_8">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #CB4335;
 background-color: #CB4335;
@@ -2732,7 +2738,7 @@ font-weight:bold;</string>
                          <item row="2" column="0">
                           <layout class="QFormLayout" name="formLayout_3">
                            <item row="2" column="1">
-                            <widget class="QToolButton" name="toolButton">
+                            <widget class="QToolButton" name="backup_player_left_2">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #0096FF;
 background-color: #0096FF;
@@ -2758,7 +2764,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="3" column="1">
-                            <widget class="QToolButton" name="toolButton_2">
+                            <widget class="QToolButton" name="backup_player_left_3">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #0096FF;
 background-color: #0096FF;
@@ -2784,7 +2790,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="1" column="1">
-                            <widget class="QToolButton" name="toolButton_3">
+                            <widget class="QToolButton" name="backup_player_left_4">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #0096FF;
 background-color: #0096FF;
@@ -2810,7 +2816,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="2" column="0">
-                            <widget class="QToolButton" name="toolButton_4">
+                            <widget class="QToolButton" name="backup_player_left_5">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #0096FF;
 background-color: #0096FF;
@@ -2836,7 +2842,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="1" column="0">
-                            <widget class="QToolButton" name="toolButton_5">
+                            <widget class="QToolButton" name="backup_player_left_1">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #0096FF;
 background-color: #0096FF;
@@ -2862,7 +2868,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="3" column="0">
-                            <widget class="QToolButton" name="toolButton_6">
+                            <widget class="QToolButton" name="backup_player_left_6">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #0096FF;
 background-color: #0096FF;
@@ -2888,7 +2894,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="0" column="0">
-                            <widget class="QToolButton" name="toolButton_7">
+                            <widget class="QToolButton" name="backup_player_left_7">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #0096FF;
 background-color: #0096FF;
@@ -2914,7 +2920,7 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                            <item row="0" column="1">
-                            <widget class="QToolButton" name="toolButton_8">
+                            <widget class="QToolButton" name="backup_player_left_8">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #0096FF;
 background-color: #0096FF;
@@ -3191,7 +3197,7 @@ background-color: rgb(189, 147, 249);
                 <item>
                  <widget class="QLabel" name="version">
                   <property name="text">
-                   <string>v1.1.4</string>
+                   <string>v1.1.6</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

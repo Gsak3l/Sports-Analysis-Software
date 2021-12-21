@@ -30,3 +30,8 @@ def double_backslash_to_slash(text):
     text = text.replace('\\\\', '/')
     text = text.replace('\\', '/')
     return text
+
+
+def contains_letters(text):
+    if re.search('[a-zA-Z]', text):
+        return True
