@@ -71,9 +71,10 @@ class MainWindow(QMainWindow):
         widgets.local_next_page_button.clicked.connect(self.buttonClick)
 
         # TACTICS PAGE
-        widgets.tactics_1.textChanged.connect(self.textChanged)
-        widgets.tactics_2.textChanged.connect(self.textChanged)
-        widgets.widget.setUrl(QUrl("file:///index.html"))
+        # widgets.tactics_1.textChanged.connect(self.textChanged)
+        # widgets.tactics_2.textChanged.connect(self.textChanged)
+        widgets.formation.setUrl(QUrl("file:///football-formation-creator/index.html"))
+        widgets.formation.setAttribute()
 
         # -------------------------------------------------------------------------------------------------------------
 
@@ -109,27 +110,27 @@ class MainWindow(QMainWindow):
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
         widgets.stackedWidget.setCurrentWidget(widgets.home)
 
-    # TEXT CHANGED
-    def textChanged(self):
-        inp = self.sender()
-        inpName = inp.objectName()
-
-        # checking sport to calculate players and tactics that could work
-        if widgets.local_sports_type_combobox.currentText() == 'Football':
-            # in the first case user types a letter, in the second types random numbers
-            # in football you cannot have more than 4 positions, so the input should only be something like 1-4-3-3 etc.
-            if inpName == 'tactics_1':
-                if (not string_manipulation.allow_dash_number(widgets.tactics_1.text()) or
-                        (int(string_manipulation.count_numbers_in_string(widgets.tactics_1.text())) >= 4 and
-                         int(string_manipulation.sum_digits_string(widgets.tactics_1.text()) != 11))):
-                    widgets.tactics_1.setText('')
-            # in the first case user types a letter, in the second types random numbers
-            # in football you cannot have more than 4 positions, so the input should only be something like 1-4-3-3 etc.
-            elif inpName == 'tactics_2':
-                if (not string_manipulation.allow_dash_number(widgets.tactics_2.text()) or
-                        (int(string_manipulation.count_numbers_in_string(widgets.tactics_2.text())) >= 4 and
-                         int(string_manipulation.sum_digits_string(widgets.tactics_2.text()) != 11))):
-                    widgets.tactics_2.setText('')
+    # # TEXT CHANGED
+    # def textChanged(self):
+    #     inp = self.sender()
+    #     inpName = inp.objectName()
+    #
+    #     # checking sport to calculate players and tactics that could work
+    #     if widgets.local_sports_type_combobox.currentText() == 'Football':
+    #         # in the first case user types a letter, in the second types random numbers
+    #         # in football you cannot have more than 4 positions, so the input should only be something like 1-4-3-3 etc.
+    #         if inpName == 'tactics_1':
+    #             if (not string_manipulation.allow_dash_number(widgets.tactics_1.text()) or
+    #                     (int(string_manipulation.count_numbers_in_string(widgets.tactics_1.text())) >= 4 and
+    #                      int(string_manipulation.sum_digits_string(widgets.tactics_1.text()) != 11))):
+    #                 widgets.tactics_1.setText('')
+    #         # in the first case user types a letter, in the second types random numbers
+    #         # in football you cannot have more than 4 positions, so the input should only be something like 1-4-3-3 etc.
+    #         elif inpName == 'tactics_2':
+    #             if (not string_manipulation.allow_dash_number(widgets.tactics_2.text()) or
+    #                     (int(string_manipulation.count_numbers_in_string(widgets.tactics_2.text())) >= 4 and
+    #                      int(string_manipulation.sum_digits_string(widgets.tactics_2.text()) != 11))):
+    #                 widgets.tactics_2.setText('')
 
     # BUTTONS CLICK
     def buttonClick(self):

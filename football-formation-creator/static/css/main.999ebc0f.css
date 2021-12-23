@@ -1,0 +1,145 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+.Controls button,
+.Controls select {
+    cursor: pointer
+}
+
+.Controls-colorList {
+    margin-left: 1.5em
+}
+
+.Header {
+    background-color: #222;
+    color: #fff;
+    height: 8vw;
+    line-height: 7.5vw;
+    padding: 0 1em
+}
+
+.Draggable {
+    cursor: move;
+    position: absolute;
+    height: 8vw;
+    width: 8vw
+}
+
+.Draggable.dragging {
+    -webkit-filter: drop-shadow(0 0 5px #000);
+    filter: drop-shadow(0 0 5px #000);
+    z-index: 100
+}
+
+.Kit {
+    height: 100%;
+    width: 100%
+}
+
+.Player.GK .Kit {
+    -webkit-filter: invert(100%) hue-rotate(60deg);
+    filter: invert(100%) hue-rotate(60deg)
+}
+
+.Player {
+    -webkit-filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+    font-family: Roboto, sans-serif;
+    height: 8vw;
+    pointer-events: all;
+    position: absolute;
+    width: 8vw
+}
+
+.Player .editable {
+    cursor: text
+}
+
+.Player .editable input {
+    padding: 0;
+    text-align: center;
+    width: 2vw
+}
+
+.Player-label,
+.Player-number {
+    position: relative;
+    text-align: center;
+    text-shadow: 1px 1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000
+}
+
+.Player-label {
+    font-size: 1vw;
+    text-transform: uppercase;
+    top: -7.6vw
+}
+
+.Player-label input {
+    font-size: 1vw
+}
+
+.Player-number {
+    top: -7.7vw
+}
+
+.Player-number,
+.Player-number input {
+    font-size: 1.8vw
+}
+
+.Formation {
+    height: 61vw;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 8vw;
+    width: 100%
+}
+
+.Pitch,
+.Pitch-background,
+.Pitch-players {
+    height: 61vw;
+    overflow: hidden;
+    width: 100%
+}
+
+.Pitch-background,
+.Pitch-players {
+    left: 0;
+    top: 8vw
+}
+
+.Pitch-background img {
+    height: auto;
+    width: 100%
+}
+
+.Pitch-players {
+    position: absolute
+}
+
+.Main {
+    background-color: #ccc;
+    background: -webkit-gradient(linear, left bottom, left top, from(#aaa), to(#ddd));
+    background: -webkit-linear-gradient(bottom, #aaa, #ddd);
+    background: -o-linear-gradient(bottom, #aaa, #ddd);
+    background: linear-gradient(0deg, #aaa, #ddd);
+    width: 100%
+}
+
+.App {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+body {
+    background-color: #333;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    width: 100%
+}
+
+/*# sourceMappingURL=main.999ebc0f.css.map*/

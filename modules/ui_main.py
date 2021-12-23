@@ -16,11 +16,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
                            QImage, QKeySequence, QLinearGradient, QPainter,
                            QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWebEngineWidgets import QWebEngineView
-from PySide6.QtWidgets import (QApplication, QCalendarWidget, QComboBox, QFormLayout,
-                               QFrame, QGridLayout, QHBoxLayout, QLabel,
-                               QLineEdit, QMainWindow, QPlainTextEdit, QProgressBar,
-                               QPushButton, QSizePolicy, QStackedWidget, QTextEdit,
-                               QToolButton, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCalendarWidget, QComboBox, QFrame,
+                               QGridLayout, QHBoxLayout, QLabel, QLineEdit,
+                               QMainWindow, QPlainTextEdit, QProgressBar, QPushButton,
+                               QSizePolicy, QStackedWidget, QTextEdit, QVBoxLayout,
+                               QWidget)
 from .resources_rc import *
 
 
@@ -1285,274 +1285,12 @@ class Ui_MainWindow(object):
         self.verticalLayout2.setSpacing(10)
         self.verticalLayout2.setObjectName(u"verticalLayout2")
         self.verticalLayout2.setContentsMargins(10, 10, 10, 10)
-        self.verticalLayout_19 = QVBoxLayout()
-        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
-        self.verticalLayout_21 = QVBoxLayout()
-        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.gridLayout_4 = QGridLayout()
-        self.gridLayout_4.setSpacing(0)
-        self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.tactics_1 = QLineEdit(self.tactics_page)
-        self.tactics_1.setObjectName(u"tactics_1")
-        self.tactics_1.setMaximumSize(QSize(160, 16777215))
-        self.tactics_1.setLayoutDirection(Qt.LeftToRight)
-        self.tactics_1.setStyleSheet(u"")
-        self.tactics_1.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_4.addWidget(self.tactics_1, 2, 0, 1, 1)
-
-        self.tactics_2 = QLineEdit(self.tactics_page)
-        self.tactics_2.setObjectName(u"tactics_2")
-        self.tactics_2.setMaximumSize(QSize(160, 16777215))
-        self.tactics_2.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_4.addWidget(self.tactics_2, 2, 1, 1, 1)
-
-        self.home_away_button_1 = QPushButton(self.tactics_page)
-        self.home_away_button_1.setObjectName(u"home_away_button_1")
-        self.home_away_button_1.setMaximumSize(QSize(160, 80))
-        self.home_away_button_1.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                              "background-color: #0096FF;\n"
-                                              "color: #21252b;\n"
-                                              "font-weight:bold;")
-        icon7 = QIcon()
-        icon7.addFile(u":/images/images/images/team1.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.home_away_button_1.setIcon(icon7)
-        self.home_away_button_1.setIconSize(QSize(48, 48))
-        self.home_away_button_1.setFlat(False)
-
-        self.gridLayout_4.addWidget(self.home_away_button_1, 0, 0, 1, 1)
-
-        self.home_away_button_2 = QPushButton(self.tactics_page)
-        self.home_away_button_2.setObjectName(u"home_away_button_2")
-        self.home_away_button_2.setMaximumSize(QSize(160, 80))
-        self.home_away_button_2.setStyleSheet(u"border:1px solid #CB4335;\n"
-                                              "background-color: #CB4335;\n"
-                                              "color: #21252B;\n"
-                                              "font-weight:bold;")
-        icon8 = QIcon()
-        icon8.addFile(u":/images/images/images/team2.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.home_away_button_2.setIcon(icon8)
-        self.home_away_button_2.setIconSize(QSize(48, 48))
-
-        self.gridLayout_4.addWidget(self.home_away_button_2, 0, 1, 1, 1)
-
-        self.verticalLayout_21.addLayout(self.gridLayout_4)
-
-        self.verticalLayout_19.addLayout(self.verticalLayout_21)
-
-        self.verticalLayout2.addLayout(self.verticalLayout_19)
-
         self.gridLayout_5 = QGridLayout()
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.formLayout_4 = QFormLayout()
-        self.formLayout_4.setObjectName(u"formLayout_4")
-        self.formLayout_4.setLabelAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
-        self.formLayout_4.setFormAlignment(Qt.AlignRight | Qt.AlignTop | Qt.AlignTrailing)
-        self.backup_player_right_2 = QToolButton(self.tactics_page)
-        self.backup_player_right_2.setObjectName(u"backup_player_right_2")
-        self.backup_player_right_2.setStyleSheet(u"border:1px solid #CB4335;\n"
-                                                 "background-color: #CB4335;\n"
-                                                 "color: #21252B;\n"
-                                                 "font-weight:bold;")
-        self.backup_player_right_2.setIcon(icon8)
-        self.backup_player_right_2.setIconSize(QSize(48, 36))
-        self.backup_player_right_2.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+        self.formation = QWebEngineView(self.tactics_page)
+        self.formation.setObjectName(u"formation")
 
-        self.formLayout_4.setWidget(0, QFormLayout.FieldRole, self.backup_player_right_2)
-
-        self.backup_player_right_1 = QToolButton(self.tactics_page)
-        self.backup_player_right_1.setObjectName(u"backup_player_right_1")
-        self.backup_player_right_1.setStyleSheet(u"border:1px solid #CB4335;\n"
-                                                 "background-color: #CB4335;\n"
-                                                 "color: #21252B;\n"
-                                                 "font-weight:bold;")
-        self.backup_player_right_1.setIcon(icon8)
-        self.backup_player_right_1.setIconSize(QSize(48, 36))
-        self.backup_player_right_1.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_4.setWidget(0, QFormLayout.LabelRole, self.backup_player_right_1)
-
-        self.backup_player_right_3 = QToolButton(self.tactics_page)
-        self.backup_player_right_3.setObjectName(u"backup_player_right_3")
-        self.backup_player_right_3.setStyleSheet(u"border:1px solid #CB4335;\n"
-                                                 "background-color: #CB4335;\n"
-                                                 "color: #21252B;\n"
-                                                 "font-weight:bold;")
-        self.backup_player_right_3.setIcon(icon8)
-        self.backup_player_right_3.setIconSize(QSize(48, 36))
-        self.backup_player_right_3.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_4.setWidget(1, QFormLayout.LabelRole, self.backup_player_right_3)
-
-        self.backup_player_right_4 = QToolButton(self.tactics_page)
-        self.backup_player_right_4.setObjectName(u"backup_player_right_4")
-        self.backup_player_right_4.setStyleSheet(u"border:1px solid #CB4335;\n"
-                                                 "background-color: #CB4335;\n"
-                                                 "color: #21252B;\n"
-                                                 "font-weight:bold;")
-        self.backup_player_right_4.setIcon(icon8)
-        self.backup_player_right_4.setIconSize(QSize(48, 36))
-        self.backup_player_right_4.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_4.setWidget(1, QFormLayout.FieldRole, self.backup_player_right_4)
-
-        self.backup_player_right_5 = QToolButton(self.tactics_page)
-        self.backup_player_right_5.setObjectName(u"backup_player_right_5")
-        self.backup_player_right_5.setStyleSheet(u"border:1px solid #CB4335;\n"
-                                                 "background-color: #CB4335;\n"
-                                                 "color: #21252B;\n"
-                                                 "font-weight:bold;")
-        self.backup_player_right_5.setIcon(icon8)
-        self.backup_player_right_5.setIconSize(QSize(48, 36))
-        self.backup_player_right_5.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_4.setWidget(2, QFormLayout.LabelRole, self.backup_player_right_5)
-
-        self.backup_player_right_6 = QToolButton(self.tactics_page)
-        self.backup_player_right_6.setObjectName(u"backup_player_right_6")
-        self.backup_player_right_6.setStyleSheet(u"border:1px solid #CB4335;\n"
-                                                 "background-color: #CB4335;\n"
-                                                 "color: #21252B;\n"
-                                                 "font-weight:bold;")
-        self.backup_player_right_6.setIcon(icon8)
-        self.backup_player_right_6.setIconSize(QSize(48, 36))
-        self.backup_player_right_6.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_4.setWidget(2, QFormLayout.FieldRole, self.backup_player_right_6)
-
-        self.backup_player_right_7 = QToolButton(self.tactics_page)
-        self.backup_player_right_7.setObjectName(u"backup_player_right_7")
-        self.backup_player_right_7.setStyleSheet(u"border:1px solid #CB4335;\n"
-                                                 "background-color: #CB4335;\n"
-                                                 "color: #21252B;\n"
-                                                 "font-weight:bold;")
-        self.backup_player_right_7.setIcon(icon8)
-        self.backup_player_right_7.setIconSize(QSize(48, 36))
-        self.backup_player_right_7.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_4.setWidget(3, QFormLayout.LabelRole, self.backup_player_right_7)
-
-        self.backup_player_right_8 = QToolButton(self.tactics_page)
-        self.backup_player_right_8.setObjectName(u"backup_player_right_8")
-        self.backup_player_right_8.setStyleSheet(u"border:1px solid #CB4335;\n"
-                                                 "background-color: #CB4335;\n"
-                                                 "color: #21252B;\n"
-                                                 "font-weight:bold;")
-        self.backup_player_right_8.setIcon(icon8)
-        self.backup_player_right_8.setIconSize(QSize(48, 36))
-        self.backup_player_right_8.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_4.setWidget(3, QFormLayout.FieldRole, self.backup_player_right_8)
-
-        self.gridLayout_5.addLayout(self.formLayout_4, 2, 2, 1, 1)
-
-        self.widget = QWebEngineView(self.tactics_page)
-        self.widget.setObjectName(u"widget")
-        self.widget.setMinimumSize(QSize(900, 0))
-        self.widget.setProperty("scaledContents", True)
-
-        self.gridLayout_5.addWidget(self.widget, 2, 1, 1, 1)
-
-        self.formLayout_3 = QFormLayout()
-        self.formLayout_3.setObjectName(u"formLayout_3")
-        self.backup_player_left_2 = QToolButton(self.tactics_page)
-        self.backup_player_left_2.setObjectName(u"backup_player_left_2")
-        self.backup_player_left_2.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                                "background-color: #0096FF;\n"
-                                                "color: #21252b;\n"
-                                                "font-weight:bold;")
-        self.backup_player_left_2.setIcon(icon7)
-        self.backup_player_left_2.setIconSize(QSize(48, 36))
-        self.backup_player_left_2.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_3.setWidget(2, QFormLayout.FieldRole, self.backup_player_left_2)
-
-        self.backup_player_left_3 = QToolButton(self.tactics_page)
-        self.backup_player_left_3.setObjectName(u"backup_player_left_3")
-        self.backup_player_left_3.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                                "background-color: #0096FF;\n"
-                                                "color: #21252b;\n"
-                                                "font-weight:bold;")
-        self.backup_player_left_3.setIcon(icon7)
-        self.backup_player_left_3.setIconSize(QSize(48, 36))
-        self.backup_player_left_3.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_3.setWidget(3, QFormLayout.FieldRole, self.backup_player_left_3)
-
-        self.backup_player_left_4 = QToolButton(self.tactics_page)
-        self.backup_player_left_4.setObjectName(u"backup_player_left_4")
-        self.backup_player_left_4.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                                "background-color: #0096FF;\n"
-                                                "color: #21252b;\n"
-                                                "font-weight:bold;")
-        self.backup_player_left_4.setIcon(icon7)
-        self.backup_player_left_4.setIconSize(QSize(48, 36))
-        self.backup_player_left_4.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_3.setWidget(1, QFormLayout.FieldRole, self.backup_player_left_4)
-
-        self.backup_player_left_5 = QToolButton(self.tactics_page)
-        self.backup_player_left_5.setObjectName(u"backup_player_left_5")
-        self.backup_player_left_5.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                                "background-color: #0096FF;\n"
-                                                "color: #21252b;\n"
-                                                "font-weight:bold;")
-        self.backup_player_left_5.setIcon(icon7)
-        self.backup_player_left_5.setIconSize(QSize(48, 36))
-        self.backup_player_left_5.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_3.setWidget(2, QFormLayout.LabelRole, self.backup_player_left_5)
-
-        self.backup_player_left_1 = QToolButton(self.tactics_page)
-        self.backup_player_left_1.setObjectName(u"backup_player_left_1")
-        self.backup_player_left_1.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                                "background-color: #0096FF;\n"
-                                                "color: #21252b;\n"
-                                                "font-weight:bold;")
-        self.backup_player_left_1.setIcon(icon7)
-        self.backup_player_left_1.setIconSize(QSize(48, 36))
-        self.backup_player_left_1.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_3.setWidget(1, QFormLayout.LabelRole, self.backup_player_left_1)
-
-        self.backup_player_left_6 = QToolButton(self.tactics_page)
-        self.backup_player_left_6.setObjectName(u"backup_player_left_6")
-        self.backup_player_left_6.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                                "background-color: #0096FF;\n"
-                                                "color: #21252b;\n"
-                                                "font-weight:bold;")
-        self.backup_player_left_6.setIcon(icon7)
-        self.backup_player_left_6.setIconSize(QSize(48, 36))
-        self.backup_player_left_6.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_3.setWidget(3, QFormLayout.LabelRole, self.backup_player_left_6)
-
-        self.backup_player_left_7 = QToolButton(self.tactics_page)
-        self.backup_player_left_7.setObjectName(u"backup_player_left_7")
-        self.backup_player_left_7.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                                "background-color: #0096FF;\n"
-                                                "color: #21252b;\n"
-                                                "font-weight:bold;")
-        self.backup_player_left_7.setIcon(icon7)
-        self.backup_player_left_7.setIconSize(QSize(48, 36))
-        self.backup_player_left_7.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_3.setWidget(0, QFormLayout.LabelRole, self.backup_player_left_7)
-
-        self.backup_player_left_8 = QToolButton(self.tactics_page)
-        self.backup_player_left_8.setObjectName(u"backup_player_left_8")
-        self.backup_player_left_8.setStyleSheet(u"border:1px solid #0096FF;\n"
-                                                "background-color: #0096FF;\n"
-                                                "color: #21252b;\n"
-                                                "font-weight:bold;")
-        self.backup_player_left_8.setIcon(icon7)
-        self.backup_player_left_8.setIconSize(QSize(48, 36))
-        self.backup_player_left_8.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-
-        self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.backup_player_left_8)
-
-        self.gridLayout_5.addLayout(self.formLayout_3, 2, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.formation, 2, 0, 1, 1)
 
         self.verticalLayout2.addLayout(self.gridLayout_5)
 
@@ -1570,9 +1308,9 @@ class Ui_MainWindow(object):
         self.btn_local_footage.setStyleSheet(u"pressed {\n"
                                              "background-color: rgb(189, 147, 249);\n"
                                              "}")
-        icon9 = QIcon()
-        icon9.addFile(u":/images/images/images/folder.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_local_footage.setIcon(icon9)
+        icon7 = QIcon()
+        icon7.addFile(u":/images/images/images/folder.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_local_footage.setIcon(icon7)
         self.btn_local_footage.setIconSize(QSize(64, 64))
         self.btn_local_footage.setAutoDefault(False)
 
@@ -1582,9 +1320,9 @@ class Ui_MainWindow(object):
         self.btn_cloud_footage.setObjectName(u"btn_cloud_footage")
         self.btn_cloud_footage.setMaximumSize(QSize(80, 80))
         self.btn_cloud_footage.setCursor(QCursor(Qt.PointingHandCursor))
-        icon10 = QIcon()
-        icon10.addFile(u":/images/images/images/cloud.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_cloud_footage.setIcon(icon10)
+        icon8 = QIcon()
+        icon8.addFile(u":/images/images/images/cloud.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_cloud_footage.setIcon(icon8)
         self.btn_cloud_footage.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.btn_cloud_footage)
@@ -1593,9 +1331,9 @@ class Ui_MainWindow(object):
         self.btn_camera_footage.setObjectName(u"btn_camera_footage")
         self.btn_camera_footage.setMaximumSize(QSize(80, 80))
         self.btn_camera_footage.setCursor(QCursor(Qt.PointingHandCursor))
-        icon11 = QIcon()
-        icon11.addFile(u":/images/images/images/camera.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_camera_footage.setIcon(icon11)
+        icon9 = QIcon()
+        icon9.addFile(u":/images/images/images/camera.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_camera_footage.setIcon(icon9)
         self.btn_camera_footage.setIconSize(QSize(64, 64))
 
         self.horizontalLayout_6.addWidget(self.btn_camera_footage)
@@ -1777,26 +1515,6 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", u"More details about the game", None))
         self.cloud_previous_page_button.setText("")
         self.cloud_next_page_button.setText("")
-        self.tactics_1.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Tactic 1-4-3-3", None))
-        self.tactics_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"     Tactic 1-4-3-3", None))
-        self.home_away_button_1.setText(QCoreApplication.translate("MainWindow", u"Home Team ", None))
-        self.home_away_button_2.setText(QCoreApplication.translate("MainWindow", u"Guest Team", None))
-        self.backup_player_right_2.setText(QCoreApplication.translate("MainWindow", u"53", None))
-        self.backup_player_right_1.setText(QCoreApplication.translate("MainWindow", u"8", None))
-        self.backup_player_right_3.setText(QCoreApplication.translate("MainWindow", u"11", None))
-        self.backup_player_right_4.setText(QCoreApplication.translate("MainWindow", u"72", None))
-        self.backup_player_right_5.setText(QCoreApplication.translate("MainWindow", u"0", None))
-        self.backup_player_right_6.setText(QCoreApplication.translate("MainWindow", u"44", None))
-        self.backup_player_right_7.setText(QCoreApplication.translate("MainWindow", u"93", None))
-        self.backup_player_right_8.setText(QCoreApplication.translate("MainWindow", u"12", None))
-        self.backup_player_left_2.setText(QCoreApplication.translate("MainWindow", u"01", None))
-        self.backup_player_left_3.setText(QCoreApplication.translate("MainWindow", u"7", None))
-        self.backup_player_left_4.setText(QCoreApplication.translate("MainWindow", u"42", None))
-        self.backup_player_left_5.setText(QCoreApplication.translate("MainWindow", u"59", None))
-        self.backup_player_left_1.setText(QCoreApplication.translate("MainWindow", u"11", None))
-        self.backup_player_left_6.setText(QCoreApplication.translate("MainWindow", u"34", None))
-        self.backup_player_left_7.setText(QCoreApplication.translate("MainWindow", u"99", None))
-        self.backup_player_left_8.setText(QCoreApplication.translate("MainWindow", u"05", None))
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")
