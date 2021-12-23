@@ -18,8 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QCalendarWidget, QComboBox, QFormLayout,
                                QFrame, QGridLayout, QHBoxLayout, QLabel,
                                QLineEdit, QMainWindow, QPlainTextEdit, QProgressBar,
-                               QPushButton, QSizePolicy, QStackedWidget, QTextEdit,
-                               QToolButton, QVBoxLayout, QWidget)
+                               QPushButton, QSizePolicy, QStackedWidget, QTextBrowser,
+                               QTextEdit, QToolButton, QVBoxLayout, QWidget)
 from .resources_rc import *
 
 
@@ -1291,6 +1291,15 @@ class Ui_MainWindow(object):
         self.gridLayout_4 = QGridLayout()
         self.gridLayout_4.setSpacing(0)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.tactics_1 = QLineEdit(self.tactics_page)
+        self.tactics_1.setObjectName(u"tactics_1")
+        self.tactics_1.setMaximumSize(QSize(160, 16777215))
+        self.tactics_1.setLayoutDirection(Qt.LeftToRight)
+        self.tactics_1.setStyleSheet(u"")
+        self.tactics_1.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_4.addWidget(self.tactics_1, 2, 0, 1, 1)
+
         self.tactics_2 = QLineEdit(self.tactics_page)
         self.tactics_2.setObjectName(u"tactics_2")
         self.tactics_2.setMaximumSize(QSize(160, 16777215))
@@ -1327,15 +1336,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.home_away_button_2, 0, 1, 1, 1)
 
-        self.tactics_1 = QLineEdit(self.tactics_page)
-        self.tactics_1.setObjectName(u"tactics_1")
-        self.tactics_1.setMaximumSize(QSize(160, 16777215))
-        self.tactics_1.setLayoutDirection(Qt.LeftToRight)
-        self.tactics_1.setStyleSheet(u"")
-        self.tactics_1.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_4.addWidget(self.tactics_1, 2, 0, 1, 1)
-
         self.verticalLayout_21.addLayout(self.gridLayout_4)
 
         self.verticalLayout_19.addLayout(self.verticalLayout_21)
@@ -1344,13 +1344,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout_5 = QGridLayout()
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.label = QLabel(self.tactics_page)
-        self.label.setObjectName(u"label")
-        self.label.setPixmap(QPixmap(u":/images/images/images/football_field.jpg"))
-        self.label.setScaledContents(True)
-
-        self.gridLayout_5.addWidget(self.label, 2, 1, 1, 1)
-
         self.formLayout_4 = QFormLayout()
         self.formLayout_4.setObjectName(u"formLayout_4")
         self.formLayout_4.setLabelAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
@@ -1552,6 +1545,11 @@ class Ui_MainWindow(object):
         self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.backup_player_left_8)
 
         self.gridLayout_5.addLayout(self.formLayout_3, 2, 0, 1, 1)
+
+        self.textBrowser = QTextBrowser(self.tactics_page)
+        self.textBrowser.setObjectName(u"textBrowser")
+
+        self.gridLayout_5.addWidget(self.textBrowser, 0, 1, 3, 1)
 
         self.verticalLayout2.addLayout(self.gridLayout_5)
 
@@ -1776,11 +1774,10 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", u"More details about the game", None))
         self.cloud_previous_page_button.setText("")
         self.cloud_next_page_button.setText("")
+        self.tactics_1.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Tactic 1-4-3-3", None))
         self.tactics_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"     Tactic 1-4-3-3", None))
         self.home_away_button_1.setText(QCoreApplication.translate("MainWindow", u"Home Team ", None))
         self.home_away_button_2.setText(QCoreApplication.translate("MainWindow", u"Guest Team", None))
-        self.tactics_1.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Tactic 1-4-3-3", None))
-        self.label.setText("")
         self.backup_player_right_2.setText(QCoreApplication.translate("MainWindow", u"53", None))
         self.backup_player_right_1.setText(QCoreApplication.translate("MainWindow", u"8", None))
         self.backup_player_right_3.setText(QCoreApplication.translate("MainWindow", u"11", None))

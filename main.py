@@ -8,8 +8,9 @@ import time
 
 import string_manipulation
 import save_data
-import string_manipulation as sm
+import string_manipulation
 import youtube_downloader
+import file_manipulation
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from modules import *
@@ -69,6 +70,12 @@ class MainWindow(QMainWindow):
         # TACTICS PAGE
         widgets.tactics_1.textChanged.connect(self.textChanged)
         widgets.tactics_2.textChanged.connect(self.textChanged)
+
+        widgets.textBrowser.setOpenExternalLinks(True)
+        str_html = (file_manipulation.open_html_file(''))
+        widgets.textBrowser.setText(str_html)
+        widgets.textBrowser.show()
+        widgets.textBrowser.raise_()
 
         # -------------------------------------------------------------------------------------------------------------
 

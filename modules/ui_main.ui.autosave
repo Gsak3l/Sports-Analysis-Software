@@ -2513,7 +2513,7 @@ font-weight:bold;</string>
                        </item>
                        <item>
                         <layout class="QGridLayout" name="gridLayout_5">
-                         <item row="2" column="2">
+                         <item row="3" column="2">
                           <layout class="QFormLayout" name="formLayout_4">
                            <property name="labelAlignment">
                             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2521,8 +2521,8 @@ font-weight:bold;</string>
                            <property name="formAlignment">
                             <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
                            </property>
-                           <item row="0" column="1">
-                            <widget class="QToolButton" name="backup_player_right_2">
+                           <item row="0" column="0">
+                            <widget class="QToolButton" name="backup_player_right_1">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #CB4335;
 background-color: #CB4335;
@@ -2530,7 +2530,7 @@ color: #21252B;
 font-weight:bold;</string>
                              </property>
                              <property name="text">
-                              <string>53</string>
+                              <string>8</string>
                              </property>
                              <property name="icon">
                               <iconset resource="../resources.qrc">
@@ -2547,8 +2547,8 @@ font-weight:bold;</string>
                              </property>
                             </widget>
                            </item>
-                           <item row="0" column="0">
-                            <widget class="QToolButton" name="backup_player_right_1">
+                           <item row="0" column="1">
+                            <widget class="QToolButton" name="backup_player_right_2">
                              <property name="styleSheet">
                               <string notr="true">border:1px solid #CB4335;
 background-color: #CB4335;
@@ -2556,7 +2556,7 @@ color: #21252B;
 font-weight:bold;</string>
                              </property>
                              <property name="text">
-                              <string>8</string>
+                              <string>53</string>
                              </property>
                              <property name="icon">
                               <iconset resource="../resources.qrc">
@@ -2731,20 +2731,7 @@ font-weight:bold;</string>
                            </item>
                           </layout>
                          </item>
-                         <item row="2" column="1">
-                          <widget class="QLabel" name="label">
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="pixmap">
-                            <pixmap resource="../resources.qrc">:/images/images/images/football_field.jpg</pixmap>
-                           </property>
-                           <property name="scaledContents">
-                            <bool>true</bool>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="2" column="0">
+                         <item row="3" column="0">
                           <layout class="QFormLayout" name="formLayout_3">
                            <item row="2" column="1">
                             <widget class="QToolButton" name="backup_player_left_2">
@@ -2955,6 +2942,29 @@ font-weight:bold;</string>
                             </widget>
                            </item>
                           </layout>
+                         </item>
+                         <item row="2" column="1">
+                          <widget class="QFrame" name="frame">
+                           <property name="frameShape">
+                            <enum>QFrame::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Raised</enum>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="1">
+                          <widget class="QLabel" name="label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="pixmap">
+                            <pixmap resource="../resources.qrc">:/images/images/images/football_field.jpg</pixmap>
+                           </property>
+                           <property name="scaledContents">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
                          </item>
                         </layout>
                        </item>
