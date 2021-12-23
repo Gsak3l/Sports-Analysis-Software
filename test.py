@@ -1,6 +1,5 @@
 from PySide6.QtCore import *
 from PySide6.QtWidgets import *
-from PySide6.QtGui import *
 from PySide6.QtWebEngineWidgets import *
 
 import sys
@@ -13,9 +12,7 @@ class MainWindow(QMainWindow):
 
         self.browser = QWebEngineView()
         self.browser.setUrl(QUrl("http://www.google.com"))
-
         self.setCentralWidget(self.browser)
-
         self.show()
 
 

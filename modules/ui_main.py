@@ -15,11 +15,12 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
                            QFont, QFontDatabase, QGradient, QIcon,
                            QImage, QKeySequence, QLinearGradient, QPainter,
                            QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import (QApplication, QCalendarWidget, QComboBox, QFormLayout,
                                QFrame, QGridLayout, QHBoxLayout, QLabel,
                                QLineEdit, QMainWindow, QPlainTextEdit, QProgressBar,
-                               QPushButton, QSizePolicy, QStackedWidget, QTextBrowser,
-                               QTextEdit, QToolButton, QVBoxLayout, QWidget)
+                               QPushButton, QSizePolicy, QStackedWidget, QTextEdit,
+                               QToolButton, QVBoxLayout, QWidget)
 from .resources_rc import *
 
 
@@ -1446,6 +1447,13 @@ class Ui_MainWindow(object):
 
         self.gridLayout_5.addLayout(self.formLayout_4, 2, 2, 1, 1)
 
+        self.widget = QWebEngineView(self.tactics_page)
+        self.widget.setObjectName(u"widget")
+        self.widget.setMinimumSize(QSize(900, 0))
+        self.widget.setProperty("scaledContents", True)
+
+        self.gridLayout_5.addWidget(self.widget, 2, 1, 1, 1)
+
         self.formLayout_3 = QFormLayout()
         self.formLayout_3.setObjectName(u"formLayout_3")
         self.backup_player_left_2 = QToolButton(self.tactics_page)
@@ -1545,11 +1553,6 @@ class Ui_MainWindow(object):
         self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.backup_player_left_8)
 
         self.gridLayout_5.addLayout(self.formLayout_3, 2, 0, 1, 1)
-
-        self.textBrowser = QTextBrowser(self.tactics_page)
-        self.textBrowser.setObjectName(u"textBrowser")
-
-        self.gridLayout_5.addWidget(self.textBrowser, 0, 1, 3, 1)
 
         self.verticalLayout2.addLayout(self.gridLayout_5)
 

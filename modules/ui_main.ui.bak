@@ -2513,7 +2513,7 @@ font-weight:bold;</string>
                        </item>
                        <item>
                         <layout class="QGridLayout" name="gridLayout_5">
-                         <item row="3" column="2">
+                         <item row="2" column="2">
                           <layout class="QFormLayout" name="formLayout_4">
                            <property name="labelAlignment">
                             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2731,7 +2731,7 @@ font-weight:bold;</string>
                            </item>
                           </layout>
                          </item>
-                         <item row="3" column="0">
+                         <item row="2" column="0">
                           <layout class="QFormLayout" name="formLayout_3">
                            <item row="2" column="1">
                             <widget class="QToolButton" name="backup_player_left_2">
@@ -2943,29 +2943,15 @@ font-weight:bold;</string>
                            </item>
                           </layout>
                          </item>
-                         <item row="2" column="1">
-                          <widget class="QFrame" name="frame">
-                           <property name="frameShape">
-                            <enum>QFrame::StyledPanel</enum>
-                           </property>
-                           <property name="frameShadow">
-                            <enum>QFrame::Raised</enum>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="3" column="1">
-                          <widget class="QLabel" name="label">
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="pixmap">
-                            <pixmap resource="../resources.qrc">:/images/images/images/football_field.jpg</pixmap>
-                           </property>
-                           <property name="scaledContents">
-                            <bool>true</bool>
-                           </property>
-                          </widget>
-                         </item>
+						 
+						 
+						 <item row="2" column="1">
+							<widget class="QWebEngineView" name="widget" native="true"/>
+						 </item>
+						 
+						 
+						 
+						 
                         </layout>
                        </item>
                       </layout>

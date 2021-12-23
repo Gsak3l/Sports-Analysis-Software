@@ -15,6 +15,9 @@ import file_manipulation
 # ///////////////////////////////////////////////////////////////
 from modules import *
 from widgets import *
+from PySide6.QtCore import *
+from PySide6.QtWidgets import *
+from PySide6.QtWebEngineWidgets import *
 
 os.environ["QT_FONT_DPI"] = "96"  # FIX Problem for High DPI and Scale above 100%
 
@@ -70,12 +73,7 @@ class MainWindow(QMainWindow):
         # TACTICS PAGE
         widgets.tactics_1.textChanged.connect(self.textChanged)
         widgets.tactics_2.textChanged.connect(self.textChanged)
-
-        widgets.textBrowser.setOpenExternalLinks(True)
-        str_html = (file_manipulation.open_html_file(''))
-        widgets.textBrowser.setText(str_html)
-        widgets.textBrowser.show()
-        widgets.textBrowser.raise_()
+        widgets.widget.setUrl(QUrl("file:///index.html"))
 
         # -------------------------------------------------------------------------------------------------------------
 
