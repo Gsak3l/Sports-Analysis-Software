@@ -1,22 +1,17 @@
-from PySide6.QtCore import *
-from PySide6.QtWidgets import *
-from PySide6.QtWebEngineWidgets import *
+import tkinter as tk
 
-import sys
+root = tk.Tk()
 
-
-class MainWindow(QMainWindow):
-
-    def __init__(self, *args, **kwargs):
-        super(MainWindow, self).__init__(*args, **kwargs)
-
-        self.browser = QWebEngineView()
-        self.browser.setUrl(QUrl("http://www.google.com"))
-        self.setCentralWidget(self.browser)
-        self.show()
+canvas1 = tk.Canvas(root, width=300, height=300)
+canvas1.pack()
 
 
-app = QApplication(sys.argv)
-window = MainWindow()
+def hello():
+    label1 = tk.Label(root, text='Hello World!', fg='green', font=('helvetica', 12, 'bold'))
+    canvas1.create_window(150, 200, window=label1)
 
-app.exec_()
+
+button1 = tk.Button(text='Click Me', command=hello, bg='brown', fg='white')
+canvas1.create_window(150, 150, window=button1)
+
+root.mainloop()

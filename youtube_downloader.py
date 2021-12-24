@@ -37,3 +37,6 @@ def file_path():
     home = os.path.expanduser('~')
     download_path = os.path.join(home, 'Downloads')
     return download_path
+
+
+save_video_to_downloads('https://www.youtube.com/watch?v=Wof0xPUmW38')

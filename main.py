@@ -72,7 +72,6 @@ class MainWindow(QMainWindow):
         # widgets.tactics_2.textChanged.connect(self.textChanged)
         widgets.formation.setUrl(QUrl("file:///football-formation-creator/index.html"))
 
-
         # -------------------------------------------------------------------------------------------------------------
 
         # CLOUD VIDEO PAGE BUTTON CONNECTION
