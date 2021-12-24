@@ -1,2 +1,3 @@
 PySide6
 pytube3
+cx_Freeze
