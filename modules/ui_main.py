@@ -1285,14 +1285,10 @@ class Ui_MainWindow(object):
         self.verticalLayout2.setSpacing(10)
         self.verticalLayout2.setObjectName(u"verticalLayout2")
         self.verticalLayout2.setContentsMargins(10, 10, 10, 10)
-        self.gridLayout_5 = QGridLayout()
-        self.gridLayout_5.setObjectName(u"gridLayout_5")
         self.formation = QWebEngineView(self.tactics_page)
         self.formation.setObjectName(u"formation")
 
-        self.gridLayout_5.addWidget(self.formation, 2, 0, 1, 1)
-
-        self.verticalLayout2.addLayout(self.gridLayout_5)
+        self.verticalLayout2.addWidget(self.formation)
 
         self.stackedWidget.addWidget(self.tactics_page)
         self.video_option_menu = QWidget()
@@ -1346,37 +1342,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addWidget(self.pagesContainer)
 
-        self.extraRightBox = QFrame(self.content)
-        self.extraRightBox.setObjectName(u"extraRightBox")
-        self.extraRightBox.setMinimumSize(QSize(0, 0))
-        self.extraRightBox.setMaximumSize(QSize(0, 16777215))
-        self.extraRightBox.setFrameShape(QFrame.NoFrame)
-        self.extraRightBox.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.extraRightBox)
-        self.verticalLayout_7.setSpacing(0)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.themeSettingsTopDetail = QFrame(self.extraRightBox)
-        self.themeSettingsTopDetail.setObjectName(u"themeSettingsTopDetail")
-        self.themeSettingsTopDetail.setMaximumSize(QSize(16777215, 3))
-        self.themeSettingsTopDetail.setFrameShape(QFrame.NoFrame)
-        self.themeSettingsTopDetail.setFrameShadow(QFrame.Raised)
-
-        self.verticalLayout_7.addWidget(self.themeSettingsTopDetail)
-
-        self.contentSettings = QFrame(self.extraRightBox)
-        self.contentSettings.setObjectName(u"contentSettings")
-        self.contentSettings.setFrameShape(QFrame.NoFrame)
-        self.contentSettings.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_13 = QVBoxLayout(self.contentSettings)
-        self.verticalLayout_13.setSpacing(0)
-        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
-
-        self.verticalLayout_7.addWidget(self.contentSettings)
-
-        self.horizontalLayout_4.addWidget(self.extraRightBox)
-
         self.verticalLayout_6.addWidget(self.content)
 
         self.bottomBar = QFrame(self.contentBottom)
@@ -1427,7 +1392,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(4)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
