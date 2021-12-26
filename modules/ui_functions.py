@@ -253,13 +253,13 @@ class UIFunctions(MainWindow):
             self.ui.closeAppBtn.hide()
             self.ui.frame_size_grip.hide()
 
-        # DROP SHADOW
-        self.shadow = QGraphicsDropShadowEffect(self)
-        self.shadow.setBlurRadius(17)
-        self.shadow.setXOffset(0)
-        self.shadow.setYOffset(0)
-        self.shadow.setColor(QColor(0, 0, 0, 150))
-        self.ui.bgApp.setGraphicsEffect(self.shadow)
+        # DROP SHADOW (SLOW PERFORMANCE FOR WEB ENGINE VIEW)
+        # self.shadow = QGraphicsDropShadowEffect(self)
+        # self.shadow.setBlurRadius(17)
+        # self.shadow.setXOffset(0)
+        # self.shadow.setYOffset(0)
+        # self.shadow.setColor(QColor(0, 0, 0, 150))
+        # self.ui.bgApp.setGraphicsEffect(self.shadow)
 
         # RESIZE WINDOW
         self.sizegrip = QSizeGrip(self.ui.frame_size_grip)

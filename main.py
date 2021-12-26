@@ -56,7 +56,7 @@ class MainWindow(QMainWindow):
 
         # SET UI DEFINITIONS
         # ///////////////////////////////////////////////////////////////
-        # UIFunctions.uiDefinitions(self)
+        UIFunctions.uiDefinitions(self)
 
         # QTableWidget PARAMETERS
         # ///////////////////////////////////////////////////////////////
@@ -71,7 +71,7 @@ class MainWindow(QMainWindow):
         # TACTICS PAGE
         # widgets.tactics_1.textChanged.connect(self.textChanged)
         # widgets.tactics_2.textChanged.connect(self.textChanged)
-        widgets.formation.setUrl(QUrl("file:///football-formation-creator/index.html"))
+        widgets.formation.load(QUrl("file:///football-formation-creator/index.html"))
 
         # -------------------------------------------------------------------------------------------------------------
 
