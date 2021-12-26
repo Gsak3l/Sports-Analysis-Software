@@ -71,7 +71,7 @@ class MainWindow(QMainWindow):
         # TACTICS PAGE
         # widgets.tactics_1.textChanged.connect(self.textChanged)
         # widgets.tactics_2.textChanged.connect(self.textChanged)
-        widgets.formation.load(QUrl("file:///football-formation-creator/index.html"))
+        widgets.formation.load(QUrl("file:///football-formation-creator/11-builder/build/index.html"))
 
         # -------------------------------------------------------------------------------------------------------------
 
