@@ -1,0 +1,41 @@
+{
+  "name": "11-builder",
+  "version": "0.1.0",
+  "license": "CC BY-NC-ND 3.0",
+  "private": true,
+  "dependencies": {
+    "computed-style-to-inline-style": "^2.0.0",
+    "normalize-css": "^2.3.1",
+    "rasterizehtml": "^1.2.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "^5.0.0"
+  },
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "file-system": "^1.2.2",
+    "image-downloader": "^3.3.0",
+    "request-promise": "^4.2.2",
+    "simple-rate-limiter": "^0.2.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "scrape": "node --max-old-space-size=8192 scraper.js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }, 
+  "homepage":"./"
+}

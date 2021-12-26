@@ -1,0 +1,577 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "open sans", Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #681b27;
+  color: #fafafa;
+  width: 100%;
+}
+
+h1 {
+  margin: 20px 0;
+  font-size: 50px;
+  text-align: center;
+  font-family: "saira condensed", "open sans", Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.App {
+  margin: 0 auto;
+  width: 900px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: top;
+}
+
+.Settings {
+  position: relative;
+  width: 340px;
+  height: 545px;
+}
+
+.Settings .Sub-title {
+  margin: 25px 0;
+  font-size: 25px;
+  font-family: "suez one", "open sans", Arial, Helvetica, sans-serif;
+  letter-spacing: 4px;
+}
+
+.Settings .Search-player {
+  width: 100%;
+  padding: 0 10px;
+  background: #fafafa;
+  height: 56px;
+  font-size: 16px;
+  text-transform: capitalize;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  border: none;
+}
+
+.Settings .Results {
+  background: #fafafa;
+  margin-top: 15px;
+  max-height: 330px;
+  overflow-y: scroll;
+  border-radius: 3px;
+  color: rgba(0, 0, 0, 0.95);
+}
+
+.Settings .Results .Result-player {
+  height: 56px;
+  position: relative;
+}
+
+.Settings .Results .Result-player:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.Settings .Results .Result-player .Status {
+  display: inline-block;
+  line-height: 56px;
+  margin: 0;
+  vertical-align: top;
+  transform: translateX(10px);
+}
+
+.Settings .Results .Result-player .Photo {
+  height: 56px;
+  margin: 0 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.Settings .Result-player .Icon {
+  height: 40px;
+  margin-top: 8px;
+  display: inline-block;
+  vertical-align: top;
+  position: absolute;
+}
+
+.Settings .Result-player .Icon {
+  right: 10px;
+}
+
+.Settings .Results .Result-player .Name {
+  display: inline-block;
+  line-height: 50px;
+  margin: 6px 0 0 0;
+  vertical-align: top;
+  max-width: 144px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+}
+
+.Settings .Customize {
+  position: absolute;
+  width: 100%;
+  bottom: 5px;
+}
+
+.Settings .Menu {
+  margin: 0;
+  box-sizing: border-box;
+  width: 162px;
+  line-height: 56px;
+  height: 56px;
+  display: inline-block;
+  background: #fafafa;
+  border-radius: 3px;
+  padding: 0 20px;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  text-align: center;
+  transform-origin: bottom left;
+  transition: 0.3s transform ease-in-out;
+  will-change: transform;
+  -webkit-tap-highlight-color: rgba(104, 27, 39, 0.1);
+}
+
+.Settings .Menu .Selected {
+  margin: 0;
+  transition: 0.3s transform ease-in-out;
+}
+
+.Settings .Menu.expanded {
+  border-radius: 0 0 3px 3px;
+}
+
+.Settings .Menu.expanded .Selected {
+  margin: 0;
+}
+
+.Settings .Menu .Options {
+  display: flex;
+  flex-direction: column-reverse;
+  transform-origin: bottom center;
+  width: 162px;
+  border-radius: 3px 3px 0 0;  
+  position: absolute;
+  left: 0;
+  background: #fafafa;
+  bottom: 56px;
+  overflow: hidden;
+  margin: 0;
+  transition: 0.3s transform ease-in-out;
+  will-change: transform;
+  transform: scaleY(0);
+  /* box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.06); */
+}
+
+.Settings .Menu.expanded .Options {
+  transform: scaleY(1);
+}
+
+.Settings .Menu .Options div:not(:last-child) {
+  background: #fafafa;
+  height: 56px;
+  width: 162px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.Settings .Menu .Options div:first-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.Settings .Menu .Options div:hover {
+  background: #ececec;
+}
+
+.Settings .Menu.Tactic {
+  position: relative;
+}
+
+.Settings .Menu.Pitch-style {
+  position: absolute;
+  right: 0;
+}
+
+.Settings .CTA {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  line-height: 56px;
+  text-align: center;
+  background: #fafafa;
+  border-radius: 3px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.95);
+  cursor: pointer;
+  box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.06);
+}
+
+.Pitch {
+  position: relative;
+  width: 540px;
+  height: 540px;
+  background: #2E7D32;
+  box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.06);
+  perspective: 800px;
+  overflow: hidden;
+}
+
+.Pitch > div {
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 5%, rgba(255, 255, 255, 0) 100%);
+}
+
+.Pitch .Outlines {
+  position: absolute;
+  display: block;
+  transform-origin: bottom center;
+  transform: scale(1.41);
+  pointer-events: none;
+  bottom: -13%;
+  left: 5%;
+  width: 90%;
+  height: 76%;
+  user-select: none;
+}
+
+.Pitch .Signature {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(0, 0, 0, 0.95);
+  text-align: center;
+  font-size: 12px;
+  width: 20%;
+  line-height: 140%;
+  display: block;
+  margin: 0 auto;
+  user-select: none;
+}
+
+.Trash {
+  position: absolute;
+  top: 5%;
+  width: 70%;
+  margin: 0 15%;
+  background: #681b27;
+  border-radius: 3px;
+  z-index: 300;
+  line-height: 50px;
+  text-align: center;
+  font-size: 16px;
+  display: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.Trash.visible {
+  display: block;
+}
+
+.Trash.active {
+  background: #000;
+}
+
+.Pitch .LineupName {
+  font-family: 'saira condensed', Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  z-index: 100;
+  width: 70%;
+  font-weight: 800;
+  top: 5%;
+  text-align: center;
+  position: absolute;
+  text-transform: uppercase;
+  margin: 0 15%;
+  line-height: 50px;
+  user-select: none;
+}
+
+.Pitch .EditLineupName {
+  font-family: 'saira condensed', Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  text-transform: uppercase;
+  position: absolute;
+  z-index: 200;
+  background: #fff;
+  color: #000;
+  top: 5%;
+  border: 0;
+  padding: 0;
+  display: block;
+  margin: 0 15%;
+  border-radius: 5px;
+  line-height: 50px;
+  width: 70%;
+  text-align: center;
+  opacity: 0;
+  resize: none;
+}
+
+.Pitch .EditLineupName:hover {
+  opacity: 1;
+}
+
+.Pitch .PositionIndicator {
+  position: absolute;
+  width: 6%;
+  height: 6%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%) rotateX(45deg);
+}
+
+.grabbable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.PlayerCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 17%;
+  height: 17.5%;
+  z-index: 300;
+  position: absolute;
+  text-align: center;
+  cursor: move;
+  will-change: transform;
+  border-radius: 5px;
+  font-family: 'saira condensed', Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  transition: opacity 0.3s ease-in-out;
+  user-select: none;
+}
+
+.PlayerCard.Selected {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+.PlayerCard .Portrait {
+  width: 80%;
+  height: auto;
+  border-bottom: 2px solid white;
+  user-select: none;
+}
+
+.PlayerCard p {
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  margin: 0;
+  font-size: 16px;
+  user-select: none;
+}
+
+.disabled {
+  cursor: default !important;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 910px) {
+
+  h1 {
+    font-size: 35px;
+    margin: 8px auto;
+  }
+
+  .App {
+    top: 61px;
+    transform: translate(-50%, 0);
+    width: 100vw;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: start;
+    align-content: center;
+    height: calc(100vh - 61px);
+  }
+
+  .App .Settings {
+    width: 100%;
+    max-width: 100vw;
+    z-index: 100;
+    transform: translate(50%);
+    pointer-events: none;
+  }
+
+  input.Search-player {
+    position: absolute;
+    z-index: 100;
+    pointer-events: auto;
+    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.06);
+  }
+
+  .Settings .Results {
+    top: 50px;
+    pointer-events: auto;
+  }
+
+  .Settings > div {
+    position: absolute;
+    left: 0;
+    width: calc(100% - 20px);
+    margin: 0 10px;
+  }
+
+  .Settings .Results {
+    position: absolute;
+    width: 100%;
+    z-index: 500;
+  }
+
+  .Settings .Customize {
+    bottom: unset;
+    left: 0;
+    top: calc(100vw + 56px);
+    margin: 0;
+    width: 100%;
+    pointer-events: auto;
+  }
+
+  .Settings .Customize .Menu{
+    width: calc(50% - 15px);
+    margin: 10px;
+    height: 45px;
+    line-height: 45px;
+  }
+
+  .Settings .Customize .Menu .Options {
+    bottom: 45px;
+  }
+
+  .Settings .Customize .Options, .Settings .Customize .Options div {
+    width: 100% !important;
+  }
+
+  .Settings .Customize .Menu .Options div, .Menu .Selected, .Search-player, .Result-player {
+    height: 45px !important;
+    line-height: 45px;
+  }
+
+  .Settings .Results .Result-player .Status {
+    height: 45px;
+    line-height: 45px;
+  }
+
+  .Settings .Results .Result-player .Name {
+    margin: 0;
+    height: 45px;
+    line-height: 45px;
+  }
+
+  .Settings .Results .Result-player .Photo {
+    height: 45px;
+  }
+
+  .Settings .Results .Result-player .Icon {
+    height: 35px;
+    margin-top: 5px;
+  }
+
+  .Settings .CTA {
+    height: 45px;
+    line-height: 45px;
+    margin: 0 10px;
+    width: calc(100% - 20px);
+  }
+
+  .Pitch {
+    width: 100vw;
+    height: 100vw;
+    transform: translate(-50%, 56px);
+  }
+
+  .Pitch.Transform {
+    transform: translate(-50%, 56px) !important;
+  }
+
+  .Pitch .Signature {
+    font-size: 2.5vw;
+    width: 20vw;
+  }
+
+  .Pitch .Trash {
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 5%;
+  }
+
+  .Pitch .LineupName {
+    top: 3.5%;
+    font-size: 8vw;
+  }
+
+  .Pitch .EditLineupName {
+    top: 3.5%;
+    font-size: 8vw;
+  }
+
+  .Pitch .PositionIndicator {
+    width: 4%;
+    height: 4%;
+  }
+
+  .PlayerCard {
+    height: 19%;
+  }
+
+  .PlayerCard:hover {
+    background: transparent;
+  }
+
+  .PlayerCard.Selected {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .PlayerCard p {
+    font-size: 2.7vw;
+  }
+}
+
+/* TABLET LAYOUT */
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .App {
+    width: 580px;
+  }
+
+  .App .Settings {
+    position: absolute;
+    left: 0;
+    transform: unset;
+  }
+
+  .App .Settings .Customize {
+    top: calc(580px + 64px);
+  }
+
+  .App .Pitch {
+    width: 100%;
+    height: 580px;
+    transform: translate(0%, 65px);
+  }
+
+  .Pitch .Signature {
+    font-size: 15px;
+  }
+
+  .App .Pitch .LineupName, .EditLineupName {
+    font-size: 48px !important;
+    top: 6% !important;
+  }
+
+  .App .Pitch .PlayerCard p {
+    font-size: 17px;
+  }
+
+  .App .Pitch.Transform {
+    transform: translate(0, 65px) !important;
+  }
+}
