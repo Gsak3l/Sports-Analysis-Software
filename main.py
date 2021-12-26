@@ -11,6 +11,7 @@ import save_data
 import string_manipulation
 import youtube_downloader
 import file_manipulation
+import test
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from modules import *
@@ -55,7 +56,7 @@ class MainWindow(QMainWindow):
 
         # SET UI DEFINITIONS
         # ///////////////////////////////////////////////////////////////
-        UIFunctions.uiDefinitions(self)
+        # UIFunctions.uiDefinitions(self)
 
         # QTableWidget PARAMETERS
         # ///////////////////////////////////////////////////////////////
@@ -145,6 +146,7 @@ class MainWindow(QMainWindow):
                                                     widgets.local_video_file_name.text())
                 # NEXT PAGE BUTTON
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
+
             else:
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')
