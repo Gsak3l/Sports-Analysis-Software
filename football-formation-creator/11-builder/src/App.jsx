@@ -69,12 +69,12 @@ export default class App extends React.Component {
       name.style.fontSize = `${window.getComputedStyle(name).fontSize} !important`
     }
     domPitch.prepend(fonts.fontsStyle)
-    computedToInline(domPitch, {recursive: true})
+    computedToInline(domPitch, { recursive: true })
     // Revert Pitch transform back to normal
     if (window.innerWidth <= 910) {
       domPitch.classList.add("Transform")
     }
-    rasterizeHTML.drawDocument(domPitch, {zoom: 2})
+    rasterizeHTML.drawDocument(domPitch, { zoom: 2 })
       .then(renderResult => {
         // Create canvas
         const context = canvas.getContext("2d")
@@ -99,6 +99,23 @@ export default class App extends React.Component {
           `
         })
       })
+    this.exportDataToJson()
+  }
+
+  exportDataToJson = () => {
+    var player_name = '';
+    var player_position = ''
+    for (var i = 0; i < document.getElementsByClassName('PlayerCard').length; i++) {
+      player_name = document.getElementsByClassName('PlayerCard')[i].getElementsByTagName('p')[0].innerHTML;
+      console.log(player_name)
+      player_position = document.getElementsByClassName('PlayerCard')[i].outerHTML;
+      // I literally have no idea what I am doing
+      
+      var matches = player_position.match('"([^"]*)"').input;
+      // for (var j = 0; j < matches.length; j++) {
+      //   console.log(matches[j])
+      // }
+    }
   }
 
   markDownloadAsObsolete = () => {
@@ -191,7 +208,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div className="App">
         <div className="Settings">
           <Search
