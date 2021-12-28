@@ -74,6 +74,7 @@ export default class App extends React.Component {
     if (window.innerWidth <= 910) {
       domPitch.classList.add("Transform")
     }
+    var yannis = this.exportDataToJson()
     rasterizeHTML.drawDocument(domPitch, { zoom: 2 })
       .then(renderResult => {
         // Create canvas
@@ -82,7 +83,7 @@ export default class App extends React.Component {
         // Prepare download
         this.setState({
           downloadStatus: "download",
-          downloadLink: canvas.toDataURL("image/png")
+          downloadLink: yannis
         })
         // Fix hover style on textedit
         const editLineupName = document.querySelector(".Pitch .EditLineupName")
@@ -99,23 +100,22 @@ export default class App extends React.Component {
           `
         })
       })
-    this.exportDataToJson()
   }
 
   exportDataToJson = () => {
-    var player_name = '';
-    var player_position = ''
-    for (var i = 0; i < document.getElementsByClassName('PlayerCard').length; i++) {
-      player_name = document.getElementsByClassName('PlayerCard')[i].getElementsByTagName('p')[0].innerHTML;
-      console.log(player_name)
-      player_position = document.getElementsByClassName('PlayerCard')[i].outerHTML;
-      // I literally have no idea what I am doing
-      
-      var matches = player_position.match('"([^"]*)"').input;
-      // for (var j = 0; j < matches.length; j++) {
-      //   console.log(matches[j])
-      // }
-    }
+    console.log(this.state.selectedPlayers)
+    
+    var players = this.state.selectedPlayers
+
+    var string = JSON.stringify(players);
+
+    // create a blob object representing the data as a JSON string
+    var file = new Blob([string], {
+      type: 'application/json'
+    });
+
+    // trigger a click event on an <a> tag to open the file explorer
+    return URL.createObjectURL(file);
   }
 
   markDownloadAsObsolete = () => {

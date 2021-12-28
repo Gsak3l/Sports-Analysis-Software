@@ -3,6 +3,8 @@ import ReactDOM from "react-dom"
 import PlayerCard from "./PlayerCard.jsx"
 import PositionIndicator from "./PositionIndicator.jsx"
 
+import { CSVLink } from 'react-csv'
+
 // Cache pitch image for offline use
 import pitchImage from "../data/pitch.svg"
 
@@ -68,7 +70,7 @@ export default class Pitch extends React.Component {
   unoccupyPosition = position => {
     let newPositions = this.state.occupiedPositions
     // Delete selected position from array
-    for (let i=0; i<this.state.occupiedPositions.length; i++) {
+    for (let i = 0; i < this.state.occupiedPositions.length; i++) {
       if (this.state.occupiedPositions[i] === position) {
         newPositions.splice(i, 1)
       }
@@ -102,7 +104,7 @@ export default class Pitch extends React.Component {
     // Create skeleton
     return (
       <div className="Pitch">
-        <img className="Outlines" src={pitchImage} alt="Pitch outlines"/>
+        <img className="Outlines" src={pitchImage} alt="Pitch outlines" />
         <div>
           <div className="Trash">Drag out of pitch to remove player</div>
           <textarea
@@ -115,11 +117,11 @@ export default class Pitch extends React.Component {
               e.preventDefault()
               this.showNameInput()
             }}
-            onMouseLeave={() => {this.props.hideNameInput()}}
-            onTouchStart={() => {this.showNameInput()}}
+            onMouseLeave={() => { this.props.hideNameInput() }}
+            onTouchStart={() => { this.showNameInput() }}
           />
           <h2 className="LineupName">{this.state.lineupName}</h2>
-          { Object.keys(this.props.tactic).map(positionKey => {
+          {Object.keys(this.props.tactic).map(positionKey => {
             return (
               <PositionIndicator
                 key={positionKey}
@@ -127,13 +129,13 @@ export default class Pitch extends React.Component {
                 leftValue={`${this.props.tactic[positionKey].x}%`}
                 topValue={`${this.props.tactic[positionKey].y}%`}
                 occupied={
-                  typeof(this.state.occupiedPositions.find(e => e===positionKey)) !== "undefined"
+                  typeof (this.state.occupiedPositions.find(e => e === positionKey)) !== "undefined"
                 }
               />
             )
-          }) }
-          { this.props.playersList.map(player => {
-            return(
+          })}
+          {this.props.playersList.map(player => {
+            return (
               <PlayerCard
                 player={player}
                 key={player.id}
@@ -149,9 +151,9 @@ export default class Pitch extends React.Component {
                 portraitPlaceholder={this.props.portraitPlaceholder}
               />
             )
-          }) }
+          })}
         </div>
-      </div>
+      </div >
     )
   }
 }

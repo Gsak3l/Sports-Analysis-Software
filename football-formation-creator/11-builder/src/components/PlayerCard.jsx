@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
+var labell = ''
 export default class PlayerCard extends React.Component {
   constructor(props) {
     super(props)
@@ -10,7 +11,7 @@ export default class PlayerCard extends React.Component {
       differenceY: 0,
       originX: 0,
       originY: 0,
-      lastTouch: {x: 0, y: 0},
+      lastTouch: { x: 0, y: 0 },
       picture: this.props.portraitPlaceholder,
       pictureBackup: this.props.player.photo
     }
@@ -52,7 +53,7 @@ export default class PlayerCard extends React.Component {
           }
           if (isAvailable) {
             // Position player where he belongs
-            this.props.positionPlayer(position, `Player${ this.props.player.id }`)
+            this.props.positionPlayer(position, `Player${this.props.player.id}`)
             break mainLoop
           } else if (i === this.props.player.positions.length - 1) {
             // Last loop, add player anyway
@@ -132,7 +133,7 @@ export default class PlayerCard extends React.Component {
     let positionIndex = -1
     const keys = Object.keys(this.props.tactic)
     // Find index of preferred position
-    for (let i=0; i<keys.length; i++) {
+    for (let i = 0; i < keys.length; i++) {
       if (preferredPosition === keys[i]) {
         positionIndex = i
       }
@@ -167,10 +168,10 @@ export default class PlayerCard extends React.Component {
       previousMoveX: this.state.previousMoveX,
       previousMoveY: this.state.previousMoveY
     })
-    if (this.state.previousMoveX === undefined ) {
+    if (this.state.previousMoveX === undefined) {
       this.setState({ previousMoveX: 0 })
     }
-    if (this.state.previousMoveY === undefined ) {
+    if (this.state.previousMoveY === undefined) {
       this.setState({ previousMoveY: 0 })
     }
     ReactDOM.findDOMNode(this).style.zIndex = "400"
@@ -229,6 +230,7 @@ export default class PlayerCard extends React.Component {
             // Do the reverse travel with the other player
             this.props.unoccupyPosition(indicator)
             const cardToMove = document.querySelector(`[data-active-position='${indicator}']`)
+            labell = cardToMove
             this.props.positionPlayer(activePosition, cardToMove.classList[1])
           } else {
             // Prepare next drag
@@ -287,16 +289,17 @@ export default class PlayerCard extends React.Component {
   }
 
   render() {
-    return(
+    document.getelement
+    return (
       <div
         className={`PlayerCard Player${this.props.player.id}`}
         key={this.props.player.id}
       >
         <img
           className="Portrait"
-          src={ this.state.picture }
-          alt={ this.props.player.name }
-          onDragStart={ e => { e.preventDefault() } }
+          src={this.state.picture}
+          alt={this.props.player.name}
+          onDragStart={e => { e.preventDefault() }}
         />
         <p>{this.props.player.shortName}</p>
       </div>

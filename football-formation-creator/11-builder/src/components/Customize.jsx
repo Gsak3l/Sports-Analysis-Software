@@ -5,7 +5,7 @@ export default class Customize extends React.Component {
     super(props)
     this.state = { pitchColor: 'green' }
   }
-  
+
   toggleTacticMenu = () => {
     const tacticButton = document.querySelector('.Tactic')
     if (tacticButton.classList.contains('expanded')) {
@@ -17,7 +17,7 @@ export default class Customize extends React.Component {
       this.outsideClickHandler(tacticButton)
     }
   }
-  
+
   toggleColorMenu = () => {
     const colorButton = document.querySelector('.Pitch-style')
     if (colorButton.classList.contains('expanded')) {
@@ -91,15 +91,15 @@ export default class Customize extends React.Component {
       DownloadButton = <a
         title="Generate lineup"
         className="CTA"
-        download="11builder"
+        download="data.json"
         href={this.props.downloadLink}
-      >Donwload lineup as a PNG</a>
+      >Done!</a>
     }
-    return(
+    return (
       <div className="Customize">
         <div
           className="Tactic Menu"
-          onClick={ () => {this.toggleTacticMenu()} }
+          onClick={() => { this.toggleTacticMenu() }}
         >
           <div className="Options">
             <div data-tactic="4-3-3" onClick={() => { this.props.setActiveTactic('4-3-3') }}>4-3-3</div>
@@ -111,7 +111,7 @@ export default class Customize extends React.Component {
         </div>
         <div
           className="Pitch-style Menu"
-          onClick={() => {this.toggleColorMenu()}}
+          onClick={() => { this.toggleColorMenu() }}
         >
           <div className="Options">
             <div data-tactic="4-3-3" onClick={() => { this.setColor('green') }}>Green</div>
