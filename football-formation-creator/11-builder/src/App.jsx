@@ -103,12 +103,8 @@ export default class App extends React.Component {
   }
 
   exportDataToJson = () => {
-    console.log(this.state.selectedPlayers)
-    
     var players = this.state.selectedPlayers
-
     var string = JSON.stringify(players);
-
     // create a blob object representing the data as a JSON string
     var file = new Blob([string], {
       type: 'application/json'

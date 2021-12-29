@@ -11,7 +11,6 @@ import save_data
 import string_manipulation
 import youtube_downloader
 import file_manipulation
-import test
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from modules import *
@@ -19,6 +18,7 @@ from widgets import *
 from PySide6.QtCore import *
 from PySide6.QtWidgets import *
 from PySide6.QtWebEngineWidgets import *
+from PySide6.QtWebEngineCore import *
 
 os.environ["QT_FONT_DPI"] = "96"  # FIX Problem for High DPI and Scale above 100%
 
@@ -71,6 +71,8 @@ class MainWindow(QMainWindow):
         # TACTICS PAGE
         # widgets.tactics_1.textChanged.connect(self.textChanged)
         # widgets.tactics_2.textChanged.connect(self.textChanged)
+        widgets.formation.page().profile().setDownloadPath(youtube_downloader.file_path())
+        widgets.formation.page().profile().downloadRequested.connect(self.on_downloadRequested)
         widgets.formation.load(QUrl("file:///football-formation-creator/11-builder/build/index.html"))
 
         # -------------------------------------------------------------------------------------------------------------
@@ -199,6 +201,10 @@ class MainWindow(QMainWindow):
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
+
+    # DOWNLOADING WITHOUT DIALOG QTWEBENGINE
+    def on_downloadRequested(self, download):
+        download.accept()
 
     # RESIZE EVENTS
     # ///////////////////////////////////////////////////////////////
