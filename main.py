@@ -2,15 +2,15 @@
 import sys
 import os
 import platform
-
-# IMPORT PYTHON CLASSES
 import time
 
+# IMPORT PYTHON CLASSES
 import string_manipulation
 import save_data
 import string_manipulation
 import youtube_downloader
 import file_manipulation
+import filesystem_changes
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from modules import *
@@ -58,6 +58,11 @@ class MainWindow(QMainWindow):
         # ///////////////////////////////////////////////////////////////
         UIFunctions.uiDefinitions(self)
 
+        # CREATING FOLDERS WHERE DATA WILL BE SAVED
+        # ///////////////////////////////////////////////////////////////
+        filesystem_changes.create_root_save_directory()
+        path = filesystem_changes.create_sub_save_folder()
+
         # QTableWidget PARAMETERS
         # ///////////////////////////////////////////////////////////////
         # local_video_page.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
@@ -69,9 +74,8 @@ class MainWindow(QMainWindow):
         widgets.local_next_page_button.clicked.connect(self.buttonClick)
 
         # TACTICS PAGE
-        # widgets.tactics_1.textChanged.connect(self.textChanged)
-        # widgets.tactics_2.textChanged.connect(self.textChanged)
-        widgets.formation.page().profile().setDownloadPath(youtube_downloader.file_path())
+        # saving the information for the formaition/tactics/lineup website to a json file
+        widgets.formation.page().profile().setDownloadPath(path)
         widgets.formation.page().profile().downloadRequested.connect(self.on_downloadRequested)
         widgets.formation.load(QUrl("file:///football-formation-creator/11-builder/build/index.html"))
 
@@ -205,6 +209,7 @@ class MainWindow(QMainWindow):
     # DOWNLOADING WITHOUT DIALOG QTWEBENGINE
     def on_downloadRequested(self, download):
         download.accept()
+
 
     # RESIZE EVENTS
     # ///////////////////////////////////////////////////////////////

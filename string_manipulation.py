@@ -26,7 +26,7 @@ def qdate_to_date(calendar_date):
     return calendar_date[calendar_date.find('(') + 1:calendar_date.find(')')]
 
 
-# from \\ and \\ to /
+# from \\ and \ to /
 def double_backslash_to_slash(text):
     text = text.replace('\\\\', '/')
     text = text.replace('\\', '/')
