@@ -1290,6 +1290,26 @@ class Ui_MainWindow(object):
 
         self.verticalLayout2.addWidget(self.formation)
 
+        self.horizontalLayout_17 = QHBoxLayout()
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.formation_previous_page_button = QPushButton(self.tactics_page)
+        self.formation_previous_page_button.setObjectName(u"formation_previous_page_button")
+        self.formation_previous_page_button.setMaximumSize(QSize(80, 80))
+        self.formation_previous_page_button.setIcon(icon4)
+        self.formation_previous_page_button.setIconSize(QSize(64, 64))
+
+        self.horizontalLayout_17.addWidget(self.formation_previous_page_button, 0, Qt.AlignLeft)
+
+        self.formation_next_page_button = QPushButton(self.tactics_page)
+        self.formation_next_page_button.setObjectName(u"formation_next_page_button")
+        self.formation_next_page_button.setMaximumSize(QSize(80, 80))
+        self.formation_next_page_button.setIcon(icon5)
+        self.formation_next_page_button.setIconSize(QSize(64, 64))
+
+        self.horizontalLayout_17.addWidget(self.formation_next_page_button, 0, Qt.AlignRight)
+
+        self.verticalLayout2.addLayout(self.horizontalLayout_17)
+
         self.stackedWidget.addWidget(self.tactics_page)
         self.video_option_menu = QWidget()
         self.video_option_menu.setObjectName(u"video_option_menu")
@@ -1392,7 +1412,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(3)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1480,6 +1500,8 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", u"More details about the game", None))
         self.cloud_previous_page_button.setText("")
         self.cloud_next_page_button.setText("")
+        self.formation_previous_page_button.setText("")
+        self.formation_next_page_button.setText("")
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")

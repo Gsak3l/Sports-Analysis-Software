@@ -18,7 +18,7 @@ from widgets import *
 from PySide6.QtCore import *
 from PySide6.QtWidgets import *
 from PySide6.QtWebEngineWidgets import *
-from PySide6.QtWebEngineCore import *
+from PySide6.QtWebEngineCore import QWebEngineProfile
 
 os.environ["QT_FONT_DPI"] = "96"  # FIX Problem for High DPI and Scale above 100%
 
@@ -74,10 +74,13 @@ class MainWindow(QMainWindow):
         widgets.local_next_page_button.clicked.connect(self.buttonClick)
 
         # TACTICS PAGE
-        # saving the information for the formaition/tactics/lineup website to a json file
+        # saving the information for the formation/tactics/lineup website to a json file
         widgets.formation.page().profile().setDownloadPath(path)
         widgets.formation.page().profile().downloadRequested.connect(self.on_downloadRequested)
         widgets.formation.load(QUrl("file:///football-formation-creator/11-builder/build/index.html"))
+        # BUTTONS
+        widgets.formation_next_page_button.click.connect(self.buttonClick)
+        widgets.formation_previous_page_button.click.connect(self.buttonClick)
 
         # -------------------------------------------------------------------------------------------------------------
 
@@ -209,7 +212,6 @@ class MainWindow(QMainWindow):
     # DOWNLOADING WITHOUT DIALOG QTWEBENGINE
     def on_downloadRequested(self, download):
         download.accept()
-
 
     # RESIZE EVENTS
     # ///////////////////////////////////////////////////////////////

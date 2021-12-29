@@ -89,9 +89,9 @@ export default class Customize extends React.Component {
       >Creating lineup...</a>
     } else {
       DownloadButton = <a
-        title="Generate lineup"
+        title="Choose this Lineup"
         className="CTA"
-        download="data.json"
+        download="lineup.json"
         href={this.props.downloadLink}
       >Done!</a>
     }
