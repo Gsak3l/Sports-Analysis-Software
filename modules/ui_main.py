@@ -683,17 +683,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addWidget(self.btn_import_video)
 
-        self.btn_formation_page = QPushButton(self.topMenu)
-        self.btn_formation_page.setObjectName(u"btn_formation_page")
-        sizePolicy.setHeightForWidth(self.btn_formation_page.sizePolicy().hasHeightForWidth())
-        self.btn_formation_page.setSizePolicy(sizePolicy)
-        self.btn_formation_page.setMinimumSize(QSize(0, 45))
-        self.btn_formation_page.setFont(font)
-        self.btn_formation_page.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_formation_page.setLayoutDirection(Qt.LeftToRight)
-        self.btn_formation_page.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-people.png);")
+        self.btn_formation = QPushButton(self.topMenu)
+        self.btn_formation.setObjectName(u"btn_formation")
+        sizePolicy.setHeightForWidth(self.btn_formation.sizePolicy().hasHeightForWidth())
+        self.btn_formation.setSizePolicy(sizePolicy)
+        self.btn_formation.setMinimumSize(QSize(0, 45))
+        self.btn_formation.setFont(font)
+        self.btn_formation.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_formation.setLayoutDirection(Qt.LeftToRight)
+        self.btn_formation.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-people.png);")
 
-        self.verticalLayout_8.addWidget(self.btn_formation_page)
+        self.verticalLayout_8.addWidget(self.btn_formation)
 
         self.verticalMenuLayout.addWidget(self.topMenu, 0, Qt.AlignTop)
 
@@ -1437,7 +1437,7 @@ class Ui_MainWindow(object):
         self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"Hide", None))
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"Home", None))
         self.btn_import_video.setText(QCoreApplication.translate("MainWindow", u"Import Video", None))
-        self.btn_formation_page.setText(QCoreApplication.translate("MainWindow", u"Lineup Builder", None))
+        self.btn_formation.setText(QCoreApplication.translate("MainWindow", u"Lineup Builder", None))
         self.extraLabel.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
         # if QT_CONFIG(tooltip)
         self.extraCloseColumnBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Close left box", None))

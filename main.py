@@ -71,7 +71,7 @@ class MainWindow(QMainWindow):
         # LEFT MENU BUTTONS
         widgets.btn_home.clicked.connect(self.buttonClick)
         widgets.btn_import_video.clicked.connect(self.buttonClick)
-        widgets.btn_formation_page.clicked.connect(self.buttonClick)
+        widgets.btn_formation.clicked.connect(self.buttonClick)
 
         # LOCAL VIDEO PAGE BUTTON CONNECTION
         widgets.btn_local_footage.clicked.connect(self.buttonClick)
@@ -138,7 +138,7 @@ class MainWindow(QMainWindow):
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
 
         # LINEUP BUILDER BUTTON
-        elif btnName == 'btn_formation_page':
+        elif btnName == 'btn_formation':
             widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)  # SET PAGE
             UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
@@ -164,10 +164,8 @@ class MainWindow(QMainWindow):
                 # NEXT PAGE BUTTON
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
                 # ACTIVE FORMATION MENU
-                UIFunctions.resetStyle(self, widgets.btn_formation_page.objectName())
-                widgets.btn_formation_page.setStyleSheet(
-                    UIFunctions.selectMenu(widgets.btn_formation_page.styleSheet())
-                )
+                UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
+                widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
             else:
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')
@@ -211,10 +209,8 @@ class MainWindow(QMainWindow):
                 # NEXT PAGE BUTTON
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
                 # ACTIVE FORMATION MENU
-                UIFunctions.resetStyle(self, widgets.btn_formation_page.objectName())
-                widgets.btn_formation_page.setStyleSheet(
-                    UIFunctions.selectMenu(widgets.btn_formation_page.styleSheet())
-                )
+                UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
+                widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
             else:
                 widgets.cloud_video_file_name.setText('')
                 widgets.cloud_video_file_name.setPlaceholderText(
