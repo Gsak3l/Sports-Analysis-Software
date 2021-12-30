@@ -208,12 +208,12 @@ class MainWindow(QMainWindow):
         # -------------------------------------------------------------------------------------------------------------
         # FORMATION - LINEUP BUILDER BUTTONS
         elif btnName == 'formation_next_page_button':
-            save_data.fix_one_line_json(filesystem_changes.find_last_created_folder(), 'lineup.json')
+            save_data.json_data_cleanup(filesystem_changes.find_last_created_folder(), 'lineup.json')
+            # PRINT BTN NAME
+            print(f'Button {btnName} pressed!')
 
-        # PRINT BTN NAME
-        print(f'Button {btnName} pressed!')
+            # DOWNLOADING WITHOUT DIALOG QTWEBENGINE
 
-    # DOWNLOADING WITHOUT DIALOG QTWEBENGINE
     def on_downloadRequested(self, download):
         download.accept()
 
