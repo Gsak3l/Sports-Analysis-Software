@@ -50,6 +50,3 @@ def downloads_path():
     home = os.path.expanduser('~')
     download_path = os.path.join(home, 'Downloads')
     return download_path
-
-
-find_last_created_folder()

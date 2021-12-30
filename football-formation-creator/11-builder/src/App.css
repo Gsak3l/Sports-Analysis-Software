@@ -4,7 +4,7 @@ body {
   font-family: "open sans", Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #681b27;
+  background: #282c34;
   color: #fafafa;
   width: 100%;
 }
@@ -257,7 +257,7 @@ h1 {
   top: 5%;
   width: 70%;
   margin: 0 15%;
-  background: #681b27;
+  background: #282c34;
   border-radius: 3px;
   z-index: 300;
   line-height: 50px;

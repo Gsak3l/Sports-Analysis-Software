@@ -53,12 +53,10 @@ def save_readable_json(x_json):
 
 
 # CONVERTING A ONE-LINE JSON INTO VISIBLE JSON
-def fix_one_line_json(file_path):
-    file_path = string_manipulation.double_backslash_to_slash(file_path)
-    print(file_path)
-    with open(file_path) as f:
+def fix_one_line_json(folder_path, file_name):
+    folder_path = string_manipulation.double_backslash_to_slash(folder_path)
+    with open(folder_path + file_name) as f:
         x_json = json.load(f)
-    with open(file_path, 'w', encoding='utf-8') as f:
+    with open(folder_path + file_name, 'w', encoding='utf-8') as f:
         json.dump(x_json, f, ensure_ascii=False, indent=4)
     f.close()
-

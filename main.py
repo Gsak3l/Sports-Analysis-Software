@@ -20,7 +20,7 @@ from PySide6.QtWidgets import *
 from PySide6.QtWebEngineWidgets import *
 from PySide6.QtWebEngineCore import QWebEngineProfile
 
-os.environ["QT_FONT_DPI"] = "96"  # FIX Problem for High DPI and Scale above 100%
+os.environ['QT_FONT_DPI'] = '96'  # FIX Problem for High DPI and Scale above 100%
 
 # SET AS GLOBAL WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -32,39 +32,39 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
 
         # SET AS GLOBAL WIDGETS
-        # ///////////////////////////////////////////////////////////////
+        # -------------------------------------------------------------------------------------------------------------
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         global widgets
         widgets = self.ui
 
-        # USE CUSTOM TITLE BAR | USE AS "False" FOR MAC OR LINUX
-        # ///////////////////////////////////////////////////////////////
+        # USE CUSTOM TITLE BAR | USE AS 'False' FOR MAC OR LINUX
+        # -------------------------------------------------------------------------------------------------------------
         Settings.ENABLE_CUSTOM_TITLE_BAR = True
 
         # APP NAME
-        # ///////////////////////////////////////////////////////////////
-        title = "Sports Analysis App Name"
-        description = "Sports Analysis Slogan"
+        # -------------------------------------------------------------------------------------------------------------
+        title = 'Sports Analysis App Name'
+        description = 'Sports Analysis Slogan'
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
 
         # TOGGLE MENU
-        # ///////////////////////////////////////////////////////////////
+        # -------------------------------------------------------------------------------------------------------------
         widgets.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
 
         # SET UI DEFINITIONS
-        # ///////////////////////////////////////////////////////////////
+        # -------------------------------------------------------------------------------------------------------------
         UIFunctions.uiDefinitions(self)
 
         # CREATING FOLDERS WHERE DATA WILL BE SAVED
-        # ///////////////////////////////////////////////////////////////
+        # -------------------------------------------------------------------------------------------------------------
         filesystem_changes.create_root_save_directory()
         path = filesystem_changes.create_sub_save_folder()
 
         # QTableWidget PARAMETERS
-        # ///////////////////////////////////////////////////////////////
+        # -------------------------------------------------------------------------------------------------------------
         # local_video_page.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         # LOCAL VIDEO PAGE BUTTON CONNECTION
@@ -77,13 +77,12 @@ class MainWindow(QMainWindow):
         # saving the information for the formation/tactics/lineup website to a json file
         widgets.formation.page().profile().setDownloadPath(path)
         widgets.formation.page().profile().downloadRequested.connect(self.on_downloadRequested)
-        widgets.formation.load(QUrl("file:///football-formation-creator/11-builder/build/index.html"))
+        widgets.formation.load(QUrl('file:///football-formation-creator/11-builder/build/index.html'))
         # BUTTONS
-        widgets.formation_next_page_button.click.connect(self.buttonClick)
-        widgets.formation_previous_page_button.click.connect(self.buttonClick)
+        widgets.formation_next_page_button.clicked.connect(self.buttonClick)
+        widgets.formation_previous_page_button.clicked.connect(self.buttonClick)
 
         # -------------------------------------------------------------------------------------------------------------
-
         # CLOUD VIDEO PAGE BUTTON CONNECTION
         widgets.btn_cloud_footage.clicked.connect(self.buttonClick)
         widgets.cloud_video_file_button.clicked.connect(self.buttonClick)
@@ -94,15 +93,16 @@ class MainWindow(QMainWindow):
         widgets.btn_home.clicked.connect(self.buttonClick)
         widgets.btn_import_video.clicked.connect(self.buttonClick)
 
+        # -------------------------------------------------------------------------------------------------------------
         # SHOW APP
-        # ///////////////////////////////////////////////////////////////
         self.show()
 
+        # -------------------------------------------------------------------------------------------------------------
         # SET CUSTOM THEME
-        # ///////////////////////////////////////////////////////////////
         useCustomTheme = False
-        themeFile = "themes/py_dracula_dark.qss"
+        themeFile = 'themes/py_dracula_dark.qss'
 
+        # -------------------------------------------------------------------------------------------------------------
         # SET THEME AND HACKS
         if useCustomTheme:
             # LOAD AND APPLY STYLE
@@ -111,11 +111,12 @@ class MainWindow(QMainWindow):
             # SET HACKS
             AppFunctions.setThemeHack(self)
 
+        # -------------------------------------------------------------------------------------------------------------
         # SET HOME PAGE AND SELECT MENU
-        # ///////////////////////////////////////////////////////////////
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
         widgets.stackedWidget.setCurrentWidget(widgets.home)
 
+    # -----------------------------------------------------------------------------------------------------------------
     # BUTTONS CLICK
     def buttonClick(self):
         # GET BUTTON CLICKED
@@ -123,29 +124,27 @@ class MainWindow(QMainWindow):
         btnName = btn.objectName()
 
         # RIGHT MENU BUTTONS
-        if btnName == "btn_home":  # HOME PAGE
+        if btnName == 'btn_home':  # HOME PAGE
             widgets.stackedWidget.setCurrentWidget(widgets.home)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        elif btnName == "btn_import_video":  # EMBED VIDEO MENU
+        elif btnName == 'btn_import_video':  # EMBED VIDEO MENU
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)  # SET PAGE
             UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
 
         # -------------------------------------------------------------------------------------------------------------
-
         # LOCALLY EMBED VIDEOS
-
-        elif btnName == "btn_local_footage":  # SHOW THE AVAILABLE OPTIONS FOR LOCAL VIDEO
+        elif btnName == 'btn_local_footage':  # SHOW THE AVAILABLE OPTIONS FOR LOCAL VIDEO
             widgets.stackedWidget.setCurrentWidget(widgets.local_video_page)
 
-        elif btnName == "local_video_file_button":  # OPEN FILE EXPLORER ON WHEN CLICKING THE LOCAL VIDEO IMPORT
+        elif btnName == 'local_video_file_button':  # OPEN FILE EXPLORER ON WHEN CLICKING THE LOCAL VIDEO IMPORT
             fname = QFileDialog.getOpenFileName(self, 'Open Video', 'C:/Users/gsak3/Downloads',
                                                 'MP4 Files (*mp4)')
             widgets.local_video_file_name.setText(fname[0])
 
-        elif btnName == "local_next_page_button":  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
+        elif btnName == 'local_next_page_button':  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
             if save_data.check_if_file_exists(widgets.local_video_file_name.text()):  # FILE VALIDATION FOR THE PATH
                 save_data.save_pre_local_video_data(widgets.local_calendar.selectedDate(),
                                                     widgets.local_sports_type_combobox.currentText(),
@@ -160,17 +159,15 @@ class MainWindow(QMainWindow):
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')
 
-        elif btnName == "local_previous_page_button":  # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
+        elif btnName == 'local_previous_page_button':  # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
 
         # -------------------------------------------------------------------------------------------------------------
-
         # EMBED VIDEO FROM A CLOUD LINK
-
-        elif btnName == "btn_cloud_footage":  # SHOW THE AVAILABLE OPTIONS FOR CLOUD VIDEO
+        elif btnName == 'btn_cloud_footage':  # SHOW THE AVAILABLE OPTIONS FOR CLOUD VIDEO
             widgets.stackedWidget.setCurrentWidget(widgets.cloud_video_page)
 
-        elif btnName == "cloud_video_file_button":  # DOWNLOAD VIDEO BUTTON
+        elif btnName == 'cloud_video_file_button':  # DOWNLOAD VIDEO BUTTON
             # FAKE PROGRESS BAR
             try:
                 widgets.cloud_progress_bar.setTextVisible(True)  # VISIBLE %
@@ -189,7 +186,7 @@ class MainWindow(QMainWindow):
                 widgets.cloud_video_file_name.setPlaceholderText('Please enter a valid URL...')
                 print(e.__cause__)
 
-        elif btnName == "cloud_next_page_button":  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
+        elif btnName == 'cloud_next_page_button':  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
             # FILE VALIDATION FOR THE PATH
             if save_data.check_if_file_exists(widgets.cloud_video_file_name.placeholderText()):
                 save_data.save_pre_local_video_data(widgets.cloud_calendar.selectedDate(),
@@ -201,26 +198,33 @@ class MainWindow(QMainWindow):
                 # NEXT PAGE BUTTON
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
             else:
-                widgets.cloud_video_file_name.setText('Error while validating the existance of the video, please'
-                                                      'try to downloaded again...')
-        elif btnName == "cloud_previous_page_button":
+                widgets.cloud_video_file_name.setText('')
+                widgets.cloud_video_file_name.setPlaceholderText(
+                    'Error while validating the existance of the video, please'
+                    'try to downloaded again...')
+        elif btnName == 'cloud_previous_page_button':
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
 
+        # -------------------------------------------------------------------------------------------------------------
+        # FORMATION - LINEUP BUILDER BUTTONS
+        elif btnName == 'formation_next_page_button':
+            save_data.fix_one_line_json(filesystem_changes.find_last_created_folder(), 'lineup.json')
+
         # PRINT BTN NAME
-        print(f'Button "{btnName}" pressed!')
+        print(f'Button {btnName} pressed!')
 
     # DOWNLOADING WITHOUT DIALOG QTWEBENGINE
     def on_downloadRequested(self, download):
         download.accept()
 
+    # -----------------------------------------------------------------------------------------------------------------
     # RESIZE EVENTS
-    # ///////////////////////////////////////////////////////////////
     def resizeEvent(self, event):
         # Update Size Grips
         UIFunctions.resize_grips(self)
 
+    # -----------------------------------------------------------------------------------------------------------------
     # MOUSE CLICK EVENTS
-    # ///////////////////////////////////////////////////////////////
     def mousePressEvent(self, event):
         # SET DRAG POS WINDOW
         self.dragPos = event.globalPos()
@@ -232,8 +236,8 @@ class MainWindow(QMainWindow):
             print('Mouse click: RIGHT CLICK')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon("icon.ico"))
+    app.setWindowIcon(QIcon('icon.ico'))
     window = MainWindow()
     sys.exit(app.exec_())
