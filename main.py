@@ -67,6 +67,12 @@ class MainWindow(QMainWindow):
         # -------------------------------------------------------------------------------------------------------------
         # local_video_page.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
+        # -------------------------------------------------------------------------------------------------------------
+        # LEFT MENU BUTTONS
+        widgets.btn_home.clicked.connect(self.buttonClick)
+        widgets.btn_import_video.clicked.connect(self.buttonClick)
+        widgets.btn_formation_page.clicked.connect(self.buttonClick)
+
         # LOCAL VIDEO PAGE BUTTON CONNECTION
         widgets.btn_local_footage.clicked.connect(self.buttonClick)
         widgets.local_video_file_button.clicked.connect(self.buttonClick)
@@ -88,10 +94,6 @@ class MainWindow(QMainWindow):
         widgets.cloud_video_file_button.clicked.connect(self.buttonClick)
         widgets.cloud_next_page_button.clicked.connect(self.buttonClick)
         widgets.cloud_previous_page_button.clicked.connect(self.buttonClick)
-
-        # LEFT MENU BUTTONS
-        widgets.btn_home.clicked.connect(self.buttonClick)
-        widgets.btn_import_video.clicked.connect(self.buttonClick)
 
         # -------------------------------------------------------------------------------------------------------------
         # SHOW APP
@@ -123,6 +125,7 @@ class MainWindow(QMainWindow):
         btn = self.sender()
         btnName = btn.objectName()
 
+        # --------------------------------------------------------------------------------------------------------------
         # RIGHT MENU BUTTONS
         if btnName == 'btn_home':  # HOME PAGE
             widgets.stackedWidget.setCurrentWidget(widgets.home)
@@ -131,6 +134,12 @@ class MainWindow(QMainWindow):
 
         elif btnName == 'btn_import_video':  # EMBED VIDEO MENU
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)  # SET PAGE
+            UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
+
+        # LINEUP BUILDER BUTTON
+        elif btnName == 'btn_formation_page':
+            widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)  # SET PAGE
             UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
 
@@ -154,7 +163,11 @@ class MainWindow(QMainWindow):
                                                     widgets.local_video_file_name.text())
                 # NEXT PAGE BUTTON
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
-
+                # ACTIVE FORMATION MENU
+                UIFunctions.resetStyle(self, widgets.btn_formation_page.objectName())
+                widgets.btn_formation_page.setStyleSheet(
+                    UIFunctions.selectMenu(widgets.btn_formation_page.styleSheet())
+                )
             else:
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')
@@ -197,6 +210,11 @@ class MainWindow(QMainWindow):
                                                     widgets.cloud_video_file_name.placeholderText())
                 # NEXT PAGE BUTTON
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
+                # ACTIVE FORMATION MENU
+                UIFunctions.resetStyle(self, widgets.btn_formation_page.objectName())
+                widgets.btn_formation_page.setStyleSheet(
+                    UIFunctions.selectMenu(widgets.btn_formation_page.styleSheet())
+                )
             else:
                 widgets.cloud_video_file_name.setText('')
                 widgets.cloud_video_file_name.setPlaceholderText(
@@ -210,10 +228,10 @@ class MainWindow(QMainWindow):
         elif btnName == 'formation_next_page_button':
             save_data.json_data_cleanup(filesystem_changes.find_last_created_folder(), 'lineup.json')
             # PRINT BTN NAME
-            print(f'Button {btnName} pressed!')
 
-            # DOWNLOADING WITHOUT DIALOG QTWEBENGINE
+        print(f'Button {btnName} pressed!')
 
+    # DOWNLOADING WITHOUT DIALOG QWEBENGINEVIEW
     def on_downloadRequested(self, download):
         download.accept()
 

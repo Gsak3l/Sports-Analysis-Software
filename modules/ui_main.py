@@ -683,6 +683,18 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addWidget(self.btn_import_video)
 
+        self.btn_formation_page = QPushButton(self.topMenu)
+        self.btn_formation_page.setObjectName(u"btn_formation_page")
+        sizePolicy.setHeightForWidth(self.btn_formation_page.sizePolicy().hasHeightForWidth())
+        self.btn_formation_page.setSizePolicy(sizePolicy)
+        self.btn_formation_page.setMinimumSize(QSize(0, 45))
+        self.btn_formation_page.setFont(font)
+        self.btn_formation_page.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_formation_page.setLayoutDirection(Qt.LeftToRight)
+        self.btn_formation_page.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-people.png);")
+
+        self.verticalLayout_8.addWidget(self.btn_formation_page)
+
         self.verticalMenuLayout.addWidget(self.topMenu, 0, Qt.AlignTop)
 
         self.bottomMenu = QFrame(self.leftMenuFrame)
@@ -1425,6 +1437,7 @@ class Ui_MainWindow(object):
         self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"Hide", None))
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"Home", None))
         self.btn_import_video.setText(QCoreApplication.translate("MainWindow", u"Import Video", None))
+        self.btn_formation_page.setText(QCoreApplication.translate("MainWindow", u"Lineup Builder", None))
         self.extraLabel.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
         # if QT_CONFIG(tooltip)
         self.extraCloseColumnBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Close left box", None))
@@ -1506,5 +1519,5 @@ class Ui_MainWindow(object):
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")
         self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: Sakellariou G.", None))
-        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.1.6", None))
+        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.1.9", None))
     # retranslateUi
