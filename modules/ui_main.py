@@ -15,6 +15,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
                            QFont, QFontDatabase, QGradient, QIcon,
                            QImage, QKeySequence, QLinearGradient, QPainter,
                            QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtMultimediaWidgets import QVideoWidget
 from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import (QApplication, QCalendarWidget, QComboBox, QFrame,
                                QGridLayout, QHBoxLayout, QLabel, QLineEdit,
@@ -29,7 +30,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(1280, 720)
-        MainWindow.setMinimumSize(QSize(940, 560))
+        MainWindow.setMinimumSize(QSize(1000, 560))
         self.styleSheet = QWidget(MainWindow)
         self.styleSheet.setObjectName(u"styleSheet")
         font = QFont()
@@ -1323,6 +1324,19 @@ class Ui_MainWindow(object):
         self.verticalLayout2.addLayout(self.horizontalLayout_17)
 
         self.stackedWidget.addWidget(self.tactics_page)
+        self.video_page = QWidget()
+        self.video_page.setObjectName(u"video_page")
+        self.video_page.setStyleSheet(u"b")
+        self.verticalLayout21 = QVBoxLayout(self.video_page)
+        self.verticalLayout21.setSpacing(10)
+        self.verticalLayout21.setObjectName(u"verticalLayout21")
+        self.verticalLayout21.setContentsMargins(10, 10, 10, 10)
+        self.video_player = QVideoWidget(self.video_page)
+        self.video_player.setObjectName(u"video_player")
+
+        self.verticalLayout21.addWidget(self.video_player)
+
+        self.stackedWidget.addWidget(self.video_page)
         self.video_option_menu = QWidget()
         self.video_option_menu.setObjectName(u"video_option_menu")
         self.verticalLayout_20 = QVBoxLayout(self.video_option_menu)

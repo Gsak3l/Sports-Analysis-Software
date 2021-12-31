@@ -2506,10 +2506,10 @@ background-repeat: no-repeat;</string>
                        </property>
                        <property name="bottomMargin">
                         <number>10</number>
-                       </property>
-					   <item>
+						<item>
                         <widget class="QVideoWidget" name="video_player" native="true"/>
                        </item>
+                       </property>
 					  </layout>
                      </widget>
 					 

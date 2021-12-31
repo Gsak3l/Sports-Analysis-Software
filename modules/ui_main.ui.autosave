@@ -1707,7 +1707,7 @@ p, li { white-space: pre-wrap; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>3</number>
+                      <number>4</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2487,7 +2487,7 @@ background-repeat: no-repeat;</string>
                        </item>
                       </layout>
                      </widget>
-					 <widget class="QWidget" name="video_page">
+                     <widget class="QWidget" name="video_page">
                       <property name="styleSheet">
                        <string notr="true">b</string>
                       </property>
@@ -2507,12 +2507,11 @@ background-repeat: no-repeat;</string>
                        <property name="bottomMargin">
                         <number>10</number>
                        </property>
-					   <item>
+                       <item>
                         <widget class="QVideoWidget" name="video_player" native="true"/>
                        </item>
-					  </layout>
+                      </layout>
                      </widget>
-					 
                      <widget class="QWidget" name="video_option_menu">
                       <layout class="QVBoxLayout" name="verticalLayout_20">
                        <item>
@@ -2726,6 +2725,12 @@ background-color: rgb(189, 147, 249);
    <class>QWebEngineView</class>
    <extends>QWidget</extends>
    <header>qwebengineview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QVideoWidget</class>
+   <extends>QWidget</extends>
+   <header>qvideowidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

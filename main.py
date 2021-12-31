@@ -19,6 +19,8 @@ from PySide6.QtCore import *
 from PySide6.QtWidgets import *
 from PySide6.QtWebEngineWidgets import *
 from PySide6.QtWebEngineCore import QWebEngineProfile
+from PySide6.QtMultimediaWidgets import *
+from PySide6.QtMultimedia import QMediaPlayer
 
 os.environ['QT_FONT_DPI'] = '96'  # FIX Problem for High DPI and Scale above 100%
 
@@ -149,7 +151,7 @@ class MainWindow(QMainWindow):
             widgets.stackedWidget.setCurrentWidget(widgets.local_video_page)
 
         elif btnName == 'local_video_file_button':  # OPEN FILE EXPLORER ON WHEN CLICKING THE LOCAL VIDEO IMPORT
-            fname = QFileDialog.getOpenFileName(self, 'Open Video', 'C:/Users/gsak3/Downloads',
+            fname = QFileDialog.getOpenFileName(self, 'Open Video', filesystem_changes.downloads_path(),
                                                 'MP4 Files (*mp4)')
             widgets.local_video_file_name.setText(fname[0])
 
@@ -223,9 +225,24 @@ class MainWindow(QMainWindow):
         # FORMATION - LINEUP BUILDER BUTTONS
         elif btnName == 'formation_next_page_button':
             save_data.json_data_cleanup(filesystem_changes.find_last_created_folder(), 'lineup.json')
-            # PRINT BTN NAME
+            # CHANGING ACTIVE WIDGET PAGE
+            widgets.stackedWidget.setCurrentWidget(widgets.video_page)
+            # SETTING A VIDEO FOR THE VIDEO PLAYER
+            self.on_loadVideoRequest(widgets.local_video_file_name.text())
+        elif btnName == 'formation_previous_page_button':
+            widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)  # SET PAGE
+            # ACTIVE EMBED VIDEO MENU
+            UIFunctions.resetStyle(self, widgets.btn_import_video.objectName())
+            widgets.btn_import_video.setStyleSheet(UIFunctions.selectMenu(widgets.btn_import_video.styleSheet()))
 
+        # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
+
+    def on_loadVideoRequest(self, video_path):
+        media_player = QMediaPlayer(self)
+        media_player.setVideoOutput(widgets.video_player)
+        media_player.setSource(QUrl(video_path))
+        media_player.play()
 
     # DOWNLOADING WITHOUT DIALOG QWEBENGINEVIEW
     def on_downloadRequested(self, download):
