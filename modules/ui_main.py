@@ -20,8 +20,8 @@ from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import (QApplication, QCalendarWidget, QComboBox, QFrame,
                                QGridLayout, QHBoxLayout, QLabel, QLineEdit,
                                QMainWindow, QPlainTextEdit, QProgressBar, QPushButton,
-                               QSizePolicy, QStackedWidget, QTextEdit, QVBoxLayout,
-                               QWidget)
+                               QSizePolicy, QSlider, QStackedWidget, QTextEdit,
+                               QVBoxLayout, QWidget)
 from .resources_rc import *
 
 
@@ -1336,6 +1336,33 @@ class Ui_MainWindow(object):
 
         self.verticalLayout21.addWidget(self.video_player)
 
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.play_video_button = QPushButton(self.video_page)
+        self.play_video_button.setObjectName(u"play_video_button")
+        self.play_video_button.setMaximumSize(QSize(80, 16777215))
+
+        self.horizontalLayout_8.addWidget(self.play_video_button)
+
+        self.pause_video_button = QPushButton(self.video_page)
+        self.pause_video_button.setObjectName(u"pause_video_button")
+        self.pause_video_button.setMaximumSize(QSize(80, 20))
+
+        self.horizontalLayout_8.addWidget(self.pause_video_button)
+
+        self.stop_video_button = QPushButton(self.video_page)
+        self.stop_video_button.setObjectName(u"stop_video_button")
+
+        self.horizontalLayout_8.addWidget(self.stop_video_button)
+
+        self.video_player_progress_bar = QSlider(self.video_page)
+        self.video_player_progress_bar.setObjectName(u"video_player_progress_bar")
+        self.video_player_progress_bar.setOrientation(Qt.Horizontal)
+
+        self.horizontalLayout_8.addWidget(self.video_player_progress_bar)
+
+        self.verticalLayout21.addLayout(self.horizontalLayout_8)
+
         self.stackedWidget.addWidget(self.video_page)
         self.video_option_menu = QWidget()
         self.video_option_menu.setObjectName(u"video_option_menu")
@@ -1438,7 +1465,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(4)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1529,6 +1556,9 @@ class Ui_MainWindow(object):
         self.cloud_next_page_button.setText("")
         self.formation_previous_page_button.setText("")
         self.formation_next_page_button.setText("")
+        self.play_video_button.setText(QCoreApplication.translate("MainWindow", u"Play", None))
+        self.pause_video_button.setText(QCoreApplication.translate("MainWindow", u"Pause", None))
+        self.stop_video_button.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")

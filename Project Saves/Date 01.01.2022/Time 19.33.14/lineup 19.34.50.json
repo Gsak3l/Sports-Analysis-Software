@@ -1,0 +1,119 @@
+[
+    {
+        "id": "11",
+        "name": "11",
+        "positions": [
+            "MC"
+        ],
+        "rating": "0",
+        "shortName": "11"
+    },
+    {
+        "id": "22",
+        "name": "22",
+        "positions": [
+            "MC"
+        ],
+        "rating": "0",
+        "shortName": "22"
+    },
+    {
+        "id": "33",
+        "name": "33",
+        "positions": [
+            "MC"
+        ],
+        "rating": "0",
+        "shortName": "33"
+    },
+    {
+        "id": "44",
+        "name": "44",
+        "positions": [
+            "MC"
+        ],
+        "rating": "0",
+        "shortName": "44"
+    },
+    {
+        "id": "55",
+        "name": "55",
+        "positions": [
+            "MC"
+        ],
+        "rating": "0",
+        "shortName": "55"
+    },
+    {
+        "id": "158023",
+        "name": "Lionel Messi",
+        "rating": "94",
+        "photo": "./data/images/photos/0/158023.png",
+        "positions": [
+            "ATT",
+            "BU",
+            "AD"
+        ],
+        "photoFolderIndex": 0,
+        "shortName": "Messi"
+    },
+    {
+        "id": "20801",
+        "name": "Cristiano Ronaldo",
+        "rating": "94",
+        "photo": "./data/images/photos/1/20801.png",
+        "positions": [
+            "AG",
+            "BU"
+        ],
+        "photoFolderIndex": 1,
+        "shortName": "Ronaldo"
+    },
+    {
+        "id": "156412",
+        "name": "JosÃƒÂ© de JesÃƒÂºs Corona",
+        "rating": "76",
+        "photo": "./data/images/photos/4/156412.png",
+        "positions": [
+            "G"
+        ],
+        "photoFolderIndex": 4,
+        "shortName": "Corona"
+    },
+    {
+        "id": "212622",
+        "name": "Joshua Kimmich",
+        "rating": "84",
+        "photo": "./data/images/photos/1/212622.png",
+        "positions": [
+            "DD",
+            "MC",
+            "DC",
+            "MDC"
+        ],
+        "photoFolderIndex": 1,
+        "shortName": "Kimmich"
+    },
+    {
+        "id": "192366",
+        "name": "NicolÃƒÂ¡s Otamendi",
+        "rating": "85",
+        "photo": "./data/images/photos/4/192366.png",
+        "positions": [
+            "DC"
+        ],
+        "photoFolderIndex": 4,
+        "shortName": "Otamendi"
+    },
+    {
+        "id": "201535",
+        "name": "RaphaÃƒÂ«l Varane",
+        "rating": "85",
+        "photo": "./data/images/photos/3/201535.png",
+        "positions": [
+            "DC"
+        ],
+        "photoFolderIndex": 3,
+        "shortName": "Varane"
+    }
+]

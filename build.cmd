@@ -1,1 +1,1 @@
-python setup.py build
+C:\Users\gsak3\AppData\Local\Programs\Python\Python39\python setup.py build

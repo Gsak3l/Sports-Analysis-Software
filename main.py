@@ -19,8 +19,8 @@ from PySide6.QtCore import *
 from PySide6.QtWidgets import *
 from PySide6.QtWebEngineWidgets import *
 from PySide6.QtWebEngineCore import QWebEngineProfile
-from PySide6.QtMultimediaWidgets import *
-from PySide6.QtMultimedia import QMediaPlayer
+from PySide6.QtMultimediaWidgets import QVideoWidget
+from PySide6.QtMultimedia import QMediaPlayer, QSoundEffect
 
 os.environ['QT_FONT_DPI'] = '96'  # FIX Problem for High DPI and Scale above 100%
 
@@ -76,12 +76,14 @@ class MainWindow(QMainWindow):
         widgets.btn_formation.clicked.connect(self.buttonClick)
 
         # LOCAL VIDEO PAGE BUTTON CONNECTION
+        # -------------------------------------------------------------------------------------------------------------
         widgets.btn_local_footage.clicked.connect(self.buttonClick)
         widgets.local_video_file_button.clicked.connect(self.buttonClick)
         widgets.local_previous_page_button.clicked.connect(self.buttonClick)
         widgets.local_next_page_button.clicked.connect(self.buttonClick)
 
         # TACTICS PAGE
+        # -------------------------------------------------------------------------------------------------------------
         # saving the information for the formation/tactics/lineup website to a json file
         widgets.formation.page().profile().setDownloadPath(path)
         widgets.formation.page().profile().downloadRequested.connect(self.on_downloadRequested)
@@ -90,12 +92,18 @@ class MainWindow(QMainWindow):
         widgets.formation_next_page_button.clicked.connect(self.buttonClick)
         widgets.formation_previous_page_button.clicked.connect(self.buttonClick)
 
-        # -------------------------------------------------------------------------------------------------------------
         # CLOUD VIDEO PAGE BUTTON CONNECTION
+        # -------------------------------------------------------------------------------------------------------------
         widgets.btn_cloud_footage.clicked.connect(self.buttonClick)
         widgets.cloud_video_file_button.clicked.connect(self.buttonClick)
         widgets.cloud_next_page_button.clicked.connect(self.buttonClick)
         widgets.cloud_previous_page_button.clicked.connect(self.buttonClick)
+
+        # VIDEO PLAYER PAGE
+        # -------------------------------------------------------------------------------------------------------------
+        widgets.play_video_button.clicked.connect(self.buttonClick)
+        widgets.pause_video_button.clicked.connect(self.buttonClick)
+        widgets.stop_video_button.clicked.connect(self.buttonClick)
 
         # -------------------------------------------------------------------------------------------------------------
         # SHOW APP
@@ -152,7 +160,7 @@ class MainWindow(QMainWindow):
 
         elif btnName == 'local_video_file_button':  # OPEN FILE EXPLORER ON WHEN CLICKING THE LOCAL VIDEO IMPORT
             fname = QFileDialog.getOpenFileName(self, 'Open Video', filesystem_changes.downloads_path(),
-                                                'MP4 Files (*mp4)')
+                                                'Video File (*.avi, *.mpg, *.mp4)')
             widgets.local_video_file_name.setText(fname[0])
 
         elif btnName == 'local_next_page_button':  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
@@ -235,14 +243,22 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, widgets.btn_import_video.objectName())
             widgets.btn_import_video.setStyleSheet(UIFunctions.selectMenu(widgets.btn_import_video.styleSheet()))
 
+        # -------------------------------------------------------------------------------------------------------------
+        # VIDEO PLAYER PAGE
+        elif btnName == '':
+            pass
+
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
 
+    # -----------------------------------------------------------------------------------------------------------------
+    # HANDLE DOWNLOAD REQUESTS FROM WEBSITE
     def on_loadVideoRequest(self, video_path):
         media_player = QMediaPlayer(self)
         media_player.setVideoOutput(widgets.video_player)
         media_player.setSource(QUrl(video_path))
         media_player.play()
+        media_player.pause()
 
     # DOWNLOADING WITHOUT DIALOG QWEBENGINEVIEW
     def on_downloadRequested(self, download):
@@ -265,6 +281,10 @@ class MainWindow(QMainWindow):
             print('Mouse click: LEFT CLICK')
         if event.buttons() == Qt.RightButton:
             print('Mouse click: RIGHT CLICK')
+
+    def keyPressEvent(self, event):
+        print(event.text())
+        print(event)
 
 
 if __name__ == '__main__':
