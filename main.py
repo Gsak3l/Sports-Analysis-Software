@@ -251,10 +251,19 @@ class MainWindow(QMainWindow):
         # VIDEO PLAYER PAGE
         elif btnName == 'play_video_button':
             self.media_player.play()
+            btn.setDisabled(True)
+            widgets.pause_video_button.setDisabled(False)
+            widgets.stop_video_button.setDisabled(False)
         elif btnName == 'pause_video_button':
             self.media_player.pause()
+            btn.setDisabled(True)
+            widgets.play_video_button.setDisabled(False)
+            widgets.stop_video_button.setDisabled(False)
         elif btnName == 'stop_video_button':
             self.media_player.stop()
+            btn.setDisabled(True)
+            widgets.play_video_button.setDisabled(False)
+            widgets.pause_video_button.setDisabled(False)
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')

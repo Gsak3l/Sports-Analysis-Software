@@ -15,6 +15,9 @@
         <file>images/images/play.png</file>
         <file>images/images/stop.png</file>
         <file>images/images/pause.png</file>
+        <file>images/images/play_hover.png</file>
+        <file>images/images/stop_hover.png</file>
+        <file>images/images/pause_hover.png</file>
     </qresource>
     <qresource prefix="icons">
         <file>images/icons/cil-3d.png</file>
