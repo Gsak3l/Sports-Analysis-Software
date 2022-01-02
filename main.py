@@ -20,7 +20,7 @@ from PySide6.QtWidgets import *
 from PySide6.QtWebEngineWidgets import *
 from PySide6.QtWebEngineCore import QWebEngineProfile
 from PySide6.QtMultimediaWidgets import QVideoWidget
-from PySide6.QtMultimedia import QMediaPlayer, QSoundEffect
+from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 
 os.environ['QT_FONT_DPI'] = '96'  # FIX Problem for High DPI and Scale above 100%
 
@@ -101,9 +101,11 @@ class MainWindow(QMainWindow):
 
         # VIDEO PLAYER PAGE
         # -------------------------------------------------------------------------------------------------------------
+        # BUTTONS
         widgets.play_video_button.clicked.connect(self.buttonClick)
         widgets.pause_video_button.clicked.connect(self.buttonClick)
         widgets.stop_video_button.clicked.connect(self.buttonClick)
+
 
         # -------------------------------------------------------------------------------------------------------------
         # SHOW APP
