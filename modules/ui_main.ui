@@ -2520,8 +2520,25 @@ background-repeat: no-repeat;</string>
                              <height>16777215</height>
                             </size>
                            </property>
+                           <property name="cursor">
+                            <cursorShape>PointingHandCursor</cursorShape>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">border: none;
+border-radius: 50%;</string>
+                           </property>
                            <property name="text">
-                            <string>Play</string>
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../resources.qrc">
+                             <normaloff>:/images/images/images/play.png</normaloff>:/images/images/images/play.png</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>32</width>
+                             <height>32</height>
+                            </size>
                            </property>
                           </widget>
                          </item>
@@ -2530,18 +2547,59 @@ background-repeat: no-repeat;</string>
                            <property name="maximumSize">
                             <size>
                              <width>80</width>
-                             <height>20</height>
+                             <height>16777215</height>
                             </size>
                            </property>
+                           <property name="cursor">
+                            <cursorShape>PointingHandCursor</cursorShape>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">border: none;
+border-radius: 50%;</string>
+                           </property>
                            <property name="text">
-                            <string>Pause</string>
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../resources.qrc">
+                             <normaloff>:/images/images/images/pause.png</normaloff>:/images/images/images/pause.png</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>32</width>
+                             <height>32</height>
+                            </size>
                            </property>
                           </widget>
                          </item>
                          <item>
                           <widget class="QPushButton" name="stop_video_button">
+                           <property name="maximumSize">
+                            <size>
+                             <width>80</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="cursor">
+                            <cursorShape>PointingHandCursor</cursorShape>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">border: none;
+border-radius: 50%;
+</string>
+                           </property>
                            <property name="text">
-                            <string>Stop</string>
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../resources.qrc">
+                             <normaloff>:/images/images/images/stop.png</normaloff>:/images/images/images/stop.png</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>32</width>
+                             <height>32</height>
+                            </size>
                            </property>
                           </widget>
                          </item>

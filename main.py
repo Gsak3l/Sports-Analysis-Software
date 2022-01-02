@@ -105,7 +105,9 @@ class MainWindow(QMainWindow):
         widgets.play_video_button.clicked.connect(self.buttonClick)
         widgets.pause_video_button.clicked.connect(self.buttonClick)
         widgets.stop_video_button.clicked.connect(self.buttonClick)
-
+        # ELEMENTS
+        self.audio_output = QAudioOutput()
+        self.media_player = QMediaPlayer()
 
         # -------------------------------------------------------------------------------------------------------------
         # SHOW APP
@@ -247,8 +249,12 @@ class MainWindow(QMainWindow):
 
         # -------------------------------------------------------------------------------------------------------------
         # VIDEO PLAYER PAGE
-        elif btnName == '':
-            pass
+        elif btnName == 'play_video_button':
+            self.media_player.play()
+        elif btnName == 'pause_video_button':
+            self.media_player.pause()
+        elif btnName == 'stop_video_button':
+            self.media_player.stop()
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
@@ -256,11 +262,10 @@ class MainWindow(QMainWindow):
     # -----------------------------------------------------------------------------------------------------------------
     # HANDLE DOWNLOAD REQUESTS FROM WEBSITE
     def on_loadVideoRequest(self, video_path):
-        media_player = QMediaPlayer(self)
-        media_player.setVideoOutput(widgets.video_player)
-        media_player.setSource(QUrl(video_path))
-        media_player.play()
-        media_player.pause()
+        self.media_player.setAudioOutput(self.audio_output)
+        self.media_player.setVideoOutput(widgets.video_player)
+        self.media_player.setSource(QUrl(video_path))
+        self.media_player.play()
 
     # DOWNLOADING WITHOUT DIALOG QWEBENGINEVIEW
     def on_downloadRequested(self, download):

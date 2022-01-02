@@ -1341,17 +1341,40 @@ class Ui_MainWindow(object):
         self.play_video_button = QPushButton(self.video_page)
         self.play_video_button.setObjectName(u"play_video_button")
         self.play_video_button.setMaximumSize(QSize(80, 16777215))
+        self.play_video_button.setCursor(QCursor(Qt.PointingHandCursor))
+        self.play_video_button.setStyleSheet(u"border: none;\n"
+                                             "border-radius: 50%;")
+        icon7 = QIcon()
+        icon7.addFile(u":/images/images/images/play.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.play_video_button.setIcon(icon7)
+        self.play_video_button.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_8.addWidget(self.play_video_button)
 
         self.pause_video_button = QPushButton(self.video_page)
         self.pause_video_button.setObjectName(u"pause_video_button")
-        self.pause_video_button.setMaximumSize(QSize(80, 20))
+        self.pause_video_button.setMaximumSize(QSize(80, 16777215))
+        self.pause_video_button.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pause_video_button.setStyleSheet(u"border: none;\n"
+                                              "border-radius: 50%;")
+        icon8 = QIcon()
+        icon8.addFile(u":/images/images/images/pause.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pause_video_button.setIcon(icon8)
+        self.pause_video_button.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_8.addWidget(self.pause_video_button)
 
         self.stop_video_button = QPushButton(self.video_page)
         self.stop_video_button.setObjectName(u"stop_video_button")
+        self.stop_video_button.setMaximumSize(QSize(80, 16777215))
+        self.stop_video_button.setCursor(QCursor(Qt.PointingHandCursor))
+        self.stop_video_button.setStyleSheet(u"border: none;\n"
+                                             "border-radius: 50%;\n"
+                                             "")
+        icon9 = QIcon()
+        icon9.addFile(u":/images/images/images/stop.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.stop_video_button.setIcon(icon9)
+        self.stop_video_button.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_8.addWidget(self.stop_video_button)
 
@@ -1377,9 +1400,9 @@ class Ui_MainWindow(object):
         self.btn_local_footage.setStyleSheet(u"pressed {\n"
                                              "background-color: rgb(189, 147, 249);\n"
                                              "}")
-        icon7 = QIcon()
-        icon7.addFile(u":/images/images/images/folder.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_local_footage.setIcon(icon7)
+        icon10 = QIcon()
+        icon10.addFile(u":/images/images/images/folder.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_local_footage.setIcon(icon10)
         self.btn_local_footage.setIconSize(QSize(64, 64))
         self.btn_local_footage.setAutoDefault(False)
 
@@ -1389,9 +1412,9 @@ class Ui_MainWindow(object):
         self.btn_cloud_footage.setObjectName(u"btn_cloud_footage")
         self.btn_cloud_footage.setMaximumSize(QSize(80, 80))
         self.btn_cloud_footage.setCursor(QCursor(Qt.PointingHandCursor))
-        icon8 = QIcon()
-        icon8.addFile(u":/images/images/images/cloud.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_cloud_footage.setIcon(icon8)
+        icon11 = QIcon()
+        icon11.addFile(u":/images/images/images/cloud.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_cloud_footage.setIcon(icon11)
         self.btn_cloud_footage.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.btn_cloud_footage)
@@ -1400,9 +1423,9 @@ class Ui_MainWindow(object):
         self.btn_camera_footage.setObjectName(u"btn_camera_footage")
         self.btn_camera_footage.setMaximumSize(QSize(80, 80))
         self.btn_camera_footage.setCursor(QCursor(Qt.PointingHandCursor))
-        icon9 = QIcon()
-        icon9.addFile(u":/images/images/images/camera.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_camera_footage.setIcon(icon9)
+        icon12 = QIcon()
+        icon12.addFile(u":/images/images/images/camera.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_camera_footage.setIcon(icon12)
         self.btn_camera_footage.setIconSize(QSize(64, 64))
 
         self.horizontalLayout_6.addWidget(self.btn_camera_footage)
@@ -1556,9 +1579,9 @@ class Ui_MainWindow(object):
         self.cloud_next_page_button.setText("")
         self.formation_previous_page_button.setText("")
         self.formation_next_page_button.setText("")
-        self.play_video_button.setText(QCoreApplication.translate("MainWindow", u"Play", None))
-        self.pause_video_button.setText(QCoreApplication.translate("MainWindow", u"Pause", None))
-        self.stop_video_button.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
+        self.play_video_button.setText("")
+        self.pause_video_button.setText("")
+        self.stop_video_button.setText("")
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")

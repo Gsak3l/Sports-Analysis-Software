@@ -12,6 +12,9 @@
         <file>images/images/football_field.jpg</file>
         <file>images/images/basketball_field.jpg</file>
         <file>images/images/volleyball_field.jpg</file>
+        <file>images/images/play.png</file>
+        <file>images/images/stop.png</file>
+        <file>images/images/pause.png</file>
     </qresource>
     <qresource prefix="icons">
         <file>images/icons/cil-3d.png</file>
