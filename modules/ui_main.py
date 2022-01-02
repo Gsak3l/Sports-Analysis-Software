@@ -1397,11 +1397,10 @@ class Ui_MainWindow(object):
         self.btn_local_footage.setObjectName(u"btn_local_footage")
         self.btn_local_footage.setMaximumSize(QSize(80, 80))
         self.btn_local_footage.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_local_footage.setStyleSheet(u"pressed {\n"
-                                             "background-color: rgb(189, 147, 249);\n"
-                                             "}")
+        self.btn_local_footage.setStyleSheet(u"::pressed{background-color: #21252b}\n"
+                                             "::active{border:none}")
         icon10 = QIcon()
-        icon10.addFile(u":/images/images/images/folder.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon10.addFile(u":/images/images/images/folder_purple.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_local_footage.setIcon(icon10)
         self.btn_local_footage.setIconSize(QSize(64, 64))
         self.btn_local_footage.setAutoDefault(False)
@@ -1412,8 +1411,10 @@ class Ui_MainWindow(object):
         self.btn_cloud_footage.setObjectName(u"btn_cloud_footage")
         self.btn_cloud_footage.setMaximumSize(QSize(80, 80))
         self.btn_cloud_footage.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_cloud_footage.setStyleSheet(u"::pressed{background-color: #21252b}\n"
+                                             "::active{border:none}")
         icon11 = QIcon()
-        icon11.addFile(u":/images/images/images/cloud.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon11.addFile(u":/images/images/images/cloud_purple.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_cloud_footage.setIcon(icon11)
         self.btn_cloud_footage.setIconSize(QSize(80, 80))
 
@@ -1423,8 +1424,10 @@ class Ui_MainWindow(object):
         self.btn_camera_footage.setObjectName(u"btn_camera_footage")
         self.btn_camera_footage.setMaximumSize(QSize(80, 80))
         self.btn_camera_footage.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_camera_footage.setStyleSheet(u"::pressed{background-color: #21252b}\n"
+                                              "::active{border:none}")
         icon12 = QIcon()
-        icon12.addFile(u":/images/images/images/camera.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon12.addFile(u":/images/images/images/camera_purple.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_camera_footage.setIcon(icon12)
         self.btn_camera_footage.setIconSize(QSize(64, 64))
 
@@ -1488,7 +1491,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(5)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
