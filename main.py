@@ -25,7 +25,7 @@ from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 os.environ['QT_FONT_DPI'] = '96'  # FIX Problem for High DPI and Scale above 100%
 
 # SET AS GLOBAL WIDGETS
-# ///////////////////////////////////////////////////////////////
+# ---------------------------------------------------------------------------------------------------------------------
 widgets = None
 
 
@@ -39,6 +39,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         global widgets
         widgets = self.ui
+        global playback_speed
 
         # USE CUSTOM TITLE BAR | USE AS 'False' FOR MAC OR LINUX
         # -------------------------------------------------------------------------------------------------------------
@@ -113,10 +114,11 @@ class MainWindow(QMainWindow):
         widgets.play_video_button.clicked.connect(self.buttonClick)
         widgets.pause_video_button.clicked.connect(self.buttonClick)
         widgets.stop_video_button.clicked.connect(self.buttonClick)
+        widgets.increase_video_speed.clicked.connect(self.buttonClick)
+        widgets.decrease_video_speed.clicked.connect(self.buttonClick)
         # ELEMENTS
         self.audio_output = QAudioOutput()
         self.media_player = QMediaPlayer()
-        self.media_player.pl
         # PROGRESS BAR
         widgets.video_player_slider.valueChanged.connect(self.slider_moved)
 
@@ -256,7 +258,7 @@ class MainWindow(QMainWindow):
             if (widgets.cloud_video_file_name.text() == 'COMPLETED'):
                 self.on_loadVideoRequest(widgets.cloud_video_file_name.placeholderText())
             else:
-                self.on_loadVideoRequest(widgets.cloud_video_file_name.text())
+                self.on_loadVideoRequest(widgets.local_video_file_name.text())
         elif btnName == 'formation_previous_page_button':
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)  # SET PAGE
             # ACTIVE EMBED VIDEO MENU
@@ -280,6 +282,12 @@ class MainWindow(QMainWindow):
             btn.setDisabled(True)
             widgets.play_video_button.setDisabled(False)
             widgets.pause_video_button.setDisabled(False)
+        elif btnName == 'increase_video_speed':
+            self.fix_audio(btnName)
+            self.media_player.setPlaybackRate(self.media_player.playbackRate() + 0.25)
+        elif btnName == 'decrease_video_speed':
+            self.fix_audio(btnName)
+            self.media_player.setPlaybackRate(self.media_player.playbackRate() - 0.25)
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
@@ -324,6 +332,20 @@ class MainWindow(QMainWindow):
     def resizeEvent(self, event):
         # Update Size Grips
         UIFunctions.resize_grips(self)
+
+    # -----------------------------------------------------------------------------------------------------------------
+    # REMOVE OR RESTORE  AUDIO FROM VIDEO (DISTORTION ON HIGH AND LOW PLAYBACK)
+    def fix_audio(self, btn_):
+        if (self.audio_output.isMuted()) and \
+                ((btn_ == 'increase_video_speed' and (self.media_player.playbackRate() + 0.25) == 1) or
+                 (btn_ == 'decrease_video_speed' and (self.media_player.playbackRate() - 0.25 == 1))):
+            self.audio_output.setMuted(False)
+            self.media_player.setAudioOutput(self.audio_output)
+        elif self.audio_output.isMuted():
+            pass
+        else:
+            self.audio_output.setMuted(True)
+            self.media_player.setAudioOutput(self.audio_output)
 
 
 if __name__ == '__main__':

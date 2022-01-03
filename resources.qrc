@@ -22,6 +22,7 @@
         <file>images/images/pause.png</file>
         <file>images/images/fast_playback.png</file>
         <file>images/images/slow_playback.png</file>
+        <file>images/images/logo640x320.png</file>
     </qresource>
     <qresource prefix="icons">
         <file>images/icons/cil-3d.png</file>
@@ -279,8 +280,5 @@
         <file>images/icons/icon_minimize.png</file>
         <file>images/icons/icon_restore.png</file>
         <file>images/icons/icon_settings.png</file>
-    </qresource>
-    <qresource prefix="logos">
-        <file>images/logo/logo640x320.png</file>
     </qresource>
 </RCC>

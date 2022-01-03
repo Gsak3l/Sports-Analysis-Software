@@ -1711,9 +1711,10 @@ p, li { white-space: pre-wrap; }
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
-                       <string notr="true">background-image: url(:/images/images/images/PyDracula_vertical.png);
+                       <string notr="true">background-image:url(:/images/images/images/logo640x320.png);
 background-position: center;
-background-repeat: no-repeat;</string>
+background-repeat: no-repeat;
+</string>
                       </property>
                      </widget>
                      <widget class="QWidget" name="local_video_page">
