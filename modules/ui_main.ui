@@ -2669,7 +2669,51 @@ border-radius: 50%;
                           </widget>
                          </item>
                          <item>
-                          <widget class="QSlider" name="video_player_progress_bar">
+                          <widget class="QProgressBar" name="video_player_progress_bar">
+                           <property name="styleSheet">
+                            <string notr="true">QProgressBar {
+     border: 2px solid #BD93F9;
+     border-radius: 5px;
+     background-color: #21252b;
+	 text-align: center;
+	 font-weight: bold;
+ }
+
+ QProgressBar::chunk {
+     background-color: #BD93F9;
+ }</string>
+                           </property>
+                           <property name="minimum">
+                            <number>1</number>
+                           </property>
+                           <property name="value">
+                            <number>1</number>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QSlider" name="video_player_slider">
+                           <property name="font">
+                            <font>
+                             <pointsize>10</pointsize>
+                             <italic>false</italic>
+                             <bold>false</bold>
+                            </font>
+                           </property>
+                           <property name="cursor">
+                            <cursorShape>OpenHandCursor</cursorShape>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QSlider::handle:horizontal {
+    width: 30px;
+}</string>
+                           </property>
+                           <property name="minimum">
+                            <number>1</number>
+                           </property>
+                           <property name="maximum">
+                            <number>100</number>
+                           </property>
                            <property name="orientation">
                             <enum>Qt::Horizontal</enum>
                            </property>

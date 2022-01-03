@@ -116,6 +116,8 @@ class MainWindow(QMainWindow):
         # ELEMENTS
         self.audio_output = QAudioOutput()
         self.media_player = QMediaPlayer()
+        # PROGRESS BAR
+        widgets.video_player_slider.valueChanged.connect(self.slider_moved)
 
         # -------------------------------------------------------------------------------------------------------------
         # SHOW APP
@@ -309,6 +311,13 @@ class MainWindow(QMainWindow):
     def keyPressEvent(self, event):
         print(event.text())
         print(event)
+
+    # -----------------------------------------------------------------------------------------------------------------
+    # MEDIA PLAYER ACTIONS
+    def slider_moved(self, position):
+        percentage = self.media_player.duration() * position / 100
+        self.media_player.setPosition(percentage)
+        widgets.video_player_progress_bar.setValue(position)
 
 
 if __name__ == '__main__':
