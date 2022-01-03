@@ -70,6 +70,14 @@ class MainWindow(QMainWindow):
         # local_video_page.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         # -------------------------------------------------------------------------------------------------------------
+        # FIXING COLORS IN THE QCALENDARWIDGET WEEK DAYS
+        # for d in (Qt.Saturday, Qt.Sunday, Qt):
+        #     for f in (widgets.local_calendar, widgets.cloud_calendar):
+        #         fmt = f.weekdayTextFormat(d)
+        #         fmt.setForeground(Qt.lightGray)
+        #         f.setWeekdayTextFormat(d, fmt)
+
+        # -------------------------------------------------------------------------------------------------------------
         # LEFT MENU BUTTONS
         widgets.btn_home.clicked.connect(self.buttonClick)
         widgets.btn_import_video.clicked.connect(self.buttonClick)
