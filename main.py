@@ -116,6 +116,7 @@ class MainWindow(QMainWindow):
         # ELEMENTS
         self.audio_output = QAudioOutput()
         self.media_player = QMediaPlayer()
+        self.media_player.pl
         # PROGRESS BAR
         widgets.video_player_slider.valueChanged.connect(self.slider_moved)
 
@@ -246,11 +247,16 @@ class MainWindow(QMainWindow):
         # -------------------------------------------------------------------------------------------------------------
         # FORMATION - LINEUP BUILDER BUTTONS
         elif btnName == 'formation_next_page_button':
-            save_data.json_data_cleanup(filesystem_changes.find_last_created_folder(), 'lineup.json')
+            save_data.json_data_cleanup(
+                string_manipulation.double_backslash_to_slash(filesystem_changes.find_last_created_folder()),
+                'lineup.json')
             # CHANGING ACTIVE WIDGET PAGE
             widgets.stackedWidget.setCurrentWidget(widgets.video_page)
             # SETTING A VIDEO FOR THE VIDEO PLAYER
-            self.on_loadVideoRequest(widgets.local_video_file_name.text())
+            if (widgets.cloud_video_file_name.text() == 'COMPLETED'):
+                self.on_loadVideoRequest(widgets.cloud_video_file_name.placeholderText())
+            else:
+                self.on_loadVideoRequest(widgets.cloud_video_file_name.text())
         elif btnName == 'formation_previous_page_button':
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)  # SET PAGE
             # ACTIVE EMBED VIDEO MENU
@@ -279,24 +285,6 @@ class MainWindow(QMainWindow):
         print(f'Button {btnName} pressed!')
 
     # -----------------------------------------------------------------------------------------------------------------
-    # HANDLE DOWNLOAD REQUESTS FROM WEBSITE
-    def on_loadVideoRequest(self, video_path):
-        self.media_player.setAudioOutput(self.audio_output)
-        self.media_player.setVideoOutput(widgets.video_player)
-        self.media_player.setSource(QUrl(video_path))
-        self.media_player.play()
-
-    # DOWNLOADING WITHOUT DIALOG QWEBENGINEVIEW
-    def on_downloadRequested(self, download):
-        download.accept()
-
-    # -----------------------------------------------------------------------------------------------------------------
-    # RESIZE EVENTS
-    def resizeEvent(self, event):
-        # Update Size Grips
-        UIFunctions.resize_grips(self)
-
-    # -----------------------------------------------------------------------------------------------------------------
     # MOUSE CLICK EVENTS
     def mousePressEvent(self, event):
         # SET DRAG POS WINDOW
@@ -316,8 +304,26 @@ class MainWindow(QMainWindow):
     # MEDIA PLAYER ACTIONS
     def slider_moved(self, position):
         percentage = self.media_player.duration() * position / 100
-        self.media_player.setPosition(percentage)
-        widgets.video_player_progress_bar.setValue(position)
+        self.media_player.setPosition(int(percentage))
+        widgets.video_player_progress_bar.setValue(int(position))
+
+    # -----------------------------------------------------------------------------------------------------------------
+    # HANDLE DOWNLOAD REQUESTS FROM WEBSITE
+    def on_loadVideoRequest(self, video_path):
+        self.media_player.setAudioOutput(self.audio_output)
+        self.media_player.setVideoOutput(widgets.video_player)
+        self.media_player.setSource(QUrl(video_path))
+        self.media_player.play()
+
+    # DOWNLOADING WITHOUT DIALOG QWEBENGINEVIEW
+    def on_downloadRequested(self, download):
+        download.accept()
+
+    # -----------------------------------------------------------------------------------------------------------------
+    # RESIZE EVENTS
+    def resizeEvent(self, event):
+        # Update Size Grips
+        UIFunctions.resize_grips(self)
 
 
 if __name__ == '__main__':
