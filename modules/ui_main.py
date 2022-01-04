@@ -29,8 +29,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1280, 720)
-        MainWindow.setMinimumSize(QSize(1000, 560))
+        MainWindow.resize(1280, 800)
+        MainWindow.setMinimumSize(QSize(900, 800))
         self.styleSheet = QWidget(MainWindow)
         self.styleSheet.setObjectName(u"styleSheet")
         font = QFont()
@@ -680,7 +680,7 @@ class Ui_MainWindow(object):
         self.btn_import_video.setFont(font)
         self.btn_import_video.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_import_video.setLayoutDirection(Qt.LeftToRight)
-        self.btn_import_video.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-movie.png);")
+        self.btn_import_video.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-image-plus.png);")
 
         self.verticalLayout_8.addWidget(self.btn_import_video)
 
@@ -695,6 +695,13 @@ class Ui_MainWindow(object):
         self.btn_formation.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-people.png);")
 
         self.verticalLayout_8.addWidget(self.btn_formation)
+
+        self.btn_video_player = QPushButton(self.topMenu)
+        self.btn_video_player.setObjectName(u"btn_video_player")
+        self.btn_video_player.setMinimumSize(QSize(0, 45))
+        self.btn_video_player.setStyleSheet(u"background-image:url(:/icons/images/icons/cil-movie.png);")
+
+        self.verticalLayout_8.addWidget(self.btn_video_player)
 
         self.verticalMenuLayout.addWidget(self.topMenu, 0, Qt.AlignTop)
 
@@ -890,7 +897,12 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.titleRightInfo.sizePolicy().hasHeightForWidth())
         self.titleRightInfo.setSizePolicy(sizePolicy2)
         self.titleRightInfo.setMaximumSize(QSize(16777215, 45))
-        self.titleRightInfo.setFont(font)
+        font3 = QFont()
+        font3.setBold(True)
+        font3.setItalic(False)
+        self.titleRightInfo.setFont(font3)
+        self.titleRightInfo.setStyleSheet(u"font-weight:bold;\n"
+                                          "font-size:18px;")
         self.titleRightInfo.setAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
 
         self.horizontalLayout_3.addWidget(self.titleRightInfo)
@@ -922,12 +934,12 @@ class Ui_MainWindow(object):
         self.maximizeRestoreAppBtn.setObjectName(u"maximizeRestoreAppBtn")
         self.maximizeRestoreAppBtn.setMinimumSize(QSize(28, 28))
         self.maximizeRestoreAppBtn.setMaximumSize(QSize(28, 28))
-        font3 = QFont()
-        font3.setPointSize(10)
-        font3.setBold(False)
-        font3.setItalic(False)
-        font3.setStyleStrategy(QFont.PreferDefault)
-        self.maximizeRestoreAppBtn.setFont(font3)
+        font4 = QFont()
+        font4.setPointSize(10)
+        font4.setBold(False)
+        font4.setItalic(False)
+        font4.setStyleStrategy(QFont.PreferDefault)
+        self.maximizeRestoreAppBtn.setFont(font4)
         self.maximizeRestoreAppBtn.setCursor(QCursor(Qt.PointingHandCursor))
         icon2 = QIcon()
         icon2.addFile(u":/icons/images/icons/icon_maximize.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -1542,10 +1554,10 @@ class Ui_MainWindow(object):
         self.creditsLabel = QLabel(self.bottomBar)
         self.creditsLabel.setObjectName(u"creditsLabel")
         self.creditsLabel.setMaximumSize(QSize(16777215, 16))
-        font4 = QFont()
-        font4.setBold(False)
-        font4.setItalic(False)
-        self.creditsLabel.setFont(font4)
+        font5 = QFont()
+        font5.setBold(False)
+        font5.setItalic(False)
+        self.creditsLabel.setFont(font5)
         self.creditsLabel.setAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
 
         self.horizontalLayout_5.addWidget(self.creditsLabel)
@@ -1577,7 +1589,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(4)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1591,6 +1603,7 @@ class Ui_MainWindow(object):
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"Home", None))
         self.btn_import_video.setText(QCoreApplication.translate("MainWindow", u"Import Video", None))
         self.btn_formation.setText(QCoreApplication.translate("MainWindow", u"Lineup Builder", None))
+        self.btn_video_player.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.extraLabel.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
         # if QT_CONFIG(tooltip)
         self.extraCloseColumnBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Close left box", None))

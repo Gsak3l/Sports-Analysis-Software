@@ -39,7 +39,6 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         global widgets
         widgets = self.ui
-        global playback_speed
 
         # USE CUSTOM TITLE BAR | USE AS 'False' FOR MAC OR LINUX
         # -------------------------------------------------------------------------------------------------------------
@@ -83,6 +82,7 @@ class MainWindow(QMainWindow):
         widgets.btn_home.clicked.connect(self.buttonClick)
         widgets.btn_import_video.clicked.connect(self.buttonClick)
         widgets.btn_formation.clicked.connect(self.buttonClick)
+        widgets.btn_video_player.clicked.connect(self.buttonClick)
 
         # LOCAL VIDEO PAGE BUTTON CONNECTION
         # -------------------------------------------------------------------------------------------------------------
@@ -155,24 +155,36 @@ class MainWindow(QMainWindow):
         # --------------------------------------------------------------------------------------------------------------
         # RIGHT MENU BUTTONS
         if btnName == 'btn_home':  # HOME PAGE
-            widgets.stackedWidget.setCurrentWidget(widgets.home)
-            UIFunctions.resetStyle(self, btnName)
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+            widgets.titleRightInfo.setText('Sports Analysis Software')  # CHANGE HEADER TEXT
+            widgets.stackedWidget.setCurrentWidget(widgets.home)  # SET PAGE
+            UIFunctions.resetStyle(self, btnName)  # RESET OTHER SELECTED BUTTONS
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU STYLESHEET
 
         elif btnName == 'btn_import_video':  # EMBED VIDEO MENU
+            widgets.titleRightInfo.setText('Choose Capture option')  # CHANGE HEADER TEXT
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)  # SET PAGE
-            UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
+            UIFunctions.resetStyle(self, btnName)  # RESET OTHER SELECTED BUTTONS
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU STYLESHEET
 
         # LINEUP BUILDER BUTTON
         elif btnName == 'btn_formation':
+            widgets.titleRightInfo.setText('Build Your Lineup')  # CHANGE HEADER TEXT
             widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)  # SET PAGE
-            UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
+            UIFunctions.resetStyle(self, btnName)  # RESET OTHER SELECTED BUTTONS
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU STYLESHEET
+
+        # VIDEO VIEWER AND COACH TOOL
+        elif btnName == 'btn_video_player':
+            widgets.titleRightInfo.setText('Expert Tool')  # CHANGE HEADER TEXT
+            widgets.stackedWidget.setCurrentWidget(widgets.video_page)  # SET PAGE
+            UIFunctions.resetStyle(self, btnName)  # RESET OTHER SELECTED BUTTONS
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU STYLESHEET
 
         # -------------------------------------------------------------------------------------------------------------
         # LOCALLY EMBED VIDEOS
         elif btnName == 'btn_local_footage':  # SHOW THE AVAILABLE OPTIONS FOR LOCAL VIDEO
+            # CHANGE HEADER TEXT
+            widgets.titleRightInfo.setText('Local Video Page')
             widgets.stackedWidget.setCurrentWidget(widgets.local_video_page)
 
         elif btnName == 'local_video_file_button':  # OPEN FILE EXPLORER ON WHEN CLICKING THE LOCAL VIDEO IMPORT
@@ -188,6 +200,8 @@ class MainWindow(QMainWindow):
                                                     widgets.local_competition_input.text(),
                                                     widgets.local_details_input.toPlainText(),
                                                     widgets.local_video_file_name.text())
+                # CHANGE HEADER TEXT
+                widgets.titleRightInfo.setText('Build Your Lineup')
                 # NEXT PAGE BUTTON
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
                 # ACTIVE FORMATION MENU
@@ -198,11 +212,15 @@ class MainWindow(QMainWindow):
                                                       'and navigating to a .mp4 file')
 
         elif btnName == 'local_previous_page_button':  # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
+            # CHANGE HEADER TEXT
+            widgets.titleRightInfo.setText('Choose Capture Video Option')
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
 
         # -------------------------------------------------------------------------------------------------------------
         # EMBED VIDEO FROM A CLOUD LINK
         elif btnName == 'btn_cloud_footage':  # SHOW THE AVAILABLE OPTIONS FOR CLOUD VIDEO
+            # CHANGE HEADER TEXT
+            widgets.titleRightInfo.setText('Cloud Video Page')
             widgets.stackedWidget.setCurrentWidget(widgets.cloud_video_page)
 
         elif btnName == 'cloud_video_file_button':  # DOWNLOAD VIDEO BUTTON
@@ -233,6 +251,8 @@ class MainWindow(QMainWindow):
                                                     widgets.cloud_competition_input.text(),
                                                     widgets.cloud_details_input.toPlainText(),
                                                     widgets.cloud_video_file_name.placeholderText())
+                # CHANGE HEADER TEXT
+                widgets.titleRightInfo.setText('Build Your Lineup')
                 # NEXT PAGE BUTTON
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
                 # ACTIVE FORMATION MENU
@@ -244,6 +264,7 @@ class MainWindow(QMainWindow):
                     'Error while validating the existance of the video, please'
                     'try to downloaded again...')
         elif btnName == 'cloud_previous_page_button':
+            widgets.titleRightInfo.setText('Choose Capture option')  # CHANGE HEADER TEXT
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
 
         # -------------------------------------------------------------------------------------------------------------
@@ -252,6 +273,8 @@ class MainWindow(QMainWindow):
             save_data.json_data_cleanup(
                 string_manipulation.double_backslash_to_slash(filesystem_changes.find_last_created_folder()),
                 'lineup.json')
+            # CHANGE HEADER TEXT
+            widgets.titleRightInfo.setText('Expert Tool')
             # CHANGING ACTIVE WIDGET PAGE
             widgets.stackedWidget.setCurrentWidget(widgets.video_page)
             # SETTING A VIDEO FOR THE VIDEO PLAYER
@@ -260,6 +283,8 @@ class MainWindow(QMainWindow):
             else:
                 self.on_loadVideoRequest(widgets.local_video_file_name.text())
         elif btnName == 'formation_previous_page_button':
+            # CHANGE HEADER TEXT
+            widgets.titleRightInfo.setText('Choose Capture option')
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)  # SET PAGE
             # ACTIVE EMBED VIDEO MENU
             UIFunctions.resetStyle(self, widgets.btn_import_video.objectName())
@@ -321,6 +346,7 @@ class MainWindow(QMainWindow):
         self.media_player.setAudioOutput(self.audio_output)
         self.media_player.setVideoOutput(widgets.video_player)
         self.media_player.setSource(QUrl(video_path))
+        self.media_player.setPlaybackRate(1)
         self.media_player.play()
 
     # DOWNLOADING WITHOUT DIALOG QWEBENGINEVIEW

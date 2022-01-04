@@ -8,13 +8,13 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>720</height>
+    <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1000</width>
-    <height>560</height>
+    <width>900</width>
+    <height>800</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -899,7 +899,7 @@ Button */
                    <enum>Qt::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-movie.png);</string>
+                   <string notr="true">background-image: url(:/icons/images/icons/cil-image-plus.png);</string>
                   </property>
                   <property name="text">
                    <string>Import Video</string>
@@ -938,6 +938,25 @@ Button */
                   </property>
                   <property name="text">
                    <string>Lineup Builder</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btn_video_player">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image:url(:/icons/images/icons/cil-movie.png);</string>
+                  </property>
+                  <property name="text">
+                   <string>PushButton</string>
                   </property>
                  </widget>
                 </item>
@@ -1461,10 +1480,14 @@ p, li { white-space: pre-wrap; }
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <pointsize>-1</pointsize>
                     <italic>false</italic>
-                    <bold>false</bold>
+                    <bold>true</bold>
                    </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font-weight:bold;
+font-size:18px;</string>
                   </property>
                   <property name="text">
                    <string>Sports Analysis Software</string>
@@ -1707,7 +1730,7 @@ p, li { white-space: pre-wrap; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>4</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
