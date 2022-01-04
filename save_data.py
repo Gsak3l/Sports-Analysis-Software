@@ -6,7 +6,7 @@ import string_manipulation as ct
 import filesystem_changes
 
 
-# checking if the given path is a valid path
+# CHECKING IF THE GIVEN PATH IS A VALID FILE
 def check_if_file_exists(video_file):
     return os.path.isfile(video_file)
 

@@ -67,3 +67,11 @@ if __name__ == "__main__":
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())
+
+# -------------------------------------------------------------------------------------------------------------
+# FIXING COLORS IN THE QCALENDARWIDGET WEEK DAYS
+# for d in (Qt.Saturday, Qt.Sunday, Qt):
+#     for f in (widgets.local_calendar, widgets.cloud_calendar):
+#         fmt = f.weekdayTextFormat(d)
+#         fmt.setForeground(Qt.lightGray)
+#         f.setWeekdayTextFormat(d, fmt)

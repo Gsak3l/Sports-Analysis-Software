@@ -1,18 +1,23 @@
-# IMPORT LIBRARIES
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# ***IMPORT LIBRARIES***
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import sys
 import os
 import platform
 import time
 
-# IMPORT PYTHON CLASSES
-import string_manipulation
-import save_data
-import string_manipulation
-import youtube_downloader
-import file_manipulation
-import filesystem_changes
-# IMPORT / GUI AND MODULES AND WIDGETS
-# ///////////////////////////////////////////////////////////////
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# ***IMPORT PYTHON CLASSES***
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+import save_data as sd
+import string_manipulation as sm
+import youtube_downloader as yd
+import file_manipulation as fm
+import filesystem_changes as fc
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# ***IMPORT / GUI AND MODULES AND WIDGETS***
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 from modules import *
 from widgets import *
 from PySide6.QtCore import *
@@ -24,8 +29,9 @@ from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 
 os.environ['QT_FONT_DPI'] = '96'  # FIX Problem for High DPI and Scale above 100%
 
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # SET AS GLOBAL WIDGETS
-# ---------------------------------------------------------------------------------------------------------------------
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 widgets = None
 
 
@@ -33,18 +39,19 @@ class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
 
-        # SET AS GLOBAL WIDGETS
+        # ***SET AS GLOBAL WIDGETS***
         # -------------------------------------------------------------------------------------------------------------
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         global widgets
         widgets = self.ui
 
-        # USE CUSTOM TITLE BAR | USE AS 'False' FOR MAC OR LINUX
+        # ***USE CUSTOM TITLE BAR***
         # -------------------------------------------------------------------------------------------------------------
+        # USE AS 'False' FOR MAC OR LINUX
         Settings.ENABLE_CUSTOM_TITLE_BAR = True
 
-        # APP NAME
+        # ***APP NAME***
         # -------------------------------------------------------------------------------------------------------------
         title = 'Sports Analysis App Name'
         description = 'Sports Analysis Slogan'
@@ -52,46 +59,34 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
 
-        # TOGGLE MENU
+        # ***TOGGLE MENU***
         # -------------------------------------------------------------------------------------------------------------
         widgets.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
 
-        # SET UI DEFINITIONS
+        # ***SET UI DEFINITIONS***
         # -------------------------------------------------------------------------------------------------------------
         UIFunctions.uiDefinitions(self)
 
-        # CREATING FOLDERS WHERE DATA WILL BE SAVED
+        # ***CREATING FOLDERS WHERE DATA WILL BE SAVED***
         # -------------------------------------------------------------------------------------------------------------
-        filesystem_changes.create_root_save_directory()
-        path = filesystem_changes.create_sub_save_folder()
-
-        # QTableWidget PARAMETERS
-        # -------------------------------------------------------------------------------------------------------------
-        # local_video_page.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        fc.create_root_save_directory()
+        path = fc.create_sub_save_folder()
 
         # -------------------------------------------------------------------------------------------------------------
-        # FIXING COLORS IN THE QCALENDARWIDGET WEEK DAYS
-        # for d in (Qt.Saturday, Qt.Sunday, Qt):
-        #     for f in (widgets.local_calendar, widgets.cloud_calendar):
-        #         fmt = f.weekdayTextFormat(d)
-        #         fmt.setForeground(Qt.lightGray)
-        #         f.setWeekdayTextFormat(d, fmt)
-
-        # -------------------------------------------------------------------------------------------------------------
-        # LEFT MENU BUTTONS
+        # ***LEFT MENU BUTTONS***
         widgets.btn_home.clicked.connect(self.buttonClick)
         widgets.btn_import_video.clicked.connect(self.buttonClick)
         widgets.btn_formation.clicked.connect(self.buttonClick)
         widgets.btn_video_player.clicked.connect(self.buttonClick)
 
-        # LOCAL VIDEO PAGE BUTTON CONNECTION
+        # ***LOCAL VIDEO PAGE BUTTON CONNECTION***
         # -------------------------------------------------------------------------------------------------------------
         widgets.btn_local_footage.clicked.connect(self.buttonClick)
         widgets.local_video_file_button.clicked.connect(self.buttonClick)
         widgets.local_previous_page_button.clicked.connect(self.buttonClick)
         widgets.local_next_page_button.clicked.connect(self.buttonClick)
 
-        # TACTICS PAGE
+        # ***TACTICS PAGE***
         # -------------------------------------------------------------------------------------------------------------
         # saving the information for the formation/tactics/lineup website to a json file
         widgets.formation.page().profile().setDownloadPath(path)
@@ -101,14 +96,14 @@ class MainWindow(QMainWindow):
         widgets.formation_next_page_button.clicked.connect(self.buttonClick)
         widgets.formation_previous_page_button.clicked.connect(self.buttonClick)
 
-        # CLOUD VIDEO PAGE BUTTON CONNECTION
+        # ***CLOUD VIDEO PAGE BUTTON CONNECTION***
         # -------------------------------------------------------------------------------------------------------------
         widgets.btn_cloud_footage.clicked.connect(self.buttonClick)
         widgets.cloud_video_file_button.clicked.connect(self.buttonClick)
         widgets.cloud_next_page_button.clicked.connect(self.buttonClick)
         widgets.cloud_previous_page_button.clicked.connect(self.buttonClick)
 
-        # VIDEO PLAYER PAGE
+        # ***VIDEO PLAYER PAGE***
         # -------------------------------------------------------------------------------------------------------------
         # BUTTONS
         widgets.play_video_button.clicked.connect(self.buttonClick)
@@ -127,161 +122,159 @@ class MainWindow(QMainWindow):
         self.show()
 
         # -------------------------------------------------------------------------------------------------------------
-        # SET CUSTOM THEME
-        useCustomTheme = False
-        themeFile = 'themes/py_dracula_dark.qss'
+        # ***SET CUSTOM THEME***
+        # UIFunctions.theme(self, 'themes/py_dracula_dark.qss', True)
+        # AppFunctions.setThemeHack(self)
 
         # -------------------------------------------------------------------------------------------------------------
-        # SET THEME AND HACKS
-        if useCustomTheme:
-            # LOAD AND APPLY STYLE
-            UIFunctions.theme(self, themeFile, True)
-
-            # SET HACKS
-            AppFunctions.setThemeHack(self)
-
-        # -------------------------------------------------------------------------------------------------------------
-        # SET HOME PAGE AND SELECT MENU
+        # ***SET HOME PAGE AND SELECT MENU***
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
         widgets.stackedWidget.setCurrentWidget(widgets.home)
 
-    # -----------------------------------------------------------------------------------------------------------------
-    # BUTTONS CLICK
+    # =================================================================================================================
+    # ***BUTTONS CLICK***
+    # =================================================================================================================
     def buttonClick(self):
         # GET BUTTON CLICKED
         btn = self.sender()
         btnName = btn.objectName()
 
-        # --------------------------------------------------------------------------------------------------------------
-        # RIGHT MENU BUTTONS
+        # -------------------------------------------------------------------------------------------------------------
+        # ***RIGHT MENU BUTTONS***
+        # .............................................................................................................
+        # HOME PAGE
         if btnName == 'btn_home':  # HOME PAGE
-            widgets.titleRightInfo.setText('Sports Analysis Software')  # CHANGE HEADER TEXT
-            widgets.stackedWidget.setCurrentWidget(widgets.home)  # SET PAGE
-            UIFunctions.resetStyle(self, btnName)  # RESET OTHER SELECTED BUTTONS
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU STYLESHEET
+            widgets.titleRightInfo.setText('Sports Analysis Software')
+            widgets.stackedWidget.setCurrentWidget(widgets.home)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        elif btnName == 'btn_import_video':  # EMBED VIDEO MENU
-            widgets.titleRightInfo.setText('Choose Capture option')  # CHANGE HEADER TEXT
-            widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)  # SET PAGE
-            UIFunctions.resetStyle(self, btnName)  # RESET OTHER SELECTED BUTTONS
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU STYLESHEET
-
+        # .............................................................................................................
+        # EMBED VIDEO PAGE
+        elif btnName == 'btn_import_video':
+            widgets.titleRightInfo.setText('Choose Capture option')
+            widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+        # .............................................................................................................
         # LINEUP BUILDER BUTTON
         elif btnName == 'btn_formation':
-            widgets.titleRightInfo.setText('Build Your Lineup')  # CHANGE HEADER TEXT
-            widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)  # SET PAGE
-            UIFunctions.resetStyle(self, btnName)  # RESET OTHER SELECTED BUTTONS
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU STYLESHEET
-
+            widgets.titleRightInfo.setText('Build Your Lineup')
+            widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+        # .............................................................................................................
         # VIDEO VIEWER AND COACH TOOL
         elif btnName == 'btn_video_player':
-            widgets.titleRightInfo.setText('Expert Tool')  # CHANGE HEADER TEXT
-            widgets.stackedWidget.setCurrentWidget(widgets.video_page)  # SET PAGE
-            UIFunctions.resetStyle(self, btnName)  # RESET OTHER SELECTED BUTTONS
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU STYLESHEET
+            widgets.titleRightInfo.setText('Expert Tool')
+            widgets.stackedWidget.setCurrentWidget(widgets.video_page)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
         # -------------------------------------------------------------------------------------------------------------
-        # LOCALLY EMBED VIDEOS
-        elif btnName == 'btn_local_footage':  # SHOW THE AVAILABLE OPTIONS FOR LOCAL VIDEO
-            # CHANGE HEADER TEXT
+        # ***LOCALLY EMBED VIDEOS***
+        # -------------------------------------------------------------------------------------------------------------
+        # SHOW LOCAL VIDEO PAGE
+        elif btnName == 'btn_local_footage':
             widgets.titleRightInfo.setText('Local Video Page')
             widgets.stackedWidget.setCurrentWidget(widgets.local_video_page)
-
-        elif btnName == 'local_video_file_button':  # OPEN FILE EXPLORER ON WHEN CLICKING THE LOCAL VIDEO IMPORT
-            fname = QFileDialog.getOpenFileName(self, 'Open Video', filesystem_changes.downloads_path(),
-                                                'Video File (*.avi, *.mpg, *.mp4)')
+        # .............................................................................................................
+        # FILE EXPLORER FOR VIDEO SELECTOR
+        elif btnName == 'local_video_file_button':
+            supported_formats = 'Video File (*.avi, *.mpg, *.mp4)'
+            fname = QFileDialog.getOpenFileName(self, 'Open Video', fc.downloads_path(), supported_formats)
             widgets.local_video_file_name.setText(fname[0])
-
-        elif btnName == 'local_next_page_button':  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
-            if save_data.check_if_file_exists(widgets.local_video_file_name.text()):  # FILE VALIDATION FOR THE PATH
-                save_data.save_pre_local_video_data(widgets.local_calendar.selectedDate(),
-                                                    widgets.local_sports_type_combobox.currentText(),
-                                                    widgets.local_season_input.text(),
-                                                    widgets.local_competition_input.text(),
-                                                    widgets.local_details_input.toPlainText(),
-                                                    widgets.local_video_file_name.text())
-                # CHANGE HEADER TEXT
+        # .............................................................................................................
+        # SAVE DATA FROM INPUT FIELDS INTO A JSON AFTER VALIDATING FILE AND CHANGE PAGE
+        elif btnName == 'local_next_page_button':
+            # FILE VALIDATION FOR THE PATH
+            if sd.check_if_file_exists(widgets.local_video_file_name.text()):
+                sd.save_pre_local_video_data(widgets.local_calendar.selectedDate(),
+                                             widgets.local_sports_type_combobox.currentText(),
+                                             widgets.local_season_input.text(),
+                                             widgets.local_competition_input.text(),
+                                             widgets.local_details_input.toPlainText(),
+                                             widgets.local_video_file_name.text())
                 widgets.titleRightInfo.setText('Build Your Lineup')
-                # NEXT PAGE BUTTON
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
-                # ACTIVE FORMATION MENU
                 UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
                 widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
             else:
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')
-
-        elif btnName == 'local_previous_page_button':  # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
+        # .............................................................................................................
+        # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
+        elif btnName == 'local_previous_page_button':
             # CHANGE HEADER TEXT
             widgets.titleRightInfo.setText('Choose Capture Video Option')
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
 
         # -------------------------------------------------------------------------------------------------------------
-        # EMBED VIDEO FROM A CLOUD LINK
-        elif btnName == 'btn_cloud_footage':  # SHOW THE AVAILABLE OPTIONS FOR CLOUD VIDEO
-            # CHANGE HEADER TEXT
+        # ***EMBED VIDEO FROM A CLOUD LINK***
+        # -------------------------------------------------------------------------------------------------------------
+        # SHOW CLOUD PAGE
+        elif btnName == 'btn_cloud_footage':
             widgets.titleRightInfo.setText('Cloud Video Page')
             widgets.stackedWidget.setCurrentWidget(widgets.cloud_video_page)
-
-        elif btnName == 'cloud_video_file_button':  # DOWNLOAD VIDEO BUTTON
+        # .............................................................................................................
+        # DOWNLOAD BUTTON
+        elif btnName == 'cloud_video_file_button':
             # FAKE PROGRESS BAR
             try:
                 widgets.cloud_progress_bar.setTextVisible(True)  # VISIBLE %
                 for i in range(0, 100):
                     if i == 14:
-                        url = youtube_downloader.save_video_to_downloads(widgets.cloud_video_file_name.text())
+                        url = yd.save_video_to_downloads(widgets.cloud_video_file_name.text())
                     else:
                         time.sleep(0.05)
                         widgets.cloud_progress_bar.setValue(i)
                 widgets.cloud_progress_bar.setValue(100)
-                widgets.cloud_video_file_name.setPlaceholderText(string_manipulation.double_backslash_to_slash(url))
+                widgets.cloud_video_file_name.setPlaceholderText(sm.double_backslash_to_slash(url))
                 widgets.cloud_video_file_name.setText('COMPLETED')
             except Exception as e:  # just in case the url is not valid
                 widgets.cloud_progress_bar.setValue(0)
                 widgets.cloud_video_file_name.setText('')
                 widgets.cloud_video_file_name.setPlaceholderText('Please enter a valid URL...')
                 print(e.__cause__)
-
+        # .............................................................................................................
+        # SAVE DATA FROM INPUT FIELDS INTO A JSON AFTER VALIDATING FILE AND CHANGE PAGE
         elif btnName == 'cloud_next_page_button':  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
-            # FILE VALIDATION FOR THE PATH
-            if save_data.check_if_file_exists(widgets.cloud_video_file_name.placeholderText()):
-                save_data.save_pre_local_video_data(widgets.cloud_calendar.selectedDate(),
-                                                    widgets.cloud_sports_type_combobox.currentText(),
-                                                    widgets.cloud_season_input.text(),
-                                                    widgets.cloud_competition_input.text(),
-                                                    widgets.cloud_details_input.toPlainText(),
-                                                    widgets.cloud_video_file_name.placeholderText())
-                # CHANGE HEADER TEXT
+            if sd.check_if_file_exists(widgets.cloud_video_file_name.placeholderText()):
+                sd.save_pre_local_video_data(widgets.cloud_calendar.selectedDate(),
+                                             widgets.cloud_sports_type_combobox.currentText(),
+                                             widgets.cloud_season_input.text(),
+                                             widgets.cloud_competition_input.text(),
+                                             widgets.cloud_details_input.toPlainText(),
+                                             widgets.cloud_video_file_name.placeholderText())
                 widgets.titleRightInfo.setText('Build Your Lineup')
-                # NEXT PAGE BUTTON
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
-                # ACTIVE FORMATION MENU
                 UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
                 widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
             else:
                 widgets.cloud_video_file_name.setText('')
-                widgets.cloud_video_file_name.setPlaceholderText(
-                    'Error while validating the existance of the video, please'
-                    'try to downloaded again...')
+                widgets.cloud_video_file_name.setPlaceholderText('Error while validating the existence of the video, '
+                                                                 'please try to downloaded again...')
+        # .............................................................................................................
+        # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
         elif btnName == 'cloud_previous_page_button':
             widgets.titleRightInfo.setText('Choose Capture option')  # CHANGE HEADER TEXT
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
 
         # -------------------------------------------------------------------------------------------------------------
-        # FORMATION - LINEUP BUILDER BUTTONS
+        # ***FORMATION - LINEUP BUILDER***
+        # -------------------------------------------------------------------------------------------------------------
+        # SAVE LINEUP BUILDER DATA TO JSON AND GO TO THE COACH TOOL SECTION
         elif btnName == 'formation_next_page_button':
-            save_data.json_data_cleanup(
-                string_manipulation.double_backslash_to_slash(filesystem_changes.find_last_created_folder()),
-                'lineup.json')
-            # CHANGE HEADER TEXT
+            sd.json_data_cleanup(sm.double_backslash_to_slash(fc.find_last_created_folder()), 'lineup.json')
             widgets.titleRightInfo.setText('Expert Tool')
-            # CHANGING ACTIVE WIDGET PAGE
             widgets.stackedWidget.setCurrentWidget(widgets.video_page)
-            # SETTING A VIDEO FOR THE VIDEO PLAYER
+            # DECIDE WHAT VIDEO TO DISPLAY, BAD PRACTICE
             if (widgets.cloud_video_file_name.text() == 'COMPLETED'):
                 self.on_loadVideoRequest(widgets.cloud_video_file_name.placeholderText())
             else:
                 self.on_loadVideoRequest(widgets.local_video_file_name.text())
+        # .............................................................................................................
+        # GO BACK PAGE
         elif btnName == 'formation_previous_page_button':
             # CHANGE HEADER TEXT
             widgets.titleRightInfo.setText('Choose Capture option')
@@ -291,25 +284,35 @@ class MainWindow(QMainWindow):
             widgets.btn_import_video.setStyleSheet(UIFunctions.selectMenu(widgets.btn_import_video.styleSheet()))
 
         # -------------------------------------------------------------------------------------------------------------
-        # VIDEO PLAYER PAGE
+        # ***VIDEO PLAYER PAGE***
+        # -------------------------------------------------------------------------------------------------------------
+        # PLAY VIDEO
         elif btnName == 'play_video_button':
             self.media_player.play()
             btn.setDisabled(True)
             widgets.pause_video_button.setDisabled(False)
             widgets.stop_video_button.setDisabled(False)
+        # .............................................................................................................
+        # PAUSE VIDEO
         elif btnName == 'pause_video_button':
             self.media_player.pause()
             btn.setDisabled(True)
             widgets.play_video_button.setDisabled(False)
             widgets.stop_video_button.setDisabled(False)
+        # .............................................................................................................
+        # STOP VIDEO
         elif btnName == 'stop_video_button':
             self.media_player.stop()
             btn.setDisabled(True)
             widgets.play_video_button.setDisabled(False)
             widgets.pause_video_button.setDisabled(False)
+        # .............................................................................................................
+        # INCREASE VIDEO PLAYBACK RATE
         elif btnName == 'increase_video_speed':
             self.fix_audio(btnName)
             self.media_player.setPlaybackRate(self.media_player.playbackRate() + 0.25)
+        # .............................................................................................................
+        # DECREASE VIDEO PLAYBACK SPEED
         elif btnName == 'decrease_video_speed':
             self.fix_audio(btnName)
             self.media_player.setPlaybackRate(self.media_player.playbackRate() - 0.25)
@@ -318,7 +321,8 @@ class MainWindow(QMainWindow):
         print(f'Button {btnName} pressed!')
 
     # -----------------------------------------------------------------------------------------------------------------
-    # MOUSE CLICK EVENTS
+    # ***MOUSE CLICK EVENTS***
+    # -----------------------------------------------------------------------------------------------------------------
     def mousePressEvent(self, event):
         # SET DRAG POS WINDOW
         self.dragPos = event.globalPos()
@@ -334,14 +338,16 @@ class MainWindow(QMainWindow):
         print(event)
 
     # -----------------------------------------------------------------------------------------------------------------
-    # MEDIA PLAYER ACTIONS
+    # ***MEDIA PLAYER ACTIONS***
+    # -----------------------------------------------------------------------------------------------------------------
     def slider_moved(self, position):
         percentage = self.media_player.duration() * position / 100
         self.media_player.setPosition(int(percentage))
         widgets.video_player_progress_bar.setValue(int(position))
 
     # -----------------------------------------------------------------------------------------------------------------
-    # HANDLE DOWNLOAD REQUESTS FROM WEBSITE
+    # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***
+    # -----------------------------------------------------------------------------------------------------------------
     def on_loadVideoRequest(self, video_path):
         self.media_player.setAudioOutput(self.audio_output)
         self.media_player.setVideoOutput(widgets.video_player)
@@ -349,18 +355,23 @@ class MainWindow(QMainWindow):
         self.media_player.setPlaybackRate(1)
         self.media_player.play()
 
-    # DOWNLOADING WITHOUT DIALOG QWEBENGINEVIEW
+    # -----------------------------------------------------------------------------------------------------------------
+    # ***DOWNLOADING WITHOUT DIALOG QWEBENGINEVIEW***
+    # -----------------------------------------------------------------------------------------------------------------
     def on_downloadRequested(self, download):
         download.accept()
 
     # -----------------------------------------------------------------------------------------------------------------
-    # RESIZE EVENTS
+    # ***RESIZE EVENTS***
+    # -----------------------------------------------------------------------------------------------------------------
     def resizeEvent(self, event):
         # Update Size Grips
         UIFunctions.resize_grips(self)
 
     # -----------------------------------------------------------------------------------------------------------------
-    # REMOVE OR RESTORE  AUDIO FROM VIDEO (DISTORTION ON HIGH AND LOW PLAYBACK)
+    # ***REMOVE OR RESTORE AUDIO FROM VIDEO***
+    # -----------------------------------------------------------------------------------------------------------------
+    # (DISTORTION ON HIGH AND LOW PLAYBACK)
     def fix_audio(self, btn_):
         if (self.audio_output.isMuted()) and \
                 ((btn_ == 'increase_video_speed' and (self.media_player.playbackRate() + 0.25) == 1) or
@@ -374,6 +385,9 @@ class MainWindow(QMainWindow):
             self.media_player.setAudioOutput(self.audio_output)
 
 
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# MAIN
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon('icon.ico'))
