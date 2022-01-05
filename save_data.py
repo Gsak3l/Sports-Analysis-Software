@@ -46,24 +46,24 @@ def save_readable_json(x_json):
     # getting the last created folder
     path = fc.find_last_created_folder()
     # saving to a json file
-    with open(f'{path}/game details.json', 'w', encoding='utf-8') as f:
+    with open(f'{path}/game details.json', 'w') as f:
         json.dump(x_json, f, ensure_ascii=False, indent=4)
     f.close()
 
 
 # CONVERTING A ONE-LINE JSON INTO VISIBLE JSON
-def fix_one_line_json(folder_path, file_name):
-    folder_path = sm.double_backslash_to_slash(folder_path)
-    with open(folder_path + file_name) as f:
+def fix_one_line_json(file_path, file_name):
+    file_path = sm.double_backslash_to_slash(file_path)
+    with open(file_path + file_name) as f:
         x_json = json.load(f)
-    with open(folder_path + file_name, 'w', encoding='utf-8') as f:
+    with open(file_path + file_name, 'w') as f:
         json.dump(x_json, f, ensure_ascii=False, indent=4)
     f.close()
 
 
 # JSON DATA CLEANING (KEEPING THINGS THAT ARE USEFUL)
-def json_data_cleanup(folder_path, file_name):
-    with open(folder_path + file_name) as f:
+def json_data_cleanup(file_path, file_name):
+    with open(file_path + file_name) as f:
         x_json = json.load(f)
 
     for element in x_json:
@@ -71,21 +71,24 @@ def json_data_cleanup(folder_path, file_name):
 
     _, time_ = fc.get_date_time()
     new_name = 'lineup ' + time_ + '.json'
-    with open(folder_path + new_name, 'w', encoding='utf-8') as f:
+    with open(file_path + new_name, 'w') as f:
         json.dump(x_json, f, ensure_ascii=False, indent=4)
     f.close()
 
-    os.remove(folder_path + file_name)
+    fc.delete_file(file_path, file_name)
+
     file_name = 'lineup ' + time_ + '.json'
-    fix_one_line_json(folder_path, file_name)
-    json_to_csv(folder_path, file_name)
+    fix_one_line_json(file_path, file_name)
+    json_to_csv(file_path, file_name)
+
+    fc.delete_file(file_path, file_name)
 
 
 # JSON TO CSV
-def json_to_csv(folder_path, file_name):
-    df = pd.read_json(folder_path + '/' + file_name)
+def json_to_csv(file_path, file_name):
+    df = pd.read_json(file_path + '/' + file_name)
     file_name = sm.get_file_name(file_name)
-    df.to_csv(f'{folder_path}{file_name}.csv', index=None, encoding='utf8')
+    df.to_csv(f'{file_path}{file_name}.csv', index=None, encoding='utf8')
 
 
 # json_to_csv('Project Saves/Date 01.01.2022/Time 19.33.14', 'lineup 19.34.50.json')

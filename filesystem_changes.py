@@ -50,3 +50,8 @@ def downloads_path():
     home = os.path.expanduser('~')
     download_path = os.path.join(home, 'Downloads')
     return download_path
+
+
+# DELETE FILE
+def delete_file(file_path, file_name):
+    os.remove(file_path + file_name)

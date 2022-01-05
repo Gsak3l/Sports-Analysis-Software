@@ -1,0 +1,132 @@
+[
+    {
+        "id": "20801",
+        "name": "Cristiano Ronaldo",
+        "rating": "94",
+        "photo": "./data/images/photos/1/20801.png",
+        "positions": [
+            "AG",
+            "BU"
+        ],
+        "photoFolderIndex": 1,
+        "shortName": "Ronaldo"
+    },
+    {
+        "id": "158023",
+        "name": "Lionel Messi",
+        "rating": "94",
+        "photo": "./data/images/photos/0/158023.png",
+        "positions": [
+            "ATT",
+            "BU",
+            "AD"
+        ],
+        "photoFolderIndex": 0,
+        "shortName": "Messi"
+    },
+    {
+        "id": "205192",
+        "name": "Denis SuÃƒÂ¡rez",
+        "rating": "80",
+        "photo": "./data/images/photos/3/205192.png",
+        "positions": [
+            "MC",
+            "MG",
+            "MD"
+        ],
+        "photoFolderIndex": 3,
+        "shortName": "SuÃƒÂ¡rez"
+    },
+    {
+        "id": "176580",
+        "name": "Luis SuÃƒÂ¡rez",
+        "rating": "92",
+        "photo": "./data/images/photos/3/176580.png",
+        "positions": [
+            "BU"
+        ],
+        "photoFolderIndex": 3,
+        "shortName": "SuÃƒÂ¡rez"
+    },
+    {
+        "id": "190460",
+        "name": "Christian Eriksen",
+        "rating": "88",
+        "photo": "./data/images/photos/0/190460.png",
+        "positions": [
+            "MOC",
+            "MD",
+            "MC"
+        ],
+        "photoFolderIndex": 0,
+        "shortName": "Eriksen"
+    },
+    {
+        "id": "180206",
+        "name": "Miralem PjaniÃ„â€¡",
+        "rating": "86",
+        "photo": "./data/images/photos/1/180206.png",
+        "positions": [
+            "MC",
+            "MDC"
+        ],
+        "photoFolderIndex": 1,
+        "shortName": "PjaniÃ„â€¡"
+    },
+    {
+        "id": "192985",
+        "name": "Kevin De Bruyne",
+        "rating": "91",
+        "photo": "./data/images/photos/1/192985.png",
+        "positions": [
+            "MOC",
+            "MC"
+        ],
+        "photoFolderIndex": 1,
+        "shortName": "Bruyne"
+    },
+    {
+        "id": "164169",
+        "name": "Filipe LuÃƒÂ­s",
+        "rating": "86",
+        "photo": "./data/images/photos/4/164169.png",
+        "positions": [
+            "DG"
+        ],
+        "photoFolderIndex": 4,
+        "shortName": "LuÃƒÂ­s"
+    },
+    {
+        "id": "189332",
+        "name": "Jordi Alba",
+        "rating": "87",
+        "photo": "./data/images/photos/2/189332.png",
+        "positions": [
+            "DG"
+        ],
+        "photoFolderIndex": 2,
+        "shortName": "Alba"
+    },
+    {
+        "id": "190871",
+        "name": "Neymar",
+        "rating": "92",
+        "photo": "./data/images/photos/2/190871.png",
+        "positions": [
+            "AG"
+        ],
+        "photoFolderIndex": 2,
+        "shortName": "Neymar"
+    },
+    {
+        "id": "210257",
+        "name": "Ederson",
+        "rating": "85",
+        "photo": "./data/images/photos/0/210257.png",
+        "positions": [
+            "G"
+        ],
+        "photoFolderIndex": 0,
+        "shortName": "Ederson"
+    }
+]
