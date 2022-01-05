@@ -1,0 +1,12 @@
+id,name,positions,rating,shortName,photo,photoFolderIndex
+11,11,['MC'],0,11,,
+22,22,['MC'],0,22,,
+33,33,['MC'],0,33,,
+44,44,['MC'],0,44,,
+55,55,['MC'],0,55,,
+158023,Lionel Messi,"['ATT', 'BU', 'AD']",94,Messi,./data/images/photos/0/158023.png,0.0
+20801,Cristiano Ronaldo,"['AG', 'BU']",94,Ronaldo,./data/images/photos/1/20801.png,1.0
+156412,JosÃƒÂ© de JesÃƒÂºs Corona,['G'],76,Corona,./data/images/photos/4/156412.png,4.0
+212622,Joshua Kimmich,"['DD', 'MC', 'DC', 'MDC']",84,Kimmich,./data/images/photos/1/212622.png,1.0
+192366,NicolÃƒÂ¡s Otamendi,['DC'],85,Otamendi,./data/images/photos/4/192366.png,4.0
+201535,RaphaÃƒÂ«l Varane,['DC'],85,Varane,./data/images/photos/3/201535.png,3.0

@@ -33,13 +33,13 @@ def double_backslash_to_slash(text):
     return text
 
 
-# check if there are any letters from a to z in a string
+# CHECK IF THERE ARE ANY LETTERS FROM A TO Z IN A STRING
 def contains_letters(text):
     if re.search('[a-zA-Z]', text):
         return True
 
 
-# count how many numbers exist on a given string
+# COUNT HOW MANY NUMBERS THERE ARE IN A GIVEN STRING
 def count_numbers_in_string(text):
     numbers = sum(character.isdigit() for character in text)
     # letters = sum(character.isalpha() for character in text)
@@ -47,7 +47,7 @@ def count_numbers_in_string(text):
     return numbers
 
 
-# count the sum of the numbers on a given string
+# COUNT THE SUMMARY OF NUMBERS IN A GIVEN STRING
 def sum_digits_string(text):
     sum_digit = 0
     for x in text:
@@ -58,13 +58,18 @@ def sum_digits_string(text):
     return sum_digit
 
 
-# from 5 to 5-
+# REPLACE 5 TO 5-
 def dash_after_number(text):
     text += '-'
     return text
 
 
-# returns true if the given text has only numbers and dashes
+# RETURNS TRUE IF A GIVEN STRING CONTAINS JUST NUMBERS AND DASHES
 def allow_dash_number(text):
     if re.match('^[0-9-]*$', text):
         return True
+
+
+# GET FILE NAME - REMOVE FILE EXTENSION
+def get_file_name(file):
+    return file.rsplit('.', 1)[0]

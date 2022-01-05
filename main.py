@@ -12,7 +12,6 @@ import time
 import save_data as sd
 import string_manipulation as sm
 import youtube_downloader as yd
-import file_manipulation as fm
 import filesystem_changes as fc
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -374,8 +373,8 @@ class MainWindow(QMainWindow):
     # (DISTORTION ON HIGH AND LOW PLAYBACK)
     def fix_audio(self, btn_):
         if (self.audio_output.isMuted()) and \
-                ((btn_ == 'increase_video_speed' and (self.media_player.playbackRate() + 0.25) == 1) or
-                 (btn_ == 'decrease_video_speed' and (self.media_player.playbackRate() - 0.25 == 1))):
+                ((btn_ == 'increase_video_speed' and (self.media_player.playbackRate() + 0.20) == 1) or
+                 (btn_ == 'decrease_video_speed' and (self.media_player.playbackRate() - 0.20) == 1)):
             self.audio_output.setMuted(False)
             self.media_player.setAudioOutput(self.audio_output)
         elif self.audio_output.isMuted():
