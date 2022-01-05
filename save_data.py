@@ -1,6 +1,8 @@
 import os
+import re
 import json
 import pandas as pd
+import pickle
 
 import string_manipulation as sm
 import filesystem_changes as fc
@@ -90,5 +92,14 @@ def json_to_csv(file_path, file_name):
     file_name = sm.get_file_name(file_name)
     df.to_csv(f'{file_path}{file_name}.csv', index=None, encoding='utf8')
 
+    cleanup_csv_lineup(file_path, file_name)
 
-# json_to_csv('Project Saves/Date 01.01.2022/Time 19.33.14', 'lineup 19.34.50.json')
+
+def cleanup_csv_lineup(file_path, file_name):
+    df = pd.read_csv(f'{file_path}{file_name}.csv')
+    try:
+        df = df.drop(['photoFolderIndex', 'photo', 'shortName'], axis=1)
+    except KeyError as k:
+        print(k)
+    df['positions'] = df['positions'].apply(lambda x: re.sub(r'[^a-zA-Z, ]+', '', x))
+    df.to_csv(f'{file_path}{file_name}.csv', index=False)
