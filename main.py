@@ -108,13 +108,12 @@ class MainWindow(QMainWindow):
         widgets.play_video_button.clicked.connect(self.buttonClick)
         widgets.pause_video_button.clicked.connect(self.buttonClick)
         widgets.stop_video_button.clicked.connect(self.buttonClick)
-        widgets.increase_video_speed.clicked.connect(self.buttonClick)
-        widgets.decrease_video_speed.clicked.connect(self.buttonClick)
         # ELEMENTS
         self.audio_output = QAudioOutput()
         self.media_player = QMediaPlayer()
-        # PROGRESS BAR
+        # OTHERS
         widgets.video_player_slider.valueChanged.connect(self.slider_moved)
+        widgets.playback_speed_combo.currentIndexChanged.connect(self.set_video_playback)
 
         # -------------------------------------------------------------------------------------------------------------
         # SHOW APP
@@ -305,16 +304,6 @@ class MainWindow(QMainWindow):
             btn.setDisabled(True)
             widgets.play_video_button.setDisabled(False)
             widgets.pause_video_button.setDisabled(False)
-        # .............................................................................................................
-        # INCREASE VIDEO PLAYBACK RATE
-        elif btnName == 'increase_video_speed':
-            self.fix_audio(btnName)
-            self.media_player.setPlaybackRate(self.media_player.playbackRate() + 0.25)
-        # .............................................................................................................
-        # DECREASE VIDEO PLAYBACK SPEED
-        elif btnName == 'decrease_video_speed':
-            self.fix_audio(btnName)
-            self.media_player.setPlaybackRate(self.media_player.playbackRate() - 0.25)
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
@@ -345,8 +334,9 @@ class MainWindow(QMainWindow):
         widgets.video_player_progress_bar.setValue(int(position))
 
     # -----------------------------------------------------------------------------------------------------------------
-    # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***
+    # ***VIDEO PLAYER THINGS***
     # -----------------------------------------------------------------------------------------------------------------
+    # LOAD VIDEO AND PLAY IT ON THE DEFAULT SPEED OF 1
     def on_loadVideoRequest(self, video_path):
         self.media_player.setAudioOutput(self.audio_output)
         self.media_player.setVideoOutput(widgets.video_player)
@@ -354,8 +344,26 @@ class MainWindow(QMainWindow):
         self.media_player.setPlaybackRate(1)
         self.media_player.play()
 
+    # .................................................................................................................
+    # SET PLAYBACK SPEED
+    def set_video_playback(self):
+        self.media_player.setPlaybackRate((widgets.playback_speed_combo.currentIndex() + 1) * 0.25)
+        self.fix_audio()
+
+    # .................................................................................................................
+    # (DISTORTION ON HIGH AND LOW PLAYBACK)
+    def fix_audio(self):
+        if self.audio_output.isMuted() and ((widgets.playback_speed_combo.currentIndex() == 3)):
+            self.audio_output.setMuted(False)
+            self.media_player.setAudioOutput(self.audio_output)
+        elif self.audio_output.isMuted():
+            pass
+        else:
+            self.audio_output.setMuted(True)
+            self.media_player.setAudioOutput(self.audio_output)
+
     # -----------------------------------------------------------------------------------------------------------------
-    # ***DOWNLOADING WITHOUT DIALOG QWEBENGINEVIEW***
+    # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***
     # -----------------------------------------------------------------------------------------------------------------
     def on_downloadRequested(self, download):
         download.accept()
@@ -366,22 +374,6 @@ class MainWindow(QMainWindow):
     def resizeEvent(self, event):
         # Update Size Grips
         UIFunctions.resize_grips(self)
-
-    # -----------------------------------------------------------------------------------------------------------------
-    # ***REMOVE OR RESTORE AUDIO FROM VIDEO***
-    # -----------------------------------------------------------------------------------------------------------------
-    # (DISTORTION ON HIGH AND LOW PLAYBACK)
-    def fix_audio(self, btn_):
-        if (self.audio_output.isMuted()) and \
-                ((btn_ == 'increase_video_speed' and (self.media_player.playbackRate() + 0.20) == 1) or
-                 (btn_ == 'decrease_video_speed' and (self.media_player.playbackRate() - 0.20) == 1)):
-            self.audio_output.setMuted(False)
-            self.media_player.setAudioOutput(self.audio_output)
-        elif self.audio_output.isMuted():
-            pass
-        else:
-            self.audio_output.setMuted(True)
-            self.media_player.setAudioOutput(self.audio_output)
 
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

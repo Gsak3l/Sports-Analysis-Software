@@ -699,6 +699,7 @@ class Ui_MainWindow(object):
         self.btn_video_player = QPushButton(self.topMenu)
         self.btn_video_player.setObjectName(u"btn_video_player")
         self.btn_video_player.setMinimumSize(QSize(0, 45))
+        self.btn_video_player.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_video_player.setStyleSheet(u"background-image:url(:/icons/images/icons/cil-movie.png);")
 
         self.verticalLayout_8.addWidget(self.btn_video_player)
@@ -1424,32 +1425,21 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.stop_video_button)
 
-        self.decrease_video_speed = QPushButton(self.video_page)
-        self.decrease_video_speed.setObjectName(u"decrease_video_speed")
-        self.decrease_video_speed.setMaximumSize(QSize(80, 16777215))
-        self.decrease_video_speed.setSizeIncrement(QSize(0, 0))
-        self.decrease_video_speed.setStyleSheet(u"border: none;\n"
-                                                "border-radius: 50%;\n"
-                                                "")
-        icon10 = QIcon()
-        icon10.addFile(u":/images/images/images/slow_playback.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.decrease_video_speed.setIcon(icon10)
-        self.decrease_video_speed.setIconSize(QSize(32, 32))
+        self.playback_speed_combo = QComboBox(self.video_page)
+        self.playback_speed_combo.addItem("")
+        self.playback_speed_combo.addItem("")
+        self.playback_speed_combo.addItem("")
+        self.playback_speed_combo.addItem("")
+        self.playback_speed_combo.addItem("")
+        self.playback_speed_combo.addItem("")
+        self.playback_speed_combo.addItem("")
+        self.playback_speed_combo.addItem("")
+        self.playback_speed_combo.setObjectName(u"playback_speed_combo")
+        self.playback_speed_combo.setStyleSheet(u"background-color:#bd93f9 !important;\n"
+                                                "font-weight:bold;\n"
+                                                "width:30%;")
 
-        self.horizontalLayout_8.addWidget(self.decrease_video_speed)
-
-        self.increase_video_speed = QPushButton(self.video_page)
-        self.increase_video_speed.setObjectName(u"increase_video_speed")
-        self.increase_video_speed.setMaximumSize(QSize(80, 16777215))
-        self.increase_video_speed.setStyleSheet(u"border: none;\n"
-                                                "border-radius: 50%;\n"
-                                                "")
-        icon11 = QIcon()
-        icon11.addFile(u":/images/images/images/fast_playback.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.increase_video_speed.setIcon(icon11)
-        self.increase_video_speed.setIconSize(QSize(32, 32))
-
-        self.horizontalLayout_8.addWidget(self.increase_video_speed)
+        self.horizontalLayout_8.addWidget(self.playback_speed_combo)
 
         self.video_player_progress_bar = QProgressBar(self.video_page)
         self.video_player_progress_bar.setObjectName(u"video_player_progress_bar")
@@ -1497,9 +1487,9 @@ class Ui_MainWindow(object):
         self.btn_local_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_local_footage.setStyleSheet(u"::pressed{background-color: #21252b}\n"
                                              "::active{border:none}")
-        icon12 = QIcon()
-        icon12.addFile(u":/images/images/images/folder_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_local_footage.setIcon(icon12)
+        icon10 = QIcon()
+        icon10.addFile(u":/images/images/images/folder_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_local_footage.setIcon(icon10)
         self.btn_local_footage.setIconSize(QSize(64, 64))
         self.btn_local_footage.setAutoDefault(False)
 
@@ -1511,9 +1501,9 @@ class Ui_MainWindow(object):
         self.btn_cloud_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_cloud_footage.setStyleSheet(u"::pressed{background-color: #21252b}\n"
                                              "::active{border:none}")
-        icon13 = QIcon()
-        icon13.addFile(u":/images/images/images/cloud_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_cloud_footage.setIcon(icon13)
+        icon11 = QIcon()
+        icon11.addFile(u":/images/images/images/cloud_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_cloud_footage.setIcon(icon11)
         self.btn_cloud_footage.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.btn_cloud_footage)
@@ -1524,9 +1514,9 @@ class Ui_MainWindow(object):
         self.btn_camera_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_camera_footage.setStyleSheet(u"::pressed{background-color: #21252b}\n"
                                               "::active{border:none}")
-        icon14 = QIcon()
-        icon14.addFile(u":/images/images/images/camera_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_camera_footage.setIcon(icon14)
+        icon12 = QIcon()
+        icon12.addFile(u":/images/images/images/camera_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_camera_footage.setIcon(icon12)
         self.btn_camera_footage.setIconSize(QSize(64, 64))
 
         self.horizontalLayout_6.addWidget(self.btn_camera_footage)
@@ -1590,6 +1580,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.stackedWidget.setCurrentIndex(4)
+        self.playback_speed_combo.setCurrentIndex(3)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1684,8 +1675,15 @@ class Ui_MainWindow(object):
         self.play_video_button.setText("")
         self.pause_video_button.setText("")
         self.stop_video_button.setText("")
-        self.decrease_video_speed.setText("")
-        self.increase_video_speed.setText("")
+        self.playback_speed_combo.setItemText(0, QCoreApplication.translate("MainWindow", u"x0.25", None))
+        self.playback_speed_combo.setItemText(1, QCoreApplication.translate("MainWindow", u"x0.50", None))
+        self.playback_speed_combo.setItemText(2, QCoreApplication.translate("MainWindow", u"x0.75", None))
+        self.playback_speed_combo.setItemText(3, QCoreApplication.translate("MainWindow", u"x1.00", None))
+        self.playback_speed_combo.setItemText(4, QCoreApplication.translate("MainWindow", u"x1.25", None))
+        self.playback_speed_combo.setItemText(5, QCoreApplication.translate("MainWindow", u"x1.50", None))
+        self.playback_speed_combo.setItemText(6, QCoreApplication.translate("MainWindow", u"x1.75", None))
+        self.playback_speed_combo.setItemText(7, QCoreApplication.translate("MainWindow", u"x2.00", None))
+
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")

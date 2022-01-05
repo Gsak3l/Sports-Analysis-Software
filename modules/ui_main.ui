@@ -2693,65 +2693,55 @@ border-radius: 50%;
                           </widget>
                          </item>
                          <item>
-                          <widget class="QPushButton" name="decrease_video_speed">
-                           <property name="maximumSize">
-                            <size>
-                             <width>80</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="sizeIncrement">
-                            <size>
-                             <width>0</width>
-                             <height>0</height>
-                            </size>
-                           </property>
+                          <widget class="QComboBox" name="playback_speed_combo">
                            <property name="styleSheet">
-                            <string notr="true">border: none;
-border-radius: 50%;
-</string>
+                            <string notr="true">background-color:#bd93f9 !important;
+font-weight:bold;
+width:30%;</string>
                            </property>
-                           <property name="text">
-                            <string/>
+                           <property name="currentIndex">
+                            <number>3</number>
                            </property>
-                           <property name="icon">
-                            <iconset resource="../resources.qrc">
-                             <normaloff>:/images/images/images/slow_playback.png</normaloff>:/images/images/images/slow_playback.png</iconset>
-                           </property>
-                           <property name="iconSize">
-                            <size>
-                             <width>32</width>
-                             <height>32</height>
-                            </size>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QPushButton" name="increase_video_speed">
-                           <property name="maximumSize">
-                            <size>
-                             <width>80</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">border: none;
-border-radius: 50%;
-</string>
-                           </property>
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="icon">
-                            <iconset resource="../resources.qrc">
-                             <normaloff>:/images/images/images/fast_playback.png</normaloff>:/images/images/images/fast_playback.png</iconset>
-                           </property>
-                           <property name="iconSize">
-                            <size>
-                             <width>32</width>
-                             <height>32</height>
-                            </size>
-                           </property>
+                           <item>
+                            <property name="text">
+                             <string>x0.25</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>x0.50</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>x0.75</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>x1.00</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>x1.25</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>x1.50</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>x1.75</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>x2.00</string>
+                            </property>
+                           </item>
                           </widget>
                          </item>
                          <item>
