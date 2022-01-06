@@ -1435,9 +1435,9 @@ class Ui_MainWindow(object):
         self.playback_speed_combo.addItem("")
         self.playback_speed_combo.addItem("")
         self.playback_speed_combo.setObjectName(u"playback_speed_combo")
-        self.playback_speed_combo.setStyleSheet(u"background-color:#bd93f9 !important;\n"
+        self.playback_speed_combo.setStyleSheet(u"background-color:#bd93f9 ;\n"
                                                 "font-weight:bold;\n"
-                                                "width:30%;")
+                                                "color:#fff;")
 
         self.horizontalLayout_8.addWidget(self.playback_speed_combo)
 
@@ -1464,13 +1464,40 @@ class Ui_MainWindow(object):
         self.video_player_slider.setFont(font)
         self.video_player_slider.setCursor(QCursor(Qt.OpenHandCursor))
         self.video_player_slider.setStyleSheet(u"QSlider::handle:horizontal {\n"
-                                               "    width: 30px;\n"
+                                               "    width: 50px;\n"
                                                "}")
         self.video_player_slider.setMinimum(1)
         self.video_player_slider.setMaximum(100)
         self.video_player_slider.setOrientation(Qt.Horizontal)
 
         self.horizontalLayout_8.addWidget(self.video_player_slider)
+
+        self.player_names_combobox = QComboBox(self.video_page)
+        self.player_names_combobox.setObjectName(u"player_names_combobox")
+        self.player_names_combobox.setStyleSheet(u"background-color:#bd93f9 ;\n"
+                                                 "font-weight:bold;\n"
+                                                 "color:#fff;")
+
+        self.horizontalLayout_8.addWidget(self.player_names_combobox)
+
+        self.type_of_action_combobox = QComboBox(self.video_page)
+        self.type_of_action_combobox.addItem("")
+        self.type_of_action_combobox.addItem("")
+        self.type_of_action_combobox.addItem("")
+        self.type_of_action_combobox.setObjectName(u"type_of_action_combobox")
+        self.type_of_action_combobox.setStyleSheet(u"background-color:#bd93f9 ;\n"
+                                                   "font-weight:bold;\n"
+                                                   "color:#fff;")
+
+        self.horizontalLayout_8.addWidget(self.type_of_action_combobox)
+
+        self.action_combobox = QComboBox(self.video_page)
+        self.action_combobox.setObjectName(u"action_combobox")
+        self.action_combobox.setStyleSheet(u"background-color:#bd93f9 ;\n"
+                                           "font-weight:bold;\n"
+                                           "color:#fff;")
+
+        self.horizontalLayout_8.addWidget(self.action_combobox)
 
         self.verticalLayout21.addLayout(self.horizontalLayout_8)
 
@@ -1683,6 +1710,10 @@ class Ui_MainWindow(object):
         self.playback_speed_combo.setItemText(5, QCoreApplication.translate("MainWindow", u"x1.50", None))
         self.playback_speed_combo.setItemText(6, QCoreApplication.translate("MainWindow", u"x1.75", None))
         self.playback_speed_combo.setItemText(7, QCoreApplication.translate("MainWindow", u"x2.00", None))
+
+        self.type_of_action_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Shooting Game", None))
+        self.type_of_action_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Passing Game", None))
+        self.type_of_action_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Defensive Game", None))
 
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")

@@ -2695,9 +2695,9 @@ border-radius: 50%;
                          <item>
                           <widget class="QComboBox" name="playback_speed_combo">
                            <property name="styleSheet">
-                            <string notr="true">background-color:#bd93f9 !important;
+                            <string notr="true">background-color:#bd93f9 ;
 font-weight:bold;
-width:30%;</string>
+color:#fff;</string>
                            </property>
                            <property name="currentIndex">
                             <number>3</number>
@@ -2781,7 +2781,7 @@ width:30%;</string>
                            </property>
                            <property name="styleSheet">
                             <string notr="true">QSlider::handle:horizontal {
-    width: 30px;
+    width: 50px;
 }</string>
                            </property>
                            <property name="minimum">
@@ -2792,6 +2792,48 @@ width:30%;</string>
                            </property>
                            <property name="orientation">
                             <enum>Qt::Horizontal</enum>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="player_names_combobox">
+                           <property name="styleSheet">
+                            <string notr="true">background-color:#bd93f9 ;
+font-weight:bold;
+color:#fff;</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="type_of_action_combobox">
+                           <property name="styleSheet">
+                            <string notr="true">background-color:#bd93f9 ;
+font-weight:bold;
+color:#fff;</string>
+                           </property>
+                           <item>
+                            <property name="text">
+                             <string>Shooting Game</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Passing Game</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Defensive Game</string>
+                            </property>
+                           </item>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="action_combobox">
+                           <property name="styleSheet">
+                            <string notr="true">background-color:#bd93f9 ;
+font-weight:bold;
+color:#fff;</string>
                            </property>
                           </widget>
                          </item>

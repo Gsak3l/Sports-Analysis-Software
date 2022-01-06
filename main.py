@@ -13,6 +13,7 @@ import save_data as sd
 import string_manipulation as sm
 import youtube_downloader as yd
 import filesystem_changes as fc
+import csv_calculations as cc
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT / GUI AND MODULES AND WIDGETS***
@@ -32,6 +33,8 @@ os.environ['QT_FONT_DPI'] = '96'  # FIX Problem for High DPI and Scale above 100
 # SET AS GLOBAL WIDGETS
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 widgets = None
+names = []
+actions = []
 
 
 class MainWindow(QMainWindow):
@@ -43,7 +46,15 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         global widgets
+        global names
+        global actions
         widgets = self.ui
+        actions = [
+            ['Goal', 'Shot', 'Shot on Target', 'Header', 'Set Piece', 'Right foot', 'Shot Inside the box'],
+            ['Pass', 'Short Pass', 'Long Pass', 'Pass above ground', 'Unsuccessful Pass'],
+            ['Tackle', 'Tackle Won', 'Tackle in Defensive Zone', 'Foul Conceded',
+             'Pass Interception Won' 'Possession Turnover Won']
+        ]
 
         # ***USE CUSTOM TITLE BAR***
         # -------------------------------------------------------------------------------------------------------------
@@ -236,7 +247,7 @@ class MainWindow(QMainWindow):
                 print(e.__cause__)
         # .............................................................................................................
         # SAVE DATA FROM INPUT FIELDS INTO A JSON AFTER VALIDATING FILE AND CHANGE PAGE
-        elif btnName == 'cloud_next_page_button':  # SAVE DATA FROM INPUT FIELDS INTO A JSON FILE
+        elif btnName == 'cloud_next_page_button':
             if sd.check_if_file_exists(widgets.cloud_video_file_name.placeholderText()):
                 sd.save_pre_local_video_data(widgets.cloud_calendar.selectedDate(),
                                              widgets.cloud_sports_type_combobox.currentText(),
@@ -255,7 +266,7 @@ class MainWindow(QMainWindow):
         # .............................................................................................................
         # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
         elif btnName == 'cloud_previous_page_button':
-            widgets.titleRightInfo.setText('Choose Capture option')  # CHANGE HEADER TEXT
+            widgets.titleRightInfo.setText('Choose Capture option')
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
 
         # -------------------------------------------------------------------------------------------------------------
@@ -263,7 +274,8 @@ class MainWindow(QMainWindow):
         # -------------------------------------------------------------------------------------------------------------
         # SAVE LINEUP BUILDER DATA TO JSON AND GO TO THE COACH TOOL SECTION
         elif btnName == 'formation_next_page_button':
-            sd.json_data_cleanup(sm.double_backslash_to_slash(fc.find_last_created_folder()), 'lineup.json')
+            self.names = sd.manager(sm.double_backslash_to_slash(fc.find_last_created_folder()), 'lineup.json')
+            widgets.player_names_combobox.addItems(self.names)
             widgets.titleRightInfo.setText('Expert Tool')
             widgets.stackedWidget.setCurrentWidget(widgets.video_page)
             # DECIDE WHAT VIDEO TO DISPLAY, BAD PRACTICE
@@ -274,10 +286,8 @@ class MainWindow(QMainWindow):
         # .............................................................................................................
         # GO BACK PAGE
         elif btnName == 'formation_previous_page_button':
-            # CHANGE HEADER TEXT
             widgets.titleRightInfo.setText('Choose Capture option')
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)  # SET PAGE
-            # ACTIVE EMBED VIDEO MENU
             UIFunctions.resetStyle(self, widgets.btn_import_video.objectName())
             widgets.btn_import_video.setStyleSheet(UIFunctions.selectMenu(widgets.btn_import_video.styleSheet()))
 
@@ -326,7 +336,13 @@ class MainWindow(QMainWindow):
         print(event)
 
     # -----------------------------------------------------------------------------------------------------------------
-    # ***MEDIA PLAYER ACTIONS***
+    # ***FILLING COMBO BOXES***
+    # -----------------------------------------------------------------------------------------------------------------
+    def fill_player_names(self):
+        widgets.player_names_combobox.addItems()
+
+    # -----------------------------------------------------------------------------------------------------------------
+    # ***MEDIA PLAYER NON PLAYBACK RELATED ACTIONS***
     # -----------------------------------------------------------------------------------------------------------------
     def slider_moved(self, position):
         percentage = self.media_player.duration() * position / 100
@@ -334,7 +350,7 @@ class MainWindow(QMainWindow):
         widgets.video_player_progress_bar.setValue(int(position))
 
     # -----------------------------------------------------------------------------------------------------------------
-    # ***VIDEO PLAYER THINGS***
+    # ***VIDEO AND AUDIO ACTIONS***
     # -----------------------------------------------------------------------------------------------------------------
     # LOAD VIDEO AND PLAY IT ON THE DEFAULT SPEED OF 1
     def on_loadVideoRequest(self, video_path):
@@ -383,4 +399,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon('icon.ico'))
     window = MainWindow()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

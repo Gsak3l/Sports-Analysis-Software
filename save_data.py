@@ -6,6 +6,7 @@ import pickle
 
 import string_manipulation as sm
 import filesystem_changes as fc
+import csv_calculations as cc
 
 
 # CHECKING IF THE GIVEN PATH IS A VALID FILE
@@ -80,10 +81,8 @@ def json_data_cleanup(file_path, file_name):
     fc.delete_file(file_path, file_name)
 
     file_name = 'lineup ' + time_ + '.json'
-    fix_one_line_json(file_path, file_name)
-    json_to_csv(file_path, file_name)
 
-    fc.delete_file(file_path, file_name)
+    return file_name
 
 
 # JSON TO CSV
@@ -92,14 +91,23 @@ def json_to_csv(file_path, file_name):
     file_name = sm.get_file_name(file_name)
     df.to_csv(f'{file_path}{file_name}.csv', index=None, encoding='utf8')
 
-    cleanup_csv_lineup(file_path, file_name)
 
-
+# CLEANS UP THE CSV FILE AND KEEPS ONLY THE IMPORTANT FIELDS
 def cleanup_csv_lineup(file_path, file_name):
+    file_name = sm.get_file_name(file_name)
     df = pd.read_csv(f'{file_path}{file_name}.csv')
     try:
         df = df.drop(['photoFolderIndex', 'photo', 'shortName'], axis=1)
-    except KeyError as k:
-        print(k)
+    except KeyError:
+        pass
     df['positions'] = df['positions'].apply(lambda x: re.sub(r'[^a-zA-Z, ]+', '', x))
     df.to_csv(f'{file_path}{file_name}.csv', index=False)
+
+
+def manager(file_path, file_name):
+    file_name = json_data_cleanup(file_path, file_name)
+    fix_one_line_json(file_path, file_name)
+    json_to_csv(file_path, file_name)
+    cleanup_csv_lineup(file_path, file_name)
+    fc.delete_file(file_path, file_name)
+    return cc.get_player_names_from_csv(file_path, file_name)
