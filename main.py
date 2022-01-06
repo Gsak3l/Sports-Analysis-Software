@@ -53,7 +53,7 @@ class MainWindow(QMainWindow):
             ['Goal', 'Shot', 'Shot on Target', 'Header', 'Set Piece', 'Right foot', 'Shot Inside the box'],
             ['Pass', 'Short Pass', 'Long Pass', 'Pass above ground', 'Unsuccessful Pass'],
             ['Tackle', 'Tackle Won', 'Tackle in Defensive Zone', 'Foul Conceded',
-             'Pass Interception Won' 'Possession Turnover Won']
+             'Pass Interception Won', 'Possession Turnover Won']
         ]
 
         # ***USE CUSTOM TITLE BAR***
@@ -119,12 +119,15 @@ class MainWindow(QMainWindow):
         widgets.play_video_button.clicked.connect(self.buttonClick)
         widgets.pause_video_button.clicked.connect(self.buttonClick)
         widgets.stop_video_button.clicked.connect(self.buttonClick)
+        widgets.add_action.clicked.connect(self.buttonClick)
         # ELEMENTS
         self.audio_output = QAudioOutput()
         self.media_player = QMediaPlayer()
         # OTHERS
         widgets.video_player_slider.valueChanged.connect(self.slider_moved)
         widgets.playback_speed_combo.currentIndexChanged.connect(self.set_video_playback)
+        widgets.type_of_action_combobox.currentIndexChanged.connect(self.change_actions)
+        widgets.action_combobox.addItems(actions[2])
 
         # -------------------------------------------------------------------------------------------------------------
         # SHOW APP
@@ -165,6 +168,7 @@ class MainWindow(QMainWindow):
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
         # .............................................................................................................
         # LINEUP BUILDER BUTTON
         elif btnName == 'btn_formation':
@@ -172,6 +176,7 @@ class MainWindow(QMainWindow):
             widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
         # .............................................................................................................
         # VIDEO VIEWER AND COACH TOOL
         elif btnName == 'btn_video_player':
@@ -187,6 +192,7 @@ class MainWindow(QMainWindow):
         elif btnName == 'btn_local_footage':
             widgets.titleRightInfo.setText('Local Video Page')
             widgets.stackedWidget.setCurrentWidget(widgets.local_video_page)
+
         # .............................................................................................................
         # FILE EXPLORER FOR VIDEO SELECTOR
         elif btnName == 'local_video_file_button':
@@ -194,6 +200,7 @@ class MainWindow(QMainWindow):
             fname = QFileDialog.getOpenFileName(self, 'Open Video', fc.downloads_path(), supported_formats)
             widgets.local_video_file_name.setText(fname[0])
         # .............................................................................................................
+
         # SAVE DATA FROM INPUT FIELDS INTO A JSON AFTER VALIDATING FILE AND CHANGE PAGE
         elif btnName == 'local_next_page_button':
             # FILE VALIDATION FOR THE PATH
@@ -211,6 +218,7 @@ class MainWindow(QMainWindow):
             else:
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')
+
         # .............................................................................................................
         # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
         elif btnName == 'local_previous_page_button':
@@ -225,6 +233,7 @@ class MainWindow(QMainWindow):
         elif btnName == 'btn_cloud_footage':
             widgets.titleRightInfo.setText('Cloud Video Page')
             widgets.stackedWidget.setCurrentWidget(widgets.cloud_video_page)
+
         # .............................................................................................................
         # DOWNLOAD BUTTON
         elif btnName == 'cloud_video_file_button':
@@ -245,6 +254,7 @@ class MainWindow(QMainWindow):
                 widgets.cloud_video_file_name.setText('')
                 widgets.cloud_video_file_name.setPlaceholderText('Please enter a valid URL...')
                 print(e.__cause__)
+
         # .............................................................................................................
         # SAVE DATA FROM INPUT FIELDS INTO A JSON AFTER VALIDATING FILE AND CHANGE PAGE
         elif btnName == 'cloud_next_page_button':
@@ -263,6 +273,7 @@ class MainWindow(QMainWindow):
                 widgets.cloud_video_file_name.setText('')
                 widgets.cloud_video_file_name.setPlaceholderText('Error while validating the existence of the video, '
                                                                  'please try to downloaded again...')
+
         # .............................................................................................................
         # BUTTON THAT GOES BACK TO THE VIDEO TYPE SELECTION
         elif btnName == 'cloud_previous_page_button':
@@ -275,7 +286,7 @@ class MainWindow(QMainWindow):
         # SAVE LINEUP BUILDER DATA TO JSON AND GO TO THE COACH TOOL SECTION
         elif btnName == 'formation_next_page_button':
             self.names = sd.manager(sm.double_backslash_to_slash(fc.find_last_created_folder()), 'lineup.json')
-            widgets.player_names_combobox.addItems(self.names)
+            self.fill_player_names()
             widgets.titleRightInfo.setText('Expert Tool')
             widgets.stackedWidget.setCurrentWidget(widgets.video_page)
             # DECIDE WHAT VIDEO TO DISPLAY, BAD PRACTICE
@@ -283,6 +294,7 @@ class MainWindow(QMainWindow):
                 self.on_loadVideoRequest(widgets.cloud_video_file_name.placeholderText())
             else:
                 self.on_loadVideoRequest(widgets.local_video_file_name.text())
+
         # .............................................................................................................
         # GO BACK PAGE
         elif btnName == 'formation_previous_page_button':
@@ -300,6 +312,7 @@ class MainWindow(QMainWindow):
             btn.setDisabled(True)
             widgets.pause_video_button.setDisabled(False)
             widgets.stop_video_button.setDisabled(False)
+
         # .............................................................................................................
         # PAUSE VIDEO
         elif btnName == 'pause_video_button':
@@ -307,6 +320,7 @@ class MainWindow(QMainWindow):
             btn.setDisabled(True)
             widgets.play_video_button.setDisabled(False)
             widgets.stop_video_button.setDisabled(False)
+
         # .............................................................................................................
         # STOP VIDEO
         elif btnName == 'stop_video_button':
@@ -336,18 +350,24 @@ class MainWindow(QMainWindow):
         print(event)
 
     # -----------------------------------------------------------------------------------------------------------------
-    # ***FILLING COMBO BOXES***
+    # ***MEDIA PLAYER NON PLAYBACK RELATED ACTIONS***
     # -----------------------------------------------------------------------------------------------------------------
+    # FILL SPORTS PLAYER NAMES FROM THE LINEUP BUILDER TO THE COMBOBOX
     def fill_player_names(self):
         widgets.player_names_combobox.addItems()
 
-    # -----------------------------------------------------------------------------------------------------------------
-    # ***MEDIA PLAYER NON PLAYBACK RELATED ACTIONS***
-    # -----------------------------------------------------------------------------------------------------------------
-    def slider_moved(self, position):
-        percentage = self.media_player.duration() * position / 100
-        self.media_player.setPosition(int(percentage))
-        widgets.video_player_progress_bar.setValue(int(position))
+    # .................................................................................................................
+    # CHANGING THE ACTION OPTIONS ON THE COMBOBOX
+    def change_actions(self):
+        # deleting current values
+        for x in range(10):
+            try:
+                widgets.action_combobox.removeItem(0)
+            except IndexError:
+                pass
+
+        index = widgets.type_of_action_combobox.currentIndex()
+        widgets.action_combobox.addItems(actions[index])
 
     # -----------------------------------------------------------------------------------------------------------------
     # ***VIDEO AND AUDIO ACTIONS***
@@ -377,6 +397,13 @@ class MainWindow(QMainWindow):
         else:
             self.audio_output.setMuted(True)
             self.media_player.setAudioOutput(self.audio_output)
+
+    # .................................................................................................................
+    # PLAYBACK AND SLIDER
+    def slider_moved(self, position):
+        percentage = self.media_player.duration() * position / 100
+        self.media_player.setPosition(int(percentage))
+        widgets.video_player_progress_bar.setValue(int(position))
 
     # -----------------------------------------------------------------------------------------------------------------
     # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***

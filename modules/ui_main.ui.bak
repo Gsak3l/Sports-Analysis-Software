@@ -2805,14 +2805,11 @@ color:#fff;</string>
                           </widget>
                          </item>
                          <item>
-                          <widget class="QComboBox" name="type_of_action_combobox">
+                          <widget class="QComboBox" name="add_action">
                            <property name="styleSheet">
                             <string notr="true">background-color:#bd93f9 ;
 font-weight:bold;
 color:#fff;</string>
-                           </property>
-                           <property name="currentIndex">
-                            <number>2</number>
                            </property>
                            <item>
                             <property name="text">
@@ -2831,17 +2828,9 @@ color:#fff;</string>
                            </item>
                           </widget>
                          </item>
-                         <item>
-                          <widget class="QComboBox" name="action_combobox">
-                           <property name="styleSheet">
-                            <string notr="true">background-color:#bd93f9 ;
-font-weight:bold;
-color:#fff;</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QPushButton" name="add_action">
+						 
+						 <item>
+                          <widget class="QPushButton" name="stop_video_button">
                            <property name="maximumSize">
                             <size>
                              <width>80</width>
@@ -2861,13 +2850,22 @@ border-radius: 50%;
                            </property>
                            <property name="icon">
                             <iconset resource="../resources.qrc">
-                             <normaloff>:/images/images/images/plus.png</normaloff>:/images/images/images/plus.png</iconset>
+                             <normaloff>:/images/images/images/stop.png</normaloff>:/images/images/images/stop.png</iconset>
                            </property>
                            <property name="iconSize">
                             <size>
-                             <width>40</width>
-                             <height>40</height>
+                             <width>32</width>
+                             <height>32</height>
                             </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="action_combobox">
+                           <property name="styleSheet">
+                            <string notr="true">background-color:#bd93f9 ;
+font-weight:bold;
+color:#fff;</string>
                            </property>
                           </widget>
                          </item>

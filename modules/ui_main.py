@@ -1499,6 +1499,20 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.action_combobox)
 
+        self.add_action = QPushButton(self.video_page)
+        self.add_action.setObjectName(u"add_action")
+        self.add_action.setMaximumSize(QSize(80, 16777215))
+        self.add_action.setCursor(QCursor(Qt.PointingHandCursor))
+        self.add_action.setStyleSheet(u"border: none;\n"
+                                      "border-radius: 50%;\n"
+                                      "")
+        icon10 = QIcon()
+        icon10.addFile(u":/images/images/images/plus.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_action.setIcon(icon10)
+        self.add_action.setIconSize(QSize(40, 40))
+
+        self.horizontalLayout_8.addWidget(self.add_action)
+
         self.verticalLayout21.addLayout(self.horizontalLayout_8)
 
         self.stackedWidget.addWidget(self.video_page)
@@ -1514,9 +1528,9 @@ class Ui_MainWindow(object):
         self.btn_local_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_local_footage.setStyleSheet(u"::pressed{background-color: #21252b}\n"
                                              "::active{border:none}")
-        icon10 = QIcon()
-        icon10.addFile(u":/images/images/images/folder_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_local_footage.setIcon(icon10)
+        icon11 = QIcon()
+        icon11.addFile(u":/images/images/images/folder_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_local_footage.setIcon(icon11)
         self.btn_local_footage.setIconSize(QSize(64, 64))
         self.btn_local_footage.setAutoDefault(False)
 
@@ -1528,9 +1542,9 @@ class Ui_MainWindow(object):
         self.btn_cloud_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_cloud_footage.setStyleSheet(u"::pressed{background-color: #21252b}\n"
                                              "::active{border:none}")
-        icon11 = QIcon()
-        icon11.addFile(u":/images/images/images/cloud_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_cloud_footage.setIcon(icon11)
+        icon12 = QIcon()
+        icon12.addFile(u":/images/images/images/cloud_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_cloud_footage.setIcon(icon12)
         self.btn_cloud_footage.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.btn_cloud_footage)
@@ -1541,9 +1555,9 @@ class Ui_MainWindow(object):
         self.btn_camera_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_camera_footage.setStyleSheet(u"::pressed{background-color: #21252b}\n"
                                               "::active{border:none}")
-        icon12 = QIcon()
-        icon12.addFile(u":/images/images/images/camera_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_camera_footage.setIcon(icon12)
+        icon13 = QIcon()
+        icon13.addFile(u":/images/images/images/camera_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_camera_footage.setIcon(icon13)
         self.btn_camera_footage.setIconSize(QSize(64, 64))
 
         self.horizontalLayout_6.addWidget(self.btn_camera_footage)
@@ -1608,6 +1622,7 @@ class Ui_MainWindow(object):
 
         self.stackedWidget.setCurrentIndex(4)
         self.playback_speed_combo.setCurrentIndex(3)
+        self.type_of_action_combobox.setCurrentIndex(2)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1715,6 +1730,7 @@ class Ui_MainWindow(object):
         self.type_of_action_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Passing Game", None))
         self.type_of_action_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Defensive Game", None))
 
+        self.add_action.setText("")
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")
