@@ -48,6 +48,7 @@ class MainWindow(QMainWindow):
         global widgets
         global names
         global actions
+
         widgets = self.ui
         actions = [
             ['Goal', 'Shot', 'Shot on Target', 'Header', 'Set Piece', 'Right foot', 'Shot Inside the box'],
@@ -130,14 +131,13 @@ class MainWindow(QMainWindow):
         widgets.type_of_action_combobox.currentIndexChanged.connect(self.change_actions)
         widgets.action_combobox.addItems(actions[2])
 
+        # ***DARK/LIGHT THEME BUTTON***
+        # -------------------------------------------------------------------------------------------------------------
+        widgets.themeBtn.clicked.connect(self.buttonClick)
+
         # -------------------------------------------------------------------------------------------------------------
         # SHOW APP
         self.show()
-
-        # -------------------------------------------------------------------------------------------------------------
-        # ***SET CUSTOM THEME***
-        # UIFunctions.theme(self, 'themes/py_dracula_dark.qss', True)
-        # AppFunctions.setThemeHack(self)
 
         # -------------------------------------------------------------------------------------------------------------
         # ***SET HOME PAGE AND SELECT MENU***
@@ -153,10 +153,22 @@ class MainWindow(QMainWindow):
         btnName = btn.objectName()
 
         # -------------------------------------------------------------------------------------------------------------
+        # ***SET CUSTOM THEME***
+        if btnName == 'themeBtn':
+            if widgets.themeBtn.text() == 'dark_theme':
+                UIFunctions.theme(self, 'themes/py_dracula_dark.qss', True)
+                AppFunctions.setThemeHack(self)
+                widgets.themeBtn.setText('light_theme')
+            else:
+                UIFunctions.theme(self, 'themes/py_dracula_light.qss', True)
+                AppFunctions.setThemeHack(self)
+                widgets.themeBtn.setText('dark_theme')
+
+        # -------------------------------------------------------------------------------------------------------------
         # ***RIGHT MENU BUTTONS***
         # .............................................................................................................
         # HOME PAGE
-        if btnName == 'btn_home':  # HOME PAGE
+        elif btnName == 'btn_home':  # HOME PAGE
             widgets.titleRightInfo.setText('Sports Analysis Software')
             widgets.stackedWidget.setCurrentWidget(widgets.home)
             UIFunctions.resetStyle(self, btnName)
@@ -287,6 +299,7 @@ class MainWindow(QMainWindow):
         # SAVE LINEUP BUILDER DATA TO JSON AND GO TO THE COACH TOOL SECTION
         elif btnName == 'formation_next_page_button':
             self.names = sd.manager(sm.double_backslash_to_slash(fc.find_last_created_folder()), 'lineup.json')
+            self.delete_player_names()
             widgets.player_names_combobox.addItems(self.names)
             widgets.titleRightInfo.setText('Expert Tool')
             widgets.stackedWidget.setCurrentWidget(widgets.video_page)
@@ -379,6 +392,16 @@ class MainWindow(QMainWindow):
         index = widgets.type_of_action_combobox.currentIndex()
         widgets.action_combobox.addItems(actions[index])
 
+    # .................................................................................................................
+    # CHANGING THE ACTION OPTIONS ON THE COMBOBOX
+    def delete_player_names(self):
+        # deleting current values
+        for x in range(11):
+            try:
+                widgets.player_names_combobox.removeItem(0)
+            except IndexError:
+                pass
+
     # -----------------------------------------------------------------------------------------------------------------
     # ***VIDEO AND AUDIO ACTIONS***
     # -----------------------------------------------------------------------------------------------------------------
@@ -388,7 +411,9 @@ class MainWindow(QMainWindow):
         self.media_player.setVideoOutput(widgets.video_player)
         self.media_player.setSource(QUrl(video_path))
         self.media_player.setPlaybackRate(1)
-        self.media_player.play()
+        widgets.play_video_button.setDisabled(False)
+        widgets.pause_video_button.setDisabled(True)
+        widgets.stop_video_button.setDisabled(False)
 
     # .................................................................................................................
     # SET PLAYBACK SPEED

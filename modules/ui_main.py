@@ -20,8 +20,8 @@ from PySide6.QtWebEngineWidgets import QWebEngineView
 from PySide6.QtWidgets import (QApplication, QCalendarWidget, QComboBox, QFrame,
                                QGridLayout, QHBoxLayout, QLabel, QLineEdit,
                                QMainWindow, QPlainTextEdit, QProgressBar, QPushButton,
-                               QSizePolicy, QSlider, QStackedWidget, QVBoxLayout,
-                               QWidget)
+                               QSizePolicy, QSlider, QStackedWidget, QToolButton,
+                               QVBoxLayout, QWidget)
 from .resources_rc import *
 
 
@@ -715,7 +715,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
 
-        self.verticalMenuLayout.addWidget(self.bottomMenu, 0, Qt.AlignBottom)
+        self.verticalMenuLayout.addWidget(self.bottomMenu)
 
         self.verticalLayout_3.addWidget(self.leftMenuFrame)
 
@@ -781,14 +781,27 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setSpacing(5)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.themeBtn = QToolButton(self.rightButtons)
+        self.themeBtn.setObjectName(u"themeBtn")
+        self.themeBtn.setStyleSheet(u"background-color: transparent;\n"
+                                    "border:none;")
+        icon = QIcon()
+        icon.addFile(u":/icons/images/icons/cil-lightbulb.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.themeBtn.setIcon(icon)
+        self.themeBtn.setIconSize(QSize(20, 20))
+        self.themeBtn.setCheckable(False)
+        self.themeBtn.setChecked(False)
+
+        self.horizontalLayout_2.addWidget(self.themeBtn)
+
         self.minimizeAppBtn = QPushButton(self.rightButtons)
         self.minimizeAppBtn.setObjectName(u"minimizeAppBtn")
         self.minimizeAppBtn.setMinimumSize(QSize(28, 28))
         self.minimizeAppBtn.setMaximumSize(QSize(28, 28))
         self.minimizeAppBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon = QIcon()
-        icon.addFile(u":/icons/images/icons/icon_minimize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.minimizeAppBtn.setIcon(icon)
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/images/icons/icon_minimize.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.minimizeAppBtn.setIcon(icon1)
         self.minimizeAppBtn.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_2.addWidget(self.minimizeAppBtn)
@@ -804,9 +817,9 @@ class Ui_MainWindow(object):
         font4.setStyleStrategy(QFont.PreferDefault)
         self.maximizeRestoreAppBtn.setFont(font4)
         self.maximizeRestoreAppBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon1 = QIcon()
-        icon1.addFile(u":/icons/images/icons/icon_maximize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.maximizeRestoreAppBtn.setIcon(icon1)
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/images/icons/icon_maximize.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.maximizeRestoreAppBtn.setIcon(icon2)
         self.maximizeRestoreAppBtn.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_2.addWidget(self.maximizeRestoreAppBtn)
@@ -816,9 +829,9 @@ class Ui_MainWindow(object):
         self.closeAppBtn.setMinimumSize(QSize(28, 28))
         self.closeAppBtn.setMaximumSize(QSize(28, 28))
         self.closeAppBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/images/icons/icon_close.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.closeAppBtn.setIcon(icon2)
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/images/icons/icon_close.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.closeAppBtn.setIcon(icon3)
         self.closeAppBtn.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_2.addWidget(self.closeAppBtn)
@@ -918,9 +931,9 @@ class Ui_MainWindow(object):
         self.local_video_file_button.setFont(font)
         self.local_video_file_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.local_video_file_button.setStyleSheet(u"background-color: rgb(52, 59, 72);")
-        icon3 = QIcon()
-        icon3.addFile(u":/icons/images/icons/cil-folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.local_video_file_button.setIcon(icon3)
+        icon4 = QIcon()
+        icon4.addFile(u":/icons/images/icons/cil-folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.local_video_file_button.setIcon(icon4)
 
         self.gridLayout1.addWidget(self.local_video_file_button, 0, 1, 1, 1)
 
@@ -998,9 +1011,9 @@ class Ui_MainWindow(object):
         self.local_previous_page_button.setMaximumSize(QSize(80, 80))
         self.local_previous_page_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                                       "::active{border:none}")
-        icon4 = QIcon()
-        icon4.addFile(u":/images/images/images/previous_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.local_previous_page_button.setIcon(icon4)
+        icon5 = QIcon()
+        icon5.addFile(u":/images/images/images/previous_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.local_previous_page_button.setIcon(icon5)
         self.local_previous_page_button.setIconSize(QSize(48, 48))
 
         self.horizontalLayout_7.addWidget(self.local_previous_page_button, 0, Qt.AlignLeft)
@@ -1010,9 +1023,9 @@ class Ui_MainWindow(object):
         self.local_next_page_button.setMaximumSize(QSize(80, 80))
         self.local_next_page_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                                   "::active{border:none}")
-        icon5 = QIcon()
-        icon5.addFile(u":/images/images/images/next_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.local_next_page_button.setIcon(icon5)
+        icon6 = QIcon()
+        icon6.addFile(u":/images/images/images/next_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.local_next_page_button.setIcon(icon6)
         self.local_next_page_button.setIconSize(QSize(48, 48))
 
         self.horizontalLayout_7.addWidget(self.local_next_page_button, 0, Qt.AlignRight)
@@ -1083,9 +1096,9 @@ class Ui_MainWindow(object):
         self.cloud_video_file_button.setFont(font)
         self.cloud_video_file_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.cloud_video_file_button.setStyleSheet(u"background-color: rgb(52, 59, 72);")
-        icon6 = QIcon()
-        icon6.addFile(u":/icons/images/icons/cil-cloud-download.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.cloud_video_file_button.setIcon(icon6)
+        icon7 = QIcon()
+        icon7.addFile(u":/icons/images/icons/cil-cloud-download.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.cloud_video_file_button.setIcon(icon7)
 
         self.gridLayout.addWidget(self.cloud_video_file_button, 0, 1, 1, 1)
 
@@ -1180,7 +1193,7 @@ class Ui_MainWindow(object):
         self.cloud_previous_page_button.setMaximumSize(QSize(80, 60))
         self.cloud_previous_page_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                                       "::active{border:none}")
-        self.cloud_previous_page_button.setIcon(icon4)
+        self.cloud_previous_page_button.setIcon(icon5)
         self.cloud_previous_page_button.setIconSize(QSize(48, 48))
 
         self.horizontalLayout_71.addWidget(self.cloud_previous_page_button, 0, Qt.AlignLeft)
@@ -1190,7 +1203,7 @@ class Ui_MainWindow(object):
         self.cloud_next_page_button.setMaximumSize(QSize(80, 60))
         self.cloud_next_page_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                                   "::active{border:none}")
-        self.cloud_next_page_button.setIcon(icon5)
+        self.cloud_next_page_button.setIcon(icon6)
         self.cloud_next_page_button.setIconSize(QSize(48, 48))
 
         self.horizontalLayout_71.addWidget(self.cloud_next_page_button, 0, Qt.AlignRight)
@@ -1217,7 +1230,7 @@ class Ui_MainWindow(object):
         self.formation_previous_page_button.setMaximumSize(QSize(80, 60))
         self.formation_previous_page_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                                           "::active{border:none}")
-        self.formation_previous_page_button.setIcon(icon4)
+        self.formation_previous_page_button.setIcon(icon5)
         self.formation_previous_page_button.setIconSize(QSize(48, 48))
 
         self.horizontalLayout_17.addWidget(self.formation_previous_page_button, 0, Qt.AlignLeft)
@@ -1227,7 +1240,7 @@ class Ui_MainWindow(object):
         self.formation_next_page_button.setMaximumSize(QSize(80, 60))
         self.formation_next_page_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                                       "::active{border:none}")
-        self.formation_next_page_button.setIcon(icon5)
+        self.formation_next_page_button.setIcon(icon6)
         self.formation_next_page_button.setIconSize(QSize(48, 48))
 
         self.horizontalLayout_17.addWidget(self.formation_next_page_button, 0, Qt.AlignRight)
@@ -1250,9 +1263,9 @@ class Ui_MainWindow(object):
         self.return_to_lineup_builder.setSizeIncrement(QSize(50, 0))
         self.return_to_lineup_builder.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                                     "::active{border:none}")
-        icon7 = QIcon()
-        icon7.addFile(u":/images/images/images/swap_players.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.return_to_lineup_builder.setIcon(icon7)
+        icon8 = QIcon()
+        icon8.addFile(u":/images/images/images/swap_players.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.return_to_lineup_builder.setIcon(icon8)
         self.return_to_lineup_builder.setIconSize(QSize(64, 64))
 
         self.horizontalLayout_11.addWidget(self.return_to_lineup_builder)
@@ -1290,9 +1303,9 @@ class Ui_MainWindow(object):
         self.add_action.setCursor(QCursor(Qt.PointingHandCursor))
         self.add_action.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                       "::active{border:none}")
-        icon8 = QIcon()
-        icon8.addFile(u":/images/images/images/plus.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.add_action.setIcon(icon8)
+        icon9 = QIcon()
+        icon9.addFile(u":/images/images/images/plus.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_action.setIcon(icon9)
         self.add_action.setIconSize(QSize(40, 40))
 
         self.horizontalLayout_11.addWidget(self.add_action)
@@ -1312,9 +1325,9 @@ class Ui_MainWindow(object):
         self.play_video_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.play_video_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                              "::active{border:none}")
-        icon9 = QIcon()
-        icon9.addFile(u":/images/images/images/play.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.play_video_button.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u":/images/images/images/play.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.play_video_button.setIcon(icon10)
         self.play_video_button.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_8.addWidget(self.play_video_button)
@@ -1325,9 +1338,9 @@ class Ui_MainWindow(object):
         self.pause_video_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.pause_video_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                               "::active{border:none}")
-        icon10 = QIcon()
-        icon10.addFile(u":/images/images/images/pause.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pause_video_button.setIcon(icon10)
+        icon11 = QIcon()
+        icon11.addFile(u":/images/images/images/pause.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pause_video_button.setIcon(icon11)
         self.pause_video_button.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_8.addWidget(self.pause_video_button)
@@ -1338,9 +1351,9 @@ class Ui_MainWindow(object):
         self.stop_video_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.stop_video_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                              "::active{border:none}")
-        icon11 = QIcon()
-        icon11.addFile(u":/images/images/images/stop.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.stop_video_button.setIcon(icon11)
+        icon12 = QIcon()
+        icon12.addFile(u":/images/images/images/stop.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.stop_video_button.setIcon(icon12)
         self.stop_video_button.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_8.addWidget(self.stop_video_button)
@@ -1407,9 +1420,9 @@ class Ui_MainWindow(object):
         self.btn_local_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_local_footage.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                              "::active{border:none}")
-        icon12 = QIcon()
-        icon12.addFile(u":/images/images/images/folder_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_local_footage.setIcon(icon12)
+        icon13 = QIcon()
+        icon13.addFile(u":/images/images/images/folder_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_local_footage.setIcon(icon13)
         self.btn_local_footage.setIconSize(QSize(64, 64))
         self.btn_local_footage.setAutoDefault(False)
 
@@ -1421,9 +1434,9 @@ class Ui_MainWindow(object):
         self.btn_cloud_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_cloud_footage.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                              "::active{border:none}")
-        icon13 = QIcon()
-        icon13.addFile(u":/images/images/images/cloud_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_cloud_footage.setIcon(icon13)
+        icon14 = QIcon()
+        icon14.addFile(u":/images/images/images/cloud_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_cloud_footage.setIcon(icon14)
         self.btn_cloud_footage.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.btn_cloud_footage)
@@ -1434,9 +1447,9 @@ class Ui_MainWindow(object):
         self.btn_camera_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_camera_footage.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                               "::active{border:none}")
-        icon14 = QIcon()
-        icon14.addFile(u":/images/images/images/camera_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_camera_footage.setIcon(icon14)
+        icon15 = QIcon()
+        icon15.addFile(u":/images/images/images/camera_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_camera_footage.setIcon(icon15)
         self.btn_camera_footage.setIconSize(QSize(64, 64))
 
         self.horizontalLayout_6.addWidget(self.btn_camera_footage)
@@ -1517,6 +1530,7 @@ class Ui_MainWindow(object):
         self.btn_formation.setText(QCoreApplication.translate("MainWindow", u"Lineup Builder", None))
         self.btn_video_player.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.titleRightInfo.setText(QCoreApplication.translate("MainWindow", u"Sports Analysis Software", None))
+        self.themeBtn.setText("")
         # if QT_CONFIG(tooltip)
         self.minimizeAppBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Minimize", None))
         # endif // QT_CONFIG(tooltip)
@@ -1591,5 +1605,5 @@ class Ui_MainWindow(object):
         self.btn_cloud_footage.setText("")
         self.btn_camera_footage.setText("")
         self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: Sakellariou G.", None))
-        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.1.9", None))
+        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.2.4", None))
     # retranslateUi
