@@ -120,6 +120,7 @@ class MainWindow(QMainWindow):
         widgets.pause_video_button.clicked.connect(self.buttonClick)
         widgets.stop_video_button.clicked.connect(self.buttonClick)
         widgets.add_action.clicked.connect(self.buttonClick)
+        widgets.return_to_lineup_builder.clicked.connect(self.buttonClick)
         # ELEMENTS
         self.audio_output = QAudioOutput()
         self.media_player = QMediaPlayer()
@@ -329,11 +330,19 @@ class MainWindow(QMainWindow):
             widgets.play_video_button.setDisabled(False)
             widgets.pause_video_button.setDisabled(False)
 
+        # ADD ACTION FROM THE COMBO BOXES TO A CSV
         # .............................................................................................................
         elif btnName == 'add_action':
             cc.add_to_csv(widgets.player_names_combobox.currentText(),
                           widgets.type_of_action_combobox.currentText(),
-                          widgets.action_combobox.currentText())
+                          widgets.action_combobox.currentText(),
+                          (self.media_player.position() / 1000))
+
+        elif btnName == 'return_to_lineup_builder':
+            widgets.titleRightInfo.setText('Build Your Lineup')
+            widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')

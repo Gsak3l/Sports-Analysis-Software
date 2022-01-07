@@ -997,384 +997,6 @@ Button */
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="extraLeftBox">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>0</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QVBoxLayout" name="extraColumLayout">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QFrame" name="extraTopBg">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <layout class="QGridLayout" name="extraTopLayout">
-               <property name="leftMargin">
-                <number>10</number>
-               </property>
-               <property name="rightMargin">
-                <number>10</number>
-               </property>
-               <property name="horizontalSpacing">
-                <number>10</number>
-               </property>
-               <property name="verticalSpacing">
-                <number>0</number>
-               </property>
-               <item row="0" column="0">
-                <widget class="QFrame" name="extraIcon">
-                 <property name="minimumSize">
-                  <size>
-                   <width>20</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>20</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::NoFrame</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QLabel" name="extraLabel">
-                 <property name="minimumSize">
-                  <size>
-                   <width>150</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>Left Box</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="QPushButton" name="extraCloseColumnBtn">
-                 <property name="minimumSize">
-                  <size>
-                   <width>28</width>
-                   <height>28</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>28</width>
-                   <height>28</height>
-                  </size>
-                 </property>
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="toolTip">
-                  <string>Close left box</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="../resources.qrc">
-                   <normaloff>:/icons/images/icons/icon_close.png</normaloff>:/icons/images/icons/icon_close.png</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>20</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="extraContent">
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_12">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item alignment="Qt::AlignTop">
-              <widget class="QFrame" name="extraTopMenu">
-               <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_11">
-                <property name="spacing">
-                 <number>0</number>
-                </property>
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <widget class="QPushButton" name="btn_share">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::LeftToRight</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-share-boxed.png);</string>
-                  </property>
-                  <property name="text">
-                   <string>Share</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btn_adjustments">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::LeftToRight</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-equalizer.png);</string>
-                  </property>
-                  <property name="text">
-                   <string>Adjustments</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btn_more">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::LeftToRight</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-layers.png);</string>
-                  </property>
-                  <property name="text">
-                   <string>More</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QFrame" name="extraCenter">
-               <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_10">
-                <item>
-                 <widget class="QTextEdit" name="textEdit">
-                  <property name="minimumSize">
-                   <size>
-                    <width>222</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background: transparent;</string>
-                  </property>
-                  <property name="frameShape">
-                   <enum>QFrame::NoFrame</enum>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                  <property name="html">
-                   <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff79c6;&quot;&gt;PyDracula&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;An interface created using Python and PySide (support for PyQt), and with colors based on the Dracula theme created by Zeno Rocha.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;MIT License&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#bd93f9;&quot;&gt;Created by: Wanderson M. Pimenta&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff79c6;&quot;&gt;Convert UI&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#ffffff;&quot;&gt;pyside6-uic main.ui &amp;gt; ui_main.py&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff79c6;&quot;&gt;Convert QRC&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#ffffff;&quot;&gt;pyside6-rcc resources.qrc -o resources_rc.py&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QFrame" name="extraBottom">
-               <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
         <widget class="QFrame" name="contentBox">
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
@@ -2047,8 +1669,8 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                             </size>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">::pressed{background-color: #21252b}
-::active{border: none;border-radius: 50%}</string>
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
                            </property>
                            <property name="text">
                             <string/>
@@ -2074,8 +1696,8 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                             </size>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">::pressed{background-color: #21252b}
-::active{border: none;border-radius: 50%}</string>
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
                            </property>
                            <property name="text">
                             <string/>
@@ -2440,12 +2062,12 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                            <property name="maximumSize">
                             <size>
                              <width>80</width>
-                             <height>80</height>
+                             <height>60</height>
                             </size>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">::pressed{background-color: #21252b}
-::active{border: none;border-radius: 50%}</string>
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
                            </property>
                            <property name="text">
                             <string/>
@@ -2467,12 +2089,12 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                            <property name="maximumSize">
                             <size>
                              <width>80</width>
-                             <height>80</height>
+                             <height>60</height>
                             </size>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">::pressed{background-color: #21252b}
-::active{border: none;border-radius: 50%}</string>
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
                            </property>
                            <property name="text">
                             <string/>
@@ -2523,12 +2145,12 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                            <property name="maximumSize">
                             <size>
                              <width>80</width>
-                             <height>80</height>
+                             <height>60</height>
                             </size>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">::pressed{background-color: #21252b}
-::active{border: none; border-radius: 50%;}</string>
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
                            </property>
                            <property name="text">
                             <string/>
@@ -2550,12 +2172,12 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                            <property name="maximumSize">
                             <size>
                              <width>80</width>
-                             <height>80</height>
+                             <height>60</height>
                             </size>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">::pressed{background-color: #21252b}
-::active{border: none; border-radius: 50%;}</string>
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
                            </property>
                            <property name="text">
                             <string/>
@@ -2597,6 +2219,118 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                         <number>10</number>
                        </property>
                        <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_11">
+                         <item>
+                          <widget class="QPushButton" name="return_to_lineup_builder">
+                           <property name="maximumSize">
+                            <size>
+                             <width>80</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="sizeIncrement">
+                            <size>
+                             <width>50</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../resources.qrc">
+                             <normaloff>:/images/images/images/swap_players.png</normaloff>:/images/images/images/swap_players.png</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>64</width>
+                             <height>64</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="player_names_combobox">
+                           <property name="styleSheet">
+                            <string notr="true">background-color:#bd93f9 ;
+font-weight:bold;
+color:#fff;</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="type_of_action_combobox">
+                           <property name="styleSheet">
+                            <string notr="true">background-color:#bd93f9 ;
+font-weight:bold;
+color:#fff;</string>
+                           </property>
+                           <property name="currentIndex">
+                            <number>2</number>
+                           </property>
+                           <item>
+                            <property name="text">
+                             <string>Shooting Game</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Passing Game</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Defensive Game</string>
+                            </property>
+                           </item>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="action_combobox">
+                           <property name="styleSheet">
+                            <string notr="true">background-color:#bd93f9 ;
+font-weight:bold;
+color:#fff;</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="add_action">
+                           <property name="maximumSize">
+                            <size>
+                             <width>50</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="cursor">
+                            <cursorShape>PointingHandCursor</cursorShape>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../resources.qrc">
+                             <normaloff>:/images/images/images/plus.png</normaloff>:/images/images/images/plus.png</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>40</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
                         <widget class="QVideoWidget" name="video_player" native="true"/>
                        </item>
                        <item>
@@ -2613,8 +2347,8 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                             <cursorShape>PointingHandCursor</cursorShape>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">border: none;
-border-radius: 50%;</string>
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
                            </property>
                            <property name="text">
                             <string/>
@@ -2643,8 +2377,8 @@ border-radius: 50%;</string>
                             <cursorShape>PointingHandCursor</cursorShape>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">border: none;
-border-radius: 50%;</string>
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
                            </property>
                            <property name="text">
                             <string/>
@@ -2673,9 +2407,8 @@ border-radius: 50%;</string>
                             <cursorShape>PointingHandCursor</cursorShape>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">border: none;
-border-radius: 50%;
-</string>
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
                            </property>
                            <property name="text">
                             <string/>
@@ -2795,82 +2528,6 @@ color:#fff;</string>
                            </property>
                           </widget>
                          </item>
-                         <item>
-                          <widget class="QComboBox" name="player_names_combobox">
-                           <property name="styleSheet">
-                            <string notr="true">background-color:#bd93f9 ;
-font-weight:bold;
-color:#fff;</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QComboBox" name="type_of_action_combobox">
-                           <property name="styleSheet">
-                            <string notr="true">background-color:#bd93f9 ;
-font-weight:bold;
-color:#fff;</string>
-                           </property>
-                           <property name="currentIndex">
-                            <number>2</number>
-                           </property>
-                           <item>
-                            <property name="text">
-                             <string>Shooting Game</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Passing Game</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Defensive Game</string>
-                            </property>
-                           </item>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QComboBox" name="action_combobox">
-                           <property name="styleSheet">
-                            <string notr="true">background-color:#bd93f9 ;
-font-weight:bold;
-color:#fff;</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QPushButton" name="add_action">
-                           <property name="maximumSize">
-                            <size>
-                             <width>80</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="cursor">
-                            <cursorShape>PointingHandCursor</cursorShape>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">border: none;
-border-radius: 50%;
-</string>
-                           </property>
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="icon">
-                            <iconset resource="../resources.qrc">
-                             <normaloff>:/images/images/images/plus.png</normaloff>:/images/images/images/plus.png</iconset>
-                           </property>
-                           <property name="iconSize">
-                            <size>
-                             <width>40</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                          </widget>
-                         </item>
                         </layout>
                        </item>
                       </layout>
@@ -2891,7 +2548,7 @@ border-radius: 50%;
                             <cursorShape>PointingHandCursor</cursorShape>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">::pressed{background-color: #21252b}
+                            <string notr="true">::pressed{background-color: #ff79c6}
 ::active{border:none}</string>
                            </property>
                            <property name="text">
@@ -2924,7 +2581,7 @@ border-radius: 50%;
                             <cursorShape>PointingHandCursor</cursorShape>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">::pressed{background-color: #21252b}
+                            <string notr="true">::pressed{background-color: #ff79c6}
 ::active{border:none}</string>
                            </property>
                            <property name="text">
@@ -2954,7 +2611,7 @@ border-radius: 50%;
                             <cursorShape>PointingHandCursor</cursorShape>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">::pressed{background-color: #21252b}
+                            <string notr="true">::pressed{background-color: #ff79c6}
 ::active{border:none}</string>
                            </property>
                            <property name="text">

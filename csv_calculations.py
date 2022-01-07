@@ -1,4 +1,5 @@
 import pandas as pd
+import datetime
 
 import string_manipulation as sm
 import filesystem_changes as fc
@@ -11,12 +12,13 @@ def get_player_names_from_csv(file_path, file_name):
     return sm.list_to_string(df['name'].tolist())
 
 
-def add_to_csv(player_name, type_of_action, action):
-    # create_csv()
+def add_to_csv(player_name, type_of_action, action, timestamp):
+    timestamp = str(datetime.timedelta(seconds=int(timestamp)))
     data = {
         'Name': [player_name],
         'Action Family': [type_of_action],
-        'Action': [action]
+        'Action': [action],
+        'Timestamp': timestamp
     }
     if fc.check_if_file_exists(f'{fc.find_last_created_folder()}actions.csv'):
         df2 = pd.DataFrame(data)
