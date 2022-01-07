@@ -73,3 +73,8 @@ def allow_dash_number(text):
 # GET FILE NAME - REMOVE FILE EXTENSION
 def get_file_name(file):
     return file.rsplit('.', 1)[0]
+
+
+def list_to_string(list_):
+    list_ = map(str, list_)
+    return list_

@@ -31,6 +31,12 @@ def create_sub_save_folder():
     return path
 
 
+# CHECKING IF THE GIVEN PATH IS A VALID FILE
+def check_if_file_exists(file):
+    return os.path.isfile(file)
+
+
+# RETURNS THE PATH FOR THE FOLDER THAT WAS CREATED LAST INSIDE A GIVEN DIRECTORY
 def find_last_created_folder():
     last_date_path = max(glob.glob(os.path.join('./Project Saves/', '*/')), key=os.path.getmtime)
     last_time_path = max(glob.glob(os.path.join(last_date_path, '*/')), key=os.path.getmtime)

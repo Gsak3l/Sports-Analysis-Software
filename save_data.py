@@ -9,11 +9,6 @@ import filesystem_changes as fc
 import csv_calculations as cc
 
 
-# CHECKING IF THE GIVEN PATH IS A VALID FILE
-def check_if_file_exists(video_file):
-    return os.path.isfile(video_file)
-
-
 # SAVING THE EMBED LOCAL VIDEO DATA TO A JSON FILE
 def save_pre_local_video_data(calendar_date, sport, season, competition, details, video_file):
     x_json = {

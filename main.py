@@ -204,7 +204,7 @@ class MainWindow(QMainWindow):
         # SAVE DATA FROM INPUT FIELDS INTO A JSON AFTER VALIDATING FILE AND CHANGE PAGE
         elif btnName == 'local_next_page_button':
             # FILE VALIDATION FOR THE PATH
-            if sd.check_if_file_exists(widgets.local_video_file_name.text()):
+            if fc.check_if_file_exists(widgets.local_video_file_name.text()):
                 sd.save_pre_local_video_data(widgets.local_calendar.selectedDate(),
                                              widgets.local_sports_type_combobox.currentText(),
                                              widgets.local_season_input.text(),
@@ -258,7 +258,7 @@ class MainWindow(QMainWindow):
         # .............................................................................................................
         # SAVE DATA FROM INPUT FIELDS INTO A JSON AFTER VALIDATING FILE AND CHANGE PAGE
         elif btnName == 'cloud_next_page_button':
-            if sd.check_if_file_exists(widgets.cloud_video_file_name.placeholderText()):
+            if fc.check_if_file_exists(widgets.cloud_video_file_name.placeholderText()):
                 sd.save_pre_local_video_data(widgets.cloud_calendar.selectedDate(),
                                              widgets.cloud_sports_type_combobox.currentText(),
                                              widgets.cloud_season_input.text(),
@@ -286,7 +286,7 @@ class MainWindow(QMainWindow):
         # SAVE LINEUP BUILDER DATA TO JSON AND GO TO THE COACH TOOL SECTION
         elif btnName == 'formation_next_page_button':
             self.names = sd.manager(sm.double_backslash_to_slash(fc.find_last_created_folder()), 'lineup.json')
-            self.fill_player_names()
+            widgets.player_names_combobox.addItems(self.names)
             widgets.titleRightInfo.setText('Expert Tool')
             widgets.stackedWidget.setCurrentWidget(widgets.video_page)
             # DECIDE WHAT VIDEO TO DISPLAY, BAD PRACTICE
@@ -329,6 +329,12 @@ class MainWindow(QMainWindow):
             widgets.play_video_button.setDisabled(False)
             widgets.pause_video_button.setDisabled(False)
 
+        # .............................................................................................................
+        elif btnName == 'add_action':
+            cc.add_to_csv(widgets.player_names_combobox.currentText(),
+                          widgets.type_of_action_combobox.currentText(),
+                          widgets.action_combobox.currentText())
+
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
 
@@ -352,11 +358,6 @@ class MainWindow(QMainWindow):
     # -----------------------------------------------------------------------------------------------------------------
     # ***MEDIA PLAYER NON PLAYBACK RELATED ACTIONS***
     # -----------------------------------------------------------------------------------------------------------------
-    # FILL SPORTS PLAYER NAMES FROM THE LINEUP BUILDER TO THE COMBOBOX
-    def fill_player_names(self):
-        widgets.player_names_combobox.addItems()
-
-    # .................................................................................................................
     # CHANGING THE ACTION OPTIONS ON THE COMBOBOX
     def change_actions(self):
         # deleting current values
