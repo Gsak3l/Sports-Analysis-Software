@@ -2285,7 +2285,8 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                            <property name="styleSheet">
                             <string notr="true">background-color:#bd93f9 ;
 font-weight:bold;
-color:#fff;</string>
+color:#fff;
+border:none;</string>
                            </property>
                           </widget>
                          </item>

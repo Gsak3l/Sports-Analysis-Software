@@ -1274,7 +1274,8 @@ class Ui_MainWindow(object):
         self.player_names_combobox.setObjectName(u"player_names_combobox")
         self.player_names_combobox.setStyleSheet(u"background-color:#bd93f9 ;\n"
                                                  "font-weight:bold;\n"
-                                                 "color:#fff;")
+                                                 "color:#fff;\n"
+                                                 "border:none;")
 
         self.horizontalLayout_11.addWidget(self.player_names_combobox)
 

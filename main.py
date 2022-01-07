@@ -156,10 +156,12 @@ class MainWindow(QMainWindow):
         # ***SET CUSTOM THEME***
         if btnName == 'themeBtn':
             if widgets.themeBtn.text() == 'dark_theme':
+                UIFunctions.resetStyle(self, btnName)
                 UIFunctions.theme(self, 'themes/py_dracula_dark.qss', True)
                 AppFunctions.setThemeHack(self)
                 widgets.themeBtn.setText('light_theme')
             else:
+                UIFunctions.resetStyle(self, btnName)
                 UIFunctions.theme(self, 'themes/py_dracula_light.qss', True)
                 AppFunctions.setThemeHack(self)
                 widgets.themeBtn.setText('dark_theme')
