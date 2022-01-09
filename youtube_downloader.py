@@ -13,6 +13,9 @@ def save_video_to_downloads(url):
 
     return filesystem_changes.downloads_path() + '/' + youtube_video_title + '.mp4'
 
+
+save_video_to_downloads('https://www.youtube.com/watch?v=l881pUdNU2Y')
+
 # # On complete seems to work just fine
 # def on_complete(yt_title):
 #     path = file_path() + '\\' + yt_title + '.mp4'
