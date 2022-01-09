@@ -14,7 +14,7 @@ val: train_data/images/val # val images (relative to 'path') 128 images
 
 # Classes
 nc: 5  # number of classes
-names: [ 'CHE', 'MUN', 'Referee', 'Soccer_Ball', 'Goalpost']  # class names
+names: [ 'Home', 'Away', 'Goalkeeper_Home', 'Goalkeeper_Away', 'Goalpost', 'Ball', 'Referees', 'Others']  # class names
 
 
 

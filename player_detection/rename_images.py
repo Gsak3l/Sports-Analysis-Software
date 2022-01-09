@@ -18,5 +18,7 @@ def reset_names(path):
 
 # reset_names('C:/Users/gsak3/Documents/Projects/trainy images/val')
 
-reset_names('C:/Users/gsak3/Documents/Projects/trainy images/val')
-rename_files('C:/Users/gsak3/Documents/Projects/trainy images/val')
+reset_names('./yolov5/train_data/images/train/')
+reset_names('./yolov5/train_data/images/val/')
+rename_files('./yolov5/train_data/images/train/')
+rename_files('./yolov5/train_data/images/val/')
