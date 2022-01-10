@@ -1741,3 +1741,19 @@ abstract.record*
 
 ### GPG template
 secring.*
+
+
+# Folders
+__pycache__/
+build/
+*.egg-info
+
+
+# Files
+*.weights
+*.t7
+*.mp4
+*.avi
+*.so
+*.txt
+

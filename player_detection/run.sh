@@ -9,7 +9,7 @@
 
 # detection using deepsort with the weights of yolov5
 #cd ..
-python3 track.py --yolo_model yolov5/runs/train/exp3/weights/last.pt --classes 0 1 2 3 4 --source 'videos/Tactical View- Pixellot C Coaching.mp4' --save-vid --save-txt
+python3 track.py --yolo_mode yolov5/runs/train/exp3/weights/last.pt --classes 0 1 2 3 4 --source 'videos/Tactical View- Pixellot C Coaching.mp4' --save-vid --save-txt
 
 
 # stock yolov5 deeposort
