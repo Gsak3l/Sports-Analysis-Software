@@ -5,7 +5,7 @@ Plotting utils
 
 import math
 import os
-from copy import deepcopy
+from copy import copy
 from pathlib import Path
 
 import cv2
@@ -32,7 +32,7 @@ class Colors:
     # Ultralytics color palette https://ultralytics.com/
     def __init__(self):
         # hex = matplotlib.colors.TABLEAU_COLORS.values()
-        hex = ('0000FF', 'FF3838', '000000', 'FF69B4', 'FFFF33', '48F90A', '92CC17', '3DDB86', '1A9334', '00D4BB',
+        hex = ('FF3838', 'FF9D97', 'FF701F', 'FFB21D', 'CFD231', '48F90A', '92CC17', '3DDB86', '1A9334', '00D4BB',
                '2C99A8', '00C2FF', '344593', '6473FF', '0018EC', '8438FF', '520085', 'CB38FF', 'FF95C8', 'FF37C7')
         self.palette = [self.hex2rgb('#' + c) for c in hex]
         self.n = len(self.palette)
@@ -243,7 +243,7 @@ def plot_images(images, targets, paths=None, fname='images.jpg', names=None, max
 
 def plot_lr_scheduler(optimizer, scheduler, epochs=300, save_dir=''):
     # Plot LR simulating training for full epochs
-    optimizer, scheduler = deepcopy(optimizer), deepcopy(scheduler)  # do not modify originals
+    optimizer, scheduler = copy(optimizer), copy(scheduler)  # do not modify originals
     y = []
     for _ in range(epochs):
         scheduler.step()
