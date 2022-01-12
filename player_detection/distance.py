@@ -1,3 +1,4 @@
+from math import sqrt
 import numpy as np
 import pandas as pd
 import cv2
@@ -12,17 +13,53 @@ def read_and_clean(file):
 
 
 def calculate_distance_from_camera(df3):
-    df3['Player Height in CM'] = pd.DataFrame(np.random.randint(160, 200, size=(64636, 1)))
+    df3['CM'] = pd.DataFrame(np.random.randint(180, 181, size=(64636, 1)))
 
-    f_mm = 20
+    f_mm = 30
     image_height_px = 720
-    sensor_height_mm = 25
+    sensor_height_mm = 22
 
-    df3['Distance from Camera'] = ((f_mm * df3['Player Height in CM'] * 10 * image_height_px) /
-                                   (df3['h'] * sensor_height_mm)) / 1000
-    df3['Distance from Camera'] = df3['Distance from Camera'].astype(int)
+    df3['DC'] = ((f_mm * 175 * 10 * image_height_px) / (df3['h'] * sensor_height_mm)) / 1000
+    df3['DC'] = df3['DC'].astype(int)
 
-    print(df3[df3['Frame'] == 3])
+    # print(df3[df3['Frame'] == 3])
+
+    return df3
+
+
+def random_thing():
+    x1, y1 = 715, 298
+    x2, y2 = 741, 235
+
+    y = abs(y2 - y1)
+    y = y / 10
+
+    x = abs(x2 - x1)
+    x = x / 20
+
+    distance = x + y
+    print(distance)
+
+
+def euclidean_distance_pixels(df4):
+    x1, y1 = 637, 177
+    x2, y2 = 1013, 204
+
+    distance = sqrt(pow(x2 - y1, 2) + pow(y2 - y1, 2))
+
+    df_x = df4[['x']]
+    df_y = df4[['y']]
+
+    df_distance = [abs(df_y - df_x.loc[i]) for i in range(64636)]  # works but 10gb of ram doesn't seem good...
+    print(df_distance.shape)
+
+
+def euclidean_distance_meters(df4):
+    x2_y1 = 34
+    y2_y1 = 30
+
+    distance = sqrt(pow(x2_y1, 2) + pow(y2_y1, 2))
+    print(distance)
 
 
 if __name__ == '__main__':
@@ -32,4 +69,5 @@ if __name__ == '__main__':
     pd.set_option('display.max_columns', 10)
 
     df = read_and_clean('runs/track/exp6/Tactical View- Pixellot C Coaching.txt')
-    calculate_distance_from_camera(df)
+    df = calculate_distance_from_camera(df)
+    euclidean_distance_pixels(df)
