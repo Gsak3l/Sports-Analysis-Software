@@ -42,16 +42,31 @@ def random_thing():
 
 
 def euclidean_distance_pixels(df4):
-    x1, y1 = 637, 177
-    x2, y2 = 1013, 204
-
+    x1, y1 = 629, 310
+    x2, y2 = 686, 233
     distance = sqrt(pow(x2 - y1, 2) + pow(y2 - y1, 2))
+    print(distance)
 
-    df_x = df4[['x']]
-    df_y = df4[['y']]
+    df5 = df4[df4['Frame'] == 3]
 
-    df_distance = [abs(df_y - df_x.loc[i]) for i in range(64636)]  # works but 10gb of ram doesn't seem good...
-    print(df_distance.shape)
+    df_x = df5[['x']]
+    df_y = df5[['y']]
+
+    # works but 10gb of ram doesn't seem good
+    x2_y1 = []
+    y2_y1 = []
+    for i in range(22):
+        x2_y1.append([abs(df_x['x'].loc[i] - df_y['y'].loc[j]) for j in range(22) if i != j])
+        y2_y1.append([abs(df['y'].loc[i] - df['y'].loc[j]) for j in range(22) if i != j])
+
+    x2_y1 = pd.DataFrame(x2_y1)
+    y2_y1 = pd.DataFrame(y2_y1)
+
+    distance = sqrt(pow(x2_y1.iloc[4][2], 2) + pow(y2_y1.iloc[4][2], 2))
+    print(distance)
+
+    print(df5)
+    print(x2_y1, '\n', y2_y1)
 
 
 def euclidean_distance_meters(df4):
@@ -66,7 +81,7 @@ if __name__ == '__main__':
     desired_width = 320
     pd.set_option('display.width', desired_width)
     np.set_printoptions(linewidth=desired_width)
-    pd.set_option('display.max_columns', 10)
+    pd.set_option('display.max_columns', 20)
 
     df = read_and_clean('runs/track/exp6/Tactical View- Pixellot C Coaching.txt')
     df = calculate_distance_from_camera(df)
