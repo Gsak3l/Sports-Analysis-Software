@@ -1,4 +1,4 @@
-from math import sqrt
+from math import sqrt, hypot
 import numpy as np
 import pandas as pd
 import cv2
@@ -41,32 +41,36 @@ def random_thing():
     print(distance)
 
 
-def euclidean_distance_pixels(df4):
-    x1, y1 = 629, 310
-    x2, y2 = 686, 233
-    distance = sqrt(pow(x2 - y1, 2) + pow(y2 - y1, 2))
+def euclidean_distance_pixels(df4, frame):
+    x1, y1 = 564, 156
+    x2, y2 = 1070, 328
+    distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2))
+    print(distance)
+    x2, y2 = 564, 156
+    x1, y1 = 1070, 328
+    distance = hypot(x2 - x1, y2 - y1)
     print(distance)
 
-    df5 = df4[df4['Frame'] == 3]
-
-    df_x = df5[['x']]
-    df_y = df5[['y']]
+    df4_f = df4[df4['Frame'] == frame]
 
     # works but 10gb of ram doesn't seem good
-    x2_y1 = []
+    x2_x1 = []
     y2_y1 = []
-    for i in range(22):
-        x2_y1.append([abs(df_x['x'].loc[i] - df_y['y'].loc[j]) for j in range(22) if i != j])
-        y2_y1.append([abs(df['y'].loc[i] - df['y'].loc[j]) for j in range(22) if i != j])
+    for i in range(df4_f.shape[0]):
+        x2_x1.append([df4_f['x'].loc[i] - df4_f['x'].loc[j] for j in range(df4_f.shape[0])])
+        y2_y1.append([df4_f['y'].loc[i] - df4_f['y'].loc[j] for j in range(df4_f.shape[0])])
 
-    x2_y1 = pd.DataFrame(x2_y1)
+    # basically x2-x1 and y2-y1
+    x2_x1 = pd.DataFrame(x2_x1)
     y2_y1 = pd.DataFrame(y2_y1)
 
-    distance = sqrt(pow(x2_y1.iloc[4][2], 2) + pow(y2_y1.iloc[4][2], 2))
+    distance = sqrt(pow(x2_x1.iloc[1][19], 2) + pow(y2_y1.iloc[1][19], 2))
+    print(distance)
+    distance = sqrt(pow(x2_x1.iloc[19][1], 2) + pow(y2_y1.iloc[19][1], 2))
     print(distance)
 
-    print(df5)
-    print(x2_y1, '\n', y2_y1)
+    print(df4_f)
+    print(x2_x1, '\n', y2_y1)
 
 
 def euclidean_distance_meters(df4):
@@ -85,4 +89,4 @@ if __name__ == '__main__':
 
     df = read_and_clean('runs/track/exp6/Tactical View- Pixellot C Coaching.txt')
     df = calculate_distance_from_camera(df)
-    euclidean_distance_pixels(df)
+    euclidean_distance_pixels(df, 3)
