@@ -1,7 +1,7 @@
 # training using yolov5
 cd yolov5
-python3 train.py --img 1280 --batch 16 --epochs 800 --data custom_data.yaml \
---weights yolov5s.pt --nosave --cache
+python3 train.py --img 640 --batch 24 --batch-size 24 --epochs 800 \
+--data custom_data.yaml --weights yolov5s.pt --nosave --cache --patience 0
 
 
 # detection using yolov5
