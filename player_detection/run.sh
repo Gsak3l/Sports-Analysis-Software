@@ -9,6 +9,6 @@
 #--weights runs/train/exp3/weights/last.pt --hide-labels --classes 0 1 2 3 4 --save-txt
 
 # detection using deepsort with the weights of yolov5
-#python3 track.py --yolo_mode yolov5/runs/train/exp45/weights/last.pt \
-#  --source 'videos/Tactical View- Pixellot C Coaching.mp4' --classes 0 1 2 3 4 5 6 \
-#  --save-vid --save-txt
+python3 track.py --yolo_mode yolov5/runs/train/exp46/weights/best.pt \
+  --source 'videos/Tactical View- Pixellot C Coaching.mp4' --classes 0 \
+  --save-vid --save-txt
