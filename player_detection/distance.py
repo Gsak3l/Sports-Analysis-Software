@@ -67,14 +67,13 @@ def euclidean_distance_meters(df5, distance_pixel):
 
 def manager(df, frame):
     df = read_and_clean(df)
-    print(df)
     df = df[df['Frame'] == frame]
     df = df.reset_index(drop=True)
+    print(df)
     df_player_distance_px = euclidean_distance_pixels(df)
     df = players_from_camera_meters(df)
     df_player_distance_meters = euclidean_distance_meters(df, df_player_distance_px)
-    print(df)
-    print(df_player_distance_meters.iloc[0][11])
+    print(df_player_distance_meters.iloc[18][3])
 
 
 if __name__ == '__main__':
@@ -82,4 +81,4 @@ if __name__ == '__main__':
     pd.set_option('display.width', desired_width)
     np.set_printoptions(linewidth=desired_width)
     pd.set_option('display.max_columns', 23)
-    manager('runs/track/exp8/Tactical View- Pixellot C Coaching.txt', 271)
+    manager('runs/track/exp14/Tactical View- Pixellot C Coaching.txt', 91)
