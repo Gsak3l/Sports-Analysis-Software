@@ -70,9 +70,27 @@ def euclidean_distance_meters(df5, distance_pixel):
     return distance_meters
 
 
+def calculate_offense_frames(df_offense):
+    df_center = df_offense[(df_offense['h'] > 200)]
+    df_center = df_center.drop(['ID', 'y', 'w', 'h'], axis=1)
+
+    # df_offense.loc[(df_offense['ID'] == 1) & (df_offense['x'] < 800), 'D/O'] = 'DEFENCE'
+    # print(df_offense.loc[(df_offense['ID'] == 1) & (df_offense['x'] > 800)])
+
+    df_center.loc[df_center['x'] < 350, 'D/O'] = 'DEFENCE'
+    df_center.loc[df_center['x'] > 800, 'D/O'] = 'OFFENSE'
+    df_center['D/O'] = df_center['D/O'].replace(np.nan, 'JUST PLAYING')
+
+    # print(df_center[df_center['D/O'] == 'OFFENSE'])
+    # print(df_center[df_center['D/O'] == 'DEFENCE'])
+    # print(df_center[df_center['D/O'] == 'JUST PLAYING'])
+
+    print(df_center[df_center['Frame'] == 766])
+
 
 def manager(df, frame):
     df = read_and_clean(df)
+    calculate_offense_frames(df)
     df = df[df['Frame'] == frame]
     df = df.reset_index(drop=True)
     df_ds_px = euclidean_distance_pixels(df)  # distance between players pixels
