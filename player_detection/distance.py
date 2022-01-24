@@ -70,14 +70,15 @@ def euclidean_distance_meters(df5, distance_pixel):
     return distance_meters
 
 
-def calculate_offense_frames(df_offense):
+def calculate_offense_defense(df_offense):
+    possession_changed = []
     df_center = df_offense[(df_offense['h'] > 200)]
     df_center = df_center.drop(['ID', 'y', 'w', 'h'], axis=1)
 
     # df_offense.loc[(df_offense['ID'] == 1) & (df_offense['x'] < 800), 'D/O'] = 'DEFENCE'
     # print(df_offense.loc[(df_offense['ID'] == 1) & (df_offense['x'] > 800)])
 
-    df_center.loc[df_center['x'] < 350, 'D/O'] = 'DEFENCE'
+    df_center.loc[df_center['x'] < 350, 'D/O'] = 'DEFENSE'
     df_center.loc[df_center['x'] > 800, 'D/O'] = 'OFFENSE'
     df_center['D/O'] = df_center['D/O'].replace(np.nan, 'JUST PLAYING')
 
@@ -85,12 +86,19 @@ def calculate_offense_frames(df_offense):
     # print(df_center[df_center['D/O'] == 'DEFENCE'])
     # print(df_center[df_center['D/O'] == 'JUST PLAYING'])
 
-    print(df_center[df_center['Frame'] == 766])
+    for i in range(df_center.shape[0] - 1):
+        if df_center.iloc[i]['D/O'] != df_center.iloc[i + 1]['D/O']:
+            print('CHANGE', i)
+            print(df_center.iloc[i]['D/O'], i)
+            possession_changed.append(i)
+
+    print(possession_changed)
+    return possession_changed
 
 
 def manager(df, frame):
     df = read_and_clean(df)
-    calculate_offense_frames(df)
+    calculate_offense_defense(df)
     df = df[df['Frame'] == frame]
     df = df.reset_index(drop=True)
     df_ds_px = euclidean_distance_pixels(df)  # distance between players pixels
