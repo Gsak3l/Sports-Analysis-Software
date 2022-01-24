@@ -13,10 +13,9 @@ def read_and_clean(file):
 
 
 def euclidean_distance_pixels(df3):
-    # works but 10gb of ram doesn't seem good
     x2_x1 = []
     y2_y1 = []
-    # FIXME for loop doesn't work for all frames
+
     for i in range(df3.shape[0]):
         x2_x1.append([df3['x'].loc[i] - df3['x'].loc[j] for j in range(df3.shape[0])])
         y2_y1.append([df3['y'].loc[i] - df3['y'].loc[j] for j in range(df3.shape[0])])
@@ -37,14 +36,20 @@ def euclidean_distance_pixels(df3):
 
 
 def players_from_camera_meters(df4):
-    df4['CM'] = pd.DataFrame(np.random.randint(180, 181, size=(df4.shape[0], 1)))
-    df4.loc[df4['w'] > 60, 'CM'] = (732 + 244) / 2  # goalpost6
+    df4['CM'] = pd.DataFrame(np.random.randint(175, 190, size=(df4.shape[0], 1)))
+    df4.loc[df4['h'] > 100, 'CM'] = 5000  # goalpost6
     f_mm = 35
     image_height_px = 720
     sensor_height_mm = 44.3
 
-    # cm * 10 to get the mm
-    df4['DC'] = (f_mm * df4['CM'] * 10 * image_height_px) / (df4['h'] * sensor_height_mm)
+    # I don't know what I am doing, I really don't
+    df4.loc[df4['h'] * .8 > df4['w'], 'DC'] = \
+        (f_mm * df4['CM'] * 10 * image_height_px) / ((df4['h'] + df4['w']) * sensor_height_mm)
+
+    df4.loc[df4['h'] * .8 > df4['w'], 'DC'] = \
+        (f_mm * df4['CM'] * 10 * image_height_px) / ((df4['h'] * 0.4 + df4['w'] * 0.6) * sensor_height_mm)
+
+    df4['DC'] = df4['DC'] / 1000
     df4['DC'] = df4['DC'].astype(int)
 
     return df4
@@ -60,20 +65,19 @@ def euclidean_distance_meters(df5, distance_pixel):
         )
 
     distance_meters = pd.DataFrame(distance_meters)
-    distance_meters = distance_meters / 1000
-    distance_meters += distance_meters.mean() / 2
+    distance_meters = distance_meters
+    distance_meters += distance_meters.mean() / 3
     return distance_meters
+
 
 
 def manager(df, frame):
     df = read_and_clean(df)
     df = df[df['Frame'] == frame]
     df = df.reset_index(drop=True)
-    print(df)
-    df_player_distance_px = euclidean_distance_pixels(df)
+    df_ds_px = euclidean_distance_pixels(df)  # distance between players pixels
     df = players_from_camera_meters(df)
-    df_player_distance_meters = euclidean_distance_meters(df, df_player_distance_px)
-    print(df_player_distance_meters.iloc[18][3])
+    df_ds_m = euclidean_distance_meters(df, df_ds_px)  # distance between players meters
 
 
 if __name__ == '__main__':
@@ -81,4 +85,4 @@ if __name__ == '__main__':
     pd.set_option('display.width', desired_width)
     np.set_printoptions(linewidth=desired_width)
     pd.set_option('display.max_columns', 23)
-    manager('runs/track/exp14/Tactical View- Pixellot C Coaching.txt', 91)
+    manager('runs/track/exp18/Tactical View- Pixellot C Coaching.txt', 46)
