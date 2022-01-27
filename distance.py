@@ -1,3 +1,4 @@
+import time
 from math import sqrt, hypot
 import numpy as np
 import pandas as pd
@@ -81,13 +82,14 @@ def calculate_offense_defense(df5):
     df_center = df_center.drop(['ID', 'y', 'w', 'h'], axis=1)
 
     df_center.loc[df_center['x'] < 350, 'D/O'] = 'DEFENSE'
-    df_center.loc[df_center['x'] > 800, 'D/O'] = 'OFFENSE'
+    df_center.loc[df_center['x'] > 700, 'D/O'] = 'OFFENSE'
     df_center['D/O'] = df_center['D/O'].replace(np.nan, 'JUST PLAYING')
+    df_center = df_center.dropna()
 
     for i in range(df_center.shape[0] - 1):
         if df_center.iloc[i]['D/O'] != df_center.iloc[i + 1]['D/O']:
-            possession_changed.append(i)
-
+            possession_changed.append([i, df_center.iloc[i + 1]['D/O']])
+    possession_changed = pd.DataFrame(possession_changed)
     return possession_changed
 
 
@@ -109,11 +111,14 @@ def calculate_running_distance(df6):
 
     running_distance['x'] = running_distance['x'].astype(int)
 
+    running_distance = running_distance.drop(running_distance[running_distance['x'] < 200].index)
     return running_distance
 
 
 def manager(df, frame):
     df_ = df = read_and_clean(df)
+
+    # print(df_.ID.value_counts())
 
     od_timestamps = calculate_offense_defense(df)
 
@@ -125,8 +130,9 @@ def manager(df, frame):
     df_ = players_from_camera_meters(df_)
 
     euclidean_m = euclidean_distance_meters(df, euclidean_px)  # distance between players meters
+    df_running_distance = calculate_running_distance(df_)
 
-    calculate_running_distance(df_)
+    return od_timestamps
 
 
 # if __name__ == '__main__':
@@ -134,4 +140,5 @@ def manager(df, frame):
 #     pd.set_option('display.width', desired_width)
 #     np.set_printoptions(linewidth=desired_width)
 #     pd.set_option('display.max_columns', 23)
-#     manager('runs/track/exp20/Tactical View- Pixellot C Coaching.txt', 46)
+#     manager('player_detection/runs/track/exp20/Tactical View- Pixellot C Coaching.txt', 46)
+#     manager('player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt', 46)

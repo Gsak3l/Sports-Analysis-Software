@@ -5,6 +5,7 @@ import sys
 import os
 import platform
 import time
+import pandas as pd
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT PYTHON CLASSES***
@@ -14,6 +15,7 @@ import string_manipulation as sm
 import youtube_downloader as yd
 import filesystem_changes as fc
 import csv_calculations as cc
+import distance
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT / GUI AND MODULES AND WIDGETS***
@@ -35,6 +37,8 @@ os.environ['QT_FONT_DPI'] = '96'  # FIX Problem for High DPI and Scale above 100
 widgets = None
 names = []
 actions = []
+timestamps = None
+date_stamps = None
 
 
 class MainWindow(QMainWindow):
@@ -48,6 +52,8 @@ class MainWindow(QMainWindow):
         global widgets
         global names
         global actions
+        global timestamps
+        global date_stamps
 
         widgets = self.ui
         actions = [
@@ -56,6 +62,10 @@ class MainWindow(QMainWindow):
             ['Tackle', 'Tackle Won', 'Tackle in Defensive Zone', 'Foul Conceded',
              'Pass Interception Won', 'Possession Turnover Won']
         ]
+
+        timestamps = distance.manager(
+            'player_detection/runs/track/exp20/Tactical View- Pixellot C Coaching.txt', 46
+        )
 
         # ***USE CUSTOM TITLE BAR***
         # -------------------------------------------------------------------------------------------------------------
@@ -129,7 +139,10 @@ class MainWindow(QMainWindow):
         widgets.video_player_slider.valueChanged.connect(self.slider_moved)
         widgets.playback_speed_combo.currentIndexChanged.connect(self.set_video_playback)
         widgets.type_of_action_combobox.currentIndexChanged.connect(self.change_actions)
-        widgets.action_combobox.addItems(actions[2])
+        widgets.od_combobox.currentIndexChanged.connect(self.change_timestamps)
+        # widgets.action_combobox.addItems(actions[2])
+        self.change_actions()
+        self.change_timestamps()
 
         # ***DARK/LIGHT THEME BUTTON***
         # -------------------------------------------------------------------------------------------------------------
@@ -356,8 +369,8 @@ class MainWindow(QMainWindow):
         elif btnName == 'return_to_lineup_builder':
             widgets.titleRightInfo.setText('Build Your Lineup')
             widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
-            UIFunctions.resetStyle(self, btnName)
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+            UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
+            widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
@@ -393,6 +406,24 @@ class MainWindow(QMainWindow):
 
         index = widgets.type_of_action_combobox.currentIndex()
         widgets.action_combobox.addItems(actions[index])
+
+    # CHANGING THE TIMESTAMPS FOR OFFENSE/DEFENSE/I-B
+    def change_timestamps(self):
+        # deleting current values
+        for x in range(len(timestamps)):
+            try:
+                widgets.od_timestamps_combobox.removeItem(0)
+            except IndexError:
+                pass
+        # THIS IS GOLD, IT TOOK ABOUT 5 HOURS GIVE OR TAKE, FOR SOMETHING SO SIMPLE
+        date_stamps = sm.frame_to_time(timestamps)
+        for y in range(len(timestamps[0])):
+            if timestamps[1][y] == 'OFFENSE' and widgets.od_combobox.currentIndex() == 0:
+                widgets.od_timestamps_combobox.addItem(date_stamps[y])
+            elif timestamps[1][y] == 'DEFENSE' and widgets.od_combobox.currentIndex() == 1:
+                widgets.od_timestamps_combobox.addItem(date_stamps[y])
+            elif timestamps[1][y] == 'JUST PLAYING' and widgets.od_combobox.currentIndex() == 2:
+                widgets.od_timestamps_combobox.addItem(date_stamps[y])
 
     # .................................................................................................................
     # CHANGING THE ACTION OPTIONS ON THE COMBOBOX

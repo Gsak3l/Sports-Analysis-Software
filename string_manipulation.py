@@ -1,4 +1,6 @@
 import re
+import datetime
+import pandas as pd
 
 
 # REPLACING ALL SYMBOLS WITH SPACES
@@ -78,3 +80,10 @@ def get_file_name(file):
 def list_to_string(list_):
     list_ = map(str, list_)
     return list_
+
+
+def frame_to_time(df):
+    second_timestamps = (df[0] / 24).to_list()
+    int_second_timestamps = [int(fl) for fl in second_timestamps]
+    time_list = [str(datetime.timedelta(seconds=i)) for i in int_second_timestamps]
+    return time_list

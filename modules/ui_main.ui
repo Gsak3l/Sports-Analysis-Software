@@ -956,7 +956,7 @@ Button */
                    <string notr="true">background-image:url(:/icons/images/icons/cil-movie.png);</string>
                   </property>
                   <property name="text">
-                   <string>PushButton</string>
+                   <string>Match Page</string>
                   </property>
                  </widget>
                 </item>
@@ -2356,6 +2356,46 @@ color:#fff;</string>
                            </property>
                           </widget>
                          </item>
+                         <item>
+                          <widget class="QComboBox" name="od_combobox">
+                           <property name="styleSheet">
+                            <string notr="true">background-color:#bd93f9 ;
+font-weight:bold;
+color:#fff;</string>
+                           </property>
+                           <item>
+                            <property name="text">
+                             <string>Offense Timestamps</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Defense Timestamps</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>In-Between</string>
+                            </property>
+                           </item>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="od_timestamps_combobox">
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">background-color:#bd93f9 ;
+font-weight:bold;
+color:#fff;
+width:70%</string>
+                           </property>
+                          </widget>
+                         </item>
                         </layout>
                        </item>
                        <item>
@@ -2731,7 +2771,7 @@ color:#fff;</string>
                 <item>
                  <widget class="QLabel" name="version">
                   <property name="text">
-                   <string>v1.2.4</string>
+                   <string>v2.0.1</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
