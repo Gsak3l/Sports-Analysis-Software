@@ -140,7 +140,7 @@ class MainWindow(QMainWindow):
         widgets.playback_speed_combo.currentIndexChanged.connect(self.set_video_playback)
         widgets.type_of_action_combobox.currentIndexChanged.connect(self.change_actions)
         widgets.od_combobox.currentIndexChanged.connect(self.change_timestamps)
-        # widgets.action_combobox.addItems(actions[2])
+        widgets.od_timestamps_combobox.currentIndexChanged.connect(self.set_minute)
         self.change_actions()
         self.change_timestamps()
 
@@ -416,7 +416,7 @@ class MainWindow(QMainWindow):
             except IndexError:
                 pass
         # THIS IS GOLD, IT TOOK ABOUT 5 HOURS GIVE OR TAKE, FOR SOMETHING SO SIMPLE
-        date_stamps = sm.frame_to_time(timestamps)
+        date_stamps = sm.frame_to_time(timestamps, 24)
         for y in range(len(timestamps[0])):
             if timestamps[1][y] == 'OFFENSE' and widgets.od_combobox.currentIndex() == 0:
                 widgets.od_timestamps_combobox.addItem(date_stamps[y])
@@ -447,6 +447,16 @@ class MainWindow(QMainWindow):
         widgets.play_video_button.setDisabled(False)
         widgets.pause_video_button.setDisabled(True)
         widgets.stop_video_button.setDisabled(False)
+
+    # .................................................................................................................
+    def set_minute(self):
+        max_seconds = "00:02:45"
+        max_seconds = sm.date_to_second(max_seconds)
+        seconds = widgets.od_timestamps_combobox.currentText()
+        seconds = sm.date_to_second(seconds)
+        seconds -= 10
+        duration = self.media_player.duration()
+        self.media_player.setPosition(int(duration * seconds / max_seconds))
 
     # .................................................................................................................
     # SET PLAYBACK SPEED
