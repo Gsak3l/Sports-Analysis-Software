@@ -1379,7 +1379,7 @@ border:none;</string>
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>4</number>
+                      <number>6</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2596,6 +2596,33 @@ color:#fff;</string>
                            </property>
                           </widget>
                          </item>
+                         <item>
+                          <widget class="QPushButton" name="show_post_game_button">
+                           <property name="maximumSize">
+                            <size>
+                             <width>80</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../resources.qrc">
+                             <normaloff>:/images/images/images/check.png</normaloff>:/images/images/images/check.png</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>64</width>
+                             <height>64</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
                         </layout>
                        </item>
                       </layout>
@@ -2695,6 +2722,74 @@ color:#fff;</string>
                              <height>64</height>
                             </size>
                            </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="post_game">
+                      <layout class="QVBoxLayout" name="verticalLayout_21">
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_10">
+                         <item>
+                          <widget class="QTableWidget" name="pregame_table">
+                           <property name="editTriggers">
+                            <set>QAbstractItemView::NoEditTriggers</set>
+                           </property>
+                           <attribute name="horizontalHeaderVisible">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="horizontalHeaderCascadingSectionResizes">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="horizontalHeaderHighlightSections">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderVisible">
+                            <bool>true</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderHighlightSections">
+                            <bool>true</bool>
+                           </attribute>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QTableWidget" name="lineup_table">
+                           <property name="editTriggers">
+                            <set>QAbstractItemView::NoEditTriggers</set>
+                           </property>
+                           <attribute name="horizontalHeaderVisible">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="horizontalHeaderHighlightSections">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderVisible">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderHighlightSections">
+                            <bool>false</bool>
+                           </attribute>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QTableWidget" name="actions_table">
+                           <property name="editTriggers">
+                            <set>QAbstractItemView::NoEditTriggers</set>
+                           </property>
+                           <attribute name="horizontalHeaderVisible">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="horizontalHeaderHighlightSections">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderVisible">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderHighlightSections">
+                            <bool>false</bool>
+                           </attribute>
                           </widget>
                          </item>
                         </layout>

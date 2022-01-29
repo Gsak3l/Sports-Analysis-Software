@@ -39,6 +39,7 @@ names = []
 actions = []
 timestamps = None
 date_stamps = None
+running_meters = None
 
 
 class MainWindow(QMainWindow):
@@ -54,6 +55,7 @@ class MainWindow(QMainWindow):
         global actions
         global timestamps
         global date_stamps
+        global running_meters
 
         widgets = self.ui
         actions = [
@@ -63,7 +65,7 @@ class MainWindow(QMainWindow):
              'Pass Interception Won', 'Possession Turnover Won']
         ]
 
-        timestamps = distance.manager(
+        timestamps, running_meters = distance.manager(
             'player_detection/runs/track/exp20/Tactical View- Pixellot C Coaching.txt', 46
         )
 
@@ -132,6 +134,7 @@ class MainWindow(QMainWindow):
         widgets.stop_video_button.clicked.connect(self.buttonClick)
         widgets.add_action.clicked.connect(self.buttonClick)
         widgets.return_to_lineup_builder.clicked.connect(self.buttonClick)
+        widgets.show_post_game_button.clicked.connect(self.buttonClick)
         # ELEMENTS
         self.audio_output = QAudioOutput()
         self.media_player = QMediaPlayer()
@@ -143,6 +146,10 @@ class MainWindow(QMainWindow):
         widgets.od_timestamps_combobox.currentIndexChanged.connect(self.set_minute)
         self.change_actions()
         self.change_timestamps()
+
+        # ***STATS PAGE***
+        # -------------------------------------------------------------------------------------------------------------
+        self.fill_tables(running_meters)
 
         # ***DARK/LIGHT THEME BUTTON***
         # -------------------------------------------------------------------------------------------------------------
@@ -360,17 +367,24 @@ class MainWindow(QMainWindow):
 
         # ADD ACTION FROM THE COMBO BOXES TO A CSV
         # .............................................................................................................
+
         elif btnName == 'add_action':
             cc.add_to_csv(widgets.player_names_combobox.currentText(),
                           widgets.type_of_action_combobox.currentText(),
                           widgets.action_combobox.currentText(),
                           (self.media_player.position() / 1000))
 
+        # RETURN TO THE LINEUP BUILDER TO CHANGE LINEUP
+        # .............................................................................................................
         elif btnName == 'return_to_lineup_builder':
             widgets.titleRightInfo.setText('Build Your Lineup')
             widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
             UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
             widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
+
+        elif btnName == 'show_post_game_button':
+            widgets.titleRightInfo.setText('Post Game')
+            widgets.stackedWidget.setCurrentWidget(widgets.post_game)
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
@@ -416,7 +430,7 @@ class MainWindow(QMainWindow):
             except IndexError:
                 pass
         # THIS IS GOLD, IT TOOK ABOUT 5 HOURS GIVE OR TAKE, FOR SOMETHING SO SIMPLE
-        date_stamps = sm.frame_to_time(timestamps, 24)
+        date_stamps = sm.frame_to_time_list(timestamps, 24)
         for y in range(len(timestamps[0])):
             if timestamps[1][y] == 'OFFENSE' and widgets.od_combobox.currentIndex() == 0:
                 widgets.od_timestamps_combobox.addItem(date_stamps[y])
@@ -495,6 +509,23 @@ class MainWindow(QMainWindow):
     def resizeEvent(self, event):
         # Update Size Grips
         UIFunctions.resize_grips(self)
+
+    def fill_tables(self, running_m):
+        pass
+
+        # widgets.lineup_table.setColumnCount(2)
+        # widgets.lineup_table.setRowCount(len(running_m))
+        # # widgets.actions_table.setHorizontalHeaderLabels(['Player ID', 'Running Distance'])
+        # running_m = sm.int_list_to_string_list(running_m)
+        # for i in range(len(running_m)):
+        #     widgets.lineup_table.setItem(i, 0, QTableWidgetItem(running_m[i]))
+        #
+        # widgets.pregame_table.setColumnCount(2)
+        # widgets.pregame_table.setRowCount(len(running_m))
+        # # widgets.actions_table.setHorizontalHeaderLabels(['Player ID', 'Running Distance'])
+        # running_m = sm.int_list_to_string_list(running_m)
+        # for i in range(len(running_m)):
+        #     widgets.pregame_table.setItem(i, 0, QTableWidgetItem(running_m[i]))
 
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

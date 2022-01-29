@@ -12,13 +12,13 @@ import csv_calculations as cc
 # SAVING THE EMBED LOCAL VIDEO DATA TO A JSON FILE
 def save_pre_local_video_data(calendar_date, sport, season, competition, details, video_file):
     x_json = {
-        'Title': sm.path_to_video_title(video_file),
+        'Video Title': sm.path_to_video_title(video_file),
         'Date': sm.qdate_to_date(str(calendar_date)),
         'Sport': sport,
         'Season': season,
         'Competition': competition,
         'Other Details': details,
-        'Video Title': sm.path_to_video_name(video_file),
+        'File Name': sm.path_to_video_name(video_file),
         'Video Path': video_file
     }
     save_readable_json(x_json)
@@ -27,13 +27,13 @@ def save_pre_local_video_data(calendar_date, sport, season, competition, details
 # SAVING THE EMBED CLOUD VIDEO DATA TO A JSON FILE
 def save_pre_cloud_video_data(calendar_date, sport, season, competition, details, video_file):
     x_json = {
-        'Title': sm.path_to_video_title(video_file),
+        'Video Title': sm.path_to_video_title(video_file),
         'Date': sm.qdate_to_date(str(calendar_date)),
         'Sport': sport,
         'Season': season,
         'Competition': competition,
         'Other Details': details,
-        'Video Title': sm.path_to_video_name(video_file),
+        'File Name': sm.path_to_video_name(video_file),
         'Video Path': video_file
     }
     save_readable_json(x_json)

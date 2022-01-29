@@ -79,13 +79,14 @@ def get_file_name(file):
     return file.rsplit('.', 1)[0]
 
 
+# CONVERT LIST TO A LONG STRING
 def list_to_string(list_):
     list_ = map(str, list_)
     return list_
 
 
 # CONVERT FRAMES LIST TO DATETIME LIST
-def frame_to_time(df, fps):
+def frame_to_time_list(df, fps):
     second_timestamps = (df[0] / fps).to_list()
     int_second_timestamps = [int(fl) for fl in second_timestamps]
     time_list = [str(datetime.timedelta(seconds=i)) for i in int_second_timestamps]
@@ -94,6 +95,10 @@ def frame_to_time(df, fps):
 
 # CONVERT DATETIME TO INTEGER
 def date_to_second(text):
-    print(type(text))
-    print(sum(x * int(t) for x, t in zip([3600, 60, 1], text.split(':'))))
     return sum(x * int(t) for x, t in zip([3600, 60, 1], text.split(':')))
+
+
+# CONVERT INT LIST TO STRING
+def int_list_to_string_list(ints):
+    string_ints = [str(num) for num in ints]
+    return string_ints

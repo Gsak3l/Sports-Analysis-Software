@@ -11,9 +11,9 @@ if sys.platform == "win32":
     base = "Win32GUI"
 
 setup(
-    name = "guifoo",
-    version = "0.1",
-    description = "My GUI application!",
-    options = {"build_exe": build_exe_options},
-    executables = [Executable("main.py", base=base)]
+    name="Sports Analysis Software",
+    version="0.1",
+    description="A tool for everyone?",
+    options={"build_exe": build_exe_options},
+    executables=[Executable("main.py", base=base)]
 )

@@ -131,9 +131,9 @@ def manager(df, frame):
 
     euclidean_m = euclidean_distance_meters(df, euclidean_px)  # distance between players meters
     df_running_distance = calculate_running_distance(df_)
+    df_running_distance = df_running_distance['x'].to_list()
 
-    return od_timestamps
-
+    return od_timestamps, df_running_distance
 
 # if __name__ == '__main__':
 #     desired_width = 320
