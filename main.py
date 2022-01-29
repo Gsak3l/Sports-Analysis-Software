@@ -500,6 +500,36 @@ class MainWindow(QMainWindow):
         widgets.video_player_progress_bar.setValue(int(position))
 
     # -----------------------------------------------------------------------------------------------------------------
+    # ***POST GAME PAGE***
+    # -----------------------------------------------------------------------------------------------------------------
+    # FILLING THE AFTERMATH TABLES
+    def fill_tables(self, running_m):
+        post_game_details = sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'game details.json'
+        f = open(post_game_details)
+        post_game_details = json.load(f)
+        f.close()
+        labels = []
+        labels_equal_to = []
+        # to the moon
+        for GME in post_game_details:
+            labels.append(GME)
+            labels_equal_to.append(post_game_details[GME])
+        widgets.pregame_table.setColumnCount(1)
+        widgets.pregame_table.setRowCount(len(post_game_details))
+        widgets.pregame_table.setVerticalHeaderLabels(labels)
+        [widgets.pregame_table.setItem(i, 0, QTableWidgetItem(labels_equal_to[i])) for i in
+         range(len(labels_equal_to))]
+
+        df_actions = pd.read_csv(sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'actions.csv')
+        widgets.actions_table.setRowCount(df_actions.shape[0])
+        widgets.actions_table.setColumnCount(df_actions.shape[1] - 1)
+        widgets.actions_table.setVerticalHeaderLabels(sm.int_list_to_string_list(df_actions['Name'].tolist()))
+        df_actions = df_actions.drop(['Name'], axis=1)
+        for i in range(df_actions.shape[0]):
+            for j in range(df_actions.shape[1]):
+                widgets.actions_table.setItem(i, j, QTableWidgetItem(df_actions.iloc[i][j]))
+
+    # -----------------------------------------------------------------------------------------------------------------
     # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***
     # -----------------------------------------------------------------------------------------------------------------
     def on_downloadRequested(self, download):
@@ -511,39 +541,6 @@ class MainWindow(QMainWindow):
     def resizeEvent(self, event):
         # Update Size Grips
         UIFunctions.resize_grips(self)
-
-    def fill_tables(self, running_m):
-        print('aqui')
-        post_game_details = sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'game details.json'
-        f = open(post_game_details)
-        post_game_details = json.load(f)
-        f.close()
-
-        labels = []
-        labels_equal_to = []
-        # to the moon
-        for GME in post_game_details:
-            labels.append(GME)
-            labels_equal_to.append(post_game_details[GME])
-
-        widgets.pregame_table.setColumnCount(1)
-        widgets.pregame_table.setRowCount(len(post_game_details))
-        widgets.pregame_table.setVerticalHeaderLabels(labels)
-        [widgets.pregame_table.setItem(i, 0, QTableWidgetItem(labels_equal_to[i])) for i in range(len(labels_equal_to))]
-
-        # widgets.lineup_table.setColumnCount(2)
-        # widgets.lineup_table.setRowCount(len(running_m))
-        # # widgets.actions_table.setHorizontalHeaderLabels(['Player ID', 'Running Distance'])
-        # running_m = sm.int_list_to_string_list(running_m)
-        # for i in range(len(running_m)):
-        #     widgets.lineup_table.setItem(i, 0, QTableWidgetItem(running_m[i]))
-        #
-        # widgets.pregame_table.setColumnCount(2)
-        # widgets.pregame_table.setRowCount(len(running_m))
-        # # widgets.actions_table.setHorizontalHeaderLabels(['Player ID', 'Running Distance'])
-        # running_m = sm.int_list_to_string_list(running_m)
-        # for i in range(len(running_m)):
-        #     widgets.pregame_table.setItem(i, 0, QTableWidgetItem(running_m[i]))
 
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

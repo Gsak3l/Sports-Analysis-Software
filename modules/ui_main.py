@@ -1504,8 +1504,10 @@ class Ui_MainWindow(object):
         self.pregame_table.horizontalHeader().setVisible(False)
         self.pregame_table.horizontalHeader().setCascadingSectionResizes(False)
         self.pregame_table.horizontalHeader().setHighlightSections(False)
+        self.pregame_table.horizontalHeader().setStretchLastSection(True)
         self.pregame_table.verticalHeader().setVisible(True)
         self.pregame_table.verticalHeader().setHighlightSections(True)
+        self.pregame_table.verticalHeader().setStretchLastSection(False)
 
         self.horizontalLayout_10.addWidget(self.pregame_table)
 
@@ -1514,8 +1516,10 @@ class Ui_MainWindow(object):
         self.lineup_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.lineup_table.horizontalHeader().setVisible(False)
         self.lineup_table.horizontalHeader().setHighlightSections(False)
+        self.lineup_table.horizontalHeader().setStretchLastSection(False)
         self.lineup_table.verticalHeader().setVisible(False)
         self.lineup_table.verticalHeader().setHighlightSections(False)
+        self.lineup_table.verticalHeader().setStretchLastSection(False)
 
         self.horizontalLayout_10.addWidget(self.lineup_table)
 
@@ -1524,8 +1528,10 @@ class Ui_MainWindow(object):
         self.actions_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.actions_table.horizontalHeader().setVisible(False)
         self.actions_table.horizontalHeader().setHighlightSections(False)
-        self.actions_table.verticalHeader().setVisible(False)
-        self.actions_table.verticalHeader().setHighlightSections(False)
+        self.actions_table.horizontalHeader().setStretchLastSection(True)
+        self.actions_table.verticalHeader().setVisible(True)
+        self.actions_table.verticalHeader().setHighlightSections(True)
+        self.actions_table.verticalHeader().setStretchLastSection(False)
 
         self.horizontalLayout_10.addWidget(self.actions_table)
 
