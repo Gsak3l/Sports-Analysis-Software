@@ -6,6 +6,7 @@ import os
 import platform
 import time
 import pandas as pd
+import json
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT PYTHON CLASSES***
@@ -149,7 +150,6 @@ class MainWindow(QMainWindow):
 
         # ***STATS PAGE***
         # -------------------------------------------------------------------------------------------------------------
-        self.fill_tables(running_meters)
 
         # ***DARK/LIGHT THEME BUTTON***
         # -------------------------------------------------------------------------------------------------------------
@@ -382,9 +382,11 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
             widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
 
+        # FIXME ADD NEW COMMENTS HERE COMMENDS
         elif btnName == 'show_post_game_button':
             widgets.titleRightInfo.setText('Post Game')
             widgets.stackedWidget.setCurrentWidget(widgets.post_game)
+            self.fill_tables(running_meters)
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
@@ -511,7 +513,23 @@ class MainWindow(QMainWindow):
         UIFunctions.resize_grips(self)
 
     def fill_tables(self, running_m):
-        pass
+        print('aqui')
+        post_game_details = sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'game details.json'
+        f = open(post_game_details)
+        post_game_details = json.load(f)
+        f.close()
+
+        labels = []
+        labels_equal_to = []
+        # to the moon
+        for GME in post_game_details:
+            labels.append(GME)
+            labels_equal_to.append(post_game_details[GME])
+
+        widgets.pregame_table.setColumnCount(1)
+        widgets.pregame_table.setRowCount(len(post_game_details))
+        widgets.pregame_table.setVerticalHeaderLabels(labels)
+        [widgets.pregame_table.setItem(i, 0, QTableWidgetItem(labels_equal_to[i])) for i in range(len(labels_equal_to))]
 
         # widgets.lineup_table.setColumnCount(2)
         # widgets.lineup_table.setRowCount(len(running_m))
