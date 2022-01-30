@@ -1,8 +1,10 @@
+import os
 import re
 import datetime
 import time
 from random import randrange
 import pandas as pd
+import filesystem_changes as fc
 
 
 # REPLACING ALL SYMBOLS WITH SPACES
@@ -102,3 +104,15 @@ def date_to_second(text):
 def int_list_to_string_list(ints):
     string_ints = [str(num) for num in ints]
     return string_ints
+
+
+# RETURNS ALL CSV LINEUPS FROM LAST CREATED FOLDER
+def find_last_folder_lineups():
+    all_files = os.listdir(double_backslash_to_slash(fc.find_last_created_folder()))
+    lineups = []
+
+    for file in all_files:
+        if re.search(r'\blineup\b', file):
+            lineups.append(file)
+
+    return lineups

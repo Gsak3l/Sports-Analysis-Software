@@ -1514,7 +1514,7 @@ class Ui_MainWindow(object):
         self.lineup_table = QTableWidget(self.post_game)
         self.lineup_table.setObjectName(u"lineup_table")
         self.lineup_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        self.lineup_table.horizontalHeader().setVisible(False)
+        self.lineup_table.horizontalHeader().setVisible(True)
         self.lineup_table.horizontalHeader().setHighlightSections(False)
         self.lineup_table.horizontalHeader().setStretchLastSection(False)
         self.lineup_table.verticalHeader().setVisible(False)

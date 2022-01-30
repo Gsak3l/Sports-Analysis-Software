@@ -386,7 +386,7 @@ class MainWindow(QMainWindow):
         elif btnName == 'show_post_game_button':
             widgets.titleRightInfo.setText('Post Game')
             widgets.stackedWidget.setCurrentWidget(widgets.post_game)
-            self.fill_tables(running_meters)
+            self.fill_tables()
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
@@ -503,7 +503,8 @@ class MainWindow(QMainWindow):
     # ***POST GAME PAGE***
     # -----------------------------------------------------------------------------------------------------------------
     # FILLING THE AFTERMATH TABLES
-    def fill_tables(self, running_m):
+    def fill_tables(self):
+        # PRE-GAME DETAILS TABLE
         post_game_details = sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'game details.json'
         f = open(post_game_details)
         post_game_details = json.load(f)
@@ -520,6 +521,7 @@ class MainWindow(QMainWindow):
         [widgets.pregame_table.setItem(i, 0, QTableWidgetItem(labels_equal_to[i])) for i in
          range(len(labels_equal_to))]
 
+        # ACTIONS OF PLAYERS, LIKE PASSES, SHOTS, GOALS ETC.
         df_actions = pd.read_csv(sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'actions.csv')
         widgets.actions_table.setRowCount(df_actions.shape[0])
         widgets.actions_table.setColumnCount(df_actions.shape[1] - 1)
@@ -528,6 +530,31 @@ class MainWindow(QMainWindow):
         for i in range(df_actions.shape[0]):
             for j in range(df_actions.shape[1]):
                 widgets.actions_table.setItem(i, j, QTableWidgetItem(df_actions.iloc[i][j]))
+
+        # LINEUPS
+        lineups = sm.find_last_folder_lineups()
+        lineup_path = []
+        row_count = 0
+        for i in range(len(lineups)):
+            lineup_path.append(sm.double_backslash_to_slash(fc.find_last_created_folder() + lineups[i]))
+            df_lineup = pd.read_csv(lineup_path[i])
+            row_count += df_lineup.shape[0] + 1  # +1 HEADER FOR EACH LINEUP WITH TIMESTAMP PROBABLY
+
+        widgets.lineup_table.setRowCount(row_count)
+        widgets.lineup_table.setColumnCount(3)
+        widgets.lineup_table.setHorizontalHeaderLabels(['id', 'Name', 'Positions'])
+        y = 0
+        for lineup in lineup_path:
+            df_lineup = pd.read_csv(lineup)
+            for i in range(df_lineup.shape[0]):
+                widgets.lineup_table.setItem(y, 0, QTableWidgetItem(str(df_lineup['id'].iloc[i])))
+                widgets.lineup_table.setItem(y, 1, QTableWidgetItem(str(df_lineup['name'].iloc[i])))
+                widgets.lineup_table.setItem(y, 2, QTableWidgetItem(df_lineup['positions'].iloc[i]))
+                y += 1
+            widgets.lineup_table.setItem(y, 0, QTableWidgetItem('----------'))
+            widgets.lineup_table.setItem(y, 1, QTableWidgetItem('Next Lineup'))
+            widgets.lineup_table.setItem(y, 2, QTableWidgetItem('----------'))
+            y += 1
 
     # -----------------------------------------------------------------------------------------------------------------
     # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***
