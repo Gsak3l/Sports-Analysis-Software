@@ -7,6 +7,7 @@ import platform
 import time
 import pandas as pd
 import json
+import cv2
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT PYTHON CLASSES***
@@ -320,7 +321,10 @@ class MainWindow(QMainWindow):
         # -------------------------------------------------------------------------------------------------------------
         # SAVE LINEUP BUILDER DATA TO JSON AND GO TO THE COACH TOOL SECTION
         elif btnName == 'formation_next_page_button':
-            self.names = sd.manager(sm.double_backslash_to_slash(fc.find_last_created_folder()), 'lineup.json')
+            try:
+                self.names = sd.manager(sm.double_backslash_to_slash(fc.find_last_created_folder()), 'lineup.json')
+            except FileNotFoundError as fl:
+                print(fl)
             self.delete_player_names()
             widgets.player_names_combobox.addItems(self.names)
             widgets.titleRightInfo.setText('Expert Tool')
@@ -396,7 +400,8 @@ class MainWindow(QMainWindow):
     # -----------------------------------------------------------------------------------------------------------------
     def mousePressEvent(self, event):
         # SET DRAG POS WINDOW
-        self.dragPos = event.globalPos()
+        point = event.globalPosition()
+        self.dragPos = point.toPoint()
 
         # PRINT MOUSE EVENTS
         if event.buttons() == Qt.LeftButton:
@@ -466,13 +471,15 @@ class MainWindow(QMainWindow):
 
     # .................................................................................................................
     def set_minute(self):
-        max_seconds = "00:02:45"
-        max_seconds = sm.date_to_second(max_seconds)
-        seconds = widgets.od_timestamps_combobox.currentText()
-        seconds = sm.date_to_second(seconds)
-        seconds -= 10
-        duration = self.media_player.duration()
-        self.media_player.setPosition(int(duration * seconds / max_seconds))
+        try:
+            max_seconds = fc.find_video_sec_length()
+            seconds = widgets.od_timestamps_combobox.currentText()
+            seconds = sm.date_to_second(seconds)
+            seconds -= 10
+            duration = self.media_player.duration()
+            self.media_player.setPosition(int(duration * seconds / max_seconds))
+        except Exception as e:
+            print(e)
 
     # .................................................................................................................
     # SET PLAYBACK SPEED
@@ -524,12 +531,12 @@ class MainWindow(QMainWindow):
         # ACTIONS OF PLAYERS, LIKE PASSES, SHOTS, GOALS ETC.
         df_actions = pd.read_csv(sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'actions.csv')
         widgets.actions_table.setRowCount(df_actions.shape[0])
-        widgets.actions_table.setColumnCount(df_actions.shape[1] - 1)
-        widgets.actions_table.setVerticalHeaderLabels(sm.int_list_to_string_list(df_actions['Name'].tolist()))
-        df_actions = df_actions.drop(['Name'], axis=1)
+        widgets.actions_table.setColumnCount(df_actions.shape[1])
+        # widgets.actions_table.setVerticalHeaderLabels(sm.int_list_to_string_list(df_actions['Name'].tolist()))
+        widgets.actions_table.setHorizontalHeaderLabels(['Name', 'Type of Action', 'Action', 'Timestamp'])
         for i in range(df_actions.shape[0]):
             for j in range(df_actions.shape[1]):
-                widgets.actions_table.setItem(i, j, QTableWidgetItem(df_actions.iloc[i][j]))
+                widgets.actions_table.setItem(i, j, QTableWidgetItem(str(df_actions.iloc[i][j])))
 
         # LINEUPS
         lineups = sm.find_last_folder_lineups()

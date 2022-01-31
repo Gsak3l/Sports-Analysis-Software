@@ -1,6 +1,10 @@
 import os
 import glob
 from datetime import datetime
+import json
+import cv2
+
+import string_manipulation as sm
 
 
 # CREATING A FOLDER THAT STORES SUB-FOLDER DATA
@@ -61,3 +65,25 @@ def downloads_path():
 # DELETE FILE
 def delete_file(file_path, file_name):
     os.remove(file_path + file_name)
+
+
+# FIND VIDEO LENGTH SECONDS
+def find_video_sec_length():
+    duration = 1
+    path = ''
+
+    try:
+        f = open(sm.double_backslash_to_slash(find_last_created_folder()) + 'game details.json')
+        path = json.load(f)
+        path = path['Video Path']
+        f.close()
+    except FileNotFoundError as fl:
+        print(fl)
+
+    if path != '':
+        cap = cv2.VideoCapture(path)
+        fps = cap.get(cv2.CAP_PROP_FPS)  # OpenCV2 version 2 used "CV_CAP_PROP_FPS"
+        frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        duration = frame_count / fps
+
+    return duration

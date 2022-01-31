@@ -2737,6 +2737,9 @@ color:#fff;</string>
                            <property name="editTriggers">
                             <set>QAbstractItemView::NoEditTriggers</set>
                            </property>
+                           <property name="dragEnabled">
+                            <bool>false</bool>
+                           </property>
                            <attribute name="horizontalHeaderVisible">
                             <bool>false</bool>
                            </attribute>
@@ -2765,6 +2768,9 @@ color:#fff;</string>
                            <property name="editTriggers">
                             <set>QAbstractItemView::NoEditTriggers</set>
                            </property>
+                           <property name="dragEnabled">
+                            <bool>false</bool>
+                           </property>
                            <attribute name="horizontalHeaderVisible">
                             <bool>true</bool>
                            </attribute>
@@ -2790,8 +2796,11 @@ color:#fff;</string>
                            <property name="editTriggers">
                             <set>QAbstractItemView::NoEditTriggers</set>
                            </property>
-                           <attribute name="horizontalHeaderVisible">
+                           <property name="dragEnabled">
                             <bool>false</bool>
+                           </property>
+                           <attribute name="horizontalHeaderVisible">
+                            <bool>true</bool>
                            </attribute>
                            <attribute name="horizontalHeaderHighlightSections">
                             <bool>false</bool>
@@ -2800,7 +2809,7 @@ color:#fff;</string>
                             <bool>true</bool>
                            </attribute>
                            <attribute name="verticalHeaderVisible">
-                            <bool>true</bool>
+                            <bool>false</bool>
                            </attribute>
                            <attribute name="verticalHeaderHighlightSections">
                             <bool>true</bool>

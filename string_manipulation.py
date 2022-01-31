@@ -97,7 +97,10 @@ def frame_to_time_list(df, fps):
 
 # CONVERT DATETIME TO INTEGER
 def date_to_second(text):
-    return sum(x * int(t) for x, t in zip([3600, 60, 1], text.split(':')))
+    try:
+        return sum(x * int(t) for x, t in zip([3600, 60, 1], text.split(':')))
+    except ValueError as ve:
+        print(ve)
 
 
 # CONVERT INT LIST TO STRING
