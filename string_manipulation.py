@@ -1,9 +1,6 @@
 import os
 import re
 import datetime
-import time
-from random import randrange
-import pandas as pd
 import filesystem_changes as fc
 
 
@@ -32,7 +29,7 @@ def qdate_to_date(calendar_date):
     return calendar_date[calendar_date.find('(') + 1:calendar_date.find(')')]
 
 
-# from \\ and \ to /
+# FROM \\ AND \ TO /
 def double_backslash_to_slash(text):
     text = text.replace('\\\\', '/')
     text = text.replace('\\', '/')

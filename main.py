@@ -12,6 +12,7 @@ import cv2
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT PYTHON CLASSES***
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+import filesystem_changes
 import save_data as sd
 import string_manipulation as sm
 import youtube_downloader as yd
@@ -42,6 +43,7 @@ actions = []
 timestamps = None
 date_stamps = None
 running_meters = None
+distance_meters = None
 
 
 class MainWindow(QMainWindow):
@@ -58,6 +60,7 @@ class MainWindow(QMainWindow):
         global timestamps
         global date_stamps
         global running_meters
+        global distance_meters
 
         widgets = self.ui
         actions = [
@@ -67,9 +70,15 @@ class MainWindow(QMainWindow):
              'Pass Interception Won', 'Possession Turnover Won']
         ]
 
-        timestamps, running_meters = distance.manager(
+        timestamps, running_meters, distance_meters = distance.manager(
             'player_detection/runs/track/exp20/Tactical View- Pixellot C Coaching.txt', 46
         )
+
+        running_meters = pd.DataFrame(running_meters)
+        distance_meters = pd.DataFrame(distance_meters)
+
+        distance_meters.to_csv(fc.find_last_created_folder() + 'distance between players.csv')
+        running_meters.to_csv(fc.find_last_created_folder() + 'total running distance.csv')
 
         # ***USE CUSTOM TITLE BAR***
         # -------------------------------------------------------------------------------------------------------------
@@ -148,6 +157,7 @@ class MainWindow(QMainWindow):
         widgets.od_timestamps_combobox.currentIndexChanged.connect(self.set_minute)
         self.change_actions()
         self.change_timestamps()
+
 
         # ***STATS PAGE***
         # -------------------------------------------------------------------------------------------------------------
@@ -558,9 +568,9 @@ class MainWindow(QMainWindow):
                 widgets.lineup_table.setItem(y, 1, QTableWidgetItem(str(df_lineup['name'].iloc[i])))
                 widgets.lineup_table.setItem(y, 2, QTableWidgetItem(df_lineup['positions'].iloc[i]))
                 y += 1
-            widgets.lineup_table.setItem(y, 0, QTableWidgetItem('----------'))
+            widgets.lineup_table.setItem(y, 0, QTableWidgetItem('⚽⚽⚽⚽'))
             widgets.lineup_table.setItem(y, 1, QTableWidgetItem('Next Lineup'))
-            widgets.lineup_table.setItem(y, 2, QTableWidgetItem('----------'))
+            widgets.lineup_table.setItem(y, 2, QTableWidgetItem('⚽⚽⚽⚽'))
             y += 1
 
     # -----------------------------------------------------------------------------------------------------------------

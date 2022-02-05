@@ -1,8 +1,6 @@
-import time
 from math import sqrt, hypot
 import numpy as np
 import pandas as pd
-import cv2
 
 
 def read_and_clean(file):
@@ -50,7 +48,8 @@ def euclidean_distance_meters(df5, distance_pixel):
 
     distance_meters = pd.DataFrame(distance_meters)
     distance_meters = distance_meters
-    distance_meters += distance_meters.mean() / 3
+    distance_meters += distance_meters.mean()
+
     return distance_meters
 
 
@@ -133,7 +132,7 @@ def manager(df, frame):
     df_running_distance = calculate_running_distance(df_)
     df_running_distance = df_running_distance['x'].to_list()
 
-    return od_timestamps, df_running_distance
+    return od_timestamps, df_running_distance, euclidean_m
 
 # if __name__ == '__main__':
 #     desired_width = 320
