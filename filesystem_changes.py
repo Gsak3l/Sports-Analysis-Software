@@ -3,6 +3,7 @@ import glob
 from datetime import datetime
 import json
 import cv2
+import shutil
 
 import string_manipulation as sm
 
@@ -87,3 +88,26 @@ def find_video_sec_length():
         duration = frame_count / fps
 
     return duration
+
+
+# DELETE ALL FILES FROM FOLDER AND THEN THE FOLDER ITSELF
+def delete_files_and_folder(folder_path):
+    try:
+        for file_name in os.listdir(folder_path):
+            file = os.path.join(folder_path, file_name)
+            try:
+                if os.path.isfile(file) or os.path.islink(file):
+                    os.unlink(file)
+                elif os.path.isdir(file):
+                    shutil.rmtree(file)
+            except FileNotFoundError as f:
+                print(f)
+
+        os.rmdir(folder_path)
+    except FileNotFoundError as f:
+        print(f)
+
+
+# CREATE FOLDER WITH NAME EXPORTED FRAMES
+def create_exported_frames_folder():
+    os.mkdir('Exported Frames')
