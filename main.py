@@ -158,7 +158,6 @@ class MainWindow(QMainWindow):
         self.change_actions()
         self.change_timestamps()
 
-
         # ***STATS PAGE***
         # -------------------------------------------------------------------------------------------------------------
 

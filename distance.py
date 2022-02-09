@@ -2,13 +2,7 @@ from math import sqrt, hypot
 import numpy as np
 import pandas as pd
 
-
-def read_and_clean(file):
-    df2 = pd.read_csv(file, sep=' ', header=None)
-    df2 = df2.rename(columns={0: 'Frame', 1: 'ID', 2: 'x', 3: 'y', 4: 'w', 5: 'h'})
-    df2 = df2.dropna(axis='columns')
-    df2 = df2.drop([6, 7, 8, 9], axis=1)
-    return df2
+import csv_calculations as cc
 
 
 # calculate distance between players in pixels using the euclidean distance
@@ -115,7 +109,7 @@ def calculate_running_distance(df6):
 
 
 def manager(df, frame):
-    df_ = df = read_and_clean(df)
+    df_ = df = cc.read_and_clean(df)
 
     # print(df_.ID.value_counts())
 

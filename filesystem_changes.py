@@ -111,3 +111,4 @@ def delete_files_and_folder(folder_path):
 # CREATE FOLDER WITH NAME EXPORTED FRAMES
 def create_exported_frames_folder():
     os.mkdir('Exported Frames')
+    os.mkdir('Exported Frames/zoomed images')
