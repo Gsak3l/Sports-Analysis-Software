@@ -260,6 +260,7 @@ class MainWindow(QMainWindow):
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
                 UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
                 widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
+
             else:
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')
