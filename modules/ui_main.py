@@ -1271,6 +1271,18 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_11.addWidget(self.return_to_lineup_builder)
 
+        self.zoom_into_player_button = QPushButton(self.video_page)
+        self.zoom_into_player_button.setObjectName(u"zoom_into_player_button")
+        self.zoom_into_player_button.setMaximumSize(QSize(80, 16777215))
+        self.zoom_into_player_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
+                                                   "::active{border:none}")
+        icon9 = QIcon()
+        icon9.addFile(u":/images/images/images/zoom-buttons.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.zoom_into_player_button.setIcon(icon9)
+        self.zoom_into_player_button.setIconSize(QSize(64, 64))
+
+        self.horizontalLayout_11.addWidget(self.zoom_into_player_button)
+
         self.player_names_combobox = QComboBox(self.video_page)
         self.player_names_combobox.setObjectName(u"player_names_combobox")
         self.player_names_combobox.setStyleSheet(u"background-color:#bd93f9 ;\n"
@@ -1305,9 +1317,9 @@ class Ui_MainWindow(object):
         self.add_action.setCursor(QCursor(Qt.PointingHandCursor))
         self.add_action.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                       "::active{border:none}")
-        icon9 = QIcon()
-        icon9.addFile(u":/images/images/images/plus.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.add_action.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u":/images/images/images/plus.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_action.setIcon(icon10)
         self.add_action.setIconSize(QSize(40, 40))
 
         self.horizontalLayout_11.addWidget(self.add_action)
@@ -1348,9 +1360,9 @@ class Ui_MainWindow(object):
         self.play_video_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.play_video_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                              "::active{border:none}")
-        icon10 = QIcon()
-        icon10.addFile(u":/images/images/images/play.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.play_video_button.setIcon(icon10)
+        icon11 = QIcon()
+        icon11.addFile(u":/images/images/images/play.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.play_video_button.setIcon(icon11)
         self.play_video_button.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_8.addWidget(self.play_video_button)
@@ -1361,9 +1373,9 @@ class Ui_MainWindow(object):
         self.pause_video_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.pause_video_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                               "::active{border:none}")
-        icon11 = QIcon()
-        icon11.addFile(u":/images/images/images/pause.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pause_video_button.setIcon(icon11)
+        icon12 = QIcon()
+        icon12.addFile(u":/images/images/images/pause.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pause_video_button.setIcon(icon12)
         self.pause_video_button.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_8.addWidget(self.pause_video_button)
@@ -1374,9 +1386,9 @@ class Ui_MainWindow(object):
         self.stop_video_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.stop_video_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                              "::active{border:none}")
-        icon12 = QIcon()
-        icon12.addFile(u":/images/images/images/stop.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.stop_video_button.setIcon(icon12)
+        icon13 = QIcon()
+        icon13.addFile(u":/images/images/images/stop.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.stop_video_button.setIcon(icon13)
         self.stop_video_button.setIconSize(QSize(32, 32))
 
         self.horizontalLayout_8.addWidget(self.stop_video_button)
@@ -1433,9 +1445,9 @@ class Ui_MainWindow(object):
         self.show_post_game_button.setMaximumSize(QSize(80, 16777215))
         self.show_post_game_button.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                                  "::active{border:none}")
-        icon13 = QIcon()
-        icon13.addFile(u":/images/images/images/check.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.show_post_game_button.setIcon(icon13)
+        icon14 = QIcon()
+        icon14.addFile(u":/images/images/images/check.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.show_post_game_button.setIcon(icon14)
         self.show_post_game_button.setIconSize(QSize(64, 64))
 
         self.horizontalLayout_8.addWidget(self.show_post_game_button)
@@ -1455,9 +1467,9 @@ class Ui_MainWindow(object):
         self.btn_local_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_local_footage.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                              "::active{border:none}")
-        icon14 = QIcon()
-        icon14.addFile(u":/images/images/images/folder_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_local_footage.setIcon(icon14)
+        icon15 = QIcon()
+        icon15.addFile(u":/images/images/images/folder_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_local_footage.setIcon(icon15)
         self.btn_local_footage.setIconSize(QSize(64, 64))
         self.btn_local_footage.setAutoDefault(False)
 
@@ -1469,9 +1481,9 @@ class Ui_MainWindow(object):
         self.btn_cloud_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_cloud_footage.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                              "::active{border:none}")
-        icon15 = QIcon()
-        icon15.addFile(u":/images/images/images/cloud_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_cloud_footage.setIcon(icon15)
+        icon16 = QIcon()
+        icon16.addFile(u":/images/images/images/cloud_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_cloud_footage.setIcon(icon16)
         self.btn_cloud_footage.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.btn_cloud_footage)
@@ -1482,9 +1494,9 @@ class Ui_MainWindow(object):
         self.btn_camera_footage.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_camera_footage.setStyleSheet(u"::pressed{background-color: #ff79c6}\n"
                                               "::active{border:none}")
-        icon16 = QIcon()
-        icon16.addFile(u":/images/images/images/camera_purple.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_camera_footage.setIcon(icon16)
+        icon17 = QIcon()
+        icon17.addFile(u":/images/images/images/camera_purple.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_camera_footage.setIcon(icon17)
         self.btn_camera_footage.setIconSize(QSize(64, 64))
 
         self.horizontalLayout_6.addWidget(self.btn_camera_footage)
@@ -1596,7 +1608,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(4)
         self.type_of_action_combobox.setCurrentIndex(2)
         self.playback_speed_combo.setCurrentIndex(3)
 
@@ -1668,6 +1680,7 @@ class Ui_MainWindow(object):
         self.formation_previous_page_button.setText("")
         self.formation_next_page_button.setText("")
         self.return_to_lineup_builder.setText("")
+        self.zoom_into_player_button.setText("")
         self.type_of_action_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Shooting Game", None))
         self.type_of_action_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Passing Game", None))
         self.type_of_action_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Defensive Game", None))

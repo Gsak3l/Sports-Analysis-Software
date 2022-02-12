@@ -1,6 +1,7 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT LIBRARIES***
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+import multiprocessing
 import sys
 import os
 import platform
@@ -8,6 +9,7 @@ import time
 import pandas as pd
 import json
 import cv2
+import multiprocessing
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT PYTHON CLASSES***
@@ -19,10 +21,12 @@ import youtube_downloader as yd
 import filesystem_changes as fc
 import csv_calculations as cc
 import distance
+import zoom_into_video as zoom
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT / GUI AND MODULES AND WIDGETS***
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+import zoom_into_video
 from modules import *
 from widgets import *
 from PySide6.QtCore import *
@@ -146,6 +150,7 @@ class MainWindow(QMainWindow):
         widgets.add_action.clicked.connect(self.buttonClick)
         widgets.return_to_lineup_builder.clicked.connect(self.buttonClick)
         widgets.show_post_game_button.clicked.connect(self.buttonClick)
+        widgets.zoom_into_player_button.clicked.connect(self.buttonClick)
         # ELEMENTS
         self.audio_output = QAudioOutput()
         self.media_player = QMediaPlayer()
@@ -260,7 +265,6 @@ class MainWindow(QMainWindow):
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
                 UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
                 widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
-
             else:
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')
@@ -381,7 +385,6 @@ class MainWindow(QMainWindow):
 
         # ADD ACTION FROM THE COMBO BOXES TO A CSV
         # .............................................................................................................
-
         elif btnName == 'add_action':
             cc.add_to_csv(widgets.player_names_combobox.currentText(),
                           widgets.type_of_action_combobox.currentText(),
@@ -396,7 +399,15 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
             widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
 
-        # FIXME ADD NEW COMMENTS HERE COMMENDS
+        # FIXME ADD NEW COMMEND HERE
+        elif btnName == 'zoom_into_player_button':
+            if widgets.local_video_file_name.text() != '':
+                zoom.export_frames(widgets.local_video_file_name.text())
+            elif widgets.cloud_video_file_name.placeholderText() != '':
+                zoom.export_frames(widgets.cloud_video_file_name.placeholderText())
+
+        # SHOW POST GAME DETAILS ON A FEW TABLE WIDGETS, DETAILS LIKE VIDEO PATHS, ALL LINEUPS ETC...
+        # .............................................................................................................
         elif btnName == 'show_post_game_button':
             widgets.titleRightInfo.setText('Post Game')
             widgets.stackedWidget.setCurrentWidget(widgets.post_game)
@@ -528,7 +539,7 @@ class MainWindow(QMainWindow):
         f.close()
         labels = []
         labels_equal_to = []
-        # to the moon
+        # to the moon 🚀🚀🚀
         for GME in post_game_details:
             labels.append(GME)
             labels_equal_to.append(post_game_details[GME])

@@ -42,7 +42,7 @@ def zoom_player(player_id, runs_path):
         img = create_zoom_version('./Exported Frames/frame%d.jpg' % frame[i], x[i], y[i])
         cv.imwrite('./Exported Frames/zoomed images/zoom%d.jpg' % i, img)
 
-    out = cv.VideoWriter('output_video.avi', cv.VideoWriter_fourcc(*'DIVX'), 5, (700, 700))
+    out = cv.VideoWriter('./Exported Frames/output_video.avi', cv.VideoWriter_fourcc(*'DIVX'), 5, (700, 700))
     for image in glob.glob('./Exported Frames/zoomed images/*.jpg'):
         img = cv.imread(image)
         out.write(img)
@@ -63,6 +63,5 @@ def export_frames(video):
         success, image = vid_cap.read()
         count += 1
 
-
-export_frames('C:/Users/gsak3/Downloads/Tactical View- Pixellot C Coaching.mp4')
-zoom_player(5, 'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt')
+# export_frames('C:/Users/gsak3/Downloads/Tactical View- Pixellot C Coaching.mp4')
+# zoom_player(5, 'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt')

@@ -26,6 +26,7 @@
         <file>images/images/logo640x320.png</file>
         <file>images/images/swap_players.png</file>
         <file>images/images/check.png</file>
+        <file>images/images/zoom-buttons.png</file>
     </qresource>
     <qresource prefix="icons">
         <file>images/icons/cil-3d.png</file>
