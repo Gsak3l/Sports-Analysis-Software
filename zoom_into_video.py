@@ -1,9 +1,9 @@
 import glob
+import cv2 as cv
+import pkg_resources
 
 import filesystem_changes as fc
-import cv2 as cv
-import numpy as np
-
+import string_manipulation as sm
 import csv_calculations as cc
 
 
@@ -38,13 +38,19 @@ def zoom_player(player_id, runs_path):
 
     frame, x, y = list(player['Frame']), list(player['x']), list(player['y'])
 
-    for i in range(len(frame)):
-        img = create_zoom_version('./Exported Frames/frame%d.jpg' % frame[i], x[i], y[i])
-        cv.imwrite('./Exported Frames/zoomed images/zoom%d.jpg' % i, img)
+    image_nums = []
+    for image in glob.glob('./Exported Frames/*.jpg'):
+        image_nums.append(int(sm.keep_numbers(image)))
+    image_nums.sort()
+
+    for num in image_nums:
+        img = create_zoom_version('./Exported Frames/frame%d.jpg' % num, x[num], y[num])
+        cv.imwrite('./Exported Frames/zoomed images/zoom%d.jpg' % num, img)
 
     out = cv.VideoWriter('./Exported Frames/output_video.avi', cv.VideoWriter_fourcc(*'DIVX'), 5, (700, 700))
-    for image in glob.glob('./Exported Frames/zoomed images/*.jpg'):
-        img = cv.imread(image)
+    for num in image_nums:
+        img = glob.glob('./Exported Frames/zoomed images/zoom%d.jpg' % num)[0]
+        img = cv.imread(img)
         out.write(img)
 
     out.release()
@@ -59,9 +65,12 @@ def export_frames(video):
     count = 0
 
     while success:
-        cv.imwrite('./Exported Frames/frame%d.jpg' % count, image)
+        if count % 25 == 0:
+            cv.imwrite('./Exported Frames/frame%d.jpg' % count, image)
+
         success, image = vid_cap.read()
         count += 1
+
 
 # export_frames('C:/Users/gsak3/Downloads/Tactical View- Pixellot C Coaching.mp4')
 # zoom_player(5, 'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt')

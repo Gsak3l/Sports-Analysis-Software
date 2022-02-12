@@ -116,3 +116,8 @@ def find_last_folder_lineups():
             lineups.append(file)
 
     return lineups
+
+
+# RETURNS JUST NUMBERS FROM STRING THAT CONTAINS NUMBERS, SYMBOLS, AND LETTERS
+def keep_numbers(text):
+    return ''.join(c for c in text if c.isdigit())

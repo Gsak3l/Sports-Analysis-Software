@@ -2281,6 +2281,27 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                           </widget>
                          </item>
                          <item>
+                          <widget class="QLineEdit" name="player_zoom_selection_lineedit">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>32</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>40</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">background-color:#bd93f9 ;
+font-weight:bold;
+color:#fff;</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
                           <widget class="QPushButton" name="zoom_into_player_button">
                            <property name="maximumSize">
                             <size>

@@ -401,10 +401,18 @@ class MainWindow(QMainWindow):
 
         # FIXME ADD NEW COMMEND HERE
         elif btnName == 'zoom_into_player_button':
-            if widgets.local_video_file_name.text() != '':
-                zoom.export_frames(widgets.local_video_file_name.text())
-            elif widgets.cloud_video_file_name.placeholderText() != '':
-                zoom.export_frames(widgets.cloud_video_file_name.placeholderText())
+
+            temp_video_path = widgets.local_video_file_name.text()
+            temp_video_path_2 = widgets.cloud_video_file_name.placeholderText()
+            temp_find_player = int(widgets.player_zoom_selection_lineedit.text())
+            temp_player_location_txt = 'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt'
+
+            if temp_video_path != '' and temp_find_player != '':
+                zoom.export_frames(temp_video_path)
+                zoom.zoom_player(temp_find_player, temp_player_location_txt)
+            elif temp_video_path_2 != '' and temp_find_player != '':
+                zoom.export_frames(temp_video_path_2)
+                zoom.zoom_player(temp_find_player, temp_player_location_txt)
 
         # SHOW POST GAME DETAILS ON A FEW TABLE WIDGETS, DETAILS LIKE VIDEO PATHS, ALL LINEUPS ETC...
         # .............................................................................................................

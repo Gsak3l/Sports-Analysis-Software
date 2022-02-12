@@ -1283,6 +1283,16 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_11.addWidget(self.zoom_into_player_button)
 
+        self.player_zoom_selection_lineedit = QLineEdit(self.video_page)
+        self.player_zoom_selection_lineedit.setObjectName(u"player_zoom_selection_lineedit")
+        self.player_zoom_selection_lineedit.setMinimumSize(QSize(0, 32))
+        self.player_zoom_selection_lineedit.setMaximumSize(QSize(40, 16777215))
+        self.player_zoom_selection_lineedit.setStyleSheet(u"background-color:#bd93f9 ;\n"
+                                                          "font-weight:bold;\n"
+                                                          "color:#fff;")
+
+        self.horizontalLayout_11.addWidget(self.player_zoom_selection_lineedit)
+
         self.player_names_combobox = QComboBox(self.video_page)
         self.player_names_combobox.setObjectName(u"player_names_combobox")
         self.player_names_combobox.setStyleSheet(u"background-color:#bd93f9 ;\n"
