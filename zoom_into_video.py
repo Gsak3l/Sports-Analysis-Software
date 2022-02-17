@@ -44,20 +44,27 @@ def zoom_player(player_id, runs_path):
     image_nums.sort()
 
     for num in image_nums:
-        img = create_zoom_version('./Exported Frames/frame%d.jpg' % num, x[num], y[num])
-        cv.imwrite('./Exported Frames/zoomed images/zoom%d.jpg' % num, img)
+        try:
+            img = create_zoom_version('./Exported Frames/frame%d.jpg' % num, x[num], y[num])
+            cv.imwrite('./Exported Frames/zoomed images/zoom%d.jpg' % num, img)
+        except IndexError as i:
+            print(i)
 
-    out = cv.VideoWriter('./Exported Frames/output_video.avi', cv.VideoWriter_fourcc(*'DIVX'), 5, (700, 700))
+    fc.created_zoom_video_folder()
+    out = cv.VideoWriter('./Zoomed-in Video/output_video.avi', cv.VideoWriter_fourcc(*'DIVX'), 25, (700, 700))
     for num in image_nums:
-        img = glob.glob('./Exported Frames/zoomed images/zoom%d.jpg' % num)[0]
-        img = cv.imread(img)
-        out.write(img)
+        try:
+            img = glob.glob('./Exported Frames/zoomed images/zoom%d.jpg' % num)[0]
+            img = cv.imread(img)
+            out.write(img)
+        except IndexError as i:
+            print(i)
 
     out.release()
 
 
-# EXPORTS FRAMES TO A SUB-PROJECT FOLDER NAMED "Exported Frames"
-def export_frames(video):
+# EXPORT 10 SECONDS WORTH OF FRAMES
+def export_frames(video, frame):
     fc.delete_files_and_folder('./Exported Frames')
     fc.create_exported_frames_folder()
     vid_cap = cv.VideoCapture(video)
@@ -65,12 +72,28 @@ def export_frames(video):
     count = 0
 
     while success:
-        if count % 25 == 0:
+        if frame - (25 * 3) <= count <= frame + (25 * 7):
             cv.imwrite('./Exported Frames/frame%d.jpg' % count, image)
 
         success, image = vid_cap.read()
         count += 1
 
 
-# export_frames('C:/Users/gsak3/Downloads/Tactical View- Pixellot C Coaching.mp4')
+# EXPORTS FRAMES TO A SUB-PROJECT FOLDER NAMED "Exported Frames"
+def export_all_frames(video):
+    fc.delete_files_and_folder('./Exported Frames')
+    fc.create_exported_frames_folder()
+    vid_cap = cv.VideoCapture(video)
+    success, image = vid_cap.read()
+    count = 0
+
+    while success:
+        if count % 10 == 0:
+            cv.imwrite('./Exported Frames/frame%d.jpg' % count, image)
+
+        success, image = vid_cap.read()
+        count += 1
+
+
+# export_frames('C:/Users/gsak3/Downloads/Tactical View- Pixellot C Coaching.mp4', 300)
 # zoom_player(5, 'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt')

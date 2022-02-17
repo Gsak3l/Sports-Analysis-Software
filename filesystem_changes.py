@@ -108,6 +108,14 @@ def delete_files_and_folder(folder_path):
         print(f)
 
 
+# CREATE FOLDER FOR ZOOMED VIDEO VERSIONS
+def created_zoom_video_folder():
+    try:
+        os.mkdir('Zoomed-in Video')
+    except FileExistsError as f:
+        print(f)
+
+
 # CREATE FOLDER WITH NAME EXPORTED FRAMES
 def create_exported_frames_folder():
     os.mkdir('Exported Frames')

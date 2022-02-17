@@ -399,20 +399,21 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
             widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
 
-        # FIXME ADD NEW COMMEND HERE
+        # CREATING A 10 SECOND ZOOMED-IN VERSION FOR THE GIVEN PLAYER AND DISPLAYING IT
         elif btnName == 'zoom_into_player_button':
-
             temp_video_path = widgets.local_video_file_name.text()
             temp_video_path_2 = widgets.cloud_video_file_name.placeholderText()
             temp_find_player = int(widgets.player_zoom_selection_lineedit.text())
             temp_player_location_txt = 'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt'
-
+            frame = int(self.media_player.position() / 1000 * 25)  # converting ms to s and then frames
             if temp_video_path != '' and temp_find_player != '':
-                zoom.export_frames(temp_video_path)
+                zoom.export_frames(temp_video_path, frame)
                 zoom.zoom_player(temp_find_player, temp_player_location_txt)
             elif temp_video_path_2 != '' and temp_find_player != '':
-                zoom.export_frames(temp_video_path_2)
+                zoom.export_frames(temp_video_path_2, frame)
                 zoom.zoom_player(temp_find_player, temp_player_location_txt)
+
+            self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
 
         # SHOW POST GAME DETAILS ON A FEW TABLE WIDGETS, DETAILS LIKE VIDEO PATHS, ALL LINEUPS ETC...
         # .............................................................................................................
@@ -465,6 +466,7 @@ class MainWindow(QMainWindow):
                 widgets.od_timestamps_combobox.removeItem(0)
             except IndexError:
                 pass
+
         # THIS IS GOLD, IT TOOK ABOUT 5 HOURS GIVE OR TAKE, FOR SOMETHING SO SIMPLE
         date_stamps = sm.frame_to_time_list(timestamps, 24)
         for y in range(len(timestamps[0])):
@@ -494,6 +496,7 @@ class MainWindow(QMainWindow):
         self.media_player.setVideoOutput(widgets.video_player)
         self.media_player.setSource(QUrl(video_path))
         self.media_player.setPlaybackRate(1)
+        self.media_player.play()
         widgets.play_video_button.setDisabled(False)
         widgets.pause_video_button.setDisabled(True)
         widgets.stop_video_button.setDisabled(False)

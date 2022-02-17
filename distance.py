@@ -128,10 +128,10 @@ def manager(df, frame):
 
     return od_timestamps, df_running_distance, euclidean_m
 
-# if __name__ == '__main__':
-#     desired_width = 320
-#     pd.set_option('display.width', desired_width)
-#     np.set_printoptions(linewidth=desired_width)
-#     pd.set_option('display.max_columns', 23)
-#     manager('player_detection/runs/track/exp20/Tactical View- Pixellot C Coaching.txt', 46)
-#     manager('player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt', 46)
+
+if __name__ == '__main__':
+    desired_width = 320
+    pd.set_option('display.width', desired_width)
+    np.set_printoptions(linewidth=desired_width)
+    pd.set_option('display.max_columns', 23)
+    manager('player_detection/runs/track/exp20/Tactical View- Pixellot C Coaching.txt', 46)
