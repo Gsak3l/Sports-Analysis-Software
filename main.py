@@ -48,6 +48,7 @@ timestamps = None
 date_stamps = None
 running_meters = None
 distance_meters = None
+game_seconds = 1
 
 
 class MainWindow(QMainWindow):
@@ -65,6 +66,7 @@ class MainWindow(QMainWindow):
         global date_stamps
         global running_meters
         global distance_meters
+        global game_seconds
 
         widgets = self.ui
         actions = [
@@ -403,17 +405,31 @@ class MainWindow(QMainWindow):
         elif btnName == 'zoom_into_player_button':
             temp_video_path = widgets.local_video_file_name.text()
             temp_video_path_2 = widgets.cloud_video_file_name.placeholderText()
-            temp_find_player = int(widgets.player_zoom_selection_lineedit.text())
+            temp_find_player = widgets.player_zoom_selection_lineedit.text()
             temp_player_location_txt = 'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt'
-            frame = int(self.media_player.position() / 1000 * 25)  # converting ms to s and then frames
-            if temp_video_path != '' and temp_find_player != '':
-                zoom.export_frames(temp_video_path, frame)
-                zoom.zoom_player(temp_find_player, temp_player_location_txt)
-            elif temp_video_path_2 != '' and temp_find_player != '':
-                zoom.export_frames(temp_video_path_2, frame)
-                zoom.zoom_player(temp_find_player, temp_player_location_txt)
 
-            self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
+            # creating and playing zoomed in version of video
+            if temp_video_path != '' and temp_find_player != '':
+                frame = int(self.media_player.position() / 1000 * 25)  # converting ms to s and then frames
+                self.game_seconds = self.media_player.position() / 1000  # ms to s
+                zoom.export_frames(temp_video_path, frame)
+                zoom.zoom_player(int(temp_find_player), temp_player_location_txt)
+                self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
+            # creating and playing zoomed in version of video
+            elif temp_video_path_2 != '' and temp_find_player != '':
+                frame = int(self.media_player.position() / 1000 * 25)  # converting ms to s and then frames
+                self.game_seconds = self.media_player.position() / 1000
+                zoom.export_frames(temp_video_path_2, frame)
+                zoom.zoom_player(int(temp_find_player), temp_player_location_txt)
+                self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
+            # FIXME playing the previous video, last recorded sec, VIDEO PLAYS FROM 0 THE BEGINNING FOR SOME REASON
+            elif temp_find_player == '' and temp_video_path != '':
+                self.on_loadVideoRequest(temp_video_path)
+                self.slider_moved(self.game_seconds)
+            # FIXME playing the previous video, last recorded sec, VIDEO PLAYS FROM 0 THE BEGINNING FOR SOME REASON
+            elif temp_find_player == '' and temp_video_path_2 != '':
+                self.on_loadVideoRequest(temp_video_path_2)
+                self.slider_moved(self.game_seconds)
 
         # SHOW POST GAME DETAILS ON A FEW TABLE WIDGETS, DETAILS LIKE VIDEO PATHS, ALL LINEUPS ETC...
         # .............................................................................................................
