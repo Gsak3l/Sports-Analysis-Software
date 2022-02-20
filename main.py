@@ -42,6 +42,7 @@ os.environ['QT_FONT_DPI'] = '96'  # FIX Problem for High DPI and Scale above 100
 # SET AS GLOBAL WIDGETS
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 widgets = None
+media_player = None
 names = []
 actions = []
 timestamps = None
@@ -60,6 +61,7 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         global widgets
+        global media_player
         global names
         global actions
         global timestamps
@@ -118,6 +120,7 @@ class MainWindow(QMainWindow):
         widgets.btn_import_video.clicked.connect(self.buttonClick)
         widgets.btn_formation.clicked.connect(self.buttonClick)
         widgets.btn_video_player.clicked.connect(self.buttonClick)
+        widgets.btn_post_game_details.clicked.connect(self.buttonClick)
 
         # ***LOCAL VIDEO PAGE BUTTON CONNECTION***
         # -------------------------------------------------------------------------------------------------------------
@@ -204,7 +207,7 @@ class MainWindow(QMainWindow):
                 widgets.themeBtn.setText('dark_theme')
 
         # -------------------------------------------------------------------------------------------------------------
-        # ***RIGHT MENU BUTTONS***
+        # ***LEFT MENU BUTTONS***
         # .............................................................................................................
         # HOME PAGE
         elif btnName == 'btn_home':  # HOME PAGE
@@ -234,6 +237,14 @@ class MainWindow(QMainWindow):
         elif btnName == 'btn_video_player':
             widgets.titleRightInfo.setText('Expert Tool')
             widgets.stackedWidget.setCurrentWidget(widgets.video_page)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
+        # .............................................................................................................
+        # POST GAME BUTTON
+        elif btnName == 'btn_post_game_details':
+            widgets.titleRightInfo.setText('Game Overview')
+            widgets.stackedWidget.setCurrentWidget(widgets.post_game)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
@@ -352,7 +363,7 @@ class MainWindow(QMainWindow):
                 self.on_loadVideoRequest(widgets.local_video_file_name.text())
 
         # .............................................................................................................
-        # GO BACK PAGE
+        # GO BACK PAGE TO LINEUP VIDEO OPTION PAGE
         elif btnName == 'formation_previous_page_button':
             widgets.titleRightInfo.setText('Choose Capture option')
             widgets.stackedWidget.setCurrentWidget(widgets.video_option_menu)  # SET PAGE
@@ -411,32 +422,34 @@ class MainWindow(QMainWindow):
             # creating and playing zoomed in version of video
             if temp_video_path != '' and temp_find_player != '':
                 frame = int(self.media_player.position() / 1000 * 25)  # converting ms to s and then frames
-                self.game_seconds = self.media_player.position() / 1000  # ms to s
+                self.game_seconds = self.media_player.position()  # ms to s
                 zoom.export_frames(temp_video_path, frame)
                 zoom.zoom_player(int(temp_find_player), temp_player_location_txt)
                 self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
             # creating and playing zoomed in version of video
             elif temp_video_path_2 != '' and temp_find_player != '':
                 frame = int(self.media_player.position() / 1000 * 25)  # converting ms to s and then frames
-                self.game_seconds = self.media_player.position() / 1000
+                self.game_seconds = self.media_player.position()
                 zoom.export_frames(temp_video_path_2, frame)
                 zoom.zoom_player(int(temp_find_player), temp_player_location_txt)
                 self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
-            # FIXME playing the previous video, last recorded sec, VIDEO PLAYS FROM 0 THE BEGINNING FOR SOME REASON
+            # just playing the normal video, cannot save timestamp, setPosition refuses to work...
             elif temp_find_player == '' and temp_video_path != '':
                 self.on_loadVideoRequest(temp_video_path)
-                self.slider_moved(self.game_seconds)
-            # FIXME playing the previous video, last recorded sec, VIDEO PLAYS FROM 0 THE BEGINNING FOR SOME REASON
+
+            # just playing the normal video, cannot save timestamp, setPosition refuses to work...
             elif temp_find_player == '' and temp_video_path_2 != '':
                 self.on_loadVideoRequest(temp_video_path_2)
-                self.slider_moved(self.game_seconds)
 
         # SHOW POST GAME DETAILS ON A FEW TABLE WIDGETS, DETAILS LIKE VIDEO PATHS, ALL LINEUPS ETC...
         # .............................................................................................................
         elif btnName == 'show_post_game_button':
-            widgets.titleRightInfo.setText('Post Game')
+            widgets.titleRightInfo.setText('Game Overview')
             widgets.stackedWidget.setCurrentWidget(widgets.post_game)
+            UIFunctions.resetStyle(self, widgets.btn_post_game_details.objectName())
+            widgets.btn_post_game_details.setStyleSheet(UIFunctions.selectMenu(widgets.btn_post_game_details.styleSheet()))
             self.fill_tables()
+
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
@@ -518,6 +531,7 @@ class MainWindow(QMainWindow):
         widgets.stop_video_button.setDisabled(False)
 
     # .................................................................................................................
+    # RESUME VIDEO 10 SECONDS BEFORE A GIVEN TIMESTAMP
     def set_minute(self):
         try:
             max_seconds = fc.find_video_sec_length()

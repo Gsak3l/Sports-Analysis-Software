@@ -722,6 +722,12 @@ Button */
           </item>
           <item>
            <widget class="QFrame" name="leftMenuFrame">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
             </property>
@@ -957,6 +963,25 @@ Button */
                   </property>
                   <property name="text">
                    <string>Match Page</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btn_post_game_details">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image:url(:/icons/images/icons/cil-chart.png);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
                   </property>
                  </widget>
                 </item>
@@ -1379,7 +1404,7 @@ border:none;</string>
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>4</number>
+                      <number>6</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">

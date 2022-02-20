@@ -621,6 +621,7 @@ class Ui_MainWindow(object):
 
         self.leftMenuFrame = QFrame(self.leftMenuBg)
         self.leftMenuFrame.setObjectName(u"leftMenuFrame")
+        self.leftMenuFrame.setMinimumSize(QSize(0, 0))
         self.leftMenuFrame.setFrameShape(QFrame.NoFrame)
         self.leftMenuFrame.setFrameShadow(QFrame.Raised)
         self.verticalMenuLayout = QVBoxLayout(self.leftMenuFrame)
@@ -704,6 +705,14 @@ class Ui_MainWindow(object):
         self.btn_video_player.setStyleSheet(u"background-image:url(:/icons/images/icons/cil-movie.png);")
 
         self.verticalLayout_8.addWidget(self.btn_video_player)
+
+        self.btn_post_game_details = QPushButton(self.topMenu)
+        self.btn_post_game_details.setObjectName(u"btn_post_game_details")
+        self.btn_post_game_details.setMinimumSize(QSize(0, 45))
+        self.btn_post_game_details.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_post_game_details.setStyleSheet(u"background-image:url(:/icons/images/icons/cil-chart.png);")
+
+        self.verticalLayout_8.addWidget(self.btn_post_game_details)
 
         self.verticalMenuLayout.addWidget(self.topMenu, 0, Qt.AlignTop)
 
@@ -1618,7 +1627,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(6)
         self.type_of_action_combobox.setCurrentIndex(2)
         self.playback_speed_combo.setCurrentIndex(3)
 
@@ -1635,6 +1644,7 @@ class Ui_MainWindow(object):
         self.btn_import_video.setText(QCoreApplication.translate("MainWindow", u"Import Video", None))
         self.btn_formation.setText(QCoreApplication.translate("MainWindow", u"Lineup Builder", None))
         self.btn_video_player.setText(QCoreApplication.translate("MainWindow", u"Match Page", None))
+        self.btn_post_game_details.setText("")
         self.titleRightInfo.setText(QCoreApplication.translate("MainWindow", u"Sports Analysis Software", None))
         self.themeBtn.setText("")
         # if QT_CONFIG(tooltip)
