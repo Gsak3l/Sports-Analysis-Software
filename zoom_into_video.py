@@ -1,5 +1,5 @@
 import glob
-import cv2 as cv
+import cv2
 import pkg_resources
 
 import filesystem_changes as fc
@@ -9,12 +9,12 @@ import csv_calculations as cc
 
 # CREATES A ZOOMED IN VERSION OF THE VIDEO
 def zoom(img, zoom_factor=2):
-    return cv.resize(img, None, fx=zoom_factor, fy=zoom_factor)
+    return cv2.resize(img, None, fx=zoom_factor, fy=zoom_factor)
 
 
 # CROPS THE ZOOMED IN VERSION OF THE VIDEO
 def create_zoom_version(img, x, y):
-    img = cv.imread(img)
+    img = cv2.imread(img)
     cropped = img[y - 20: y + 50, x - 20: x + 50]  # from y1 to y2 [y1:y2], from x1 to x2 [x1:x2]
     img = zoom(img, 20)
     zoomed_and_cropped = zoom(cropped, 10)
@@ -46,16 +46,16 @@ def zoom_player(player_id, runs_path):
     for num in image_nums:
         try:
             img = create_zoom_version('./Exported Frames/frame%d.jpg' % num, x[num], y[num])
-            cv.imwrite('./Exported Frames/zoomed images/zoom%d.jpg' % num, img)
+            cv2.imwrite('./Exported Frames/zoomed images/zoom%d.jpg' % num, img)
         except IndexError as i:
             print(i)
 
     fc.created_zoom_video_folder()
-    out = cv.VideoWriter('./Zoomed-in Video/output_video.avi', cv.VideoWriter_fourcc(*'DIVX'), 25, (700, 700))
+    out = cv2.VideoWriter('./Zoomed-in Video/output_video.avi', cv2.VideoWriter_fourcc(*'DIVX'), 25, (700, 700))
     for num in image_nums:
         try:
             img = glob.glob('./Exported Frames/zoomed images/zoom%d.jpg' % num)[0]
-            img = cv.imread(img)
+            img = cv2.imread(img)
             out.write(img)
         except IndexError as i:
             print(i)
@@ -67,13 +67,14 @@ def zoom_player(player_id, runs_path):
 def export_frames(video, frame):
     fc.delete_files_and_folder('./Exported Frames')
     fc.create_exported_frames_folder()
-    vid_cap = cv.VideoCapture(video)
+    vid_cap = cv2.VideoCapture(video)
+    fps_ = get_video_fps(video)
     success, image = vid_cap.read()
     count = 0
 
     while success:
-        if frame - (25 * 3) <= count <= frame + (25 * 7):
-            cv.imwrite('./Exported Frames/frame%d.jpg' % count, image)
+        if frame - (fps_ * 3) <= count <= frame + (fps_ * 7):
+            cv2.imwrite('./Exported Frames/frame%d.jpg' % count, image)
 
         success, image = vid_cap.read()
         count += 1
@@ -83,17 +84,37 @@ def export_frames(video, frame):
 def export_all_frames(video):
     fc.delete_files_and_folder('./Exported Frames')
     fc.create_exported_frames_folder()
-    vid_cap = cv.VideoCapture(video)
+    vid_cap = cv2.VideoCapture(video)
     success, image = vid_cap.read()
     count = 0
 
     while success:
         if count % 10 == 0:
-            cv.imwrite('./Exported Frames/frame%d.jpg' % count, image)
+            cv2.imwrite('./Exported Frames/frame%d.jpg' % count, image)
 
         success, image = vid_cap.read()
         count += 1
 
 
+def get_video_fps(video):
+    video = cv2.VideoCapture(video)
+    return int(video.get(cv2.CAP_PROP_FPS))
+
 # export_frames('C:/Users/gsak3/Downloads/Tactical View- Pixellot C Coaching.mp4', 300)
 # zoom_player(5, 'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt')
+# import cv2
+# if __name__ == '__main__' :
+#
+#     video = cv2.VideoCapture("test.mp4");
+#
+#     # Find OpenCV version
+#     (major_ver, minor_ver, subminor_ver) = (cv2.__version__).split('.')
+#
+#     if int(major_ver)  < 3 :
+#         fps = video.get(cv2.cv.CV_CAP_PROP_FPS)
+#         print "Frames per second using video.get(cv2.cv.CV_CAP_PROP_FPS): {0}".format(fps)
+#     else :
+#         fps = video.get(cv2.CAP_PROP_FPS)
+#         print "Frames per second using video.get(cv2.CAP_PROP_FPS) : {0}".format(fps)
+#
+#     video.release();

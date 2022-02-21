@@ -49,7 +49,6 @@ timestamps = None
 date_stamps = None
 running_meters = None
 distance_meters = None
-game_seconds = 1
 
 
 class MainWindow(QMainWindow):
@@ -68,7 +67,6 @@ class MainWindow(QMainWindow):
         global date_stamps
         global running_meters
         global distance_meters
-        global game_seconds
 
         widgets = self.ui
         actions = [
@@ -421,15 +419,15 @@ class MainWindow(QMainWindow):
 
             # creating and playing zoomed in version of video
             if temp_video_path != '' and temp_find_player != '':
-                frame = int(self.media_player.position() / 1000 * 25)  # converting ms to s and then frames
-                self.game_seconds = self.media_player.position()  # ms to s
+                fps = zoom.get_video_fps(temp_video_path)
+                frame = int(self.media_player.position() / 1000 * fps)  # converting ms to s and then frames
                 zoom.export_frames(temp_video_path, frame)
                 zoom.zoom_player(int(temp_find_player), temp_player_location_txt)
                 self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
             # creating and playing zoomed in version of video
             elif temp_video_path_2 != '' and temp_find_player != '':
-                frame = int(self.media_player.position() / 1000 * 25)  # converting ms to s and then frames
-                self.game_seconds = self.media_player.position()
+                fps = zoom.get_video_fps(temp_video_path_2)
+                frame = int(self.media_player.position() / 1000 * fps)  # converting ms to s and then frames
                 zoom.export_frames(temp_video_path_2, frame)
                 zoom.zoom_player(int(temp_find_player), temp_player_location_txt)
                 self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
@@ -447,9 +445,10 @@ class MainWindow(QMainWindow):
             widgets.titleRightInfo.setText('Game Overview')
             widgets.stackedWidget.setCurrentWidget(widgets.post_game)
             UIFunctions.resetStyle(self, widgets.btn_post_game_details.objectName())
-            widgets.btn_post_game_details.setStyleSheet(UIFunctions.selectMenu(widgets.btn_post_game_details.styleSheet()))
+            widgets.btn_post_game_details.setStyleSheet(
+                UIFunctions.selectMenu(widgets.btn_post_game_details.styleSheet())
+            )
             self.fill_tables()
-
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
