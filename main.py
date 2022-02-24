@@ -77,7 +77,7 @@ class MainWindow(QMainWindow):
         ]
 
         timestamps, running_meters, distance_meters = distance.manager(
-            'player_detection/runs/track/exp20/Tactical View- Pixellot C Coaching.txt', 46
+            'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt', 46
         )
 
         running_meters = pd.DataFrame(running_meters)

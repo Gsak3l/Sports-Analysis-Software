@@ -1,36 +1,11 @@
-import sys
-from PySide6 import QtCore
-from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import QMainWindow, QApplication, QGraphicsScene, QGraphicsView, QMessageBox
-from PySide6.QtMultimediaWidgets import QVideoWidget
-from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
-from PySide6.QtMultimediaWidgets import QGraphicsVideoItem
+import pandas as pd
+import matplotlib.pyplot as plt
 
+df = pd.read_csv('Project Saves/Date 24.02.2022/Time 10.09.20/actions.csv')
 
-class GraphicsView(QGraphicsView):
+action = df.Action
+timestamp = df.Timestamp
+name = df.Name
 
-    def __init__(self):
-        super().__init__()
-
-
-class mainTester(QMainWindow):
-
-    def __init__(self):
-        super().__init__()
-        # msgBox = QMessageBox()
-        # msgBox.setIconPixmap(QPixmap('C:/Users/gsak3/Desktop/frames/scene00046.png'))
-        # msgBox.exec()
-
-        player = QMediaPlayer()
-        player.setSource(QtCore.QUrl('C:/Users/gsak3/Downloads/Tactical View- Pixellot C Coaching.mp4'))
-
-        video_item = QGraphicsVideoItem()
-        player.setVideoOutput(video_item)
-
-        self.show()
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    mainTester = mainTester()
-    sys.exit(app.exec())
+plt.plot(action, timestamp, 'bo')
+plt.show()
