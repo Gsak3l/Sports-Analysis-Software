@@ -2,8 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-import filesystem_changes
-
 
 # ALL ACTIONS THAT TOOK PLACE DURING THE ENTIRE GAME
 def all_game_all_player_actions(csv_file):
@@ -40,6 +38,7 @@ def all_game_single_player_actions(csv_file, name):
     plt.show()
 
 
+# SPECIFIED ACTION AND COUNTER PER PLAYER
 def all_game_specific_action(csv_file, action):
     df = pd.read_csv(csv_file)
     df = df[df['Action'] == action]
@@ -51,12 +50,32 @@ def all_game_specific_action(csv_file, action):
     plt.xticks(np.arange(len(player_count)))
     plt.show()
 
-    # plt.title(f'{action} actions during the entire game')
-    # plt.pie(player_count, labels=player_names, autopct=lambda p: f'{p * sum(player_count) / 100 :.0f}')
-    # plt.axis('equal')
-    # plt.show()
+
+def all_game_action_family(csv_file, family):
+    df = pd.read_csv(csv_file)
+    df = df[df['Action Family'] == family]
+
+    outer = df.groupby('Action').sum()
+    inner = df.groupby(['Action', 'Name']).sum()
+    inner_labels = inner.index.get_level_values(1)
+
+    fig, ax = plt.subplots(figsize=(24, 12))
+    size = 0.3
+
+    ax.pie(outer.values.flatten(), radius=1,
+           labels=outer.index,
+           autopct='%1.1f%%',
+           wedgeprops=dict(width=size, edgecolor='w'))
+
+    ax.pie(inner.values.flatten(), radius=1 - size,
+           labels=inner_labels,
+           wedgeprops=dict(width=size, edgecolor='w'))
+
+    ax.set(aspect="equal", title='Pie plot with `ax.pie`')
+    plt.show()
 
 
+all_game_action_family('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Passing Game')
 all_game_specific_action('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Long Pass')
-# all_game_single_player_actions(filesystem_changes.find_last_created_folder() + 'actions.csv', 'Arjen Robben')
-# all_game_all_player_actions(filesystem_changes.find_last_created_folder() + 'actions.csv')
+all_game_single_player_actions('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Arjen Robben')
+all_game_all_player_actions('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv')
