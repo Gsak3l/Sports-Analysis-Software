@@ -168,6 +168,8 @@ class MainWindow(QMainWindow):
 
         # ***STATS PAGE***
         # -------------------------------------------------------------------------------------------------------------
+        widgets.lineup_table.clicked.connect(self.table_clicked)
+
 
         # ***DARK/LIGHT THEME BUTTON***
         # -------------------------------------------------------------------------------------------------------------
@@ -623,6 +625,10 @@ class MainWindow(QMainWindow):
             widgets.lineup_table.setItem(y, 1, QTableWidgetItem('Next Lineup'))
             widgets.lineup_table.setItem(y, 2, QTableWidgetItem('⚽⚽⚽⚽'))
             y += 1
+
+    #
+    def table_clicked(self):
+        print('clicked me')
 
     # -----------------------------------------------------------------------------------------------------------------
     # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***
