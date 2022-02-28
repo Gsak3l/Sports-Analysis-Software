@@ -21,7 +21,7 @@ def all_game_all_player_actions(csv_file):
     for i, label in enumerate(name):
         plt.annotate(label, (timestamp[i], action[i]))
 
-    plt.show()
+    return plt
 
 
 # ALL ACTIONS A SPECIFIC PLAYER DID DURING THE GAME
@@ -64,8 +64,7 @@ def all_game_action_family(csv_file, family):
     plt.axis('equal')
     plt.show()
 
-
-all_game_action_family('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Passing Game')
-all_game_specific_action('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Long Pass')
-all_game_single_player_actions('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Arjen Robben')
-all_game_all_player_actions('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv')
+# all_game_action_family('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Passing Game')
+# all_game_specific_action('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Long Pass')
+# all_game_single_player_actions('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Arjen Robben')
+# all_game_all_player_actions('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv')
