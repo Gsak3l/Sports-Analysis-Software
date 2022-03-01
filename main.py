@@ -168,8 +168,9 @@ class MainWindow(QMainWindow):
 
         # ***STATS PAGE***
         # -------------------------------------------------------------------------------------------------------------
-        widgets.lineup_table.clicked.connect(self.table_clicked)
-
+        widgets.pregame_table.doubleClicked.connect(self.show_diagram)
+        widgets.lineup_table.doubleClicked.connect(self.show_diagram)
+        widgets.actions_table.doubleClicked.connect(self.show_diagram)
 
         # ***DARK/LIGHT THEME BUTTON***
         # -------------------------------------------------------------------------------------------------------------
@@ -591,16 +592,6 @@ class MainWindow(QMainWindow):
         [widgets.pregame_table.setItem(i, 0, QTableWidgetItem(labels_equal_to[i])) for i in
          range(len(labels_equal_to))]
 
-        # ACTIONS OF PLAYERS, LIKE PASSES, SHOTS, GOALS ETC.
-        df_actions = pd.read_csv(sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'actions.csv')
-        widgets.actions_table.setRowCount(df_actions.shape[0])
-        widgets.actions_table.setColumnCount(df_actions.shape[1])
-        # widgets.actions_table.setVerticalHeaderLabels(sm.int_list_to_string_list(df_actions['Name'].tolist()))
-        widgets.actions_table.setHorizontalHeaderLabels(['Name', 'Type of Action', 'Action', 'Timestamp'])
-        for i in range(df_actions.shape[0]):
-            for j in range(df_actions.shape[1]):
-                widgets.actions_table.setItem(i, j, QTableWidgetItem(str(df_actions.iloc[i][j])))
-
         # LINEUPS
         lineups = sm.find_last_folder_lineups()
         lineup_path = []
@@ -626,9 +617,27 @@ class MainWindow(QMainWindow):
             widgets.lineup_table.setItem(y, 2, QTableWidgetItem('⚽⚽⚽⚽'))
             y += 1
 
+        # ACTIONS OF PLAYERS, LIKE PASSES, SHOTS, GOALS ETC.
+        df_actions = pd.read_csv(sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'actions.csv')
+        widgets.actions_table.setRowCount(df_actions.shape[0])
+        widgets.actions_table.setColumnCount(df_actions.shape[1])
+        # widgets.actions_table.setVerticalHeaderLabels(sm.int_list_to_string_list(df_actions['Name'].tolist()))
+        widgets.actions_table.setHorizontalHeaderLabels(['Name', 'Type of Action', 'Action', 'Timestamp'])
+        for i in range(df_actions.shape[0]):
+            for j in range(df_actions.shape[1]):
+                widgets.actions_table.setItem(i, j, QTableWidgetItem(str(df_actions.iloc[i][j])))
+
     #
-    def table_clicked(self):
-        print('clicked me')
+    def show_diagram(self):
+        tbl = self.sender()
+        tbl_name = tbl.objectName()
+
+        if tbl_name == 'actions_table':
+            print(widgets.actions_table.selectedItems()[0].text())
+        elif tbl_name == 'pregame_table':
+            print(widgets.pregame_table.selectedItems()[0].text())
+        elif tbl_name == 'lineup_table':
+            print(widgets.lineup_table.selectedItems()[0].text())
 
     # -----------------------------------------------------------------------------------------------------------------
     # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***
