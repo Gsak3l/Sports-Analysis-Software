@@ -21,7 +21,7 @@ def all_game_all_player_actions(csv_file):
     for i, label in enumerate(name):
         plt.annotate(label, (timestamp[i], action[i]))
 
-    return plt
+    plt.show()
 
 
 # ALL ACTIONS A SPECIFIC PLAYER DID DURING THE GAME
