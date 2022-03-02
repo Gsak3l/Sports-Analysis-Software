@@ -155,6 +155,7 @@ class MainWindow(QMainWindow):
         widgets.return_to_lineup_builder.clicked.connect(self.buttonClick)
         widgets.show_post_game_button.clicked.connect(self.buttonClick)
         widgets.zoom_into_player_button.clicked.connect(self.buttonClick)
+        widgets.player_detection_button.clicked.connect(self.buttonClick)
         # ELEMENTS
         self.audio_output = QAudioOutput()
         self.media_player = QMediaPlayer()
@@ -363,6 +364,9 @@ class MainWindow(QMainWindow):
                 self.on_loadVideoRequest(widgets.cloud_video_file_name.placeholderText())
             else:
                 self.on_loadVideoRequest(widgets.local_video_file_name.text())
+            widgets.play_video_button.setDisabled(True)
+            widgets.pause_video_button.setDisabled(False)
+            widgets.stop_video_button.setDisabled(False)
 
         # .............................................................................................................
         # GO BACK PAGE TO LINEUP VIDEO OPTION PAGE
@@ -397,6 +401,20 @@ class MainWindow(QMainWindow):
             btn.setDisabled(True)
             widgets.play_video_button.setDisabled(False)
             widgets.pause_video_button.setDisabled(False)
+
+        # .............................................................................................................
+        # PLAY NORMAL OR LABELED AI-VIDEO THING
+        elif btnName == 'player_detection_button':
+            if widgets.player_detection_button.isChecked():
+                self.on_loadVideoRequest('./player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.mp4')
+            else:
+                temp_video_path = widgets.local_video_file_name.text()
+                temp_video_path_2 = widgets.cloud_video_file_name.placeholderText()
+                if temp_video_path != '':
+                    self.on_loadVideoRequest(temp_video_path)
+                elif temp_video_path_2 != '':
+                    self.on_loadVideoRequest(temp_video_path)
+
 
         # ADD ACTION FROM THE COMBO BOXES TO A CSV
         # .............................................................................................................
@@ -442,6 +460,11 @@ class MainWindow(QMainWindow):
             # just playing the normal video, cannot save timestamp, setPosition refuses to work...
             elif temp_find_player == '' and temp_video_path_2 != '':
                 self.on_loadVideoRequest(temp_video_path_2)
+
+            widgets.player_zoom_selection_lineedit.setText('')
+            widgets.play_video_button.setDisabled(True)
+            widgets.pause_video_button.setDisabled(False)
+            widgets.stop_video_button.setDisabled(False)
 
         # SHOW POST GAME DETAILS ON A FEW TABLE WIDGETS, DETAILS LIKE VIDEO PATHS, ALL LINEUPS ETC...
         # .............................................................................................................
@@ -516,8 +539,8 @@ class MainWindow(QMainWindow):
         for x in range(11):
             try:
                 widgets.player_names_combobox.removeItem(0)
-            except IndexError:
-                pass
+            except IndexError as ie:  # internet explorer:
+                print(ie)
 
     # -----------------------------------------------------------------------------------------------------------------
     # ***VIDEO AND AUDIO ACTIONS***

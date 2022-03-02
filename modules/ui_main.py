@@ -17,12 +17,12 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
                            QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtMultimediaWidgets import QVideoWidget
 from PySide6.QtWebEngineWidgets import QWebEngineView
-from PySide6.QtWidgets import (QApplication, QCalendarWidget, QComboBox, QFrame,
-                               QGridLayout, QHBoxLayout, QHeaderView, QLabel,
-                               QLineEdit, QMainWindow, QPlainTextEdit, QProgressBar,
-                               QPushButton, QSizePolicy, QSlider, QStackedWidget,
-                               QTableWidget, QTableWidgetItem, QToolButton, QVBoxLayout,
-                               QWidget, QAbstractItemView)
+from PySide6.QtWidgets import (QApplication, QCalendarWidget, QCheckBox, QComboBox,
+                               QFrame, QGridLayout, QHBoxLayout, QHeaderView,
+                               QLabel, QLineEdit, QMainWindow, QPlainTextEdit,
+                               QProgressBar, QPushButton, QSizePolicy, QSlider,
+                               QStackedWidget, QTableWidget, QTableWidgetItem, QToolButton,
+                               QVBoxLayout, QWidget, QAbstractItemView)
 from .resources_rc import *
 
 
@@ -1428,6 +1428,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.playback_speed_combo)
 
+        self.player_detection_button = QCheckBox(self.video_page)
+        self.player_detection_button.setObjectName(u"player_detection_button")
+
+        self.horizontalLayout_8.addWidget(self.player_detection_button)
+
         self.video_player_progress_bar = QProgressBar(self.video_page)
         self.video_player_progress_bar.setObjectName(u"video_player_progress_bar")
         self.video_player_progress_bar.setStyleSheet(u"QProgressBar {\n"
@@ -1627,7 +1632,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(4)
         self.type_of_action_combobox.setCurrentIndex(2)
         self.playback_speed_combo.setCurrentIndex(3)
 
@@ -1722,6 +1727,7 @@ class Ui_MainWindow(object):
         self.playback_speed_combo.setItemText(6, QCoreApplication.translate("MainWindow", u"x1.75", None))
         self.playback_speed_combo.setItemText(7, QCoreApplication.translate("MainWindow", u"x2.00", None))
 
+        self.player_detection_button.setText(QCoreApplication.translate("MainWindow", u"Player Detection", None))
         self.show_post_game_button.setText("")
         self.btn_local_footage.setText("")
         self.btn_cloud_footage.setText("")

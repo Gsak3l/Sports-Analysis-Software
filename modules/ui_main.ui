@@ -1404,7 +1404,7 @@ border:none;</string>
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>6</number>
+                      <number>4</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2616,6 +2616,13 @@ color:#fff;</string>
                              <string>x2.00</string>
                             </property>
                            </item>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QCheckBox" name="player_detection_button">
+                           <property name="text">
+                            <string>Player Detection</string>
+                           </property>
                           </widget>
                          </item>
                          <item>
