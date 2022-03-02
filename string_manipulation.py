@@ -5,7 +5,7 @@ import filesystem_changes as fc
 
 
 # REPLACING ALL SYMBOLS WITH SPACES
-# # C:\file\video\name.mp4 to random_basketball_game.mp4  to RANDOM BASKETBALL GAME
+# # C:\file\video\name.mp4 TO random_game.mp4
 def path_to_video_title(video_file):
     file_title = re.findall('([^\/]+$)', video_file)[0]
 
@@ -19,7 +19,7 @@ def path_to_video_title(video_file):
     return file_title.title()
 
 
-# C:\file\video\name.mp4 to name.mp4
+# C:\file\video\name.mp4 TO name.mp4
 def path_to_video_name(video_file):
     return re.findall('([^\/]+$)', video_file)[0]
 
@@ -93,7 +93,7 @@ def frame_to_time_list(df, fps):
 
 
 # CONVERT DATETIME TO INTEGER
-def date_to_second(text):
+def date_to_seconds(text):
     try:
         return sum(x * int(t) for x, t in zip([3600, 60, 1], text.split(':')))
     except ValueError as ve:
@@ -121,3 +121,13 @@ def find_last_folder_lineups():
 # RETURNS JUST NUMBERS FROM STRING THAT CONTAINS NUMBERS, SYMBOLS, AND LETTERS
 def keep_numbers(text):
     return ''.join(c for c in text if c.isdigit())
+
+
+# IF '123' RETURN 123 ELSE RETURN TEXT
+def string_to_int_or_pass(text):
+    try:
+        text = int(text)
+        return text
+    except ValueError as ve:
+        print(ve)
+    return text

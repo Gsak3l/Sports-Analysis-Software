@@ -2,6 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+import string_manipulation as sm
+
 
 # ALL ACTIONS THAT TOOK PLACE DURING THE ENTIRE GAME
 def all_game_all_player_actions(csv_file):
@@ -27,7 +29,7 @@ def all_game_all_player_actions(csv_file):
 # ALL ACTIONS A SPECIFIC PLAYER DID DURING THE GAME
 def all_game_single_player_actions(csv_file, name):
     df = pd.read_csv(csv_file)
-    df = df[df['Name'] == name]
+    df = df[df['Name'] == sm.string_to_int_or_pass(name)]
 
     action_count = df.Action.value_counts()
     action_names = df['Action'].drop_duplicates()
@@ -64,7 +66,8 @@ def all_game_action_family(csv_file, family):
     plt.axis('equal')
     plt.show()
 
+
 # all_game_action_family('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Passing Game')
 # all_game_specific_action('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Long Pass')
-# all_game_single_player_actions('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv', 'Arjen Robben')
+# all_game_single_player_actions('Project Saves/Date 02.03.2022/Time 09.23.44/actions.csv', '1')
 # all_game_all_player_actions('Project Saves/Date 24.02.2022/Time 10.53.44/actions.csv')

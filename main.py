@@ -22,6 +22,7 @@ import filesystem_changes as fc
 import csv_calculations as cc
 import distance
 import zoom_into_video as zoom
+import graph_generator as gg
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT / GUI AND MODULES AND WIDGETS***
@@ -538,7 +539,7 @@ class MainWindow(QMainWindow):
         try:
             max_seconds = fc.find_video_sec_length()
             seconds = widgets.od_timestamps_combobox.currentText()
-            seconds = sm.date_to_second(seconds)
+            seconds = sm.date_to_seconds(seconds)
             seconds -= 10
             duration = self.media_player.duration()
             self.media_player.setPosition(int(duration * seconds / max_seconds))
@@ -632,12 +633,28 @@ class MainWindow(QMainWindow):
         tbl = self.sender()
         tbl_name = tbl.objectName()
 
-        if tbl_name == 'actions_table':
-            print(widgets.actions_table.selectedItems()[0].text())
-        elif tbl_name == 'pregame_table':
-            print(widgets.pregame_table.selectedItems()[0].text())
-        elif tbl_name == 'lineup_table':
-            print(widgets.lineup_table.selectedItems()[0].text())
+        # LINEUP TABLE DOUBLECLICK SHOW DIAGRAM
+        if tbl_name == 'lineup_table':
+            row = widgets.lineup_table.currentIndex().row()
+            player_name = widgets.lineup_table.item(row, 1).text()
+            actions_csv = sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'actions.csv'
+            gg.all_game_single_player_actions(actions_csv, player_name)
+
+        # ACTIONS TABLE DOUBLECLICK SHOW DIAGRAM
+        elif tbl_name == 'actions_table':
+            row = widgets.actions_table.currentIndex().row()
+            column = widgets.actions_table.currentIndex().column()
+            selected_text = widgets.actions_table.item(row, column).text()
+            actions_csv = sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'actions.csv'
+
+            if column == 0:
+                gg.all_game_single_player_actions(actions_csv, selected_text)
+            elif column == 1:
+                gg.all_game_action_family(actions_csv, selected_text)
+            elif column == 2:
+                gg.all_game_specific_action(actions_csv, selected_text)
+            else:
+                gg.all_game_all_player_actions(actions_csv)
 
     # -----------------------------------------------------------------------------------------------------------------
     # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***
