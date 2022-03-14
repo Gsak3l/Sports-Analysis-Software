@@ -124,7 +124,6 @@ dmypy.json
 
 # Cython eval code
 *.c
-*.html
 
 # OS X
 .DS_Store
