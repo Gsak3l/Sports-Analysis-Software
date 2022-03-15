@@ -8,8 +8,8 @@ Pillow
 PyYAML
 requests
 scipy
-torch
-torchvision
+# torch
+# torchvision
 tqdm
 
 # Logging -------------------------------------
@@ -47,4 +47,3 @@ imageio
 PySide6
 pytube
 cx_Freeze
-pandas

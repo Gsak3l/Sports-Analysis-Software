@@ -67,14 +67,14 @@
 
 ## @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ##
 
-# import os
-#
-# os.chdir('./player_detection')
-#
-#
-# os.system('C:/Users/gsak3/AppData/Local/Programs/Python/Python39/python track.py --yolo_mode '
-#           'yolov5/runs/train/exp55/weights/last.pt --source videos/Tactical View- Pixellot C Coaching.mp4 '
-#           '--classes 0 1 --save-vid --save-txt')
+import os
+
+os.chdir('./player_detection')
+
+
+os.system('python track.py --yolo_mode '
+          'yolov5/runs/train/exp55/weights/last.pt --source "videos/Tactical View- Pixellot C Coaching.mp4" '
+          '--classes 0 1 --save-vid --save-txt')
 
 ## @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ##
 

@@ -222,19 +222,21 @@ class TFDetect(keras.layers.Layer):
             x.append(self.m[i](inputs[i]))
             # x(bs,20,20,255) to x(bs,3,20,20,85)
             ny, nx = self.imgsz[0] // self.stride[i], self.imgsz[1] // self.stride[i]
-            x[i] = tf.transpose(tf.reshape(x[i], [-1, ny * nx, self.na, self.no]), [0, 2, 1, 3])
+            x[i] = tf.reshape(x[i], [-1, ny * nx, self.na, self.no])
 
             if not self.training:  # inference
                 y = tf.sigmoid(x[i])
-                xy = (y[..., 0:2] * 2 - 0.5 + self.grid[i]) * self.stride[i]  # xy
-                wh = (y[..., 2:4] * 2) ** 2 * self.anchor_grid[i]
+                grid = tf.transpose(self.grid[i], [0, 2, 1, 3]) - 0.5
+                anchor_grid = tf.transpose(self.anchor_grid[i], [0, 2, 1, 3]) * 4
+                xy = (y[..., 0:2] * 2 + grid) * self.stride[i]  # xy
+                wh = y[..., 2:4] ** 2 * anchor_grid
                 # Normalize xywh to 0-1 to reduce calibration error
                 xy /= tf.constant([[self.imgsz[1], self.imgsz[0]]], dtype=tf.float32)
                 wh /= tf.constant([[self.imgsz[1], self.imgsz[0]]], dtype=tf.float32)
                 y = tf.concat([xy, wh, y[..., 4:]], -1)
                 z.append(tf.reshape(y, [-1, self.na * ny * nx, self.no]))
 
-        return x if self.training else (tf.concat(z, 1), x)
+        return tf.transpose(x, [0, 2, 1, 3]) if self.training else (tf.concat(z, 1), x)
 
     @staticmethod
     def _make_grid(nx=20, ny=20):
@@ -427,13 +429,13 @@ def run(weights=ROOT / 'yolov5s.pt',  # weights path
     # PyTorch model
     im = torch.zeros((batch_size, 3, *imgsz))  # BCHW image
     model = attempt_load(weights, map_location=torch.device('cpu'), inplace=True, fuse=False)
-    y = model(im)  # inference
+    _ = model(im)  # inference
     model.info()
 
     # TensorFlow model
     im = tf.zeros((batch_size, *imgsz, 3))  # BHWC image
     tf_model = TFModel(cfg=model.yaml, model=model, nc=model.nc, imgsz=imgsz)
-    y = tf_model.predict(im)  # inference
+    _ = tf_model.predict(im)  # inference
 
     # Keras model
     im = keras.Input(shape=(*imgsz, 3), batch_size=None if dynamic else batch_size)
