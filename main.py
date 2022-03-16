@@ -128,6 +128,13 @@ class MainWindow(QMainWindow):
         widgets.local_previous_page_button.clicked.connect(self.buttonClick)
         widgets.local_next_page_button.clicked.connect(self.buttonClick)
 
+        # ***CLOUD VIDEO PAGE BUTTON CONNECTION***
+        # -------------------------------------------------------------------------------------------------------------
+        widgets.btn_cloud_footage.clicked.connect(self.buttonClick)
+        widgets.cloud_video_file_button.clicked.connect(self.buttonClick)
+        widgets.cloud_next_page_button.clicked.connect(self.buttonClick)
+        widgets.cloud_previous_page_button.clicked.connect(self.buttonClick)
+
         # ***TACTICS PAGE***
         # -------------------------------------------------------------------------------------------------------------
         # saving the information for the formation/tactics/lineup website to a json file
@@ -137,13 +144,6 @@ class MainWindow(QMainWindow):
         # BUTTONS
         widgets.formation_next_page_button.clicked.connect(self.buttonClick)
         widgets.formation_previous_page_button.clicked.connect(self.buttonClick)
-
-        # ***CLOUD VIDEO PAGE BUTTON CONNECTION***
-        # -------------------------------------------------------------------------------------------------------------
-        widgets.btn_cloud_footage.clicked.connect(self.buttonClick)
-        widgets.cloud_video_file_button.clicked.connect(self.buttonClick)
-        widgets.cloud_next_page_button.clicked.connect(self.buttonClick)
-        widgets.cloud_previous_page_button.clicked.connect(self.buttonClick)
 
         # ***VIDEO PLAYER PAGE***
         # -------------------------------------------------------------------------------------------------------------
@@ -281,6 +281,8 @@ class MainWindow(QMainWindow):
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
                 UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
                 widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
+                # TODO ADD CODE THAT RUNS THE UNCOMMENTED NOTEBOOK.PY COMMAND
+
             else:
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')

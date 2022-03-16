@@ -1,9 +1,10 @@
 import os
 import glob
-from datetime import datetime
 import json
 import cv2
 import shutil
+
+from datetime import datetime
 
 import string_manipulation as sm
 
@@ -46,6 +47,15 @@ def find_last_created_folder():
     last_date_path = max(glob.glob(os.path.join('./Project Saves/', '*/')), key=os.path.getmtime)
     last_time_path = max(glob.glob(os.path.join(last_date_path, '*/')), key=os.path.getmtime)
     return last_time_path
+
+
+# RETURNS LAST CREATED WEIGHTS FOLDER FOR THE YOLO-V5 WEIGHTS
+def find_yolo_weight_folder():
+    os.chdir('./player_detection')
+    weights_folder = max(glob.glob(os.path.join('yolov5/runs/train/exp55', '*/*.pt')),
+                         key=os.path.getmtime)
+    os.chdir('..')
+    return weights_folder
 
 
 # GETTING THE CURRENT DATE AND TIME

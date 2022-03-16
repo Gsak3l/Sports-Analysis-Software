@@ -1,4 +1,5 @@
 import os
+import sys
 import re
 import datetime
 import filesystem_changes as fc
@@ -130,4 +131,10 @@ def string_to_int_or_pass(text):
         return text
     except ValueError as ve:
         print(ve)
+    return text
+
+
+# FROM python3.y.z (tags/v.3.y.z.......) to 3.9
+def keep_till_second_dot(text):
+    text = re.findall('^(\d+\.\d)', text)[0]
     return text
