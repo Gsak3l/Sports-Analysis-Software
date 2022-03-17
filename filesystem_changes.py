@@ -52,10 +52,23 @@ def find_last_created_folder():
 # RETURNS LAST CREATED WEIGHTS FOLDER FOR THE YOLO-V5 WEIGHTS
 def find_yolo_weight_folder():
     os.chdir('./player_detection')
-    weights_folder = max(glob.glob(os.path.join('yolov5/runs/train/exp55', '*/*.pt')),
-                         key=os.path.getmtime)
+    weights_folder = max(glob.glob(os.path.join('yolov5/runs/train/exp55', '*/*.pt')), key=os.path.getmtime)
     os.chdir('..')
     return weights_folder
+
+
+# FIND LAST CREATED RUNS FOLDER AND GET THE VIDEO FROM THERE
+def find_last_detection_video():
+    relative_path = max(glob.glob(os.path.join('./player_detection/runs/track/exp*', '*.mp4')), key=os.path.getmtime)
+    absolute_path = os.path.abspath(relative_path)
+    return absolute_path
+
+
+# FIND LAST CREATED RUNS FOLDER AND GET THE TXT FILE FROM THERE
+def find_last_detection_text_file():
+    relative_path = max(glob.glob(os.path.join('./player_detection/runs/track/exp*', '*.txt')), key=os.path.getmtime)
+    absolute_path = os.path.abspath(relative_path)
+    return absolute_path
 
 
 # GETTING THE CURRENT DATE AND TIME
@@ -130,3 +143,6 @@ def created_zoom_video_folder():
 def create_exported_frames_folder():
     os.mkdir('Exported Frames')
     os.mkdir('Exported Frames/zoomed images')
+
+
+print(find_last_detection_video())

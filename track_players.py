@@ -26,8 +26,5 @@ def track_players_given_the_weights(video_path):
     yolo_mode = get_yolo_mode()
 
     os.chdir('./player_detection')
-    command = f'python{python_version} track.py --yolo_mode {yolo_mode} --source "{video_path}" --classes 0 1 --save-vid --save-txt'
+    command = f'python track.py --yolo_mode {yolo_mode} --source "{video_path}" --classes 0 1 --save-vid --save-txt'
     os.system(command)
-
-
-# track_players_given_the_weights('videos/Tactical View- Pixellot C Coaching.mp4')

@@ -20,9 +20,10 @@ import string_manipulation as sm
 import youtube_downloader as yd
 import filesystem_changes as fc
 import csv_calculations as cc
-import distance
 import zoom_into_video as zoom
 import graph_generator as gg
+import track_players as tp
+import distance
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT / GUI AND MODULES AND WIDGETS***
@@ -127,6 +128,7 @@ class MainWindow(QMainWindow):
         widgets.local_video_file_button.clicked.connect(self.buttonClick)
         widgets.local_previous_page_button.clicked.connect(self.buttonClick)
         widgets.local_next_page_button.clicked.connect(self.buttonClick)
+        widgets.local_player_detection_button.clicked.connect(self.buttonClick)
 
         # ***CLOUD VIDEO PAGE BUTTON CONNECTION***
         # -------------------------------------------------------------------------------------------------------------
@@ -281,8 +283,9 @@ class MainWindow(QMainWindow):
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
                 UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
                 widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
-                # TODO ADD CODE THAT RUNS THE UNCOMMENTED NOTEBOOK.PY COMMAND
-
+                # DETECTING PLAYERS OF THE VIDEO
+                if widgets.local_player_detection_button.isChecked():
+                    tp.track_players_given_the_weights(widgets.local_video_file_name.text())
             else:
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')
@@ -337,6 +340,9 @@ class MainWindow(QMainWindow):
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
                 UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
                 widgets.btn_formation.setStyleSheet(UIFunctions.selectMenu(widgets.btn_formation.styleSheet()))
+                # DETECTING PLAYERS OF THE VIDEO
+                if widgets.cloud_player_detection_button.isChecked():
+                    tp.track_players_given_the_weights(widgets.cloud_video_file_name.placeholderText())
             else:
                 widgets.cloud_video_file_name.setText('')
                 widgets.cloud_video_file_name.setPlaceholderText('Error while validating the existence of the video, '
@@ -408,7 +414,8 @@ class MainWindow(QMainWindow):
         # PLAY NORMAL OR LABELED AI-VIDEO THING
         elif btnName == 'player_detection_button':
             if widgets.player_detection_button.isChecked():
-                self.on_loadVideoRequest('./player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.mp4')
+                # FIXME VALUE ERROR MAX THING
+                self.on_loadVideoRequest(fc.find_last_detection_video())
             else:
                 temp_video_path = widgets.local_video_file_name.text()
                 temp_video_path_2 = widgets.cloud_video_file_name.placeholderText()
@@ -416,7 +423,6 @@ class MainWindow(QMainWindow):
                     self.on_loadVideoRequest(temp_video_path)
                 elif temp_video_path_2 != '':
                     self.on_loadVideoRequest(temp_video_path)
-
 
         # ADD ACTION FROM THE COMBO BOXES TO A CSV
         # .............................................................................................................
@@ -439,7 +445,8 @@ class MainWindow(QMainWindow):
             temp_video_path = widgets.local_video_file_name.text()
             temp_video_path_2 = widgets.cloud_video_file_name.placeholderText()
             temp_find_player = widgets.player_zoom_selection_lineedit.text()
-            temp_player_location_txt = 'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt'
+            # FIXME VALUE ERROR MAX THING
+            temp_player_location_txt = fc.find_last_detection_text_file()
 
             # creating and playing zoomed in version of video
             if temp_video_path != '' and temp_find_player != '':

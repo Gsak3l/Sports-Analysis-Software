@@ -1404,7 +1404,7 @@ border:none;</string>
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>4</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -1522,7 +1522,7 @@ background-repeat: no-repeat;
                                    <string notr="true"/>
                                   </property>
                                   <property name="text">
-                                   <string>VIDEO BOX</string>
+                                   <string>USE VIDEO THAT IS STORED LOCALY ON YOUR DEVICE</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -1543,7 +1543,7 @@ background-repeat: no-repeat;
                                   <property name="bottomMargin">
                                    <number>0</number>
                                   </property>
-                                  <item row="0" column="1">
+                                  <item row="0" column="2">
                                    <widget class="QPushButton" name="local_video_file_button">
                                     <property name="minimumSize">
                                      <size>
@@ -1573,7 +1573,7 @@ background-repeat: no-repeat;
                                     </property>
                                    </widget>
                                   </item>
-                                  <item row="0" column="0">
+                                  <item row="0" column="1">
                                    <widget class="QLineEdit" name="local_video_file_name">
                                     <property name="minimumSize">
                                      <size>
@@ -1589,6 +1589,13 @@ background-repeat: no-repeat;
                                     </property>
                                     <property name="placeholderText">
                                      <string>Type here...</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item row="0" column="0">
+                                   <widget class="QCheckBox" name="local_player_detection_button">
+                                    <property name="text">
+                                     <string>Player Detection</string>
                                     </property>
                                    </widget>
                                   </item>
@@ -1878,7 +1885,7 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                                    <string notr="true"/>
                                   </property>
                                   <property name="text">
-                                   <string>VIDEO BOX</string>
+                                   <string>DOWNLOAD VIDEO FROM YOUTUBE.COM</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -1899,7 +1906,7 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                                   <property name="bottomMargin">
                                    <number>0</number>
                                   </property>
-                                  <item row="0" column="0">
+                                  <item row="0" column="1">
                                    <widget class="QLineEdit" name="cloud_video_file_name">
                                     <property name="minimumSize">
                                      <size>
@@ -1918,7 +1925,39 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                                     </property>
                                    </widget>
                                   </item>
-                                  <item row="0" column="1">
+                                  <item row="1" column="1" colspan="2">
+                                   <widget class="QProgressBar" name="cloud_progress_bar">
+                                    <property name="styleSheet">
+                                     <string notr="true">QProgressBar {
+     border: 2px solid #BD93F9;
+     border-radius: 5px;
+     background-color: #21252b;
+	 text-align: center;
+	 font-weight: bold;
+ }
+
+ QProgressBar::chunk {
+     background-color: #BD93F9;
+ }</string>
+                                    </property>
+                                    <property name="value">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="textVisible">
+                                     <bool>false</bool>
+                                    </property>
+                                    <property name="orientation">
+                                     <enum>Qt::Horizontal</enum>
+                                    </property>
+                                    <property name="invertedAppearance">
+                                     <bool>false</bool>
+                                    </property>
+                                    <property name="textDirection">
+                                     <enum>QProgressBar::BottomToTop</enum>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item row="0" column="2">
                                    <widget class="QPushButton" name="cloud_video_file_button">
                                     <property name="minimumSize">
                                      <size>
@@ -1948,35 +1987,10 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                                     </property>
                                    </widget>
                                   </item>
-                                  <item row="1" column="0" colspan="2">
-                                   <widget class="QProgressBar" name="cloud_progress_bar">
-                                    <property name="styleSheet">
-                                     <string notr="true">QProgressBar {
-     border: 2px solid #BD93F9;
-     border-radius: 5px;
-     background-color: #21252b;
-	 text-align: center;
-	 font-weight: bold;
- }
-
- QProgressBar::chunk {
-     background-color: #BD93F9;
- }</string>
-                                    </property>
-                                    <property name="value">
-                                     <number>0</number>
-                                    </property>
-                                    <property name="textVisible">
-                                     <bool>false</bool>
-                                    </property>
-                                    <property name="orientation">
-                                     <enum>Qt::Horizontal</enum>
-                                    </property>
-                                    <property name="invertedAppearance">
-                                     <bool>false</bool>
-                                    </property>
-                                    <property name="textDirection">
-                                     <enum>QProgressBar::BottomToTop</enum>
+                                  <item row="0" column="0">
+                                   <widget class="QCheckBox" name="cloud_player_detection_button">
+                                    <property name="text">
+                                     <string>Player Detection</string>
                                     </property>
                                    </widget>
                                   </item>
