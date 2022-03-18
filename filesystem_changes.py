@@ -57,20 +57,6 @@ def find_yolo_weight_folder():
     return weights_folder
 
 
-# FIND LAST CREATED RUNS FOLDER AND GET THE VIDEO FROM THERE
-def find_last_detection_video():
-    relative_path = max(glob.glob(os.path.join('./player_detection/runs/track/exp*', '*.mp4')), key=os.path.getmtime)
-    absolute_path = os.path.abspath(relative_path)
-    return absolute_path
-
-
-# FIND LAST CREATED RUNS FOLDER AND GET THE TXT FILE FROM THERE
-def find_last_detection_text_file():
-    relative_path = max(glob.glob(os.path.join('./player_detection/runs/track/exp*', '*.txt')), key=os.path.getmtime)
-    absolute_path = os.path.abspath(relative_path)
-    return absolute_path
-
-
 # GETTING THE CURRENT DATE AND TIME
 def get_date_time():
     now = datetime.now()  # current date and time
@@ -145,4 +131,23 @@ def create_exported_frames_folder():
     os.mkdir('Exported Frames/zoomed images')
 
 
-print(find_last_detection_video())
+# FIND LAST CREATED RUNS FOLDER AND GET THE VIDEO FROM THERE
+def find_last_detection_video():
+    chdir_to_content_root()
+    relative_path = max(glob.glob(os.path.join('./player_detection/runs/track/exp*', '*mp4')), key=os.path.getmtime)
+    return relative_path
+
+
+# FIND LAST CREATED RUNS FOLDER AND GET THE TXT FILE FROM THERE
+def find_last_detection_text_file():
+    chdir_to_content_root()
+    relative_path = max(glob.glob(os.path.join('./player_detection/runs/track/exp*', '*txt')), key=os.path.getmtime)
+    return relative_path
+
+
+# CHANGE DIRECTORY TO CONTENT ROOT
+def chdir_to_content_root():
+    relative_cwd = sm.get_after_last_slash(sm.double_backslash_to_slash(os.getcwd()))
+    while relative_cwd != 'SportsAnalysisSoftware':
+        os.chdir('..')
+        relative_cwd = sm.get_after_last_slash(sm.double_backslash_to_slash(os.getcwd()))

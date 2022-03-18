@@ -138,3 +138,9 @@ def string_to_int_or_pass(text):
 def keep_till_second_dot(text):
     text = re.findall('^(\d+\.\d)', text)[0]
     return text
+
+
+# GET EVERYTHING AFTER LAST SLASH
+def get_after_last_slash(text):
+    text = re.findall('([^\/]+$)', text)[0]
+    return text

@@ -414,7 +414,6 @@ class MainWindow(QMainWindow):
         # PLAY NORMAL OR LABELED AI-VIDEO THING
         elif btnName == 'player_detection_button':
             if widgets.player_detection_button.isChecked():
-                # FIXME VALUE ERROR MAX THING
                 self.on_loadVideoRequest(fc.find_last_detection_video())
             else:
                 temp_video_path = widgets.local_video_file_name.text()
@@ -445,7 +444,6 @@ class MainWindow(QMainWindow):
             temp_video_path = widgets.local_video_file_name.text()
             temp_video_path_2 = widgets.cloud_video_file_name.placeholderText()
             temp_find_player = widgets.player_zoom_selection_lineedit.text()
-            # FIXME VALUE ERROR MAX THING
             temp_player_location_txt = fc.find_last_detection_text_file()
 
             # creating and playing zoomed in version of video
