@@ -99,18 +99,20 @@
 
 ## @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ##
 
-import filesystem_changes as fc
-import distance
-import track_players as tp
-import pandas as pd
-import csv_calculations as cc
+# import filesystem_changes as fc
+# import distance
+# import track_players as tp
+# import pandas as pd
+# import csv_calculations as cc
+#
+# if __name__ == '__main__':
+#
+#     timestamps, running_meters, distance_meters = distance.manager(
+#         fc.find_last_detection_text_file(), 3
+#     )
+#
+#     print(timestamps)
+#     print(running_meters)
+#     print(distance_meters)
 
-if __name__ == '__main__':
-
-    timestamps, running_meters, distance_meters = distance.manager(
-        fc.find_last_detection_text_file(), 3
-    )
-
-    print(timestamps)
-    print(running_meters)
-    print(distance_meters)
+## @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ##

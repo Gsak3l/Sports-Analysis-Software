@@ -28,7 +28,6 @@ import distance
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT / GUI AND MODULES AND WIDGETS***
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-import zoom_into_video
 from modules import *
 from widgets import *
 from PySide6.QtCore import *
@@ -79,9 +78,9 @@ class MainWindow(QMainWindow):
              'Pass Interception Won', 'Possession Turnover Won']
         ]
 
-        timestamps, running_meters, distance_meters = distance.manager(
-            fc.find_last_detection_text_file(), 46
-        )
+        # timestamps, running_meters, distance_meters = distance.manager(
+        #     fc.find_last_detection_text_file(), 46
+        # )
         # running_meters = pd.DataFrame(running_meters)
         # distance_meters = pd.DataFrame(distance_meters)
         # distance_meters.to_csv(fc.find_last_created_folder() + 'distance between players.csv')
@@ -167,8 +166,7 @@ class MainWindow(QMainWindow):
         widgets.od_combobox.currentIndexChanged.connect(self.change_timestamps)
         widgets.od_timestamps_combobox.currentIndexChanged.connect(self.set_minute)
         self.change_actions()
-        # FIXME BUG WHERE TIMESTAMPS ARRAY IS EMPTY
-        self.change_timestamps()
+        # self.change_timestamps()
 
         # ***STATS PAGE***
         # -------------------------------------------------------------------------------------------------------------
@@ -344,6 +342,7 @@ class MainWindow(QMainWindow):
                 # DETECTING PLAYERS OF THE VIDEO
                 if widgets.cloud_player_detection_button.isChecked():
                     tp.track_players_given_the_weights(widgets.cloud_video_file_name.placeholderText())
+                    self.change_timestamps()
             else:
                 widgets.cloud_video_file_name.setText('')
                 widgets.cloud_video_file_name.setPlaceholderText('Error while validating the existence of the video, '
