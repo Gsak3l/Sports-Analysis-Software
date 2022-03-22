@@ -1404,7 +1404,7 @@ border:none;</string>
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>4</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2450,6 +2450,11 @@ color:#fff;</string>
 font-weight:bold;
 color:#fff;</string>
                            </property>
+                           <item>
+                            <property name="text">
+                             <string>Beginning of Game</string>
+                            </property>
+                           </item>
                            <item>
                             <property name="text">
                              <string>Offense Timestamps</string>

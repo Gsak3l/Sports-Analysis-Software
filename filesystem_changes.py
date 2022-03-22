@@ -3,6 +3,7 @@ import glob
 import json
 import cv2
 import shutil
+import pandas as pd
 
 from datetime import datetime
 
@@ -151,3 +152,11 @@ def chdir_to_content_root():
     while relative_cwd != 'SportsAnalysisSoftware':
         os.chdir('..')
         relative_cwd = sm.get_after_last_slash(sm.double_backslash_to_slash(os.getcwd()))
+
+
+# if __name__ == '__main__':
+#     df = pd.read_csv(find_last_detection_text_file(), sep=' ', header=None)
+#     df = df.drop([6, 7, 8, 9, 10], axis=1)
+#     df = df.dropna(axis='columns')
+#     df = df.rename(columns={0: 'Frame', 1: 'ID', 2: 'x', 3: 'y', 4: 'w', 5: 'h'})
+#     print(df)

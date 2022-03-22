@@ -1357,6 +1357,7 @@ class Ui_MainWindow(object):
         self.od_combobox.addItem("")
         self.od_combobox.addItem("")
         self.od_combobox.addItem("")
+        self.od_combobox.addItem("")
         self.od_combobox.setObjectName(u"od_combobox")
         self.od_combobox.setStyleSheet(u"background-color:#bd93f9 ;\n"
                                        "font-weight:bold;\n"
@@ -1642,7 +1643,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(4)
         self.type_of_action_combobox.setCurrentIndex(2)
         self.playback_speed_combo.setCurrentIndex(3)
 
@@ -1725,9 +1726,10 @@ class Ui_MainWindow(object):
         self.type_of_action_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Defensive Game", None))
 
         self.add_action.setText("")
-        self.od_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Offense Timestamps", None))
-        self.od_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Defense Timestamps", None))
-        self.od_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"In-Between", None))
+        self.od_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Beginning of Game", None))
+        self.od_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Offense Timestamps", None))
+        self.od_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Defense Timestamps", None))
+        self.od_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"In-Between", None))
 
         self.play_video_button.setText("")
         self.pause_video_button.setText("")

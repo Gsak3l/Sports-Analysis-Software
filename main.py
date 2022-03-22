@@ -71,6 +71,7 @@ class MainWindow(QMainWindow):
         global distance_meters
 
         widgets = self.ui
+
         actions = [
             ['Goal', 'Shot', 'Shot on Target', 'Header', 'Set Piece', 'Right foot', 'Shot Inside the box'],
             ['Pass', 'Short Pass', 'Long Pass', 'Pass above ground', 'Unsuccessful Pass'],
@@ -79,14 +80,12 @@ class MainWindow(QMainWindow):
         ]
 
         timestamps, running_meters, distance_meters = distance.manager(
-            'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt', 46
+            fc.find_last_detection_text_file(), 46
         )
-
-        running_meters = pd.DataFrame(running_meters)
-        distance_meters = pd.DataFrame(distance_meters)
-
-        distance_meters.to_csv(fc.find_last_created_folder() + 'distance between players.csv')
-        running_meters.to_csv(fc.find_last_created_folder() + 'total running distance.csv')
+        # running_meters = pd.DataFrame(running_meters)
+        # distance_meters = pd.DataFrame(distance_meters)
+        # distance_meters.to_csv(fc.find_last_created_folder() + 'distance between players.csv')
+        # running_meters.to_csv(fc.find_last_created_folder() + 'total running distance.csv')
 
         # ***USE CUSTOM TITLE BAR***
         # -------------------------------------------------------------------------------------------------------------
@@ -168,6 +167,7 @@ class MainWindow(QMainWindow):
         widgets.od_combobox.currentIndexChanged.connect(self.change_timestamps)
         widgets.od_timestamps_combobox.currentIndexChanged.connect(self.set_minute)
         self.change_actions()
+        # FIXME BUG WHERE TIMESTAMPS ARRAY IS EMPTY
         self.change_timestamps()
 
         # ***STATS PAGE***
@@ -286,6 +286,7 @@ class MainWindow(QMainWindow):
                 # DETECTING PLAYERS OF THE VIDEO
                 if widgets.local_player_detection_button.isChecked():
                     tp.track_players_given_the_weights(widgets.local_video_file_name.text())
+                    self.change_timestamps()
             else:
                 widgets.local_video_file_name.setText('Please select a valid video file by pressing the Open button'
                                                       'and navigating to a .mp4 file')
@@ -522,22 +523,35 @@ class MainWindow(QMainWindow):
 
     # CHANGING THE TIMESTAMPS FOR OFFENSE/DEFENSE/I-B
     def change_timestamps(self):
+        timestamps_, running_meters_, distance_meters_ = distance.manager(
+            fc.find_last_detection_text_file(), 3
+        )
+
         # deleting current values
-        for x in range(len(timestamps)):
-            try:
-                widgets.od_timestamps_combobox.removeItem(0)
-            except IndexError:
-                pass
+        try:
+            for x in range(len(timestamps_)):
+                try:
+                    widgets.od_timestamps_combobox.removeItem(0)
+                except IndexError as ie:
+                    print(ie)
+        except TypeError as te:
+            print(te)
 
         # THIS IS GOLD, IT TOOK ABOUT 5 HOURS GIVE OR TAKE, FOR SOMETHING SO SIMPLE
-        date_stamps = sm.frame_to_time_list(timestamps, 24)
-        for y in range(len(timestamps[0])):
-            if timestamps[1][y] == 'OFFENSE' and widgets.od_combobox.currentIndex() == 0:
-                widgets.od_timestamps_combobox.addItem(date_stamps[y])
-            elif timestamps[1][y] == 'DEFENSE' and widgets.od_combobox.currentIndex() == 1:
-                widgets.od_timestamps_combobox.addItem(date_stamps[y])
-            elif timestamps[1][y] == 'JUST PLAYING' and widgets.od_combobox.currentIndex() == 2:
-                widgets.od_timestamps_combobox.addItem(date_stamps[y])
+        try:
+            date_stamps = sm.frame_to_time_list(timestamps_, 25)
+            for y in range(len(timestamps_[0])):
+                if timestamps_[1][y] == 'GAME STARTED' and widgets.od_combobox.currentIndex() == 0:
+                    widgets.od_timestamps_combobox.addItem(date_stamps[y])
+                elif timestamps_[1][y] == 'OFFENSE' and widgets.od_combobox.currentIndex() == 1:
+                    widgets.od_timestamps_combobox.addItem(date_stamps[y])
+                elif timestamps_[1][y] == 'DEFENSE' and widgets.od_combobox.currentIndex() == 2:
+                    widgets.od_timestamps_combobox.addItem(date_stamps[y])
+                elif timestamps_[1][y] == 'JUST PLAYING' and widgets.od_combobox.currentIndex() == 3:
+                    widgets.od_timestamps_combobox.addItem(date_stamps[y])
+
+        except TypeError as te:
+            print(te)
 
     # .................................................................................................................
     # CHANGING THE ACTION OPTIONS ON THE COMBOBOX

@@ -69,7 +69,7 @@ def players_from_camera_meters(df4):
 
 # calculating if the red team is on offense or on defense
 def calculate_offense_defense(df5):
-    possession_changed = []
+    possession_changed = [[0, 'GAME STARTED']]
 
     df_center = df5[(df5['h'] > df5['h'].mean() * 2)]
     df_center = df_center.drop(['ID', 'y', 'w', 'h'], axis=1)
@@ -83,6 +83,8 @@ def calculate_offense_defense(df5):
         if df_center.iloc[i]['D/O'] != df_center.iloc[i + 1]['D/O']:
             possession_changed.append([i, df_center.iloc[i + 1]['D/O']])
     possession_changed = pd.DataFrame(possession_changed)
+
+
     return possession_changed
 
 
@@ -104,7 +106,9 @@ def calculate_running_distance(df6):
 
     running_distance['x'] = running_distance['x'].astype(int)
 
-    running_distance = running_distance.drop(running_distance[running_distance['x'] < 200].index)
+    # FIXME VALUE NUMBER HAS TO BE ACCORDING TO THE VIDEO LENGTH I GUESS
+    # FIXME REPLACE THE 100 - 200 WITH MINUTES * 0.1 * 200 PROBABLY
+    running_distance = running_distance.drop(running_distance[running_distance['x'] < 100].index)
     return running_distance
 
 
@@ -128,10 +132,9 @@ def manager(df, frame):
 
     return od_timestamps, df_running_distance, euclidean_m
 
-
-if __name__ == '__main__':
-    desired_width = 320
-    pd.set_option('display.width', desired_width)
-    np.set_printoptions(linewidth=desired_width)
-    pd.set_option('display.max_columns', 23)
-    manager('player_detection/runs/track/exp20/Tactical View- Pixellot C Coaching.txt', 46)
+# if __name__ == '__main__':
+#     desired_width = 320
+#     pd.set_option('display.width', desired_width)
+#     np.set_printoptions(linewidth=desired_width)
+#     pd.set_option('display.max_columns', 23)
+#     manager('player_detection/runs/track/exp20/Tactical View- Pixellot C Coaching.txt', 46)
