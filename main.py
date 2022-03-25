@@ -78,14 +78,6 @@ class MainWindow(QMainWindow):
              'Pass Interception Won', 'Possession Turnover Won']
         ]
 
-        # timestamps, running_meters, distance_meters = distance.manager(
-        #     fc.find_last_detection_text_file(), 46
-        # )
-        # running_meters = pd.DataFrame(running_meters)
-        # distance_meters = pd.DataFrame(distance_meters)
-        # distance_meters.to_csv(fc.find_last_created_folder() + 'distance between players.csv')
-        # running_meters.to_csv(fc.find_last_created_folder() + 'total running distance.csv')
-
         # ***USE CUSTOM TITLE BAR***
         # -------------------------------------------------------------------------------------------------------------
         # USE AS 'False' FOR MAC OR LINUX
@@ -166,7 +158,6 @@ class MainWindow(QMainWindow):
         widgets.od_combobox.currentIndexChanged.connect(self.change_timestamps)
         widgets.od_timestamps_combobox.currentIndexChanged.connect(self.set_minute)
         self.change_actions()
-        # self.change_timestamps()
 
         # ***STATS PAGE***
         # -------------------------------------------------------------------------------------------------------------
