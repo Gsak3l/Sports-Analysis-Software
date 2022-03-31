@@ -38,6 +38,7 @@ from PySide6.QtMultimediaWidgets import QVideoWidget
 from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 
 os.environ['QT_FONT_DPI'] = '96'  # FIX Problem for High DPI and Scale above 100%
+sys.path.append('./player_detection')
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # SET AS GLOBAL WIDGETS
