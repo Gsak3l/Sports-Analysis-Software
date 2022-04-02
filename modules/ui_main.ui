@@ -23,6 +23,7 @@
   <widget class="QWidget" name="styleSheet">
    <property name="font">
     <font>
+     <family>Segoe UI</family>
      <pointsize>10</pointsize>
      <italic>false</italic>
      <bold>false</bold>
@@ -677,6 +678,7 @@ Button */
              </property>
              <property name="font">
               <font>
+               <family>Segoe UI Semibold</family>
                <pointsize>12</pointsize>
                <italic>false</italic>
                <bold>false</bold>
@@ -706,6 +708,7 @@ Button */
              </property>
              <property name="font">
               <font>
+               <family>Segoe UI</family>
                <pointsize>8</pointsize>
                <italic>false</italic>
                <bold>false</bold>
@@ -796,6 +799,7 @@ Button */
                   </property>
                   <property name="font">
                    <font>
+                    <family>Segoe UI</family>
                     <pointsize>10</pointsize>
                     <italic>false</italic>
                     <bold>false</bold>
@@ -858,6 +862,7 @@ Button */
                   </property>
                   <property name="font">
                    <font>
+                    <family>Segoe UI</family>
                     <pointsize>10</pointsize>
                     <italic>false</italic>
                     <bold>false</bold>
@@ -893,6 +898,7 @@ Button */
                   </property>
                   <property name="font">
                    <font>
+                    <family>Segoe UI</family>
                     <pointsize>10</pointsize>
                     <italic>false</italic>
                     <bold>false</bold>
@@ -928,6 +934,7 @@ Button */
                   </property>
                   <property name="font">
                    <font>
+                    <family>Segoe UI</family>
                     <pointsize>10</pointsize>
                     <italic>false</italic>
                     <bold>false</bold>
@@ -981,7 +988,7 @@ Button */
                    <string notr="true">background-image:url(:/icons/images/icons/cil-chart.png);</string>
                   </property>
                   <property name="text">
-                   <string/>
+                   <string>Analytics</string>
                   </property>
                  </widget>
                 </item>
@@ -1127,6 +1134,7 @@ Button */
                   </property>
                   <property name="font">
                    <font>
+                    <family>Segoe UI</family>
                     <pointsize>-1</pointsize>
                     <italic>false</italic>
                     <bold>true</bold>
@@ -1255,6 +1263,7 @@ border:none;</string>
                   </property>
                   <property name="font">
                    <font>
+                    <family>Segoe UI</family>
                     <pointsize>10</pointsize>
                     <italic>false</italic>
                     <bold>false</bold>
@@ -1513,6 +1522,7 @@ background-repeat: no-repeat;
                                  <widget class="QLabel" name="labelBoxBlenderInstalation">
                                   <property name="font">
                                    <font>
+                                    <family>Segoe UI</family>
                                     <pointsize>10</pointsize>
                                     <italic>false</italic>
                                     <bold>false</bold>
@@ -1553,6 +1563,7 @@ background-repeat: no-repeat;
                                     </property>
                                     <property name="font">
                                      <font>
+                                      <family>Segoe UI</family>
                                       <pointsize>10</pointsize>
                                       <italic>false</italic>
                                       <bold>false</bold>
@@ -1876,6 +1887,7 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                                  <widget class="QLabel" name="labelBoxBlenderInstalation1">
                                   <property name="font">
                                    <font>
+                                    <family>Segoe UI</family>
                                     <pointsize>10</pointsize>
                                     <italic>false</italic>
                                     <bold>false</bold>
@@ -1967,6 +1979,7 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                                     </property>
                                     <property name="font">
                                      <font>
+                                      <family>Segoe UI</family>
                                       <pointsize>10</pointsize>
                                       <italic>false</italic>
                                       <bold>false</bold>
@@ -2671,6 +2684,7 @@ color:#fff;</string>
                           <widget class="QSlider" name="video_player_slider">
                            <property name="font">
                             <font>
+                             <family>Segoe UI</family>
                              <pointsize>10</pointsize>
                              <italic>false</italic>
                              <bold>false</bold>
@@ -2976,6 +2990,7 @@ color:#fff;</string>
                   </property>
                   <property name="font">
                    <font>
+                    <family>Segoe UI</family>
                     <pointsize>-1</pointsize>
                     <italic>false</italic>
                     <bold>false</bold>

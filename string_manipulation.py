@@ -1,5 +1,4 @@
 import os
-import sys
 import re
 import datetime
 import filesystem_changes as fc

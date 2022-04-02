@@ -1,6 +1,5 @@
 import glob
 import cv2
-import pkg_resources
 
 import filesystem_changes as fc
 import string_manipulation as sm
