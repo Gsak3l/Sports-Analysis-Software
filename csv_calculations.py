@@ -12,6 +12,7 @@ def get_player_names_from_csv(file_path, file_name):
     return sm.list_to_string(df['name'].tolist())
 
 
+# ADDS PLAYER NAMES, ACTIONS ETC TO CSV
 def add_to_csv(player_name, type_of_action, action, timestamp):
     timestamp = str(datetime.timedelta(seconds=int(timestamp)))
     data = {
@@ -46,5 +47,5 @@ def read_and_clean(file):
     return df
 
 
-if __name__ == '__main__':
-    read_and_clean('player_detection/runs/track/exp73/Tactical View- Pixellot C Coaching.mp4')
+# if __name__ == '__main__':
+#     read_and_clean('player_detection/runs/track/exp73/Tactical View- Pixellot C Coaching.mp4')

@@ -95,6 +95,7 @@ def export_all_frames(video):
         count += 1
 
 
+# RETURNS THE FPS OF THE VIDEO, 24, 30 ETC.
 def get_video_fps(video):
     video = cv2.VideoCapture(video)
     return int(video.get(cv2.CAP_PROP_FPS))

@@ -1,11 +1,11 @@
-from math import sqrt, hypot
 import numpy as np
 import pandas as pd
+from math import sqrt, hypot
 
 import csv_calculations as cc
 
 
-# calculate distance between players in pixels using the euclidean distance
+# CALCULATE DISTANCE BETWEEN PLAYERS IN PIXELS USING THE EUCLIDEAN DISTANCE
 def euclidean_distance_pixels(df3):
     x2_x1 = []
     y2_y1 = []
@@ -29,7 +29,7 @@ def euclidean_distance_pixels(df3):
     return df_player_distance_
 
 
-# calculate distance between players in meters using the euclidean distance
+# CALCULATE DISTANCE BETWEEN PLAYERS IN METERS USING THE EUCLIDEAN DISTANCE
 def euclidean_distance_meters(df5, distance_pixel):
     distance_meters = []
 
@@ -47,6 +47,8 @@ def euclidean_distance_meters(df5, distance_pixel):
     return distance_meters
 
 
+# CALCULATE THE DISTANCE EACH PLAYER HAS FROM THE CAMERA RECORDING HIM
+# REQUIRES focal length, height of each player, image height in pixels, and sensor height in mm
 def players_from_camera_meters(df4):
     df4['CM'] = pd.DataFrame(np.random.randint(175, 190, size=(df4.shape[0], 1)))
     df4.loc[df4['h'] > df4['h'].mean() * 2, 'CM'] = 5000  # goalpost
@@ -67,7 +69,7 @@ def players_from_camera_meters(df4):
     return df4
 
 
-# calculating if the red team is on offense or on defense
+# CALCULATING IF THE RED TEAM IS ON THE OFFENSE OR ON DEFENSE
 def calculate_offense_defense(df5):
     possession_changed = [[0, 'GAME STARTED']]
 
@@ -84,10 +86,10 @@ def calculate_offense_defense(df5):
             possession_changed.append([i, df_center.iloc[i + 1]['D/O']])
     possession_changed = pd.DataFrame(possession_changed)
 
-
     return possession_changed
 
 
+# NO SURE WHAT THIS DOES
 # def distance_from_center_meters(df7):
 #     f_mm = 35
 #     image_height_px = 720
@@ -96,7 +98,7 @@ def calculate_offense_defense(df5):
 #     df7['D_CEN'] = (f_mm * df4['CM'] * 10 * image_height_px) / ((df4['h'] + df4['w']) * sensor_height_mm)
 
 
-# calculating running distance for each player
+# CALCULATING RUNNING DISTANCE FOR EACH PLAYER
 def calculate_running_distance(df6):
     df6.drop(df6[df6['h'] > df6['h'].mean() * 2].index, inplace=True)  # dropping the center of the football field
     df_player_location = df6.drop(['Frame', 'x', 'y', 'w', 'h', 'CM'], axis=1)
@@ -112,6 +114,7 @@ def calculate_running_distance(df6):
     return running_distance
 
 
+# CALLS OUT ALL THE CLASSES ABOVE
 def manager(df, frame):
     df_ = df = cc.read_and_clean(df)
 
