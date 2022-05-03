@@ -1413,7 +1413,7 @@ border:none;</string>
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>5</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -1669,26 +1669,6 @@ background-repeat: no-repeat;
                               <item>
                                <property name="text">
                                 <string>Football</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Baskeball</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Volleyball</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Cricket</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Other</string>
                                </property>
                               </item>
                              </widget>
@@ -2066,26 +2046,6 @@ QCalendarWidget QTableView{background-color:#21252b;}</string>
                               <item>
                                <property name="text">
                                 <string>Football</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Baskeball</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Volleyball</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Cricket</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Other</string>
                                </property>
                               </item>
                              </widget>
