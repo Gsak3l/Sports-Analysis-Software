@@ -82,7 +82,7 @@ class MainWindow(QMainWindow):
         # ***APP NAME***
         # -------------------------------------------------------------------------------------------------------------
         title = 'Sports Analysis App Name'
-        description = 'Sports Analysis Slogan'
+        description = 'Sports Analysis Software'
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
