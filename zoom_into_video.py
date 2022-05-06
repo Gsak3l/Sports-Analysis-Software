@@ -49,6 +49,7 @@ def zoom_player(player_id, runs_path):
         except IndexError as i:
             print(i)
 
+    print('Converting frames into video, type:DIVX-mp4')
     fc.created_zoom_video_folder()
     out = cv2.VideoWriter('./Zoomed-in Video/output_video.avi', cv2.VideoWriter_fourcc(*'DIVX'), 25, (700, 700))
     for num in image_nums:
@@ -64,6 +65,7 @@ def zoom_player(player_id, runs_path):
 
 # EXPORT 10 SECONDS WORTH OF FRAMES
 def export_frames(video, frame):
+    print('Exporting 10 Seconds')
     fc.delete_files_and_folder('./Exported Frames')
     fc.create_exported_frames_folder()
     vid_cap = cv2.VideoCapture(video)
@@ -88,7 +90,9 @@ def export_all_frames(video):
     count = 0
 
     while success:
+        print('Exporting several images:')
         if count % 10 == 0:
+            print(count, image)
             cv2.imwrite('./Exported Frames/frame%d.jpg' % count, image)
 
         success, image = vid_cap.read()
@@ -99,22 +103,3 @@ def export_all_frames(video):
 def get_video_fps(video):
     video = cv2.VideoCapture(video)
     return int(video.get(cv2.CAP_PROP_FPS))
-
-# export_frames('C:/Users/gsak3/Downloads/Tactical View- Pixellot C Coaching.mp4', 300)
-# zoom_player(5, 'player_detection/runs/track/exp22/Tactical View- Pixellot C Coaching.txt')
-# import cv2
-# if __name__ == '__main__' :
-#
-#     video = cv2.VideoCapture("test.mp4");
-#
-#     # Find OpenCV version
-#     (major_ver, minor_ver, subminor_ver) = (cv2.__version__).split('.')
-#
-#     if int(major_ver)  < 3 :
-#         fps = video.get(cv2.cv.CV_CAP_PROP_FPS)
-#         print "Frames per second using video.get(cv2.cv.CV_CAP_PROP_FPS): {0}".format(fps)
-#     else :
-#         fps = video.get(cv2.CAP_PROP_FPS)
-#         print "Frames per second using video.get(cv2.CAP_PROP_FPS) : {0}".format(fps)
-#
-#     video.release();
