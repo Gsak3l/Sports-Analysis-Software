@@ -18,7 +18,7 @@ import csv_calculations as cc
 import zoom_into_video as zoom
 import graph_generator as gg
 import track_players as tp
-import distance
+import distance as di
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT / GUI AND MODULES AND WIDGETS***
@@ -509,7 +509,7 @@ class MainWindow(QMainWindow):
 
     # CHANGING THE TIMESTAMPS FOR OFFENSE/DEFENSE/I-B
     def change_timestamps(self):
-        timestamps_, running_meters_, distance_meters_ = distance.manager(
+        timestamps_, running_meters_, distance_meters_ = di.manager(
             fc.find_last_detection_text_file(), 3
         )
 
