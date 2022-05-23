@@ -15,7 +15,7 @@ import string_manipulation as sm
 import youtube_downloader as yd
 import filesystem_changes as fc
 import csv_calculations as cc
-import zoom_into_video as zoom
+import zoom_into_video as zo
 import graph_generator as gg
 import track_players as tp
 import distance as di
@@ -74,6 +74,11 @@ class MainWindow(QMainWindow):
              'Pass Interception Won', 'Possession Turnover Won']
         ]
 
+        # -------------------------------------------------------------------------------------------------------------
+        # ***CREATING FOLDERS WHERE DATA WILL BE SAVED***
+        fc.create_root_save_directory()
+        path = fc.create_sub_save_folder()
+
         # ***USE CUSTOM TITLE BAR***
         # -------------------------------------------------------------------------------------------------------------
         # USE AS 'False' FOR MAC OR LINUX
@@ -94,11 +99,6 @@ class MainWindow(QMainWindow):
         # ***SET UI DEFINITIONS***
         # -------------------------------------------------------------------------------------------------------------
         UIFunctions.uiDefinitions(self)
-
-        # ***CREATING FOLDERS WHERE DATA WILL BE SAVED***
-        # -------------------------------------------------------------------------------------------------------------
-        fc.create_root_save_directory()
-        path = fc.create_sub_save_folder()
 
         # -------------------------------------------------------------------------------------------------------------
         # ***LEFT MENU BUTTONS***
@@ -301,7 +301,7 @@ class MainWindow(QMainWindow):
                     if i == 14:
                         url = yd.save_video_to_downloads(widgets.cloud_video_file_name.text())
                     else:
-                        time.sleep(0.05)
+                        # time.sleep(0.05)
                         widgets.cloud_progress_bar.setValue(i)
                 widgets.cloud_progress_bar.setValue(100)
                 widgets.cloud_video_file_name.setPlaceholderText(sm.double_backslash_to_slash(url))
@@ -435,17 +435,17 @@ class MainWindow(QMainWindow):
 
             # creating and playing zoomed in version of video
             if temp_video_path != '' and temp_find_player != '':
-                fps = zoom.get_video_fps(temp_video_path)
+                fps = zo.get_video_fps(temp_video_path)
                 frame = int(self.media_player.position() / 1000 * fps)  # converting ms to s and then frames
-                zoom.export_frames(temp_video_path, frame)
-                zoom.zoom_player(int(temp_find_player), temp_player_location_txt)
+                zo.export_frames(temp_video_path, frame)
+                zo.zoom_player(int(temp_find_player), temp_player_location_txt)
                 self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
             # creating and playing zoomed in version of video
             elif temp_video_path_2 != '' and temp_find_player != '':
-                fps = zoom.get_video_fps(temp_video_path_2)
+                fps = zo.get_video_fps(temp_video_path_2)
                 frame = int(self.media_player.position() / 1000 * fps)  # converting ms to s and then frames
-                zoom.export_frames(temp_video_path_2, frame)
-                zoom.zoom_player(int(temp_find_player), temp_player_location_txt)
+                zo.export_frames(temp_video_path_2, frame)
+                zo.zoom_player(int(temp_find_player), temp_player_location_txt)
                 self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
             # just playing the normal video, cannot save timestamp, setPosition refuses to work...
             elif temp_find_player == '' and temp_video_path != '':

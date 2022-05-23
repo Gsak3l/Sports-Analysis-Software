@@ -34,6 +34,7 @@ def create_sub_save_folder():
     except OSError as e:
         print(e)
 
+    print(path)
     return path
 
 

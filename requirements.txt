@@ -46,4 +46,5 @@ imageio
 # UI ------------------------------------------
 PySide6
 pytube
+
 cx_Freeze
