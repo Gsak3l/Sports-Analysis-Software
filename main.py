@@ -347,7 +347,10 @@ class MainWindow(QMainWindow):
         # SAVE LINEUP BUILDER DATA TO JSON AND GO TO THE COACH TOOL SECTION
         elif btnName == 'formation_next_page_button':
             try:
-                self.names = sd.manager(sm.double_backslash_to_slash(fc.find_last_created_folder()), 'lineup.json')
+                self.names = sd.lineup_manager(
+                    sm.double_backslash_to_slash(fc.find_last_created_folder()),
+                    'lineup.json'
+                )
             except FileNotFoundError as fl:
                 print(fl)
             self.delete_player_names()

@@ -1,4 +1,3 @@
-import re
 import json
 import pandas as pd
 
@@ -89,7 +88,7 @@ def save_cleaned_csv(file_path, file_name):
 
 
 # CALLS ALL THE ABOVE
-def manager(file_path, file_name):
+def lineup_manager(file_path, file_name):
     file_name = json_data_cleanup(file_path, file_name)
     fix_one_line_json(file_path, file_name)
     json_to_csv(file_path, file_name)
