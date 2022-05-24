@@ -5,7 +5,7 @@ import filesystem_changes as fc
 
 
 # REPLACING ALL SYMBOLS WITH SPACES
-# # C:\file\video\name.mp4 TO random_game.mp4
+# C:\file\video\name.mp4 TO random_game.mp4
 def path_to_video_title(video_file):
     file_title = re.findall('([^\/]+$)', video_file)[0]
 

@@ -114,7 +114,7 @@ def calculate_running_distance(df6):
     return running_distance
 
 
-# CALLS OUT ALL THE CLASSES ABOVE
+# CALLS OUT ALL THE FUNCTIONS ABOVE
 def manager(df, frame):
     df_ = df = cc.read_and_clean(df)
 

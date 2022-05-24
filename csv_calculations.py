@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 import datetime
 
@@ -46,6 +47,15 @@ def read_and_clean(file):
     df = df.rename(columns={0: 'Frame', 1: 'ID', 2: 'x', 3: 'y', 4: 'w', 5: 'h'})
     return df
 
+
+# CLEANS UP THE CSV FILE AND KEEPS ONLY THE IMPORTANT FIELDS
+def cleanup_csv_lineup(df):
+    try:
+        df = df.drop(['photoFolderIndex', 'photo', 'shortName'], axis=1)
+    except KeyError:
+        pass
+    df['positions'] = df['positions'].apply(lambda x: re.sub(r'[^a-zA-Z, ]+', '', x))
+    return df
 
 # if __name__ == '__main__':
 #     read_and_clean('player_detection/runs/track/exp73/Tactical View- Pixellot C Coaching.mp4')
