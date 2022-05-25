@@ -33,7 +33,8 @@ def add_to_csv(player_name, type_of_action, action, timestamp):
 # CREATES A NEW CSV FILE IF IT DOESN'T ALREADY EXIST
 def create_csv():
     try:
-        with open(f'{fc.find_last_created_folder().actions.csv}', 'w'):
+        with open(f'{fc.find_last_created_folder().actions.csv}', 'w') as f:
+            f.close()
             pass
     except AssertionError as ae:
         print(ae)

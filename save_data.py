@@ -80,6 +80,7 @@ def json_to_csv(file_path, file_name):
     df.to_csv(f'{file_path}{file_name}.csv', index=None, encoding='utf8')
 
 
+# SAVE CSV AFTER CLEANUP
 def save_cleaned_csv(file_path, file_name):
     file_name = sm.get_file_name(file_name)
     df = pd.read_csv(f'{file_path}{file_name}.csv')
