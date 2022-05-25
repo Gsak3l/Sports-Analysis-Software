@@ -14,8 +14,8 @@ def create_root_save_directory():
     path = os.path.join('./', 'Project Saves')
     try:
         os.mkdir(path)
-    except OSError as e:
-        print(e)
+    except OSError as oe:
+        print(oe)
 
 
 # CREATING SUB-FOLDERS WITH DATE AND TIME AS A NAME
@@ -25,14 +25,14 @@ def create_sub_save_folder():
 
     try:
         os.mkdir(path)
-    except OSError as e:
-        print(e)
+    except OSError as oe:
+        print(oe)
 
     path = os.path.join(f'./Project Saves/Date {date}/', f'Time {time}')
     try:
         os.mkdir(path)
-    except OSError as e:
-        print(e)
+    except OSError as oe:
+        print(oe)
 
     print(path)
     return path
@@ -88,8 +88,8 @@ def find_video_sec_length():
         path = json.load(f)
         path = path['Video Path']
         f.close()
-    except FileNotFoundError as fl:
-        print(fl)
+    except FileNotFoundError as fe:
+        print(fe)
 
     if path != '':
         cap = cv2.VideoCapture(path)
@@ -110,20 +110,20 @@ def delete_files_and_folder(folder_path):
                     os.unlink(file)
                 elif os.path.isdir(file):
                     shutil.rmtree(file)
-            except FileNotFoundError as f:
+            except FileNotFoundError as fe:
                 print(f)
 
         os.rmdir(folder_path)
-    except FileNotFoundError as f:
-        print(f)
+    except FileNotFoundError as fe:
+        print(fe)
 
 
 # CREATE FOLDER FOR ZOOMED VIDEO VERSIONS
 def created_zoom_video_folder():
     try:
         os.mkdir('Zoomed-in Video')
-    except FileExistsError as f:
-        print(f)
+    except FileExistsError as fe:
+        print(fe)
 
 
 # CREATE FOLDER WITH NAME EXPORTED FRAMES

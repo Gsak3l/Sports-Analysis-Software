@@ -35,8 +35,8 @@ def create_csv():
     try:
         with open(f'{fc.find_last_created_folder().actions.csv}', 'w'):
             pass
-    except AssertionError:
-        pass
+    except AssertionError as ae:
+        print(ae)
 
 
 # READ THE GIVEN CSV AND CLEAN THE USELESS DATA FROM IT FOR THIS SPECIFIC SCENARIO
@@ -52,8 +52,8 @@ def read_and_clean(file):
 def cleanup_csv_lineup(df):
     try:
         df = df.drop(['photoFolderIndex', 'photo', 'shortName'], axis=1)
-    except KeyError:
-        pass
+    except KeyError as ke:
+        ke
     df['positions'] = df['positions'].apply(lambda x: re.sub(r'[^a-zA-Z, ]+', '', x))
     return df
 

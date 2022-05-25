@@ -44,21 +44,23 @@ def zoom_player(player_id, runs_path):
 
     for num in image_nums:
         try:
+            print(f'Generating zoomed-in frame, Frame: {num}')
             img = create_zoom_version('./Exported Frames/frame%d.jpg' % num, x[num], y[num])
             cv2.imwrite('./Exported Frames/zoomed images/zoom%d.jpg' % num, img)
-        except IndexError as i:
-            print(i)
+        except IndexError as ie:
+            print(ie)
 
     print('Converting frames into video, type:DIVX-mp4')
     fc.created_zoom_video_folder()
     out = cv2.VideoWriter('./Zoomed-in Video/output_video.avi', cv2.VideoWriter_fourcc(*'DIVX'), 25, (700, 700))
     for num in image_nums:
         try:
+            print(f'Converting zoomed-in frame into type:DIVX-mp4, Frame: {num}')
             img = glob.glob('./Exported Frames/zoomed images/zoom%d.jpg' % num)[0]
             img = cv2.imread(img)
             out.write(img)
-        except IndexError as i:
-            print(i)
+        except IndexError as ie:
+            print(ie)
 
     out.release()
 
@@ -75,6 +77,7 @@ def export_frames(video, frame):
 
     while success:
         if frame - (fps_ * 3) <= count <= frame + (fps_ * 7):
+            print(f'Exporting frames, Frame Count: {count}')
             cv2.imwrite('./Exported Frames/frame%d.jpg' % count, image)
 
         success, image = vid_cap.read()
@@ -92,7 +95,7 @@ def export_all_frames(video):
     while success:
         print('Exporting several images:')
         if count % 10 == 0:
-            print(count, image)
+            print(f'Exporting frames, Frame Count: {count}')
             cv2.imwrite('./Exported Frames/frame%d.jpg' % count, image)
 
         success, image = vid_cap.read()

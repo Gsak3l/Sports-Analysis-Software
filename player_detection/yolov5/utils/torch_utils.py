@@ -21,7 +21,8 @@ from utils.general import LOGGER, file_update_date, git_describe
 
 try:
     import thop  # for FLOPs computation
-except ImportError:
+except ImportError as ie:
+    print(ie)
     thop = None
 
 # Suppress PyTorch warnings

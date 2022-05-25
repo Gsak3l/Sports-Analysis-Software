@@ -89,7 +89,8 @@ def load_checkpoint(fpath):
         checkpoint = torch.load(
             fpath, pickle_module=pickle, map_location=map_location
         )
-    except Exception:
+    except Exception as e:
+        print(e)
         print('Unable to load checkpoint from "{}"'.format(fpath))
         raise
     return checkpoint

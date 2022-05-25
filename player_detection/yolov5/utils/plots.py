@@ -58,7 +58,8 @@ def check_pil_font(font=FONT, size=10):
         check_font(font)
         try:
             return ImageFont.truetype(str(font), size)
-        except TypeError:
+        except TypeError as te:
+            print(te)
             check_requirements('Pillow>=8.4.0')  # known issue https://github.com/ultralytics/yolov5/issues/5374
 
 

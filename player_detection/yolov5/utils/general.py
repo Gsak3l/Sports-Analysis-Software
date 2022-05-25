@@ -55,7 +55,8 @@ def is_kaggle():
         assert os.environ.get('PWD') == '/kaggle/working'
         assert os.environ.get('KAGGLE_URL_BASE') == 'https://www.kaggle.com'
         return True
-    except AssertionError:
+    except AssertionError as ae:
+        print(ae)
         return False
 
 
