@@ -2,7 +2,7 @@ __pycache__/
 .git/
 .idea/
 .pyc### JetBrains template
-football-formation-creator/11-builder/node_modules/
+football_formation_creator/11_builder/node_modules/
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 

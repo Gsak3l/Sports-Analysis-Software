@@ -14,5 +14,5 @@ def save_video_to_downloads(url):
     return fc.downloads_path() + '/' + youtube_video_title + '.mp4'
 
 
-if __name__ == '__main__':
-    save_video_to_downloads('https://www.youtube.com/watch?v=JM3a7olLxmE')
+# if __name__ == '__main__':
+#     save_video_to_downloads('https://www.youtube.com/watch?v=JM3a7olLxmE')

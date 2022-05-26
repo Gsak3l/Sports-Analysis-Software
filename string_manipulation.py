@@ -5,15 +5,13 @@ import filesystem_changes as fc
 
 
 # REPLACING ALL SYMBOLS WITH SPACES
-# C:\file\video\name.mp4 TO random_game.mp4
+# C:\file\video\video_name.mp4 TO video name
 def path_to_video_title(video_file):
     file_title = re.findall('([^\/]+$)', video_file)[0]
-
     try:
         file_title = re.sub('[^a-zA-Z0-9\n\.]', ' ', file_title)
     except Exception as e:
         print(e.message, e.args)
-
     file_title = file_title[0:file_title.find('.')]
 
     return file_title.title()
@@ -143,3 +141,8 @@ def keep_till_second_dot(text):
 def get_after_last_slash(text):
     text = re.findall('([^\/]+$)', text)[0]
     return text
+
+
+# if __name__ == '__main__':
+#     path_to_video_title("C:/Users/gsak3/Downloads/Johnny Depp pokes fun at Amber Heard Lawyers.mp4")
+#     print(path_to_video_name("C:/Users/gsak3/Downloads/Johnny Depp pokes fun at Amber Heard Lawyers.mp4"))
