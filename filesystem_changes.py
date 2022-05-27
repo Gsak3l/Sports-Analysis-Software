@@ -20,7 +20,7 @@ def create_root_save_directory():
 
 # CREATING SUB-FOLDERS WITH DATE AND TIME AS A NAME
 def create_sub_save_folder():
-    date, time = get_date_time()
+    date, time = sm.get_date_time()
     path = os.path.join('./Project Saves/', f'Date {date}')
 
     try:
@@ -58,14 +58,6 @@ def find_yolo_weight_folder():
     return weights_folder
 
 
-# GETTING THE CURRENT DATE AND TIME
-def get_date_time():
-    now = datetime.now()  # current date and time
-    date = now.strftime("%d.%m.%Y")
-    time = now.strftime("%H.%M.%S")
-    return date, time
-
-
 # RETURNING THE DOWNLOADS
 def downloads_path():
     home = os.path.expanduser('~')
@@ -76,28 +68,6 @@ def downloads_path():
 # DELETE FILE
 def delete_file(file_path, file_name):
     os.remove(file_path + file_name)
-
-
-# FIND VIDEO LENGTH SECONDS
-def find_video_sec_length():
-    duration = 1
-    path = ''
-
-    try:
-        f = open(sm.double_backslash_to_slash(find_last_created_folder()) + 'game details.json')
-        path = json.load(f)
-        path = path['Video Path']
-        f.close()
-    except FileNotFoundError as fe:
-        print(fe)
-
-    if path != '':
-        cap = cv2.VideoCapture(path)
-        fps = cap.get(cv2.CAP_PROP_FPS)  # OpenCV2 version 2 used "CV_CAP_PROP_FPS"
-        frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        duration = frame_count / fps
-
-    return duration
 
 
 # DELETE ALL FILES FROM FOLDER AND THEN THE FOLDER ITSELF

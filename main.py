@@ -570,7 +570,7 @@ class MainWindow(QMainWindow):
     # RESUME VIDEO 10 SECONDS BEFORE A GIVEN TIMESTAMP
     def set_minute(self):
         try:
-            max_seconds = fc.find_video_sec_length()
+            max_seconds = zo.find_video_sec_length()
             seconds = widgets.od_timestamps_combobox.currentText()
             seconds = sm.date_to_seconds(seconds)
             seconds -= 10

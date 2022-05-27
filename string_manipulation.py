@@ -1,6 +1,6 @@
 import os
 import re
-import datetime
+from datetime import datetime, timedelta
 import filesystem_changes as fc
 
 
@@ -54,15 +54,15 @@ def sum_digits_string(text):
     for x in text:
         if x.isdigit() == True:
             z = int(x)
-            sum_digit = sum_digit + z
+            sum_digit += z
 
     return sum_digit
 
 
 # REPLACE 5 TO 5-
-def dash_after_number(text):
-    text += '-'
-    return text
+def dast_after_char(character):
+    character += '-'
+    return character
 
 
 # RETURNS TRUE IF A GIVEN STRING CONTAINS JUST NUMBERS AND DASHES
@@ -86,7 +86,7 @@ def list_to_string(list_):
 def frame_to_time_list(df, fps):
     second_timestamps = (df[0] / fps).to_list()
     int_second_timestamps = [int(fl) for fl in second_timestamps]
-    time_list = [str(datetime.timedelta(seconds=i)) for i in int_second_timestamps]
+    time_list = [str(timedelta(seconds=i)) for i in int_second_timestamps]
     return time_list
 
 
@@ -143,6 +143,9 @@ def get_after_last_slash(text):
     return text
 
 
-# if __name__ == '__main__':
-#     path_to_video_title("C:/Users/gsak3/Downloads/Johnny Depp pokes fun at Amber Heard Lawyers.mp4")
-#     print(path_to_video_name("C:/Users/gsak3/Downloads/Johnny Depp pokes fun at Amber Heard Lawyers.mp4"))
+# GETTING THE CURRENT DATE AND TIME
+def get_date_time():
+    now = datetime.now()  # current date and time
+    date = now.strftime("%d.%m.%Y")
+    time = now.strftime("%H.%M.%S")
+    return date, time

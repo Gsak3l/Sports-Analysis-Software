@@ -63,7 +63,7 @@ def json_data_cleanup(file_path, file_name):
 
     for element in x_json:
         element.pop('club', None)
-    _, time_ = fc.get_date_time()
+    _, time_ = sm.get_date_time()
     new_name = 'lineup ' + time_ + '.json'
     with open(file_path + new_name, 'w') as f:
         json.dump(x_json, f, ensure_ascii=False, indent=4)

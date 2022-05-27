@@ -1,5 +1,6 @@
 import glob
 import cv2
+import json
 
 import filesystem_changes as fc
 import string_manipulation as sm
@@ -106,3 +107,25 @@ def export_all_frames(video):
 def get_video_fps(video):
     video = cv2.VideoCapture(video)
     return int(video.get(cv2.CAP_PROP_FPS))
+
+
+# FIND VIDEO LENGTH SECONDS
+def find_video_sec_length():
+    duration = 1
+    path = ''
+
+    try:
+        f = open(sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'game details.json')
+        path = json.load(f)
+        path = path['Video Path']
+        f.close()
+    except FileNotFoundError as fe:
+        print(fe)
+
+    if path != '':
+        cap = cv2.VideoCapture(path)
+        fps = cap.get(cv2.CAP_PROP_FPS)  # OpenCV2 version 2 used "CV_CAP_PROP_FPS"
+        frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        duration = frame_count / fps
+
+    return duration
