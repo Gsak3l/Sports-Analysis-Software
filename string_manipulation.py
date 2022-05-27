@@ -1,7 +1,5 @@
-import os
 import re
 from datetime import datetime, timedelta
-import filesystem_changes as fc
 
 
 # REPLACING ALL SYMBOLS WITH SPACES
@@ -54,15 +52,15 @@ def sum_digits_string(text):
     for x in text:
         if x.isdigit() == True:
             z = int(x)
-            sum_digit += z
+            sum_digit = sum_digit + z
 
     return sum_digit
 
 
 # REPLACE 5 TO 5-
-def dast_after_char(character):
-    character += '-'
-    return character
+def dash_after_number(text):
+    text += '-'
+    return text
 
 
 # RETURNS TRUE IF A GIVEN STRING CONTAINS JUST NUMBERS AND DASHES
@@ -104,18 +102,6 @@ def int_list_to_string_list(ints):
     return string_ints
 
 
-# RETURNS ALL CSV LINEUPS FROM LAST CREATED FOLDER
-def find_last_folder_lineups():
-    all_files = os.listdir(double_backslash_to_slash(fc.find_last_created_folder()))
-    lineups = []
-
-    for file in all_files:
-        if re.search(r'\blineup\b', file):
-            lineups.append(file)
-
-    return lineups
-
-
 # RETURNS JUST NUMBERS FROM STRING THAT CONTAINS NUMBERS, SYMBOLS, AND LETTERS
 def keep_numbers(text):
     return ''.join(c for c in text if c.isdigit())
@@ -137,15 +123,15 @@ def keep_till_second_dot(text):
     return text
 
 
-# GET EVERYTHING AFTER LAST SLASH
-def get_after_last_slash(text):
-    text = re.findall('([^\/]+$)', text)[0]
-    return text
-
-
 # GETTING THE CURRENT DATE AND TIME
 def get_date_time():
     now = datetime.now()  # current date and time
     date = now.strftime("%d.%m.%Y")
     time = now.strftime("%H.%M.%S")
     return date, time
+
+
+# GET EVERYTHING AFTER LAST SLASH
+def get_after_last_slash(text):
+    text = re.findall('([^\/]+$)', text)[0]
+    return text

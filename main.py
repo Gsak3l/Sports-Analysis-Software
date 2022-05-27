@@ -627,7 +627,7 @@ class MainWindow(QMainWindow):
          range(len(labels_equal_to))]
 
         # LINEUPS
-        lineups = sm.find_last_folder_lineups()
+        lineups = fc.find_last_folder_lineups()
         lineup_path = []
         row_count = 0
         for i in range(len(lineups)):

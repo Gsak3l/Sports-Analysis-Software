@@ -1,7 +1,6 @@
+import re
 import os
 import glob
-import json
-import cv2
 import shutil
 
 from datetime import datetime
@@ -34,8 +33,19 @@ def create_sub_save_folder():
     except OSError as oe:
         print(oe)
 
-    print(path)
     return path
+
+
+# RETURNS ALL CSV LINEUPS FROM LAST CREATED FOLDER
+def find_last_folder_lineups():
+    all_files = os.listdir(sm.double_backslash_to_slash(find_last_created_folder()))
+    lineups = []
+
+    for file in all_files:
+        if re.search(r'\blineup\b', file):
+            lineups.append(file)
+
+    return lineups
 
 
 # CHECKING IF THE GIVEN PATH IS A VALID FILE
