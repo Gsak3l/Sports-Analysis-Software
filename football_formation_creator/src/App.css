@@ -156,7 +156,7 @@ h1 {
   flex-direction: column-reverse;
   transform-origin: bottom center;
   width: 162px;
-  border-radius: 3px 3px 0 0;  
+  border-radius: 3px 3px 0 0;
   position: absolute;
   left: 0;
   background: #fafafa;
@@ -222,7 +222,7 @@ h1 {
   overflow: hidden;
 }
 
-.Pitch > div {
+.Pitch>div {
   height: 100%;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 5%, rgba(255, 255, 255, 0) 100%);
 }
@@ -412,7 +412,7 @@ h1 {
     pointer-events: auto;
   }
 
-  .Settings > div {
+  .Settings>div {
     position: absolute;
     left: 0;
     width: calc(100% - 20px);
@@ -434,7 +434,7 @@ h1 {
     pointer-events: auto;
   }
 
-  .Settings .Customize .Menu{
+  .Settings .Customize .Menu {
     width: calc(50% - 15px);
     margin: 10px;
     height: 45px;
@@ -445,11 +445,15 @@ h1 {
     bottom: 45px;
   }
 
-  .Settings .Customize .Options, .Settings .Customize .Options div {
+  .Settings .Customize .Options,
+  .Settings .Customize .Options div {
     width: 100% !important;
   }
 
-  .Settings .Customize .Menu .Options div, .Menu .Selected, .Search-player, .Result-player {
+  .Settings .Customize .Menu .Options div,
+  .Menu .Selected,
+  .Search-player,
+  .Result-player {
     height: 45px !important;
     line-height: 45px;
   }
@@ -562,7 +566,8 @@ h1 {
     font-size: 15px;
   }
 
-  .App .Pitch .LineupName, .EditLineupName {
+  .App .Pitch .LineupName,
+  .EditLineupName {
     font-size: 48px !important;
     top: 6% !important;
   }
@@ -574,4 +579,9 @@ h1 {
   .App .Pitch.Transform {
     transform: translate(0, 65px) !important;
   }
+}
+
+.Tactic, .Options div, .Pitch-style, .CTA, .Search-player, .Results {
+  background-color: #bd93f9 !important;
+  color: #fff !important;
 }
