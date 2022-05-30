@@ -3,12 +3,10 @@ import os
 import glob
 import shutil
 
-from datetime import datetime
-
 import string_manipulation as sm
 
 
-# CREATING A FOLDER THAT STORES SUB-FOLDER DATA
+# CREATING A FOLDER THAT WILL STORE SUB-FOLDER DATA
 def create_root_save_directory():
     path = os.path.join('./', 'Project Saves')
     try:
@@ -91,7 +89,7 @@ def delete_files_and_folder(folder_path):
                 elif os.path.isdir(file):
                     shutil.rmtree(file)
             except FileNotFoundError as fe:
-                print(f)
+                print(fe)
 
         os.rmdir(folder_path)
     except FileNotFoundError as fe:

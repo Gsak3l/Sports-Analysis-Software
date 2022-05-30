@@ -128,7 +128,7 @@ class MainWindow(QMainWindow):
         # saving the information for the formation/tactics/lineup website to a json file
         widgets.formation.page().profile().setDownloadPath(path)
         widgets.formation.page().profile().downloadRequested.connect(self.on_downloadRequested)
-        widgets.formation.load(QUrl('file:///football_formation_creator/11_builder/build/index.html'))
+        widgets.formation.load(QUrl('file:///football_formation_creator/build/index.html'))
         # BUTTONS
         widgets.formation_next_page_button.clicked.connect(self.buttonClick)
         widgets.formation_previous_page_button.clicked.connect(self.buttonClick)
