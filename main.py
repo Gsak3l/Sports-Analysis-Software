@@ -512,9 +512,7 @@ class MainWindow(QMainWindow):
 
     # CHANGING THE TIMESTAMPS FOR OFFENSE/DEFENSE/I-B
     def change_timestamps(self):
-        timestamps_, running_meters_, distance_meters_ = di.manager(
-            fc.find_last_detection_text_file(), 3
-        )
+        timestamps_ = di.manager(fc.find_last_detection_text_file())
 
         # deleting current values
         try:

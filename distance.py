@@ -6,22 +6,22 @@ import csv_calculations as cc
 
 
 # CALCULATE DISTANCE BETWEEN PLAYERS IN PIXELS USING THE EUCLIDEAN DISTANCE
-def euclidean_distance_pixels(df3):
+def euclidean_distance_pixels(df2):
     x2_x1 = []
     y2_y1 = []
 
-    for i in range(df3.shape[0]):
-        x2_x1.append([df3['x'].loc[i] - df3['x'].loc[j] for j in range(df3.shape[0])])
-        y2_y1.append([df3['y'].loc[i] - df3['y'].loc[j] for j in range(df3.shape[0])])
+    for i in range(df2.shape[0]):
+        x2_x1.append([df2['x'].loc[i] - df2['x'].loc[j] for j in range(df2.shape[0])])
+        y2_y1.append([df2['y'].loc[i] - df2['y'].loc[j] for j in range(df2.shape[0])])
 
     # basically x2-x1 and y2-y1
     x2_x1 = pd.DataFrame(x2_x1)
     y2_y1 = pd.DataFrame(y2_y1)
 
     df_player_distance_ = []
-    for i in range(df3.shape[0]):
+    for i in range(df2.shape[0]):
         df_player_distance_.append(
-            [sqrt(pow(x2_x1.iloc[i][j], 2) + pow(y2_y1.iloc[i][j], 2)) for j in range(df3.shape[0])]
+            [sqrt(pow(x2_x1.iloc[i][j], 2) + pow(y2_y1.iloc[i][j], 2)) for j in range(df2.shape[0])]
         )
 
     df_player_distance_ = pd.DataFrame(df_player_distance_)
@@ -30,14 +30,13 @@ def euclidean_distance_pixels(df3):
 
 
 # CALCULATE DISTANCE BETWEEN PLAYERS IN METERS USING THE EUCLIDEAN DISTANCE
-def euclidean_distance_meters(df5, distance_pixel):
+def euclidean_distance_meters(df3, distance_pixel):
     distance_meters = []
 
-    for i in range(df5.shape[0]):
-        # if anyone is reading this, please don't judge me, I have no idea what I am doing
+    for i in range(df3.shape[0]):
         distance_meters.append(
-            [(df5['DC'].loc[i] + df5['DC'].loc[j]) * distance_pixel.iloc[i][j] / (df5['x'].loc[i] + df5['x'].loc[j])
-             for j in range(df5.shape[0])]
+            [(df3['DC'].loc[i] + df3['DC'].loc[j]) * distance_pixel.iloc[i][j] / (df3['x'].loc[i] + df3['x'].loc[j])
+             for j in range(df3.shape[0])]
         )
 
     distance_meters = pd.DataFrame(distance_meters)
@@ -89,17 +88,8 @@ def calculate_offense_defense(df5):
     return possession_changed
 
 
-# NO SURE WHAT THIS DOES
-# def distance_from_center_meters(df7):
-#     f_mm = 35
-#     image_height_px = 720
-#     sensor_height_mm = 44.3
-#
-#     df7['D_CEN'] = (f_mm * df4['CM'] * 10 * image_height_px) / ((df4['h'] + df4['w']) * sensor_height_mm)
-
-
 # CALCULATING RUNNING DISTANCE FOR EACH PLAYER
-def calculate_running_distance(df6):
+def calculate_running_distance_meters(df6):
     df6.drop(df6[df6['h'] > df6['h'].mean() * 2].index, inplace=True)  # dropping the center of the football field
     df_player_location = df6.drop(['Frame', 'x', 'y', 'w', 'h', 'CM'], axis=1)
 
@@ -114,12 +104,15 @@ def calculate_running_distance(df6):
     return running_distance
 
 
+def manager(df):
+    df = cc.read_and_clean(df)
+    od_timestamps = calculate_offense_defense(df)
+    return od_timestamps
+
+
 # CALLS OUT ALL THE FUNCTIONS ABOVE
-def manager(df, frame):
+def manager_2(df, frame):
     df_ = df = cc.read_and_clean(df)
-
-    # print(df_.ID.value_counts())
-
     od_timestamps = calculate_offense_defense(df)
 
     df = df[df['Frame'] == frame]
@@ -130,7 +123,7 @@ def manager(df, frame):
     df_ = players_from_camera_meters(df_)
 
     euclidean_m = euclidean_distance_meters(df, euclidean_px)  # distance between players meters
-    df_running_distance = calculate_running_distance(df_)
+    df_running_distance = calculate_running_distance_meters(df_)
     df_running_distance = df_running_distance['x'].to_list()
 
     return od_timestamps, df_running_distance, euclidean_m
@@ -140,4 +133,4 @@ def manager(df, frame):
 #     pd.set_option('display.width', desired_width)
 #     np.set_printoptions(linewidth=desired_width)
 #     pd.set_option('display.max_columns', 23)
-#     manager('player_detection/runs/track/exp20/Tactical View- Pixellot C Coaching.txt', 46)
+#     manager('player_detection/runs/track/exp/Tactical View- Pixellot C Coaching.txt', 46)
