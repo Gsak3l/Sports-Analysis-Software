@@ -97,7 +97,7 @@ def delete_files_and_folder(folder_path):
 
 
 # CREATE FOLDER FOR ZOOMED VIDEO VERSIONS
-def created_zoom_video_folder():
+def create_zoom_video_folder():
     try:
         os.mkdir('Zoomed-in Video')
     except FileExistsError as fe:

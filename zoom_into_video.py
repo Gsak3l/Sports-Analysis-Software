@@ -7,8 +7,8 @@ import string_manipulation as sm
 import csv_calculations as cc
 
 
-# CREATES A ZOOMED IN VERSION OF THE VIDEO
-def zoom(img, zoom_factor=2):
+# CROPS THE GIVEN IMAGE BY THE GIVEN ZOOM FACTOR
+def resize_image(img, zoom_factor=2):
     return cv2.resize(img, None, fx=zoom_factor, fy=zoom_factor)
 
 
@@ -16,8 +16,8 @@ def zoom(img, zoom_factor=2):
 def create_zoom_version(img, x, y):
     img = cv2.imread(img)
     cropped = img[y - 20: y + 50, x - 20: x + 50]  # from y1 to y2 [y1:y2], from x1 to x2 [x1:x2]
-    img = zoom(img, 20)
-    zoomed_and_cropped = zoom(cropped, 10)
+    img = resize_image(img, 20)
+    zoomed_and_cropped = resize_image(cropped, 10)
     return zoomed_and_cropped
 
 
@@ -52,7 +52,7 @@ def zoom_player(player_id, runs_path):
             print(ie)
 
     print('Converting frames into video, type:DIVX-mp4')
-    fc.created_zoom_video_folder()
+    fc.create_zoom_video_folder()
     out = cv2.VideoWriter('./Zoomed-in Video/output_video.avi', cv2.VideoWriter_fourcc(*'DIVX'), 25, (700, 700))
     for num in image_nums:
         try:
@@ -67,7 +67,7 @@ def zoom_player(player_id, runs_path):
 
 
 # EXPORT 10 SECONDS WORTH OF FRAMES
-def export_frames(video, frame):
+def export_10_second_frames(video, frame):
     print('Exporting 10 Seconds')
     fc.delete_files_and_folder('./Exported Frames')
     fc.create_exported_frames_folder()
@@ -80,6 +80,8 @@ def export_frames(video, frame):
         if frame - (fps_ * 3) <= count <= frame + (fps_ * 7):
             print(f'Exporting frames, Frame Count: {count}')
             cv2.imwrite('./Exported Frames/frame%d.jpg' % count, image)
+        elif count > frame + (fps_ * 7):
+            break
 
         success, image = vid_cap.read()
         count += 1

@@ -440,14 +440,14 @@ class MainWindow(QMainWindow):
             if temp_video_path != '' and temp_find_player != '':
                 fps = zo.get_video_fps(temp_video_path)
                 frame = int(self.media_player.position() / 1000 * fps)  # converting ms to s and then frames
-                zo.export_frames(temp_video_path, frame)
+                zo.export_10_second_frames(temp_video_path, frame)
                 zo.zoom_player(int(temp_find_player), temp_player_location_txt)
                 self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
             # creating and playing zoomed in version of video
             elif temp_video_path_2 != '' and temp_find_player != '':
                 fps = zo.get_video_fps(temp_video_path_2)
                 frame = int(self.media_player.position() / 1000 * fps)  # converting ms to s and then frames
-                zo.export_frames(temp_video_path_2, frame)
+                zo.export_10_second_frames(temp_video_path_2, frame)
                 zo.zoom_player(int(temp_find_player), temp_player_location_txt)
                 self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
             # just playing the normal video, cannot save timestamp, setPosition refuses to work...
