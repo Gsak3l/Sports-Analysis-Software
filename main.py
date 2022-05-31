@@ -25,9 +25,7 @@ import distance as di
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 from modules import *
 from widgets import *
-from PySide6.QtCore import *
-from PySide6.QtWidgets import *
-from PySide6.QtWebEngineWidgets import *
+from PySide6 import QtCore, QtWidgets, QtWebEngineWidgets
 from PySide6.QtWebEngineCore import QWebEngineProfile
 from PySide6.QtMultimediaWidgets import QVideoWidget
 from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
