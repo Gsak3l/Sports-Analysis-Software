@@ -8,7 +8,7 @@ import pandas as pd
 import json
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# ***IMPORT PYTHON CLASSES***
+# ***IMPORT PYTHON FILES***
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 import save_data as sd
 import string_manipulation as sm
@@ -42,8 +42,10 @@ names = []
 actions = []
 timestamps = None
 date_stamps = None
-running_meters = None
-distance_meters = None
+
+
+# running_meters = None
+# distance_meters = None
 
 
 class MainWindow(QMainWindow):
@@ -60,8 +62,8 @@ class MainWindow(QMainWindow):
         global actions
         global timestamps
         global date_stamps
-        global running_meters
-        global distance_meters
+        # global running_meters
+        # global distance_meters
 
         widgets = self.ui
 
@@ -314,7 +316,7 @@ class MainWindow(QMainWindow):
         # SAVE DATA FROM INPUT FIELDS INTO A JSON AFTER VALIDATING FILE AND CHANGE PAGE
         elif btnName == 'cloud_next_page_button':
             if fc.check_if_file_exists(widgets.cloud_video_file_name.placeholderText()):
-                sd.save_pre_local_video_data(widgets.cloud_calendar.selectedDate(),
+                sd.save_pre_cloud_video_data(widgets.cloud_calendar.selectedDate(),
                                              widgets.cloud_sports_type_combobox.currentText(),
                                              widgets.cloud_season_input.text(),
                                              widgets.cloud_competition_input.text(),
@@ -402,7 +404,10 @@ class MainWindow(QMainWindow):
         # PLAY NORMAL OR LABELED AI-VIDEO THING
         elif btnName == 'player_detection_button':
             if widgets.player_detection_button.isChecked():
-                self.on_loadVideoRequest(fc.find_last_detection_video())
+                try:
+                    self.on_loadVideoRequest(fc.find_last_detection_video())
+                except FileNotFoundError as fe:
+                    print(fe)
             else:
                 temp_video_path = widgets.local_video_file_name.text()
                 temp_video_path_2 = widgets.cloud_video_file_name.placeholderText()
@@ -558,8 +563,8 @@ class MainWindow(QMainWindow):
         self.media_player.setSource(QUrl(video_path))
         self.media_player.setPlaybackRate(1)
         self.media_player.play()
-        widgets.play_video_button.setDisabled(False)
-        widgets.pause_video_button.setDisabled(True)
+        widgets.play_video_button.setDisabled(True)
+        widgets.pause_video_button.setDisabled(False)
         widgets.stop_video_button.setDisabled(False)
 
     # .................................................................................................................
