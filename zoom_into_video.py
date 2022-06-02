@@ -67,7 +67,7 @@ def zoom_player(player_id, runs_path):
 
 
 # EXPORT 10 SECONDS WORTH OF FRAMES
-def export_10_second_frames(video, frame):
+def export_10_seconds_frames(video, frame):
     print('Exporting 10 Seconds')
     fc.delete_files_and_folder('./Exported Frames')
     fc.create_exported_frames_folder()

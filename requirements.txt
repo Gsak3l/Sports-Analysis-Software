@@ -8,28 +8,23 @@ Pillow
 PyYAML
 requests
 scipy
-# torch
-# torchvision
+torch
+torchvision
+torchaudio
 tqdm
-
-# Logging -------------------------------------
-tensorboard
-# wandb
 
 # Plotting ------------------------------------
 pandas
 seaborn
 
-# Extras --------------------------------------
-# albumentations>=1.0.3
-# Cython  # for pycocotools https://github.com/cocodataset/cocoapi/issues/172
-# pycocotools>=2.0  # COCO mAP
-# roboflow
-thop  # FLOPs computation
-
+# Logging -------------------------------------
+tensorboard
 
 # deep_sort -----------------------------------
 easydict
+
+# Extras --------------------------------------
+thop  # FLOPs computation
 Cython
 h5py
 six
@@ -42,9 +37,6 @@ yapf
 isort
 imageio
 
-
-# UI ------------------------------------------
+# Rest ----------------------------------------
 PySide6
 pytube
-
-cx_Freeze

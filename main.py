@@ -127,7 +127,7 @@ class MainWindow(QMainWindow):
         # -------------------------------------------------------------------------------------------------------------
         # saving the information for the formation/tactics/lineup website to a json file
         widgets.formation.page().profile().setDownloadPath(path)
-        widgets.formation.page().profile().downloadRequested.connect(self.on_downloadRequested)
+        widgets.formation.page().profile().downloadRequested.connect(self.on_download_requested)
         widgets.formation.load(QUrl('file:///football_formation_creator/build/index.html'))
         # BUTTONS
         widgets.formation_next_page_button.clicked.connect(self.buttonClick)
@@ -359,9 +359,9 @@ class MainWindow(QMainWindow):
             widgets.stackedWidget.setCurrentWidget(widgets.video_page)
             # DECIDE WHAT VIDEO TO DISPLAY, BAD PRACTICE
             if (widgets.cloud_video_file_name.text() == 'COMPLETED'):
-                self.on_loadVideoRequest(widgets.cloud_video_file_name.placeholderText())
+                self.on_load_video_request(widgets.cloud_video_file_name.placeholderText())
             else:
-                self.on_loadVideoRequest(widgets.local_video_file_name.text())
+                self.on_load_video_request(widgets.local_video_file_name.text())
             widgets.play_video_button.setDisabled(True)
             widgets.pause_video_button.setDisabled(False)
             widgets.stop_video_button.setDisabled(False)
@@ -405,16 +405,16 @@ class MainWindow(QMainWindow):
         elif btnName == 'player_detection_button':
             if widgets.player_detection_button.isChecked():
                 try:
-                    self.on_loadVideoRequest(fc.find_last_detection_video())
+                    self.on_load_video_request(fc.find_last_detection_video())
                 except FileNotFoundError as fe:
                     print(fe)
             else:
                 temp_video_path = widgets.local_video_file_name.text()
                 temp_video_path_2 = widgets.cloud_video_file_name.placeholderText()
                 if temp_video_path != '':
-                    self.on_loadVideoRequest(temp_video_path)
+                    self.on_load_video_request(temp_video_path)
                 elif temp_video_path_2 != '':
-                    self.on_loadVideoRequest(temp_video_path)
+                    self.on_load_video_request(temp_video_path)
 
         # ADD ACTION FROM THE COMBO BOXES TO A CSV
         # .............................................................................................................
@@ -443,23 +443,23 @@ class MainWindow(QMainWindow):
             if temp_video_path != '' and temp_find_player != '':
                 fps = zo.get_video_fps(temp_video_path)
                 frame = int(self.media_player.position() / 1000 * fps)  # converting ms to s and then frames
-                zo.export_10_second_frames(temp_video_path, frame)
+                zo.export_10_seconds_frames(temp_video_path, frame)
                 zo.zoom_player(int(temp_find_player), temp_player_location_txt)
-                self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
+                self.on_load_video_request('./Zoomed-in Video/output_video.avi')
             # creating and playing zoomed in version of video
             elif temp_video_path_2 != '' and temp_find_player != '':
                 fps = zo.get_video_fps(temp_video_path_2)
                 frame = int(self.media_player.position() / 1000 * fps)  # converting ms to s and then frames
-                zo.export_10_second_frames(temp_video_path_2, frame)
+                zo.export_10_seconds_frames(temp_video_path_2, frame)
                 zo.zoom_player(int(temp_find_player), temp_player_location_txt)
-                self.on_loadVideoRequest('./Zoomed-in Video/output_video.avi')
+                self.on_load_video_request('./Zoomed-in Video/output_video.avi')
             # just playing the normal video, cannot save timestamp, setPosition refuses to work...
             elif temp_find_player == '' and temp_video_path != '':
-                self.on_loadVideoRequest(temp_video_path)
+                self.on_load_video_request(temp_video_path)
 
             # just playing the normal video, cannot save timestamp, setPosition refuses to work...
             elif temp_find_player == '' and temp_video_path_2 != '':
-                self.on_loadVideoRequest(temp_video_path_2)
+                self.on_load_video_request(temp_video_path_2)
 
             widgets.player_zoom_selection_lineedit.setText('')
             widgets.play_video_button.setDisabled(True)
@@ -481,7 +481,7 @@ class MainWindow(QMainWindow):
         print(f'Button {btnName} pressed!')
 
     # -----------------------------------------------------------------------------------------------------------------
-    # ***MOUSE CLICK EVENTS***
+    # ***MOUSE AND KEYBOARD CLICK EVENTS***
     # -----------------------------------------------------------------------------------------------------------------
     def mousePressEvent(self, event):
         # SET DRAG POS WINDOW
@@ -557,7 +557,7 @@ class MainWindow(QMainWindow):
     # ***VIDEO AND AUDIO ACTIONS***
     # -----------------------------------------------------------------------------------------------------------------
     # LOAD VIDEO AND PLAY IT ON THE DEFAULT SPEED OF 1
-    def on_loadVideoRequest(self, video_path):
+    def on_load_video_request(self, video_path):
         self.media_player.setAudioOutput(self.audio_output)
         self.media_player.setVideoOutput(widgets.video_player)
         self.media_player.setSource(QUrl(video_path))
@@ -693,7 +693,7 @@ class MainWindow(QMainWindow):
     # -----------------------------------------------------------------------------------------------------------------
     # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***
     # -----------------------------------------------------------------------------------------------------------------
-    def on_downloadRequested(self, download):
+    def on_download_requested(self, download):
         download.accept()
 
     # -----------------------------------------------------------------------------------------------------------------
