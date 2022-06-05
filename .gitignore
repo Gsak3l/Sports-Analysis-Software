@@ -30,13 +30,7 @@
 *.webp
 
 # Portable Network Graphics
-*.png
-!football_formation_creator/build/data/clubs/*.png
-!football_formation_creator/build/data/photos/*.png
-!football_formation_creator/build/data/photos/1/*.png
-!football_formation_creator/build/data/photos/2/*.png
-!football_formation_creator/build/data/photos/3/*.png
-!football_formation_creator/build/data/photos/4/*.png
+# *.png
 
 # Animated Portable Network Graphics
 *.apng
