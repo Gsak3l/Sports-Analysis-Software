@@ -120,7 +120,12 @@ def find_last_detection_video():
 # FIND LAST CREATED RUNS FOLDER AND GET THE TXT FILE FROM THERE
 def find_last_detection_text_file():
     chdir_to_content_root()
-    relative_path = max(glob.glob(os.path.join('./player_detection/runs/track/exp*', '*txt')), key=os.path.getmtime)
+    try:
+        relative_path = max(glob.glob(os.path.join('./player_detection/runs/track/exp*', '*txt')), key=os.path.getmtime)
+    except IndexError as ie:
+        relative_path = glob.glob(os.path.join('./player_detection/runs/track/exp*', '*txt'))
+        print(relative_path)
+        print(ie)
     return relative_path
 
 
