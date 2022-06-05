@@ -31,6 +31,7 @@
 
 # Portable Network Graphics
 *.png
+!football_formation_creator/build/data/*.png
 
 # Animated Portable Network Graphics
 *.apng
