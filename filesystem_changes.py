@@ -132,7 +132,11 @@ def find_last_detection_text_file():
 # CHANGE DIRECTORY TO CONTENT ROOT
 def chdir_to_content_root():
     relative_cwd = sm.get_after_last_slash(sm.double_backslash_to_slash(os.getcwd()))
-    # the first one is on my local computer, the other when you clone the GitHub repository
-    while relative_cwd != 'SportsAnalysisSoftware' or relative_cwd != 'Sports-Analysis-Software':
-        os.chdir('..')
-        relative_cwd = sm.get_after_last_slash(sm.double_backslash_to_slash(os.getcwd()))
+    flag = True
+    while flag:
+        # the first one is on my local computer, the other when you clone the GitHub repository
+        if relative_cwd == 'SportsAnalysisSoftware' or relative_cwd == 'Sports-Analysis-Software':
+            flag = False
+        else:
+            os.chdir('..')
+            relative_cwd = sm.get_after_last_slash(sm.double_backslash_to_slash(os.getcwd()))
