@@ -69,7 +69,7 @@ Then use the command `python train.py --img 640 --batch 16 --epochs 3 --data cus
 
 Adjust the epochs and batch number to suit your needs. 
 From my study, the more epochs you add the less significant the batch value is.
-For more information about epochs and batch performance difference check yolov5 [#2337](https://github.com/ultralytics/yolov5/issues/2377) for more info
+For more information about epochs and batch performance difference check yolov5 [#2337](https://github.com/ultralytics/yolov5/issues/2377).
 
 ## License
 
