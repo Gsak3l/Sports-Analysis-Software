@@ -1,34 +1,31 @@
 # limit the number of cpus used by high performance libraries
 import os
+import sys
+import argparse
+import platform
+import shutil
+from pathlib import Path
+import cv2
+import torch
+import torch.backends.cudnn as cudnn
+
+from deep_sort.utils.parser import get_config
+from deep_sort.deep_sort import DeepSort
+
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
 os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
-import sys
 sys.path.insert(0, './yolov5')
 
-import argparse
-import os
-import platform
-import shutil
-import time
-from pathlib import Path
-import cv2
-import torch
-import torch.backends.cudnn as cudnn
-
-from yolov5.models.experimental import attempt_load
-from yolov5.utils.downloads import attempt_download
 from yolov5.models.common import DetectMultiBackend
 from yolov5.utils.datasets import LoadImages, LoadStreams
-from yolov5.utils.general import (LOGGER, check_img_size, non_max_suppression, scale_coords, 
+from yolov5.utils.general import (LOGGER, check_img_size, non_max_suppression, scale_coords,
                                   check_imshow, xyxy2xywh, increment_path)
 from yolov5.utils.torch_utils import select_device, time_sync
 from yolov5.utils.plots import Annotator, colors
-from deep_sort.utils.parser import get_config
-from deep_sort.deep_sort import DeepSort
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # yolov5 deepsort root directory
@@ -37,26 +34,26 @@ if str(ROOT) not in sys.path:
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
 
-def detect(opt):
-    out, source, yolo_model, deep_sort_model, show_vid, save_vid, save_txt, imgsz, evaluate, half, project, name, exist_ok= \
-        opt.output, opt.source, opt.yolo_model, opt.deep_sort_model, opt.show_vid, opt.save_vid, \
-        opt.save_txt, opt.imgsz, opt.evaluate, opt.half, opt.project, opt.name, opt.exist_ok
+def detect(opt_):
+    out, source, yolo_model, deep_sort_model, show_vid, save_vid, save_txt, image_, evaluate, half, project, name, exist_ok = \
+        opt_.output, opt_.source, opt_.yolo_model, opt_.deep_sort_model, opt_.show_vid, opt_.save_vid, \
+        opt_.save_txt, opt_.image_, opt_.evaluate, opt_.half, opt_.project, opt_.name, opt_.exist_ok
     webcam = source == '0' or source.startswith(
         'rtsp') or source.startswith('http') or source.endswith('.txt')
 
-    device = select_device(opt.device)
+    device = select_device(opt_.device)
     # initialize deepsort
     cfg = get_config()
-    cfg.merge_from_file(opt.config_deepsort)
-    deepsort = DeepSort(deep_sort_model,
-                        device,
-                        max_dist=cfg.DEEPSORT.MAX_DIST,
-                        max_iou_distance=cfg.DEEPSORT.MAX_IOU_DISTANCE,
-                        max_age=cfg.DEEPSORT.MAX_AGE, n_init=cfg.DEEPSORT.N_INIT, nn_budget=cfg.DEEPSORT.NN_BUDGET,
-                        )
+    cfg.merge_from_file(opt_.config_deepsort)
+    deep_sort = DeepSort(deep_sort_model,
+                         device,
+                         max_dist=cfg.DEEPSORT.MAX_DIST,
+                         max_iou_distance=cfg.DEEPSORT.MAX_IOU_DISTANCE,
+                         max_age=cfg.DEEPSORT.MAX_AGE, n_init=cfg.DEEPSORT.N_INIT, nn_budget=cfg.DEEPSORT.NN_BUDGET,
+                         )
 
     # Initialize
-    
+
     half &= device.type != 'cpu'  # half precision only supported on CUDA
 
     # The MOT16 evaluation runs multiple inference streams in parallel, each one writing to
@@ -73,9 +70,9 @@ def detect(opt):
 
     # Load model
     device = select_device(device)
-    model = DetectMultiBackend(yolo_model, device=device, dnn=opt.dnn)
+    model = DetectMultiBackend(yolo_model, device=device, dnn=opt_.dnn)
     stride, names, pt, jit, _ = model.stride, model.names, model.pt, model.jit, model.onnx
-    imgsz = check_img_size(imgsz, s=stride)  # check image size
+    image_ = check_img_size(image_, s=stride)  # check image size
 
     # Half
     half &= pt and device.type != 'cpu'  # half precision only supported by PyTorch on CUDA
@@ -92,10 +89,10 @@ def detect(opt):
     if webcam:
         show_vid = check_imshow()
         cudnn.benchmark = True  # set True to speed up constant image size inference
-        dataset = LoadStreams(source, img_size=imgsz, stride=stride, auto=pt and not jit)
+        dataset = LoadStreams(source, img_size=image_, stride=stride, auto=pt and not jit)
         bs = len(dataset)  # batch_size
     else:
-        dataset = LoadImages(source, img_size=imgsz, stride=stride, auto=pt and not jit)
+        dataset = LoadImages(source, img_size=image_, stride=stride, auto=pt and not jit)
         bs = 1  # batch_size
     vid_path, vid_writer = [None] * bs, [None] * bs
 
@@ -107,9 +104,9 @@ def detect(opt):
     txt_path = str(Path(save_dir)) + '/' + txt_file_name + '.txt'
 
     if pt and device.type != 'cpu':
-        model(torch.zeros(1, 3, *imgsz).to(device).type_as(next(model.model.parameters())))  # warmup
+        model(torch.zeros(1, 3, *image_).to(device).type_as(next(model.model.parameters())))  # warmup
     dt, seen = [0.0, 0.0, 0.0, 0.0], 0
-    for frame_idx, (path, img, im0s, vid_cap, s) in enumerate(dataset):
+    for frame_id_x, (path, img, im0s, vid_cap, s) in enumerate(dataset):
         t1 = time_sync()
         img = torch.from_numpy(img).to(device)
         img = img.half() if half else img.float()  # uint8 to fp16/32
@@ -120,13 +117,14 @@ def detect(opt):
         dt[0] += t2 - t1
 
         # Inference
-        visualize = increment_path(save_dir / Path(path).stem, mkdir=True) if opt.visualize else False
-        pred = model(img, augment=opt.augment, visualize=visualize)
+        visualize = increment_path(save_dir / Path(path).stem, mkdir=True) if opt_.visualize else False
+        pred = model(img, augment=opt_.augment, visualize=visualize)
         t3 = time_sync()
         dt[1] += t3 - t2
 
         # Apply NMS
-        pred = non_max_suppression(pred, opt.conf_thres, opt.iou_thres, opt.classes, opt.agnostic_nms, max_det=opt.max_det)
+        pred = non_max_suppression(pred, opt_.conf_thres, opt_.iou_thres, opt_.classes, opt_.agnostic_nms,
+                                   max_det=opt_.max_det)
         dt[2] += time_sync() - t3
 
         # Process detections
@@ -145,22 +143,22 @@ def detect(opt):
             annotator = Annotator(im0, line_width=2, pil=not ascii)
 
             if det is not None and len(det):
-                # Rescale boxes from img_size to im0 size
+                # rescale boxes from img_size to im0 size
                 det[:, :4] = scale_coords(
                     img.shape[2:], det[:, :4], im0.shape).round()
 
-                # Print results
+                # print results
                 for c in det[:, -1].unique():
                     n = (det[:, -1] == c).sum()  # detections per class
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
-                xywhs = xyxy2xywh(det[:, 0:4])
+                x_y_w_h_s = xyxy2xywh(det[:, 0:4])
                 confs = det[:, 4]
                 clss = det[:, 5]
 
-                # pass detections to deepsort
+                # pass detections to deep-sort
                 t4 = time_sync()
-                outputs = deepsort.update(xywhs.cpu(), confs.cpu(), clss.cpu(), im0)
+                outputs = deep_sort.update(x_y_w_h_s.cpu(), confs.cpu(), clss.cpu(), im0)
                 t5 = time_sync()
                 dt[3] += t5 - t4
 
@@ -184,13 +182,13 @@ def detect(opt):
                             bbox_h = output[3] - output[1]
                             # Write MOT compliant results to file
                             with open(txt_path, 'a') as f:
-                                f.write(('%g ' * 10 + '\n') % (frame_idx + 1, id, bbox_left,  # MOT format
+                                f.write(('%g ' * 10 + '\n') % (frame_id_x + 1, id, bbox_left,  # MOT format
                                                                bbox_top, bbox_w, bbox_h, -1, -1, -1, -1))
 
                 LOGGER.info(f'{s}Done. YOLO:({t3 - t2:.3f}s), DeepSort:({t5 - t4:.3f}s)')
 
             else:
-                deepsort.increment_ages()
+                deep_sort.increment_ages()
                 LOGGER.info('No detections')
 
             # Stream results
@@ -219,11 +217,11 @@ def detect(opt):
     # Print results
     t = tuple(x / seen * 1E3 for x in dt)  # speeds per image
     LOGGER.info(f'Speed: %.1fms pre-process, %.1fms inference, %.1fms NMS, %.1fms deep sort update \
-        per image at shape {(1, 3, *imgsz)}' % t)
+        per image at shape {(1, 3, *image_)}' % t)
     if save_txt or save_vid:
         print('Results saved to %s' % save_path)
-        if platform == 'darwin':  # MacOS
-            os.system('open ' + save_path)
+        # if platform == 'darwin':  # FIXME MACOS SPECIFIC USAGE
+        #     os.system('open ' + save_path)
 
 
 if __name__ == '__main__':
