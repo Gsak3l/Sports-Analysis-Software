@@ -40,3 +40,4 @@ imageio
 # Rest ----------------------------------------
 PySide6
 pytube
+pymongo

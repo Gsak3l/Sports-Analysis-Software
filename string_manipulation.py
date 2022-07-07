@@ -135,3 +135,7 @@ def get_date_time():
 def get_after_last_slash(text):
     text = re.findall('([^\/]+$)', text)[0]
     return text
+
+
+def fix_uuid(text):
+    return text.replace('-', '')

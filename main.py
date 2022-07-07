@@ -6,6 +6,7 @@ import os
 import time
 import pandas as pd
 import json
+import uuid
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT PYTHON FILES***
@@ -19,6 +20,7 @@ import zoom_into_video as zo
 import graph_generator as gg
 import track_players as tp
 import distance as di
+import database_related as dr
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT / GUI AND MODULES AND WIDGETS***
@@ -475,6 +477,7 @@ class MainWindow(QMainWindow):
             widgets.btn_post_game_details.setStyleSheet(
                 UIFunctions.selectMenu(widgets.btn_post_game_details.styleSheet())
             )
+            dr.everything_to_db()
             self.fill_tables()
 
         # PRINT BTN NAME
