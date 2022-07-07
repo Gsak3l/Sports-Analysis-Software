@@ -266,6 +266,7 @@ class MainWindow(QMainWindow):
                                              widgets.local_competition_input.text(),
                                              widgets.local_details_input.toPlainText(),
                                              widgets.local_video_file_name.text())
+                # LEFT MENU STYLING
                 widgets.titleRightInfo.setText('Build Your Lineup')
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
                 UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
@@ -324,6 +325,7 @@ class MainWindow(QMainWindow):
                                              widgets.cloud_competition_input.text(),
                                              widgets.cloud_details_input.toPlainText(),
                                              widgets.cloud_video_file_name.placeholderText())
+                # LEFT MENU STYLING
                 widgets.titleRightInfo.setText('Build Your Lineup')
                 widgets.stackedWidget.setCurrentWidget(widgets.tactics_page)
                 UIFunctions.resetStyle(self, widgets.btn_formation.objectName())
@@ -357,8 +359,11 @@ class MainWindow(QMainWindow):
                 print(fl)
             self.delete_player_names()
             widgets.player_names_combobox.addItems(self.names)
+            # LEFT MENU STYLING
             widgets.titleRightInfo.setText('Expert Tool')
             widgets.stackedWidget.setCurrentWidget(widgets.video_page)
+            UIFunctions.resetStyle(self, widgets.btn_video_player.objectName())
+            widgets.btn_video_player.setStyleSheet(UIFunctions.selectMenu(widgets.btn_video_player.styleSheet()))
             # DECIDE WHAT VIDEO TO DISPLAY, BAD PRACTICE
             if (widgets.cloud_video_file_name.text() == 'COMPLETED'):
                 self.on_load_video_request(widgets.cloud_video_file_name.placeholderText())
@@ -477,7 +482,7 @@ class MainWindow(QMainWindow):
             widgets.btn_post_game_details.setStyleSheet(
                 UIFunctions.selectMenu(widgets.btn_post_game_details.styleSheet())
             )
-            dr.everything_to_db()
+            # dr.everything_to_db()  # DELETE THIS LINE TO DISABLE MONGO DB FUNCTIONALITY
             self.fill_tables()
 
         # PRINT BTN NAME

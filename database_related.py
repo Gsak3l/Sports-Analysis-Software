@@ -53,6 +53,7 @@ def everything_to_db():
 
 
 game_id = str(uuid.uuid4())
+
 client = pymongo.MongoClient()
 database = client['football-db']
 actions = database['player-actions']
