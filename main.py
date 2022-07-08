@@ -482,7 +482,7 @@ class MainWindow(QMainWindow):
             widgets.btn_post_game_details.setStyleSheet(
                 UIFunctions.selectMenu(widgets.btn_post_game_details.styleSheet())
             )
-            # dr.everything_to_db()  # DELETE THIS LINE TO DISABLE MONGO DB FUNCTIONALITY
+            dr.everything_to_db()  # DELETE THIS LINE TO DISABLE MONGO DB FUNCTIONALITY
             self.fill_tables()
 
         # PRINT BTN NAME

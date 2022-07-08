@@ -7,12 +7,12 @@ import pymongo
 import pandas as pd
 
 import filesystem_changes as fc
-import string_manipulation as sm
+# import string_manipulation as sm
 
 
 def details_to_db():
     details_path = f'{fc.find_last_created_folder()}game details.json'
-    details_path = sm.double_backslash_to_slash(details_path)
+    # details_path = sm.double_backslash_to_slash(details_path) # windows path thing
 
     with open(details_path) as f:
         details_ = json.load(f)
