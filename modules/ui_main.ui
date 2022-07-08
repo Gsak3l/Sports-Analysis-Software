@@ -2767,6 +2767,36 @@ color:#fff;</string>
                            </property>
                           </widget>
                          </item>
+                         <item>
+                          <widget class="QPushButton" name="btn_embed_file">
+                           <property name="maximumSize">
+                            <size>
+                             <width>80</width>
+                             <height>80</height>
+                            </size>
+                           </property>
+                           <property name="cursor">
+                            <cursorShape>PointingHandCursor</cursorShape>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">::pressed{background-color: #ff79c6}
+::active{border:none}</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../resources.qrc">
+                             <normaloff>:/images/images/images/file_embed.png</normaloff>:/images/images/images/file_embed.png</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>80</width>
+                             <height>80</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
                         </layout>
                        </item>
                       </layout>

@@ -21,6 +21,7 @@ import graph_generator as gg
 import track_players as tp
 import distance as di
 import database_related as dr
+import import_export_file as ie
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ***IMPORT / GUI AND MODULES AND WIDGETS***
@@ -124,6 +125,10 @@ class MainWindow(QMainWindow):
         widgets.cloud_video_file_button.clicked.connect(self.buttonClick)
         widgets.cloud_next_page_button.clicked.connect(self.buttonClick)
         widgets.cloud_previous_page_button.clicked.connect(self.buttonClick)
+
+        # ***EMBED PICKLE TYPE FILE****
+        # -------------------------------------------------------------------------------------------------------------
+        widgets.btn_embed_file.clicked.connect(self.buttonClick)
 
         # ***TACTICS PAGE***
         # -------------------------------------------------------------------------------------------------------------
@@ -484,6 +489,48 @@ class MainWindow(QMainWindow):
             )
             dr.everything_to_db()  # DELETE THIS LINE TO DISABLE MONGO DB FUNCTIONALITY
             self.fill_tables()
+
+        # EMBED PICKLE FILE TO LOAD PREVIOUSLY EXPORTED DATA
+        elif btnName == 'btn_embed_file':
+            supported_formats = 'Save file (*.sports*)'
+            f_sport = QFileDialog.getOpenFileName(self, 'Select file', fc.downloads_path(), supported_formats)
+            import_details, import_lineups, import_actions = ie.read_pickle(f_sport[0])
+
+            # LOAD GAME DETAILS
+            labels = []
+            labels_equal_to = []
+            for dets in import_details:
+                labels.append(dets[0])
+                labels_equal_to.append(dets[1])
+            widgets.pregame_table.setColumnCount(1)
+            widgets.pregame_table.setRowCount(len(import_details))
+            widgets.pregame_table.setVerticalHeaderLabels(labels)
+            [widgets.pregame_table.setItem(i, 0, QTableWidgetItem(labels_equal_to[i])) for i in
+             range(len(labels_equal_to))]
+
+            # LOAD LINEUPS
+            widgets.lineup_table.setRowCount(len(import_lineups) + 1)
+            widgets.lineup_table.setColumnCount(3)
+            widgets.lineup_table.setHorizontalHeaderLabels(['id', 'Name', 'Positions'])
+            y = 0
+            for lineup in import_lineups:
+                widgets.lineup_table.setItem(y, 0, QTableWidgetItem(str(lineup[0])))
+                widgets.lineup_table.setItem(y, 1, QTableWidgetItem(str(lineup[1])))
+                widgets.lineup_table.setItem(y, 2, QTableWidgetItem(str(lineup[3])))
+                y += 1
+                if y == 11:
+                    widgets.lineup_table.setItem(y, 0, QTableWidgetItem('⚽⚽⚽⚽'))
+                    widgets.lineup_table.setItem(y, 1, QTableWidgetItem('Next Lineup'))
+                    widgets.lineup_table.setItem(y, 2, QTableWidgetItem('⚽⚽⚽⚽'))
+                    y += 1
+
+            # LOAD ACTIONS
+            widgets.actions_table.setRowCount(len(import_actions))
+            widgets.actions_table.setColumnCount(len(import_actions[0]))
+            widgets.actions_table.setHorizontalHeaderLabels(['Name', 'Type of Action', 'Action', 'Timestamp'])
+            for i in range(len(import_actions)):
+                for j in range(len(import_actions[0])):
+                    widgets.actions_table.setItem(i, j, QTableWidgetItem(str(import_actions[i][j])))
 
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')

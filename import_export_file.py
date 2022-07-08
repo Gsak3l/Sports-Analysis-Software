@@ -31,9 +31,9 @@ def make_pickle():
 
 
 # this will at some point allow to import pickle files to the program
-def read_pickle():
+def read_pickle(path):
     lines = []
-    with (open(f'{fc.downloads_path()}/fileExport.sports', 'rb')) as openfile:
+    with (open(path, 'rb')) as openfile:
         while True:
             try:
                 lines.append(pickle.load(openfile))
@@ -46,21 +46,16 @@ def read_pickle():
 
     # keeping only details
     for det in lines[0]:
-        details.append(lines[0][det])
+        details.append([det, lines[0][det]])
     lines.pop(0)
 
     # keeping only names, family actions,actions, timestamps
     for act in lines[2]:
         a_list = []
         for a in act:
-            a_list.append([a, act[a]])
+            a_list.append(act[a])
         actions.append(a_list)
     lines.pop(2)
-
-    actions2 = []
-    for act in actions:
-        [actions2.append(act[i][1]) for i in range(4)]
-    actions = actions2
 
     # we'll see
     for line in lines:
@@ -69,8 +64,6 @@ def read_pickle():
             for l2 in l1:
                 l3.append(l1[l2])
             lineups.append(l3)
-    #
+
+    # return arrays
     return details, lineups, actions
-
-
-read_pickle()
