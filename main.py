@@ -532,6 +532,14 @@ class MainWindow(QMainWindow):
                 for j in range(len(import_actions[0])):
                     widgets.actions_table.setItem(i, j, QTableWidgetItem(str(import_actions[i][j])))
 
+            # CHANGE WIDGET
+            widgets.titleRightInfo.setText('Game Overview')
+            widgets.stackedWidget.setCurrentWidget(widgets.post_game)
+            UIFunctions.resetStyle(self, widgets.btn_post_game_details.objectName())
+            widgets.btn_post_game_details.setStyleSheet(
+                UIFunctions.selectMenu(widgets.btn_post_game_details.styleSheet())
+            )
+
         # PRINT BTN NAME
         print(f'Button {btnName} pressed!')
 

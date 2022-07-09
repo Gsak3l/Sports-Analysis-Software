@@ -7,12 +7,11 @@ import pymongo
 import pandas as pd
 
 import filesystem_changes as fc
-# import string_manipulation as sm
 
 
+# ADDS GAME DETAILS TO THE DATABASE
 def details_to_db():
     details_path = f'{fc.find_last_created_folder()}game details.json'
-    # details_path = sm.double_backslash_to_slash(details_path) # windows path thing
 
     with open(details_path) as f:
         details_ = json.load(f)
@@ -20,6 +19,7 @@ def details_to_db():
     details.insert_one(details_)
 
 
+# ADDS ACTIONS TO THE DATABASE
 def actions_to_db():
     df = pd.read_csv(f'{fc.find_last_created_folder()}actions.csv')
     df['Game ID'] = game_id
@@ -27,6 +27,7 @@ def actions_to_db():
     actions.insert_many(df.to_dict('records'))
 
 
+# ADDS LINEUPS TO THE DATABASE
 def lineup_to_db():
     all_lineups = glob.glob(os.path.join(fc.find_last_created_folder(), '*lineup*'))
     for single_lineup in all_lineups:
@@ -44,6 +45,21 @@ def lineup_to_db():
         df = df[['Game ID', 'Lineup ID', 'Player ID', 'Name', 'Rating', 'Positions']]
 
         lineup.insert_many(df.to_dict('records'))
+
+
+# RETURNS INFO ABOUT A SPECIFIC GAME GIVEN THE GAME ID
+def return_actions(game_id_):
+    name_ = []
+    action_family_ = []
+    action_ = []
+    timestamp_ = []
+    for act in actions.find({'Game ID': game_id_}):
+        name_.append(act['Name'])
+        action_family_.append(act['Action Family'])
+        action_.append(act['Action'])
+        timestamp_.append(act['Timestamp'])
+
+    return name_, action_family_, action_, timestamp_
 
 
 def everything_to_db():
