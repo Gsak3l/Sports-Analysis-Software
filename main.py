@@ -735,7 +735,7 @@ class MainWindow(QMainWindow):
             row = widgets.lineup_table.currentIndex().row()
             player_name = widgets.lineup_table.item(row, 1).text()
             actions_csv = sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'actions.csv'
-            gg.all_game_single_player_actions(actions_csv, player_name)
+            gg.all_game_single_player_actions(player_name, actions_csv)
 
         # ACTIONS TABLE DOUBLECLICK SHOW DIAGRAM
         elif tbl_name == 'actions_table':
@@ -745,13 +745,13 @@ class MainWindow(QMainWindow):
             actions_csv = sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'actions.csv'
 
             if column == 0:
-                gg.all_game_single_player_actions(actions_csv, selected_text)
+                gg.all_game_single_player_actions(selected_text, actions_csv)
             elif column == 1:
                 gg.all_game_action_family(actions_csv, selected_text)
             elif column == 2:
                 gg.all_game_specific_action(actions_csv, selected_text)
             else:
-                gg.all_game_all_player_actions(actions_csv)
+                gg.all_game_all_player_actions(actions_csv, None)
 
     # -----------------------------------------------------------------------------------------------------------------
     # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***

@@ -7,47 +7,40 @@ import string_manipulation as sm
 
 
 # ALL ACTIONS THAT TOOK PLACE DURING THE ENTIRE GAME
-def all_game_all_player_actions(csv_file=None, game_id=None):
+def all_game_all_player_actions(csv_file, game_id):
     if csv_file is not None:
         # using the csv file
         df = pd.read_csv(csv_file)
-
-        name = df.Name
-        action = df.Action
-        timestamp = df.Timestamp
-
-        plt.title('All actions during the entire game')
-        plt.xlabel('Action')
-        plt.ylabel('Timestamp')
-
-        plt.plot(timestamp, action, 'o')
-        plt.xticks(timestamp, rotation=90)
-
-        for i, label in enumerate(name):
-            plt.annotate(label, (timestamp[i], action[i]), rotation=75)
-
-        plt.show()
-
     else:
-        # using the database
-        name, _, action, timestamp = dr.return_actions(game_id)
+        df = pd.DataFrame(dr.return_all_actions(game_id))
 
-        plt.title('All actions during the entire game')
-        plt.xlabel('Action')
-        plt.ylabel('Timestamp')
+    name = df.Name
+    action = df.Action
+    timestamp = df.Timestamp
 
-        plt.plot(timestamp, action, 'o')
-        plt.xticks(timestamp, rotation=90)
+    plt.title('All actions during the entire game')
+    plt.xlabel('Action')
+    plt.ylabel('Timestamp')
 
-        for i in range(len(name)):
-            plt.annotate(name[i], (timestamp[i], action[i]), rotation=75)
+    plt.plot(timestamp, action, 'o')
+    plt.xticks(timestamp, rotation=90)
 
-        plt.show()
+    for i, label in enumerate(name):
+        plt.annotate(label, (timestamp[i], action[i]), rotation=75)
+
+    plt.show()
 
 
 # ALL ACTIONS A SPECIFIC PLAYER DID DURING THE GAME
-def all_game_single_player_actions(csv_file, name):
-    df = pd.read_csv(csv_file)
+def all_game_single_player_actions(csv_file, game_id, name):
+    if csv_file is not None:
+        # using the csv file
+        df = pd.read_csv(csv_file)
+    else:
+        # using the database
+        df = pd.DataFrame(list(dr.return_player_actions(game_id, name)))
+
+    # creating the plot
     df = df[df['Name'] == sm.string_to_int_or_pass(name)]
 
     action_count = df.Action.value_counts()
@@ -60,8 +53,14 @@ def all_game_single_player_actions(csv_file, name):
 
 
 # SPECIFIED ACTION AND COUNTER PER PLAYER
-def all_game_specific_action(csv_file, action):
-    df = pd.read_csv(csv_file)
+def all_game_specific_action(csv_file, game_id, action):
+    if csv_file is not None:
+        # using csv file
+        df = pd.read_csv(csv_file)
+    else:
+        # using the database
+        df = pd.DataFrame(list(dr.return_specific_action(game_id, action)))
+
     df = df[df['Action'] == action]
 
     player_count = df.Name.value_counts()
@@ -73,8 +72,14 @@ def all_game_specific_action(csv_file, action):
     plt.show()
 
 
-def all_game_action_family(csv_file, family):
-    df = pd.read_csv(csv_file)
+def all_game_action_family(csv_file, game_id, family):
+    if csv_file is not None:
+        # using csv file
+        df = pd.read_csv(csv_file)
+    else:
+        # using database
+        df = pd.DataFrame(list(dr.return_family_action(game_id, family)))
+
     df = df[df['Action Family'] == family]
 
     action_count = df.Action.value_counts()
@@ -85,7 +90,7 @@ def all_game_action_family(csv_file, family):
     plt.axis('equal')
     plt.show()
 
-# all_game_action_family('Project Saves/Date 27.05.2022/Time 09.44.02/actions.csv', 'Offensive Game')
-# all_game_specific_action('Project Saves/Date 27.05.2022/Time 09.44.02/actions.csv', 'Tackle')
-# all_game_single_player_actions('Project Saves/Date 27.05.2022/Time 09.44.02/actions.csv', '1')
-# file_all_game_all_player_actions(None, 'cde3c012-eda0-40ec-b09f-b83791e774b2')
+# all_game_action_family(None, 'cde3c012-eda0-40ec-b09f-b83791e774b2', 'Defensive Game')
+# all_game_specific_action(None, 'cde3c012-eda0-40ec-b09f-b83791e774b2', 'Tackle in Defensive Zone')
+# all_game_single_player_actions('Robert Lewandowski', None, 'cde3c012-eda0-40ec-b09f-b83791e774b2')
+# all_game_all_player_actions(None, 'cde3c012-eda0-40ec-b09f-b83791e774b2')

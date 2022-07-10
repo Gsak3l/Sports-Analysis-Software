@@ -48,18 +48,39 @@ def lineup_to_db():
 
 
 # RETURNS INFO ABOUT A SPECIFIC GAME GIVEN THE GAME ID
-def return_actions(game_id_):
-    name_ = []
-    action_family_ = []
-    action_ = []
-    timestamp_ = []
+def return_all_actions(game_id_):
+    acts = []
     for act in actions.find({'Game ID': game_id_}):
-        name_.append(act['Name'])
-        action_family_.append(act['Action Family'])
-        action_.append(act['Action'])
-        timestamp_.append(act['Timestamp'])
+        acts.append(act)
 
-    return name_, action_family_, action_, timestamp_
+    return acts
+
+
+# RETURN ACTIONS A GIVEN PLAYER DID, ON A SPECIFIC GAME
+def return_player_actions(game_id_, player_name_):
+    player_actions = []
+    for act in actions.find({'Game ID': game_id_, 'Name': player_name_}):
+        player_actions.append(act)
+
+    return player_actions
+
+
+# RETURN ALL PLAYERS THAT DID A SPECIFIC ACTION
+def return_specific_action(game_id_, action_):
+    game_actions = []
+    for act in actions.find({'Game ID': game_id_, 'Action': action_}):
+        game_actions.append(act)
+
+    return game_actions
+
+
+# RETURN ALL ACTIONS THAT BELONG TO A GIVEN ACTION FAMILY, E.G. DEFENSE
+def return_family_action(game_id_, family):
+    action_family = []
+    for act in actions.find({'Game ID': game_id_, 'Action Family': family}):
+        action_family.append(act)
+
+    return action_family
 
 
 def everything_to_db():
