@@ -1413,7 +1413,7 @@ border:none;</string>
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>5</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2794,6 +2794,21 @@ color:#fff;</string>
                              <width>80</width>
                              <height>80</height>
                             </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="history_combobox">
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">background-color:#bd93f9 ;
+font-weight:bold;
+color:#fff;</string>
                            </property>
                           </widget>
                          </item>

@@ -1557,6 +1557,15 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.btn_embed_file)
 
+        self.history_combobox = QComboBox(self.video_option_menu)
+        self.history_combobox.setObjectName(u"history_combobox")
+        self.history_combobox.setMaximumSize(QSize(100, 40))
+        self.history_combobox.setStyleSheet(u"background-color:#bd93f9 ;\n"
+"font-weight:bold;\n"
+"color:#fff;")
+
+        self.horizontalLayout_6.addWidget(self.history_combobox)
+
 
         self.verticalLayout_20.addLayout(self.horizontalLayout_6)
 
@@ -1673,7 +1682,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(5)
         self.type_of_action_combobox.setCurrentIndex(2)
         self.playback_speed_combo.setCurrentIndex(3)
 

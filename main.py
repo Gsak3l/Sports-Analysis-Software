@@ -126,9 +126,11 @@ class MainWindow(QMainWindow):
         widgets.cloud_next_page_button.clicked.connect(self.buttonClick)
         widgets.cloud_previous_page_button.clicked.connect(self.buttonClick)
 
-        # ***EMBED PICKLE TYPE FILE****
+        # ***EMBED TYPE FILE AND HISTORY****
         # -------------------------------------------------------------------------------------------------------------
         widgets.btn_embed_file.clicked.connect(self.buttonClick)
+        widgets.history_combobox.currentIndexChanged.connect(self.load_game_from_history)
+        self.load_history()
 
         # ***TACTICS PAGE***
         # -------------------------------------------------------------------------------------------------------------
@@ -499,9 +501,9 @@ class MainWindow(QMainWindow):
             # LOAD GAME DETAILS
             labels = []
             labels_equal_to = []
-            for dets in import_details:
-                labels.append(dets[0])
-                labels_equal_to.append(dets[1])
+            for dets_ in import_details:
+                labels.append(dets_[0])
+                labels_equal_to.append(dets_[1])
             widgets.pregame_table.setColumnCount(1)
             widgets.pregame_table.setRowCount(len(import_details))
             widgets.pregame_table.setVerticalHeaderLabels(labels)
@@ -725,7 +727,8 @@ class MainWindow(QMainWindow):
             for j in range(df_actions.shape[1]):
                 widgets.actions_table.setItem(i, j, QTableWidgetItem(str(df_actions.iloc[i][j])))
 
-    #
+    # -----------------------------------------------------------------------------------------------------------------
+    # GENERATING THE GRAPHS
     def show_diagram(self):
         tbl = self.sender()
         tbl_name = tbl.objectName()
@@ -735,7 +738,7 @@ class MainWindow(QMainWindow):
             row = widgets.lineup_table.currentIndex().row()
             player_name = widgets.lineup_table.item(row, 1).text()
             actions_csv = sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'actions.csv'
-            gg.all_game_single_player_actions(player_name, actions_csv)
+            gg.all_game_single_player_actions(actions_csv, None, player_name)
 
         # ACTIONS TABLE DOUBLECLICK SHOW DIAGRAM
         elif tbl_name == 'actions_table':
@@ -745,13 +748,23 @@ class MainWindow(QMainWindow):
             actions_csv = sm.double_backslash_to_slash(fc.find_last_created_folder()) + 'actions.csv'
 
             if column == 0:
-                gg.all_game_single_player_actions(selected_text, actions_csv)
+                gg.all_game_single_player_actions(actions_csv, None, selected_text)
             elif column == 1:
-                gg.all_game_action_family(actions_csv, selected_text)
+                gg.all_game_action_family(actions_csv, None, selected_text)
             elif column == 2:
-                gg.all_game_specific_action(actions_csv, selected_text)
+                gg.all_game_specific_action(actions_csv, None, selected_text)
             else:
                 gg.all_game_all_player_actions(actions_csv, None)
+
+    # -----------------------------------------------------------------------------------------------------------------
+    # ***LOADING THE COMBOBOX WITH HISTORY OF PAST ANALYTICS***
+    # -----------------------------------------------------------------------------------------------------------------
+    def load_history(self):
+        history = dr.return_all_game_id()
+        widgets.history_combobox.addItems(history)
+
+    def load_game_from_history(self):
+        pass
 
     # -----------------------------------------------------------------------------------------------------------------
     # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***

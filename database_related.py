@@ -83,6 +83,15 @@ def return_family_action(game_id_, family):
     return action_family
 
 
+# RETURNS ALL GAME IDS
+def return_all_game_id():
+    ids = []
+    for det in details.find({}):
+        ids.append(det['Game ID'])
+
+    return ids
+
+
 def everything_to_db():
     details_to_db()
     actions_to_db()
@@ -96,3 +105,4 @@ database = client['football-db']
 actions = database['player-actions']
 lineup = database['lineup']
 details = database['details']
+

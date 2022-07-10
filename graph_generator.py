@@ -89,8 +89,3 @@ def all_game_action_family(csv_file, game_id, family):
     plt.pie(action_count, labels=action_names, autopct=lambda p: f'{p * sum(action_count) / 100 :.0f}')
     plt.axis('equal')
     plt.show()
-
-# all_game_action_family(None, 'cde3c012-eda0-40ec-b09f-b83791e774b2', 'Defensive Game')
-# all_game_specific_action(None, 'cde3c012-eda0-40ec-b09f-b83791e774b2', 'Tackle in Defensive Zone')
-# all_game_single_player_actions('Robert Lewandowski', None, 'cde3c012-eda0-40ec-b09f-b83791e774b2')
-# all_game_all_player_actions(None, 'cde3c012-eda0-40ec-b09f-b83791e774b2')
