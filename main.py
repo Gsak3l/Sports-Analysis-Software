@@ -20,7 +20,6 @@ import zoom_into_video as zo
 import graph_generator as gg
 import track_players as tp
 import distance as di
-import database_related as dr
 import import_export_file as ie
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -129,8 +128,6 @@ class MainWindow(QMainWindow):
         # ***EMBED TYPE FILE AND HISTORY****
         # -------------------------------------------------------------------------------------------------------------
         widgets.btn_embed_file.clicked.connect(self.buttonClick)
-        widgets.history_combobox.currentIndexChanged.connect(self.load_game_from_history)
-        self.load_history()
 
         # ***TACTICS PAGE***
         # -------------------------------------------------------------------------------------------------------------

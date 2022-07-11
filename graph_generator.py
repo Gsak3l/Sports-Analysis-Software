@@ -2,17 +2,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-import database_related as dr
 import string_manipulation as sm
 
 
 # ALL ACTIONS THAT TOOK PLACE DURING THE ENTIRE GAME
 def all_game_all_player_actions(csv_file, game_id):
-    if csv_file is not None:
-        # using the csv file
-        df = pd.read_csv(csv_file)
-    else:
-        df = pd.DataFrame(dr.return_all_actions(game_id))
+    # using the csv file
+    df = pd.read_csv(csv_file)
 
     name = df.Name
     action = df.Action
@@ -33,12 +29,8 @@ def all_game_all_player_actions(csv_file, game_id):
 
 # ALL ACTIONS A SPECIFIC PLAYER DID DURING THE GAME
 def all_game_single_player_actions(csv_file, game_id, name):
-    if csv_file is not None:
-        # using the csv file
-        df = pd.read_csv(csv_file)
-    else:
-        # using the database
-        df = pd.DataFrame(list(dr.return_player_actions(game_id, name)))
+    # using the csv file
+    df = pd.read_csv(csv_file)
 
     # creating the plot
     df = df[df['Name'] == sm.string_to_int_or_pass(name)]
@@ -54,12 +46,8 @@ def all_game_single_player_actions(csv_file, game_id, name):
 
 # SPECIFIED ACTION AND COUNTER PER PLAYER
 def all_game_specific_action(csv_file, game_id, action):
-    if csv_file is not None:
-        # using csv file
-        df = pd.read_csv(csv_file)
-    else:
-        # using the database
-        df = pd.DataFrame(list(dr.return_specific_action(game_id, action)))
+    # using csv file
+    df = pd.read_csv(csv_file)
 
     df = df[df['Action'] == action]
 
@@ -73,12 +61,8 @@ def all_game_specific_action(csv_file, game_id, action):
 
 
 def all_game_action_family(csv_file, game_id, family):
-    if csv_file is not None:
-        # using csv file
-        df = pd.read_csv(csv_file)
-    else:
-        # using database
-        df = pd.DataFrame(list(dr.return_family_action(game_id, family)))
+    # using csv file
+    df = pd.read_csv(csv_file)
 
     df = df[df['Action Family'] == family]
 
