@@ -14,7 +14,6 @@ def create_root_save_directory():
     except OSError as oe:
         print(oe)
 
-
 # CREATING SUB-FOLDERS WITH DATE AND TIME AS A NAME
 def create_sub_save_folder():
     date, time = sm.get_date_time()
