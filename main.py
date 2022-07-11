@@ -489,7 +489,6 @@ class MainWindow(QMainWindow):
             widgets.btn_post_game_details.setStyleSheet(
                 UIFunctions.selectMenu(widgets.btn_post_game_details.styleSheet())
             )
-            dr.everything_to_db()  # DELETE THIS LINE TO DISABLE MONGO DB FUNCTIONALITY
             self.fill_tables()
 
         # EMBED PICKLE FILE TO LOAD PREVIOUSLY EXPORTED DATA
@@ -755,16 +754,6 @@ class MainWindow(QMainWindow):
                 gg.all_game_specific_action(actions_csv, None, selected_text)
             else:
                 gg.all_game_all_player_actions(actions_csv, None)
-
-    # -----------------------------------------------------------------------------------------------------------------
-    # ***LOADING THE COMBOBOX WITH HISTORY OF PAST ANALYTICS***
-    # -----------------------------------------------------------------------------------------------------------------
-    def load_history(self):
-        history = dr.return_all_game_id()
-        widgets.history_combobox.addItems(history)
-
-    def load_game_from_history(self):
-        pass
 
     # -----------------------------------------------------------------------------------------------------------------
     # ***HANDLE DOWNLOAD REQUESTS FROM WEBSITE***

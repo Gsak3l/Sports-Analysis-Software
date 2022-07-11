@@ -2797,21 +2797,6 @@ color:#fff;</string>
                            </property>
                           </widget>
                          </item>
-                         <item>
-                          <widget class="QComboBox" name="history_combobox">
-                           <property name="maximumSize">
-                            <size>
-                             <width>100</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">background-color:#bd93f9 ;
-font-weight:bold;
-color:#fff;</string>
-                           </property>
-                          </widget>
-                         </item>
                         </layout>
                        </item>
                       </layout>
