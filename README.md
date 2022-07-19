@@ -2,6 +2,8 @@
 
 Just a simple tool for coaches to help them analyze their team.
 
+[![Watch the video](https://user-images.githubusercontent.com/23295116/179811907-714b14aa-356c-4dd7-8c95-6577fad69f19.png)](https://youtu.be/s9oEdFQa1OE)
+
 ## Screenshots
 
 ![Homepage](https://raw.githubusercontent.com/Gsak3l/Sports-Analysis-Software/main/preview_images/home.png)
