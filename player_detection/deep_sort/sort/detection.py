@@ -7,9 +7,9 @@ class Detection(object):
     # BOUNDING BOX FORMAT (X,Y,W,H)
 
     def __init__(self, tlwh, confidence, feature):
-        self.tlwh = np.asarray(tlwh, dtype=np.float)
+        self.tlwh = np.asarray(tlwh, dtype=float)
         self.confidence = float(confidence)
-        self.feature = np.asarray(feature.cpu(), dtype=np.float32)
+        self.feature = np.asarray(feature.cpu(), dtype=float)
 
     # CONVERT BOUNDING BOX TO FORMAT:
     # (min x, min y, max x, max y)

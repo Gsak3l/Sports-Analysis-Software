@@ -37,7 +37,7 @@ ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 def detect(opt_):
     out, source, yolo_model, deep_sort_model, show_vid, save_vid, save_txt, image_, evaluate, half, project, name, exist_ok = \
         opt_.output, opt_.source, opt_.yolo_model, opt_.deep_sort_model, opt_.show_vid, opt_.save_vid, \
-        opt_.save_txt, opt_.image_, opt_.evaluate, opt_.half, opt_.project, opt_.name, opt_.exist_ok
+        opt_.save_txt, opt_.imgsz, opt_.evaluate, opt_.half, opt_.project, opt_.name, opt_.exist_ok
     webcam = source == '0' or source.startswith(
         'rtsp') or source.startswith('http') or source.endswith('.txt')
 

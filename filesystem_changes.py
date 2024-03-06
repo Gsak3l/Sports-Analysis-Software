@@ -135,7 +135,7 @@ def chdir_to_content_root():
     flag = True
     while flag:
         # the first one is on my local computer, the other when you clone the GitHub repository
-        if relative_cwd == 'SportsAnalysisSoftware' or relative_cwd == 'Sports-Analysis-Software':
+        if relative_cwd == 'SportsAnalysisSoftware' or relative_cwd == 'Sports-Analysis-Software' or relative_cwd == 'Sports-Analysis-Software-no-db':
             flag = False
         else:
             os.chdir('..')

@@ -1,44 +1,42 @@
-# pip install -r requirements.txt
-
-# Base ----------------------------------------
-matplotlib
-numpy
-opencv-python
-Pillow
-PyYAML
-requests
-scipy
-torch
-torchvision
-torchaudio
-tqdm
-
-# Plotting ------------------------------------
-pandas
-seaborn
-
-# Logging -------------------------------------
-tensorboard
-
-# deep_sort -----------------------------------
-easydict
-
-# Extras --------------------------------------
-thop  # FLOPs computation
-Cython
-h5py
-six
-tb-nightly
-future
-yacs
-gdown
-flake8
-yapf
-isort
-imageio
-
-# Rest ----------------------------------------
-PySide6
-pytube
-pymongo
-pickle
+absl-py==2.1.0
+beautifulsoup4==4.12.3
+colorama==0.4.6
+contourpy==1.2.0
+cycler==0.12.1
+easydict==1.12
+fonttools==4.49.0
+fsspec==2024.2.0
+gdown==5.1.0
+grpcio==1.62.0
+importlib-metadata==7.0.1
+importlib_resources==6.1.2
+kiwisolver==1.4.5
+Markdown==3.5.2
+matplotlib==3.8.3
+mkl-service==2.4.0
+numpy==1.23.0
+opencv-python==4.9.0.80
+packaging==23.2
+pandas==2.2.1
+protobuf==4.25.3
+pyparsing==3.1.1
+PySide6==6.2.1
+python-dateutil==2.9.0
+pytube==15.0.0
+pytz==2024.1
+scipy==1.12.0
+seaborn==0.13.2
+shiboken6==6.2.1
+six==1.16.0
+soupsieve==2.5
+tensorboard==2.16.2
+tensorboard-data-server==0.7.2
+thop==0.1.1.post2209072238
+torch==2.2.1
+torchaudio==2.2.1
+torchvision==0.17.1
+tqdm==4.66.2
+tzdata==2024.1
+Werkzeug==3.0.1
+zipp==3.17.0
+pyyaml==6.0.1
