@@ -7,7 +7,7 @@ Just a simple tool for coaches to help them analyze their team.
 ## Screenshots
 
 ![Homepage](https://raw.githubusercontent.com/Gsak3l/Sports-Analysis-Software/main/preview_images/home.png)
-![Captue Option](https://raw.githubusercontent.com/Gsak3l/Sports-Analysis-Software/main/preview_images/import_video.png)
+![Capture Option](https://raw.githubusercontent.com/Gsak3l/Sports-Analysis-Software/main/preview_images/import_video.png)
 ![Local Import](https://raw.githubusercontent.com/Gsak3l/Sports-Analysis-Software/main/preview_images/import_video_locally.png)
 ![Cloud Import](https://raw.githubusercontent.com/Gsak3l/Sports-Analysis-Software/main/preview_images/import_cloud_locally.png)
 ![Lineup Builder](https://raw.githubusercontent.com/Gsak3l/Sports-Analysis-Software/main/preview_images/lineup_builder.png)
